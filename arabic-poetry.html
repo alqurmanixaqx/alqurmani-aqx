@@ -1,1 +1,708 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روائع الشعر العربي | القرماني إكس AQX</title>
+    <meta name="description" content="منصة القرماني إكس AQX - روائع الشعر العربي، ديوان الأصالة والفخامة، رحلة وجدانية ملكية بين درر القصائد وعيون الشعر التي خلدتها لغة الضاد.">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@500;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* ألوان الأخضر الزمردي الملكي (الأنسب لعراقة الشعر العربي) */
+            --theme-deep: #021a0d;
+            --theme-mid: #053b1f;
+            --theme-light: #0a6637;
+            
+            /* درجات الذهب الملكي */
+            --gold-1: #ffd700;
+            --gold-2: #cfac62;
+            --gold-3: #b38f4d;
+            --gold-4: #e5c158;
+            --gold-5: #ffe07d;
+            --gold-6: #9a7b32;
+            --gold-7: #f3e5ab;
+            
+            /* خلفية الكروت الزجاجية متوافقة مع اللون الزمردي */
+            --glass-bg: rgba(2, 26, 13, 0.7);
+            --glass-border: rgba(255, 215, 0, 0.35);
+        }
 
+        /* شريط الثعبان الذهبي المتحرك حول الحواف */
+        html::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 6px solid transparent;
+            border-image: linear-gradient(45deg, var(--gold-1), var(--gold-3), var(--gold-5), var(--gold-6), var(--gold-2), var(--gold-4), var(--gold-7)) 1;
+            z-index: 9999;
+            pointer-events: none;
+            animation: snakeBorder 4s infinite alternate linear;
+        }
+
+        @keyframes snakeBorder {
+            0% { filter: hue-rotate(0deg) brightness(0.9); }
+            50% { filter: hue-rotate(180deg) brightness(1.4); }
+            100% { filter: hue-rotate(360deg) brightness(0.9); }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        /* خلفية زمردية ملكية متدرجة */
+        body {
+            background: radial-gradient(circle at center, var(--theme-light) 0%, var(--theme-mid) 50%, var(--theme-deep) 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* جزيئات الذهب */
+        #gold-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+        }
+
+        /* مساحة فارغة أول الصفحة (5 شرطات / أسطر) */
+        .top-spacer {
+            height: 150px;
+            width: 100%;
+        }
+
+        /* العنوان النيون المتحرك (6 ألوان) */
+        .neon-section-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 900;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            animation: floatTitle 3s ease-in-out infinite alternate, sixColorsNeon 10s infinite linear;
+        }
+
+        @keyframes floatTitle {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        @keyframes sixColorsNeon {
+            0%, 100% { color: #ffffff; text-shadow: 0 0 15px #b3ffb3, 0 0 30px #b3ffb3; }
+            16% { color: #ffffcc; text-shadow: 0 0 15px #ffff66, 0 0 30px #ffff66; }
+            33% { color: #e6ffee; text-shadow: 0 0 15px #00ff66, 0 0 30px #00ff66; }
+            50% { color: #ffffe0; text-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700; }
+            66% { color: #e0f7fa; text-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff; }
+            83% { color: #f5fffa; text-shadow: 0 0 15px #3cb371, 0 0 30px #3cb371; }
+        }
+
+        /* حاوية الإعلان العلوي */
+        .ad-banner-top {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 35px;
+            min-height: 50px;
+        }
+
+        /* مربع البحث الذكي */
+        .search-wrapper {
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            position: relative;
+        }
+
+        .smart-search-input {
+            width: 100%;
+            padding: 18px 25px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--glass-border);
+            border-radius: 50px;
+            color: #ffffff;
+            outline: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .smart-search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .smart-search-input:focus {
+            border-color: var(--gold-1);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .search-predictions {
+            position: absolute;
+            top: 100%; left: 0; right: 0;
+            background: rgba(2, 26, 13, 0.98);
+            border: 1px solid var(--gold-3);
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+            z-index: 500;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .prediction-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-weight: 800;
+            transition: all 0.2s;
+            text-align: right;
+            color: #fff;
+        }
+        .prediction-item:hover {
+            background: var(--gold-4);
+            color: #000;
+        }
+
+        /* الوصف الاحترافي القصير والمخصص للقسم */
+        .section-editorial-desc {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            text-align: center;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #ffffff;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+            font-weight: 500;
+        }
+        .section-editorial-desc strong {
+            color: var(--gold-1);
+            font-weight: 900;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        /* شبكة المقالات والإعلانات (السر هنا في الدمج الذكي) */
+        .articles-lux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 40px;
+        }
+
+        /* الكارت الفخم */
+        .poetry-lux-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .poetry-lux-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--gold-1);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4);
+        }
+
+        .card-thumb-space {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #010f07;
+        }
+
+        .card-thumb-space img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .poetry-lux-card:hover .card-thumb-space img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .card-info-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .card-post-title {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.6;
+            text-align: right;
+            transition: color 0.3s;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .poetry-lux-card:hover .card-post-title {
+            color: var(--gold-1);
+        }
+
+        .read-now-lux-btn {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.6);
+            border-radius: 12px;
+            color: var(--gold-1);
+            font-weight: 900;
+            font-size: 1.05rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+        }
+
+        .read-now-lux-btn:hover {
+            background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+            color: #000;
+            text-shadow: none;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* حاوية الإعلان بين المقالات (ثابتة في الـ HTML لمنع توقف السكربت) */
+        .inline-ad-card {
+            grid-column: span 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px dashed rgba(255, 215, 0, 0.4);
+            border-radius: 20px;
+            min-height: 300px;
+            order: 4; /* سيظهر دائماً بعد الكارت الثالث في الشبكة */
+        }
+
+        /* كل المقالات الديناميكية سيبدأ ترتيبها من 5 لتفسح المجال للإعلان */
+        .dynamic-post-item {
+            order: 5; 
+        }
+
+        /* حاوية الديلي موشن */
+        .dailymotion-media-row {
+            max-width: 900px;
+            width: 100%;
+            margin: 50px auto;
+            border: 3px solid var(--glass-border);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            background: #000;
+        }
+
+        .video-wrapper-ratio {
+            position: relative;
+            padding-top: 56.25%;
+            width: 100%;
+        }
+
+        .video-wrapper-ratio iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+
+        /* زر عرض المزيد */
+        .load-more-center-box {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .infinity-load-btn {
+            padding: 16px 55px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--theme-mid), var(--theme-deep));
+            border: 2px solid var(--gold-3);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .infinity-load-btn:hover {
+            border-color: var(--gold-1);
+            box-shadow: 0 0 35px rgba(255, 215, 0, 0.6);
+            transform: scale(1.05);
+            color: var(--gold-1);
+        }
+
+        /* الفوتر */
+        .luxury-footer-system {
+            width: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 100;
+        }
+
+        .luxury-footer-system span {
+            color: var(--gold-1);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+
+        /* السهم الذكي المتشقلب */
+        .smart-scroll-top-trigger {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+            border: none;
+            border-radius: 50%;
+            color: #000;
+            font-size: 26px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .smart-scroll-top-trigger.reveal {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .smart-scroll-top-trigger.flip-active {
+            animation: flipSpinSound 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes flipSpinSound {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        /* شاشات الموبايل */
+        @media (max-width: 768px) {
+            .top-spacer { height: 100px; }
+            .smart-scroll-top-trigger { bottom: 25px; right: 25px; width: 50px; height: 50px; font-size: 22px; }
+        }
+    </style>
+</head>
+<body onclick="initAudioContext()">
+
+    <!-- خلفية الذهب المتطاير -->
+    <canvas id="gold-canvas"></canvas>
+
+    <!-- إعلان 3: السكربت المخفي (يعمل تلقائياً) -->
+    <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
+
+    <!-- سهم الصعود -->
+    <button class="smart-scroll-top-trigger" id="scrollTopBtn" onclick="triggerSmartScrollTop()">▲</button>
+
+    <div class="main-container">
+
+        <!-- المساحة الفارغة العلوية -->
+        <div class="top-spacer"></div>
+
+        <!-- العنوان الرئيسي الراقي -->
+        <h1 class="neon-section-title">روائع الشعر العربي</h1>
+
+        <!-- إعلان 1 (العلوي 320x50) -->
+        <div class="ad-banner-top">
+            <script>
+                atOptions = {
+                    'key' : '6084f429253cae00d1188bae06e361f1',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+        </div>
+
+        <!-- مربع البحث -->
+        <div class="search-wrapper">
+            <input type="text" class="smart-search-input" id="searchInput" placeholder="ابحث باحترافية في ديوان الشعر العربي..." oninput="handleSearch(this.value)">
+            <div class="search-predictions" id="suggestionsBox"></div>
+        </div>
+
+        <!-- الوصف الاحترافي -->
+        <p class="section-editorial-desc">
+            مرحباً بكم في ديوان الأصالة والفخامة بمنصة <strong>القرماني إكس AQX</strong>. هنا في قسم <strong>الشعر العربي</strong>، نُحيي تراث الأمة ونستحضر عبق التاريخ، لنأخذكم في رحلة وجدانية ملكية بين درر القصائد وعيون الشعر التي خلدتها لغة الضاد.
+        </p>
+
+        <!-- شبكة المقالات (وداخلها الإعلان الثاني مدمج هندسياً) -->
+        <div class="articles-lux-grid" id="postsGrid">
+            
+            <!-- إعلان 2 (المربع 300x250) مدمج بشكل ثابت لضمان عمل السكربت بدون مشاكل، وسيظهر بعد 3 مقالات -->
+            <div class="inline-ad-card" id="staticAdContainer">
+                <script>
+                    atOptions = {
+                        'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+            </div>
+
+            <!-- المقالات سيتم ضخها هنا عبر الجافاسكربت -->
+        </div>
+
+        <!-- عرض المزيد -->
+        <div class="load-more-center-box">
+            <button class="infinity-load-btn" id="loadMoreBtn" onclick="loadMorePosts()" style="display:none;">استكشف المزيد من الروائع العربية</button>
+        </div>
+
+        <!-- ديلي موشن -->
+        <div class="dailymotion-media-row">
+            <div class="video-wrapper-ratio">
+                <iframe src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=0&mute=1" allow="fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="luxury-footer-system">
+        جميع الحقوق محفوظة لمنصة <span>القرماني إكس AQX</span> © <span id="year"></span>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        /* 1. جزيئات الذهب المتطايرة */
+        const canvas = document.getElementById('gold-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() { this.reset(); this.y = Math.random() * canvas.height; }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + 20;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedY = Math.random() * -1.5 - 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.alpha = Math.random() * 0.8 + 0.2;
+            }
+            update() {
+                this.y += this.speedY; this.x += this.speedX;
+                if (this.y < -10) this.reset();
+            }
+            draw() {
+                ctx.fillStyle = `rgba(255, 215, 0, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        for (let i = 0; i < 80; i++) particles.push(new Particle());
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        /* 2. المؤثرات الصوتية الاحترافية */
+        let audioCtx;
+        function initAudioContext() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+
+        function playClickSound() {
+            initAudioContext();
+            if(!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(1000, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1500, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+        }
+
+        function playFlipSound() {
+            initAudioContext();
+            if(!audioCtx) return;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.4);
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.4);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.4);
+        }
+
+        /* 3. سحب المقالات بتقنية JSONP (المضمونة 100% لتخطي CORS) */
+        let allPosts = [];
+        let displayedCount = 0;
+        const perPage = 6;
+
+        // دالة الـ Callback اللي بلوجر هيرجع فيها البيانات
+        window.processBloggerFeed = function(json) {
+            if (json.feed && json.feed.entry) {
+                allPosts = json.feed.entry.map(entry => {
+                    let img = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwM2tZ7uGsc-lJtU5m04Q272eX1T9vKxR7a0k/s1600/default.jpg'; // صورة بديلة
+                    if (entry.media$thumbnail) {
+                        img = entry.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/s1600/');
+                    } else if (entry.content && entry.content.$t) {
+                        const m = entry.content.$t.match(/src="([^"]+)"/);
+                        if (m) img = m[1];
+                    }
+                    let link = '#';
+                    const altLink = entry.link.find(l => l.rel === 'alternate');
+                    if (altLink) link = altLink.href;
+
+                    return {
+                        title: entry.title.$t,
+                        link: link,
+                        img: img,
+                        date: new Date(entry.published.$t)
+                    };
+                });
+                
+                // ترتيب المقالات من الأحدث للأقدم
+                allPosts.sort((a, b) => b.date - a.date);
+                
+                renderPosts();
+            } else {
+                document.getElementById('postsGrid').innerHTML += `<h3 style="color:#fff; text-align:center; grid-column:1/-1;">لا توجد مقالات في هذا القسم حتى الآن.</h3>`;
+            }
+        };
+
+        // استدعاء السكربت ديناميكياً مع الانتباه لاسم القسم
+        function fetchPostsJSONP() {
+            const script = document.createElement('script');
+            // الرابط المباشر لقسم شعر عربي مع JSONP
+            script.src = `https://www.alqurmanix.com/feeds/posts/default/-/${encodeURIComponent('شعر عربي')}?alt=json-in-script&callback=processBloggerFeed&max-results=150`;
+            document.body.appendChild(script);
+        }
+
+        function renderPosts() {
+            const grid = document.getElementById('postsGrid');
+            const limit = Math.min(displayedCount + perPage, allPosts.length);
+            
+            for (let i = displayedCount; i < limit; i++) {
+                const post = allPosts[i];
+                // order: 5 لضمان إن المقالات تيجي في ترتيب الشبكة والمربع الإعلاني order: 4 يفضل محجوز بعد ثالث مقال
+                let orderStyle = i < 3 ? `style="order: ${i+1};"` : `style="order: 5;"`;
+                
+                const card = `
+                    <article class="poetry-lux-card dynamic-post-item" ${orderStyle}>
+                        <div class="card-thumb-space">
+                            <img src="${post.img}" alt="${post.title}" loading="lazy">
+                        </div>
+                        <div class="card-info-body">
+                            <h3 class="card-post-title">${post.title}</h3>
+                            <a href="${post.link}" class="read-now-lux-btn" target="_blank" onclick="playClickSound()">اقرأ الآن ➔</a>
+                        </div>
+                    </article>
+                `;
+                grid.insertAdjacentHTML('beforeend', card);
+            }
+
+            displayedCount = limit;
+            document.getElementById('loadMoreBtn').style.display = (displayedCount < allPosts.length) ? 'block' : 'none';
+        }
+
+        function loadMorePosts() {
+            playClickSound();
+            renderPosts();
+        }
+
+        /* 4. البحث الذكي الفوري داخل القسم */
+        function handleSearch(val) {
+            const box = document.getElementById('suggestionsBox');
+            if (!val.trim()) { box.style.display = 'none'; return; }
+            
+            const results = allPosts.filter(p => p.title.toLowerCase().includes(val.toLowerCase())).slice(0, 5);
+            
+            if (results.length === 0) {
+                box.innerHTML = `<div class="prediction-item" style="color:rgba(255,255,255,0.7);">لا توجد قصائد مطابقة...</div>`;
+            } else {
+                box.innerHTML = results.map(p => `<div class="prediction-item" onclick="goToLink('${p.link}')">${p.title}</div>`).join('');
+            }
+            box.style.display = 'block';
+        }
+
+        function goToLink(url) {
+            playClickSound();
+            window.open(url, '_blank');
+            document.getElementById('suggestionsBox').style.display = 'none';
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-wrapper')) document.getElementById('suggestionsBox').style.display = 'none';
+        });
+
+        /* 5. سهم الصعود المتشقلب */
+        const upBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) upBtn.classList.add('reveal');
+            else upBtn.classList.remove('reveal');
+        });
+
+        function triggerSmartScrollTop() {
+            if (upBtn.classList.contains('flip-active')) return;
+            playFlipSound();
+            upBtn.classList.add('flip-active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => upBtn.classList.remove('flip-active'), 600);
+        }
+
+        // تشغيل الجلب فور تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', fetchPostsJSONP);
+    </script>
+</body>
+</html>
