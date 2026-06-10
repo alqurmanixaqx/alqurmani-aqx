@@ -1,1 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الأدباء والشعراء - AQX</title>
 
+<style>
+body{
+margin:0;
+font-family: Arial, sans-serif;
+background:#0f1115;
+color:#fff;
+}
+
+/* Layout */
+.container{
+display:grid;
+grid-template-columns:260px 1fr 300px;
+gap:15px;
+padding:15px;
+}
+
+/* Header */
+.header{
+grid-column:1/-1;
+background:#151922;
+padding:15px;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.header h2{
+margin:0;
+color:#00ffd5;
+}
+
+.header input{
+padding:10px;
+width:280px;
+border:none;
+border-radius:8px;
+outline:none;
+}
+
+/* Sidebar */
+.sidebar{
+background:#151922;
+padding:15px;
+border-radius:12px;
+height:fit-content;
+}
+
+.sidebar h3{
+color:#00ffd5;
+}
+
+.sidebar button{
+width:100%;
+margin:5px 0;
+padding:10px;
+background:#1f2430;
+border:none;
+color:#fff;
+border-radius:8px;
+cursor:pointer;
+}
+
+.sidebar button:hover{
+background:#00ffd5;
+color:#000;
+}
+
+/* Feed */
+.feed{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.card{
+background:#151922;
+padding:15px;
+border-radius:12px;
+border:1px solid #222;
+}
+
+.card h2{
+color:#00ffd5;
+margin:0;
+}
+
+.meta{
+font-size:12px;
+color:#aaa;
+margin:5px 0;
+}
+
+.text{
+margin-top:10px;
+line-height:1.8;
+color:#ddd;
+}
+
+.actions{
+margin-top:10px;
+display:flex;
+gap:10px;
+}
+
+.actions button{
+flex:1;
+padding:8px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#222;
+color:#fff;
+}
+
+.actions button:hover{
+background:#00ffd5;
+color:#000;
+}
+
+/* Right */
+.right{
+background:#151922;
+padding:15px;
+border-radius:12px;
+}
+
+.author{
+display:flex;
+gap:10px;
+align-items:center;
+padding:10px;
+border-bottom:1px solid #222;
+}
+
+.author img{
+width:40px;
+height:40px;
+border-radius:50%;
+}
+
+.tag{
+background:#00ffd5;
+color:#000;
+padding:3px 8px;
+border-radius:6px;
+font-size:12px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+.container{
+grid-template-columns:1fr;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+<h2>✒️ الأدباء والشعراء - AQX</h2>
+<input type="text" placeholder="ابحث عن شاعر أو نص...">
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<h3>📚 الأقسام</h3>
+<button>كل الأعمال</button>
+<button>شعر</button>
+<button>خواطر</button>
+<button>قصص</button>
+<button>روايات</button>
+
+<h3>⚡ أدوات</h3>
+<button>إضافة نص</button>
+<button>رفع كتاب</button>
+<button>المفضلة</button>
+<button>المتابعة</button>
+</div>
+
+<!-- FEED -->
+<div class="feed">
+
+<div class="card">
+<h2>قصيدة: نبض الحروف</h2>
+<div class="meta">✍️ أحمد الشاعر • منذ قليل</div>
+<div class="text">
+هذا نص تجريبي لعرض شكل القصيدة داخل منصة AQX بشكل احترافي وجذاب للقراءة.
+</div>
+<div class="actions">
+<button>❤️ إعجاب</button>
+<button>💬 تعليق</button>
+<button>📌 حفظ</button>
+</div>
+</div>
+
+<div class="card">
+<h2>خواطر: حين يهدأ الليل</h2>
+<div class="meta">✍️ ليلى • منذ ساعة</div>
+<div class="text">
+نص أدبي يعبر عن مشاعر هادئة بأسلوب بسيط وجميل داخل المنصة.
+</div>
+<div class="actions">
+<button>❤️ إعجاب</button>
+<button>💬 تعليق</button>
+<button>📌 حفظ</button>
+</div>
+</div>
+
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+
+<h3>🔥 الأكثر نشاطًا</h3>
+
+<div class="author">
+<img src="https://i.pravatar.cc/40?img=1">
+<div>أحمد الشاعر <div class="tag">شاعر</div></div>
+</div>
+
+<div class="author">
+<img src="https://i.pravatar.cc/40?img=2">
+<div>ليلى <div class="tag">كاتبة</div></div>
+</div>
+
+<div class="author">
+<img src="https://i.pravatar.cc/40?img=3">
+<div>يوسف <div class="tag">روائي</div></div>
+</div>
+
+<hr style="border:1px solid #222; margin:15px 0;">
+
+<h3>📈 الترند</h3>
+<p>🔥 أكثر نص قراءة اليوم</p>
+<p>⭐ شاعر صاعد</p>
+<p>📚 محتوى جديد مميز</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
