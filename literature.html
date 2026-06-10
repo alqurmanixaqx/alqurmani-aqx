@@ -2,255 +2,149 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الأدباء والشعراء - AQX</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>أشعار منوعة | AQX</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
-margin:0;
-font-family: Arial, sans-serif;
-background:#0f1115;
+background:#0f172a;
+font-family:Tahoma,sans-serif;
 color:#fff;
+padding:20px;
 }
 
-/* Layout */
-.container{
+h1{
+text-align:center;
+margin:20px 0 30px;
+font-size:32px;
+}
+
+#posts{
 display:grid;
-grid-template-columns:260px 1fr 300px;
-gap:15px;
-padding:15px;
-}
-
-/* Header */
-.header{
-grid-column:1/-1;
-background:#151922;
-padding:15px;
-border-radius:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.header h2{
-margin:0;
-color:#00ffd5;
-}
-
-.header input{
-padding:10px;
-width:280px;
-border:none;
-border-radius:8px;
-outline:none;
-}
-
-/* Sidebar */
-.sidebar{
-background:#151922;
-padding:15px;
-border-radius:12px;
-height:fit-content;
-}
-
-.sidebar h3{
-color:#00ffd5;
-}
-
-.sidebar button{
-width:100%;
-margin:5px 0;
-padding:10px;
-background:#1f2430;
-border:none;
-color:#fff;
-border-radius:8px;
-cursor:pointer;
-}
-
-.sidebar button:hover{
-background:#00ffd5;
-color:#000;
-}
-
-/* Feed */
-.feed{
-display:flex;
-flex-direction:column;
-gap:15px;
+grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+gap:20px;
 }
 
 .card{
-background:#151922;
-padding:15px;
-border-radius:12px;
-border:1px solid #222;
+background:#1e293b;
+border-radius:18px;
+overflow:hidden;
+transition:.3s;
 }
 
-.card h2{
-color:#00ffd5;
-margin:0;
+.card:hover{
+transform:translateY(-5px);
 }
 
-.meta{
-font-size:12px;
-color:#aaa;
-margin:5px 0;
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
 }
 
-.text{
-margin-top:10px;
+.content{
+padding:18px;
+}
+
+.content h2{
+font-size:20px;
+margin-bottom:10px;
+line-height:1.5;
+}
+
+.content p{
+font-size:14px;
+opacity:.8;
 line-height:1.8;
-color:#ddd;
 }
 
-.actions{
-margin-top:10px;
-display:flex;
-gap:10px;
-}
-
-.actions button{
-flex:1;
-padding:8px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-background:#222;
-color:#fff;
-}
-
-.actions button:hover{
-background:#00ffd5;
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 18px;
+background:#f59e0b;
 color:#000;
-}
-
-/* Right */
-.right{
-background:#151922;
-padding:15px;
-border-radius:12px;
-}
-
-.author{
-display:flex;
-gap:10px;
-align-items:center;
-padding:10px;
-border-bottom:1px solid #222;
-}
-
-.author img{
-width:40px;
-height:40px;
-border-radius:50%;
-}
-
-.tag{
-background:#00ffd5;
-color:#000;
-padding:3px 8px;
-border-radius:6px;
-font-size:12px;
-}
-
-/* Responsive */
-@media(max-width:900px){
-.container{
-grid-template-columns:1fr;
-}
+font-weight:bold;
+border-radius:10px;
+text-decoration:none;
 }
 </style>
 
 </head>
-
 <body>
 
-<div class="container">
+<h1>📜 أشعار منوعة</h1>
 
-<!-- HEADER -->
-<div class="header">
-<h2>✒️ الأدباء والشعراء - AQX</h2>
-<input type="text" placeholder="ابحث عن شاعر أو نص...">
-</div>
+<div id="posts"></div>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-<h3>📚 الأقسام</h3>
-<button>كل الأعمال</button>
-<button>شعر</button>
-<button>خواطر</button>
-<button>قصص</button>
-<button>روايات</button>
+<script>
 
-<h3>⚡ أدوات</h3>
-<button>إضافة نص</button>
-<button>رفع كتاب</button>
-<button>المفضلة</button>
-<button>المتابعة</button>
-</div>
+const feedUrl =
+'https://www.alqurmanix.com/feeds/posts/default/-/أشعار%20منوعة?alt=json&max-results=50';
 
-<!-- FEED -->
-<div class="feed">
+fetch(feedUrl)
+.then(r=>r.json())
+.then(data=>{
 
+let html='';
+
+data.feed.entry.forEach(post=>{
+
+let title=post.title.$t;
+
+let link=post.link.find(
+l=>l.rel==="alternate"
+).href;
+
+let img='https://picsum.photos/800/500';
+
+if(post.media$thumbnail){
+img=post.media$thumbnail.url.replace('/s72-c/','/s1200/');
+}
+
+let text='';
+
+if(post.summary){
+text=post.summary.$t;
+}else if(post.content){
+text=post.content.$t.replace(/<[^>]*>/g,'');
+}
+
+text=text.substring(0,150)+'...';
+
+html+=`
 <div class="card">
-<h2>قصيدة: نبض الحروف</h2>
-<div class="meta">✍️ أحمد الشاعر • منذ قليل</div>
-<div class="text">
-هذا نص تجريبي لعرض شكل القصيدة داخل منصة AQX بشكل احترافي وجذاب للقراءة.
-</div>
-<div class="actions">
-<button>❤️ إعجاب</button>
-<button>💬 تعليق</button>
-<button>📌 حفظ</button>
-</div>
-</div>
 
-<div class="card">
-<h2>خواطر: حين يهدأ الليل</h2>
-<div class="meta">✍️ ليلى • منذ ساعة</div>
-<div class="text">
-نص أدبي يعبر عن مشاعر هادئة بأسلوب بسيط وجميل داخل المنصة.
-</div>
-<div class="actions">
-<button>❤️ إعجاب</button>
-<button>💬 تعليق</button>
-<button>📌 حفظ</button>
-</div>
-</div>
+<img src="${img}" alt="">
 
-</div>
+<div class="content">
 
-<!-- RIGHT -->
-<div class="right">
+<h2>${title}</h2>
 
-<h3>🔥 الأكثر نشاطًا</h3>
+<p>${text}</p>
 
-<div class="author">
-<img src="https://i.pravatar.cc/40?img=1">
-<div>أحمد الشاعر <div class="tag">شاعر</div></div>
-</div>
-
-<div class="author">
-<img src="https://i.pravatar.cc/40?img=2">
-<div>ليلى <div class="tag">كاتبة</div></div>
-</div>
-
-<div class="author">
-<img src="https://i.pravatar.cc/40?img=3">
-<div>يوسف <div class="tag">روائي</div></div>
-</div>
-
-<hr style="border:1px solid #222; margin:15px 0;">
-
-<h3>📈 الترند</h3>
-<p>🔥 أكثر نص قراءة اليوم</p>
-<p>⭐ شاعر صاعد</p>
-<p>📚 محتوى جديد مميز</p>
+<a class="btn" href="${link}" target="_blank">
+قراءة القصيدة
+</a>
 
 </div>
 
 </div>
+`;
+
+});
+
+document.getElementById('posts').innerHTML=html;
+
+})
+.catch(err=>{
+document.getElementById('posts').innerHTML=
+'<h2>لا توجد مقالات أو اسم القسم غير صحيح.</h2>';
+});
+
+</script>
 
 </body>
 </html>
