@@ -2,437 +2,309 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AQX | القرماني إكس</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Tajawal:wght@500;800;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AQX | القرمانى اكس</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Changa:wght@600;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 50%, #fbfcfd 100%);
-            --primary-gold: #c5a85c;
-            --royal-dark: #0f172a;
-            --neon-glow: 0 0 15px rgba(197, 168, 92, 0.6);
-            --glass-bg: rgba(255, 255, 255, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.6);
+            --purple-bg: #11001c;
+            --purple-glow: #4a00e0;
+            --neon-green: #00ff66;
+            --laser-color: #00f3ff;
+            --box-bg: #050505;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Tajawal', sans-serif;
+            box-sizing: border-box;
             user-select: none;
+            font-family: 'Changa', sans-serif;
         }
 
+        /* منع التمرير نهائياً للحفاظ على ثبات الصفحة */
         body {
-            background: var(--bg-gradient);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: var(--purple-bg);
+            background-image: radial-gradient(circle at 50% 50%, #2a0045 0%, #11001c 100%);
+            height: 100vh;
+            width: 100vw;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
             position: relative;
-            padding: 20px;
         }
 
-        /* الخلفية المتحركة الفخمة */
-        .bg-blur-shapes {
+        /* جزيئات الذهب المتطايرة */
+        #gold-particles {
             position: absolute;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.4;
-            animation: floatShape 20s infinite alternate ease-in-out;
-        }
-
-        .shape-1 { width: 400px; height: 400px; background: #d4af37; top: -10%; left: -10%; }
-        .shape-2 { width: 500px; height: 500px; background: #a78bfa; bottom: -20%; right: -10%; animation-delay: -5s; }
-        .shape-3 { width: 300px; height: 300px; background: #38bdf8; top: 40%; left: 50%; animation-delay: -10s; }
-
-        @keyframes floatShape {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 50px) scale(1.2); }
-        }
-
-        /* اللمبة النيون الذكية */
-        .neon-status-node {
-            position: fixed;
-            top: 25px;
-            left: 25px;
-            width: 12px;
-            height: 12px;
-            background: #10b981;
-            border-radius: 50%;
-            z-index: 1000;
-            box-shadow: 0 0 10px #10b981, 0 0 25px #10b981;
-            animation: pulseNeon 2s infinite ease-in-out;
-        }
-
-        @keyframes pulseNeon {
-            0%, 100% { transform: scale(1); opacity: 0.6; filter: hue-rotate(0deg); }
-            50% { transform: scale(1.3); opacity: 1; filter: hue-rotate(45deg); }
-        }
-
-        /* الحاوية الرئيسية الثابتة */
-        .luxury-frame {
-            position: relative;
-            z-index: 10;
             width: 100%;
-            max-width: 1280px;
-            height: 90vh;
-            max-height: 850px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--glass-border);
-            border-radius: 32px;
-            box-shadow: 0 30px 70px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255,255,255,0.8);
-            display: grid;
-            grid-template-rows: auto 1fr auto;
-            padding: 30px;
-            gap: 20px;
-            overflow: hidden;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
         }
 
-        /* زر الإغلاق X */
-        .luxury-close-trigger {
+        /* مؤشر الاتصال (أعلى اليسار) */
+        .online-indicator {
             position: absolute;
-            top: 25px;
-            right: 25px;
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 50%;
+            top: 20px;
+            left: 25px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-size: 16px;
-            font-weight: 900;
-            color: var(--royal-dark);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            gap: 8px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
             z-index: 100;
         }
 
-        .luxury-close-trigger:hover {
-            transform: rotate(180deg) scale(1.1);
-            background: var(--royal-dark);
+        .neon-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+            animation: blink 1s infinite alternate;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* زر الإغلاق الفخم (أعلى اليمين) */
+        .lux-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #2a2a2a, #000);
+            border: 2px solid #555;
+            border-radius: 12px;
+            color: #ff3366;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.3), inset 0 0 10px rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .lux-close:hover {
+            transform: rotate(90deg) scale(1.1);
+            border-color: #ff3366;
+            box-shadow: 0 0 25px rgba(255, 51, 102, 0.8);
             color: #fff;
         }
 
-        /* الهيدر واللوجو النيون المتغير */
-        .luxury-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        /* الحاوية الرئيسية */
+        .main-wrapper {
             position: relative;
-        }
-
-        .neon-logo-master {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, #c5a85c, #e2cb8f, #9a7b32, #c5a85c);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shineText 4s linear infinite, neonColorShift 8s infinite linear;
-        }
-
-        @keyframes shineText {
-            to { background-position: 200% center; }
-        }
-
-        @keyframes neonColorShift {
-            0%, 100% { filter: drop-shadow(0 0 8px rgba(197,168,92,0.5)); }
-            33% { filter: drop-shadow(0 0 8px rgba(56,189,248,0.5)); }
-            66% { filter: drop-shadow(0 0 8px rgba(167,139,250,0.5)); }
-        }
-
-        .brand-subtitle {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--royal-dark);
-            margin-top: 5px;
-            letter-spacing: 1px;
-        }
-
-        /* مساحة العرض الرئيسية المتوازنة */
-        .workspace-grid {
-            display: grid;
-            grid-template-columns: 280px 1fr 320px;
-            gap: 24px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            overflow: hidden;
-        }
-
-        /* لوحة البيانات الأمنية الحقيقية الباهرة */
-        .security-matrix-panel {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255,255,255,0.7);
-            border-radius: 24px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
             height: 100%;
-            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .matrix-row {
+        /* اللوجو النيون (6 ألوان) */
+        .neon-logo {
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            animation: sixColors 6s infinite, float 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-10px); }
+        }
+
+        @keyframes sixColors {
+            0%, 100% { color: #ff0055; text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055; }
+            16% { color: #ffaa00; text-shadow: 0 0 10px #ffaa00, 0 0 20px #ffaa00; }
+            33% { color: #ffff00; text-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00; }
+            50% { color: #00ffaa; text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa; }
+            66% { color: #00ccff; text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff; }
+            83% { color: #b700ff; text-shadow: 0 0 10px #b700ff, 0 0 20px #b700ff; }
+        }
+
+        /* شبكة التنسيق الصارمة لضمان الثبات */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            flex: 1;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+
+        /* الصندوق الأمني الأسود مع الليزر */
+        .security-black-box {
+            background-color: var(--box-bg);
+            border: 2px solid #222;
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,243,255,0.05);
             display: flex;
             flex-direction: column;
-            border-bottom: 1px solid rgba(0,0,0,0.04);
+            gap: 15px;
+        }
+
+        /* شريط الليزر الماسح */
+        .laser-scanner {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--laser-color);
+            box-shadow: 0 0 15px var(--laser-color), 0 0 30px var(--laser-color);
+            animation: scan 3s linear infinite;
+            z-index: 5;
+            opacity: 0.8;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(350px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* بيانات الصندوق */
+        .sec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1a1a1a;
             padding-bottom: 8px;
+            position: relative;
+            z-index: 10;
         }
+        .sec-row:last-child { border: none; padding: 0; }
 
-        .matrix-row:last-child { border: none; padding: 0; }
-
-        .matrix-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: #7e8b9b;
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-
-        .matrix-value {
-            font-size: 0.95rem;
-            font-weight: 900;
-            color: var(--royal-dark);
+        .sec-label { color: #666; font-size: 0.9rem; letter-spacing: 1px; }
+        .sec-val { 
+            color: #fff; 
+            font-family: 'Cairo', sans-serif; 
+            font-weight: 700; 
+            font-size: 1rem;
+            text-shadow: 0 0 5px rgba(255,255,255,0.3);
             display: flex;
             align-items: center;
             gap: 8px;
         }
+        .sec-val img { width: 22px; border-radius: 3px; }
 
-        .matrix-value img {
-            width: 20px;
-            height: auto;
-            border-radius: 3px;
-            display: inline-block;
+        /* قسم الترحيب والعداد */
+        .welcome-section {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .welcome-title {
+            color: #d4af37;
+            font-size: 1.4rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            margin-bottom: 5px;
+        }
+        .welcome-desc {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .timer-box {
+            margin-top: 15px;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--laser-color);
+            text-shadow: 0 0 20px var(--laser-color);
+            font-family: 'Cairo', sans-serif;
+            line-height: 1;
         }
 
-        /* مساحة الميديا الوسطى والتحفيز */
-        .center-media-hub {
+        /* قسم الميديا (الفيديو والإعلان) */
+        .media-column {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
             height: 100%;
             justify-content: center;
         }
 
-        .motivational-banner {
-            font-size: 1.15rem;
-            line-height: 1.6;
-            color: #4a5568;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .motivational-banner strong {
-            color: var(--primary-gold);
-            font-weight: 900;
-        }
-
-        .video-viewport-container {
-            position: relative;
+        .video-frame {
             width: 100%;
             padding-top: 56.25%;
-            background: #fff;
-            border-radius: 20px;
+            position: relative;
+            background: #000;
+            border: 2px solid #333;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-
-        .video-viewport-container iframe {
+        .video-frame iframe {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+            top: 0; left: 0; width: 100%; height: 100%; border: none;
         }
 
-        /* العداد التنازلي التفاعلي المدمج */
-        .action-countdown-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: rgba(15, 23, 42, 0.03);
-            padding: 12px 25px;
-            border-radius: 50px;
-            margin: 0 auto;
-            width: fit-content;
-        }
+        .ad-container-top { margin-bottom: 15px; height: 50px; display: flex; justify-content: center; }
+        .ad-container-box { display: flex; justify-content: center; align-items: center; background: #0a0a0a; border-radius: 15px; border: 1px solid #222; padding: 5px;}
 
-        .countdown-text {
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: var(--royal-dark);
-        }
-
-        .countdown-timer-core {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--primary-gold);
-        }
-
-        /* إعلان الطرف الأيسر */
-        .side-ad-slot {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px dashed rgba(197, 168, 92, 0.4);
-            border-radius: 24px;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            padding: 5px;
-        }
-
-        /* الفوتر المتوازن للإعلان العلوي/السفلي الموزع */
-        .luxury-footer-ad {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            min-height: 50px;
-        }
-
-        /* استجابة الشاشات الكاملة والأجهزة الذكية */
-        @media (max-width: 1100px) {
-            .workspace-grid {
+        /* تجاوب الشاشات لضمان الثبات التام */
+        @media (max-width: 850px) {
+            .content-grid {
                 grid-template-columns: 1fr;
-                overflow-y: auto;
-                height: auto;
+                gap: 10px;
+                align-items: stretch;
             }
-            .luxury-frame {
-                height: auto;
-                max-height: none;
-                grid-template-rows: auto auto auto;
-            }
-            body {
-                overflow-y: auto;
-            }
-            .security-matrix-panel {
-                grid-template-columns: repeat(2, 1fr);
-                display: grid;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .security-matrix-panel {
-                grid-template-columns: 1fr;
-            }
-            .neon-logo-master {
-                font-size: 2.5rem;
-            }
-            .brand-subtitle {
-                font-size: 1.1rem;
-            }
+            .neon-logo { font-size: 2rem; margin-top: 60px; margin-bottom: 5px;}
+            .security-black-box { padding: 15px; gap: 8px;}
+            .timer-box { font-size: 2.2rem; }
+            .welcome-title { font-size: 1.1rem; }
+            .welcome-desc { font-size: 0.8rem; }
+            /* تصغير الفيديو للحفاظ على المساحة دون تمرير */
+            .video-frame { padding-top: 45%; } 
         }
     </style>
 </head>
-<body>
+<body onclick="initAudio()">
 
-    <div class="neon-status-node"></div>
+    <!-- جزيئات الذهب المتطايرة -->
+    <canvas id="gold-particles"></canvas>
 
-    <div class="bg-blur-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
+    <!-- مؤشر الاتصال -->
+    <div class="online-indicator">
+        <div class="neon-dot"></div>
+        <span>متصل</span>
     </div>
 
-    <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
+    <!-- زر الإغلاق -->
+    <div class="lux-close" onclick="executeClose()">✕</div>
 
-    <main class="luxury-frame">
+    <div class="main-wrapper">
         
-        <div class="luxury-close-trigger sonic-element" onclick="terminateSession()">✕</div>
+        <!-- اللوجو -->
+        <h1 class="neon-logo">القرمانى اكس AQX</h1>
 
-        <header class="luxury-header">
-            <h1 class="neon-logo-master sonic-element">AQX</h1>
-            <h2 class="brand-subtitle">يرجى تسجيل الدخول أو الاشتراك أولاً</h2>
-        </header>
-
-        <section class="workspace-grid">
-            
-            <article class="security-matrix-panel">
-                <div class="matrix-row">
-                    <span class="matrix-label">العنوان الرقمي الآمن IP</span>
-                    <span class="matrix-value" id="meta-ip">جاري التشفير...</span>
-                </div>
-                <div class="matrix-row">
-                    <span class="matrix-label">الموقع الجغرافي الحي</span>
-                    <span class="matrix-value" id="meta-location">تحديد النطاق...</span>
-                </div>
-                <div class="matrix-row">
-                    <span class="matrix-label">بوابة مزود الخدمة ISP</span>
-                    <span class="matrix-value" id="meta-isp">فحص العقدة...</span>
-                </div>
-                <div class="matrix-row">
-                    <span class="matrix-label">البيئة النظمية والمعالج</span>
-                    <span class="matrix-value" id="meta-device">قراءة العتاد...</span>
-                </div>
-                <div class="matrix-row">
-                    <span class="matrix-label">قناة التوصيل النشطة</span>
-                    <span class="matrix-value" id="meta-connection">تحليل التردد...</span>
-                </div>
-                <div class="matrix-row">
-                    <span class="matrix-label">أبعاد العرض البؤري</span>
-                    <span class="matrix-value" id="meta-screen">حساب المقاس...</span>
-                </div>
-            </article>
-
-            <article class="center-media-hub">
-                <p class="motivational-banner">
-                    إلى حيث يكمن <strong>الإبداع المطلق والتميز السيادي</strong>... خطوتك التالية تفتح لك الأبواب لعالمٍ لامتناهٍ من الخدمات الفاخرة المصممة خصيصاً لريادتك الرقمية.
-                </p>
-
-                <div class="video-viewport-container">
-                    <iframe src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=1&mute=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                </div>
-
-                <div class="action-countdown-bar">
-                    <span class="countdown-text">جاري إعداد منصتك المخصصة خلال</span>
-                    <span class="countdown-timer-core" id="session-clock">15</span>
-                </div>
-            </article>
-
-            <aside class="side-ad-slot">
-                <script>
-                    atOptions = {
-                        'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
-                </script>
-                <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
-            </aside>
-
-        </section>
-
-        <footer class="luxury-footer-ad">
+        <!-- الإعلان الأول (320x50) -->
+        <div class="ad-container-top">
             <script>
                 atOptions = {
                     'key' : '6084f429253cae00d1188bae06e361f1',
@@ -443,104 +315,235 @@
                 };
             </script>
             <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
-        </footer>
+        </div>
 
-    </main>
+        <!-- الشبكة الثابتة -->
+        <div class="content-grid">
+            
+            <!-- العمود الأيمن: الصندوق الأمني والترحيب -->
+            <div class="info-column">
+                <div class="security-black-box">
+                    <div class="laser-scanner"></div>
+                    <div class="sec-row">
+                        <span class="sec-label">العنوان (IP)</span>
+                        <span class="sec-val" id="d-ip">جاري الفحص...</span>
+                    </div>
+                    <div class="sec-row">
+                        <span class="sec-label">الموقع الجغرافي</span>
+                        <span class="sec-val" id="d-loc">تحديد النطاق...</span>
+                    </div>
+                    <div class="sec-row">
+                        <span class="sec-label">مزود الخدمة (ISP)</span>
+                        <span class="sec-val" id="d-isp">تحليل...</span>
+                    </div>
+                    <div class="sec-row">
+                        <span class="sec-label">نظام التشغيل</span>
+                        <span class="sec-val" id="d-os">جاري القراءة...</span>
+                    </div>
+                    <div class="sec-row">
+                        <span class="sec-label">حالة الشبكة</span>
+                        <span class="sec-val" id="d-net">استشعار التردد...</span>
+                    </div>
+                    <div class="sec-row">
+                        <span class="sec-label">دقة العرض</span>
+                        <span class="sec-val" id="d-res">حساب الأبعاد...</span>
+                    </div>
+                </div>
+
+                <div class="welcome-section">
+                    <h2 class="welcome-title">إلى حيث الإبداع والتميز</h2>
+                    <p class="welcome-desc">عالم مليء بالخدمات الفاخرة مصمم خصيصاً لك. سيتم نقلك تلقائياً لبدء رحلتك الاستثنائية.</p>
+                    <div class="timer-box" id="countdown-timer">20</div>
+                </div>
+            </div>
+
+            <!-- العمود الأيسر: الفيديو والإعلان الثاني -->
+            <div class="media-column">
+                <div class="video-frame">
+                    <iframe src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=1&mute=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                </div>
+                
+                <!-- الإعلان الثاني (300x250) -->
+                <div class="ad-container-box">
+                    <script>
+                        atOptions = {
+                            'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- الإعلان الثالث (مخفي) -->
+    <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
 
     <script>
-        // نظام الجلب الأمني المتقدم والكامل وإبهار المستخدم بالمعلومات الحقيقية
-        async function fetchSecurityMatrix() {
-            try {
-                const response = await fetch('https://ipwho.is/');
-                const data = await response.json();
-                
-                if(data.success) {
-                    document.getElementById('meta-ip').textContent = data.ip;
-                    document.getElementById('meta-location').innerHTML = `<img src="${data.country_flag}" alt="Flag"> ${data.city}، ${data.country}`;
-                    document.getElementById('meta-isp').textContent = data.connection.isp || "مؤمن بالكامل";
-                } else {
-                    throw new Error();
+        /* 1. نظام الجزيئات الذهبية المتطايرة (Canvas) */
+        const canvas = document.getElementById('gold-particles');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+        
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', setCanvasSize);
+        setCanvasSize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 100;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedY = Math.random() * -1.5 - 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.opacity = Math.random() * 0.8 + 0.2;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < 0) {
+                    this.y = canvas.height;
+                    this.x = Math.random() * canvas.width;
                 }
-            } catch (e) {
-                document.getElementById('meta-ip').textContent = "192.168.1.1 (افتراضي آمن)";
-                document.getElementById('meta-location').textContent = "تم التشفير الجغرافي";
-                document.getElementById('meta-isp').textContent = "اتصال خاص محمي";
             }
-
-            // تحليل نظام التشغيل ونوع الجهاز بدقة بالغة
-            const ua = navigator.userAgent;
-            let deviceString = "جهاز ذكي مخصص";
-            if (/iPhone/.test(ua)) deviceString = "iPhone (iOS)";
-            else if (/iPad/.test(ua)) deviceString = "iPad (iPadOS)";
-            else if (/Android/.test(ua)) deviceString = "Android Device";
-            else if (/Windows/.test(ua)) deviceString = "Windows PC";
-            else if (/Macintosh/.test(ua)) deviceString = "macOS workstation";
-            else if (/Linux/.test(ua)) deviceString = "Linux Kernel";
-            document.getElementById('meta-device').textContent = deviceString;
-
-            // كشف بيئة الاتصال المتطورة 4G / Wi-Fi
-            const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-            if (conn) {
-                const type = conn.effectiveType || conn.type || "Wi-Fi";
-                document.getElementById('meta-connection').textContent = type.toUpperCase() + " المستقر";
-            } else {
-                document.getElementById('meta-connection').textContent = "اتصال عالي السرعة";
+            draw() {
+                ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
-
-            // حساب أبعاد البؤرة ومقاس الشاشة الفوري بالمليمتر
-            document.getElementById('meta-screen').textContent = `${window.screen.width} × ${window.screen.height} بكسل`;
         }
 
-        // معالج العداد الزمني والتحويل المطلق لـ #
-        let remainingTicks = 15;
-        const clockUI = document.getElementById('session-clock');
+        for(let i = 0; i < 80; i++) particlesArray.push(new Particle());
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        /* 2. النظام الصوتي (رياح وإغلاق) */
+        let audioCtx;
+        let windPlayed = false;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if(!windPlayed) { playWindSound(); windPlayed = true; }
+            }
+        }
+
+        // صوت الرياح العاصفة القوية (تركيب صوتي)
+        function playWindSound() {
+            const bufferSize = audioCtx.sampleRate * 3; 
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+            
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+            
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(100, audioCtx.currentTime);
+            filter.frequency.exponentialRampToValueAtTime(1500, audioCtx.currentTime + 1.5);
+            filter.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 3);
+            
+            const gain = audioCtx.createGain();
+            gain.gain.setValueAtTime(0, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(1.5, audioCtx.currentTime + 1.5);
+            gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 3);
+            
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioCtx.destination);
+            noise.start();
+        }
+
+        // صوت الإغلاق المختلف (ميكانيكي/إلكتروني)
+        function playCloseSound() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.4);
+            gain.gain.setValueAtTime(1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.4);
+        }
+
+        /* 3. البيانات الأمنية الحقيقية للصندوق */
+        async function fetchSecurityData() {
+            try {
+                const res = await fetch('https://ipapi.co/json/');
+                const data = await res.json();
+                document.getElementById('d-ip').textContent = data.ip;
+                document.getElementById('d-loc').innerHTML = `<img src="https://flagcdn.com/24x18/${data.country_code.toLowerCase()}.png"> ${data.city}, ${data.country_name}`;
+                document.getElementById('d-isp').textContent = data.org.substring(0, 25);
+            } catch (e) {
+                document.getElementById('d-ip').textContent = "مخفي ومؤمن";
+                document.getElementById('d-loc').textContent = "اتصال مشفر";
+                document.getElementById('d-isp').textContent = "خاص";
+            }
+
+            const ua = navigator.userAgent;
+            let os = "جهاز غير معروف";
+            if (/Windows/.test(ua)) os = "Windows";
+            else if (/Mac OS/.test(ua)) os = "macOS";
+            else if (/iPhone|iPad/.test(ua)) os = "iOS (Apple)";
+            else if (/Android/.test(ua)) os = "Android";
+            document.getElementById('d-os').textContent = os;
+
+            const conn = navigator.connection;
+            document.getElementById('d-net').textContent = (conn && conn.effectiveType) ? `شبكة ${conn.effectiveType.toUpperCase()}` : "Wi-Fi / عالي السرعة";
+            
+            document.getElementById('d-res').textContent = `${window.screen.width} × ${window.screen.height} px`;
+        }
+
+        /* 4. العداد والإغلاق والتحويل */
+        let timeLeft = 20;
+        const timerEl = document.getElementById('countdown-timer');
         
-        const runtimeSequence = setInterval(() => {
-            remainingTicks--;
-            clockUI.textContent = remainingTicks;
-            if (remainingTicks <= 0) {
-                clearInterval(runtimeSequence);
-                window.location.href = '#';
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                initAudio();
+                playWindSound();
+                setTimeout(() => { window.location.href = '#'; }, 800);
             }
         }, 1000);
 
-        // إنهاء الجلسة التلقائي والرجوع الذكي للخلف
-        function terminateSession() {
-            if (document.referrer) {
-                window.history.back();
-            } else {
-                window.location.href = '#';
-            }
+        function executeClose() {
+            initAudio();
+            playCloseSound();
+            clearInterval(countdown);
+            setTimeout(() => {
+                if (document.referrer) window.history.back();
+                else window.location.href = '#';
+            }, 400);
         }
 
-        // سيناريو الصوت الفاخر الذكي التفاعلي دون حظر المتصفح
-        const audioContextUnit = new (window.AudioContext || window.webkitAudioContext)();
-        function emitLuxuryChime() {
-            if (audioContextUnit.state === 'suspended') {
-                audioContextUnit.resume();
-            }
-            const osc = audioContextUnit.createOscillator();
-            const gain = audioContextUnit.createGain();
-            
-            osc.type = 'triangle'; 
-            osc.frequency.setValueAtTime(950, audioContextUnit.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(1400, audioContextUnit.currentTime + 0.12);
-            
-            gain.gain.setValueAtTime(0.06, audioContextUnit.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioContextUnit.currentTime + 0.25);
-            
-            osc.connect(gain);
-            gain.connect(audioContextUnit.destination);
-            osc.start();
-            osc.stop(audioContextUnit.currentTime + 0.25);
-        }
-
-        document.querySelectorAll('.sonic-element').forEach(node => {
-            node.addEventListener('mouseenter', emitLuxuryChime);
-        });
-
-        // تفعيل فوري عند جهوزية البنية الرسومية
-        window.addEventListener('DOMContentLoaded', fetchSecurityMatrix);
+        // تشغيل المهام عند التحميل
+        window.onload = () => {
+            fetchSecurityData();
+            // محاولة تشغيل الصوت برمجياً (تعتمد على سياسة المتصفح)
+            setTimeout(initAudio, 500);
+        };
     </script>
 </body>
 </html>
