@@ -1,1 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AQX | Al-Qaramani X Premium Gateway</title>
+    <meta name="description" content="AQX Gateway - Please log in or subscribe first to proceed to the world of excellence and innovation.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&family=Poppins:wght@500;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --mauve-bg: linear-gradient(135deg, #2c1654 0%, #1a0b36 50%, #4a154b 100%);
+            --neon-green: #00ff66;
+            --box-green-bg: rgba(0, 30, 15, 0.85);
+            --gold-glow: rgba(255, 215, 0, 0.4);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Prevent scrolling for absolute page stability */
+        body {
+            background: var(--mauve-bg);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        /* Floating gold particles overlaying the mauve background */
+        #gold-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Neon status indicator (Top Left) */
+        .neon-status {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+            font-size: 1.1rem;
+            z-index: 100;
+        }
+
+        .neon-lamp {
+            width: 10px;
+            height: 10px;
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--neon-green), 0 0 25px var(--neon-green);
+            animation: neonBlink 0.8s infinite alternate;
+        }
+
+        @keyframes neonBlink {
+            0% { opacity: 0.3; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* Premium smart close button (Top Right) */
+        .lux-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .lux-close-btn:hover {
+            transform: rotate(180deg) scale(1.15);
+            background: #ff3366;
+            border-color: #ff3366;
+            box-shadow: 0 0 20px #ff3366;
+        }
+
+        /* Main structural container */
+        .screen-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1300px;
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        /* Professional neon logo (6 smoothly shifting colors) */
+        .brand-logo-neon {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-top: 10px;
+            animation: logoFloat 3s ease-in-out infinite alternate, sixNeonColors 12s infinite linear;
+        }
+
+        @keyframes logoFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
+        }
+
+        @keyframes sixNeonColors {
+            0%, 100% { color: #00ffcc; text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc; }
+            16% { color: #ff007f; text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f; }
+            33% { color: #ffff00; text-shadow: 0 0 15px #ffff00, 0 0 30px #ffff00; }
+            50% { color: #00ff66; text-shadow: 0 0 15px #00ff66, 0 0 30px #00ff66; }
+            66% { color: #00bfff; text-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff; }
+            83% { color: #cc00ff; text-shadow: 0 0 15px #cc00ff, 0 0 30px #cc00ff; }
+        }
+
+        /* Balanced top banner ad frame */
+        .top-ad-frame {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Two-column dashboard grid layout */
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 25px;
+            width: 100%;
+            flex: 1;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* High-end secure green vault box with laser scan effect */
+        .security-green-vault {
+            background: var(--box-green-bg);
+            border: 2px solid var(--neon-green);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(0, 255, 102, 0.15), inset 0 0 20px rgba(0, 255, 102, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+            justify-content: center;
+        }
+
+        /* Smart laser scanning beam */
+        .laser-beam-scanner {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-green);
+            animation: laserScan 3.5s linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes laserScan {
+            0% { top: 0%; opacity: 0; }
+            5%, 95% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .vault-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 255, 102, 0.15);
+            padding-bottom: 10px;
+            position: relative;
+            z-index: 10;
+        }
+        .vault-row:last-child { border: none; padding: 0; }
+
+        .vault-tag {
+            color: rgba(0, 255, 102, 0.6);
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .vault-data {
+            color: #fff;
+            font-weight: 900;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.2);
+        }
+        .vault-data img { width: 24px; border-radius: 4px; display: inline-block; }
+
+        /* Welcome and notification center */
+        .editorial-hub {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .mandatory-notice {
+            color: #ffcc00;
+            font-size: clamp(1.1rem, 2vw, 1.45rem);
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+        }
+
+        .lux-motivational-text {
+            color: #e2d9f3;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.6;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .lux-motivational-text strong {
+            color: #ffd700;
+            text-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        /* Integrated digital countdown */
+        .countdown-display {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #00ffff;
+            text-shadow: 0 0 25px #00ffff;
+            line-height: 1;
+            margin-top: 5px;
+        }
+
+        /* Media display and ad environment */
+        .media-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .dailymotion-viewport {
+            width: 100%;
+            padding-top: 56.25%;
+            position: relative;
+            background: #000;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+        .dailymotion-viewport iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+
+        .ad-container-box-medium {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px;
+            min-height: 270px;
+        }
+
+        /* Responsive adaptations for mobile devices */
+        @media (max-width: 900px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            body { overflow-y: auto; height: auto; }
+            .screen-container { height: auto; justify-content: flex-start; gap: 15px; }
+            .brand-logo-neon { margin-top: 60px; }
+            .ad-container-box-medium { min-height: auto; }
+            .security-green-vault { padding: 20px; gap: 10px; }
+        }
+    </style>
+</head>
+<body onclick="activateAudioContext()">
+
+    <canvas id="gold-canvas"></canvas>
+
+    <div class="neon-status">
+        <div class="neon-lamp"></div>
+        <span>CONNECTED</span>
+    </div>
+
+    <div class="lux-close-btn" onclick="triggerImmediateExit()">✕</div>
+
+    <div class="screen-container">
+        
+        <h1 class="brand-logo-neon">AL-QARAMANI X AQX</h1>
+
+        <div class="top-ad-frame">
+            <script>
+                atOptions = {
+                    'key' : '6084f429253cae00d1188bae06e361f1',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+        </div>
+
+        <div class="dashboard-layout">
+            
+            <div style="display: flex; flex-direction: column; gap: 20px; height: 100%; justify-content: center;">
+                <div class="security-green-vault">
+                    <div class="laser-beam-scanner"></div>
+                    <div class="vault-row">
+                        <span class="vault-tag">IP ADDRESS PROTOCOL</span>
+                        <span class="vault-data" id="v-ip">Establishing secure profile...</span>
+                    </div>
+                    <div class="vault-row">
+                        <span class="vault-tag">GEOGRAPHICAL REGION & AREA</span>
+                        <span class="vault-data" id="v-geo">Detecting coordinates...</span>
+                    </div>
+                    <div class="vault-row">
+                        <span class="vault-tag">INTERNET SERVICE PROVIDER (ISP)</span>
+                        <span class="vault-data" id="v-isp">Analyzing host node...</span>
+                    </div>
+                    <div class="vault-row">
+                        <span class="vault-tag">SYSTEM ENVIRONMENT & HARDWARE</span>
+                        <span class="vault-data" id="v-os">Reading processor...</span>
+                    </div>
+                    <div class="vault-row">
+                        <span class="vault-tag">ACTIVE CONNECTION PROTOCOL</span>
+                        <span class="vault-data" id="v-net">Analyzing signal strength...</span>
+                    </div>
+                    <div class="vault-row">
+                        <span class="vault-tag">CURRENT SCREEN RESOLUTION MATRIX</span>
+                        <span class="vault-data" id="v-res">Calculating precise dimensions...</span>
+                    </div>
+                </div>
+
+                <div class="editorial-hub">
+                    <div class="mandatory-notice">Authentication Required: Please Log In or Subscribe First to Continue</div>
+                    <p class="lux-motivational-text">
+                        Step into the realm where <strong>absolute innovation and premium excellence</strong> reside... A world full of pioneering services, exceptional digital solutions, and elite experiences meticulously crafted to exceed your expectations and ensure your leadership.
+                    </p>
+                    <div class="countdown-display" id="global-timer">20</div>
+                </div>
+            </div>
+
+            <div class="media-stack">
+                <div class="dailymotion-viewport">
+                    <iframe src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=1&mute=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                </div>
+                
+                <div class="ad-container-box-medium">
+                    <script>
+                        atOptions = {
+                            'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
+
+    <script>
+        /* 1. Gold floating spray particles simulation logic overlay */
+        const canvas = document.getElementById('gold-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class GoldParticle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 50;
+                this.size = Math.random() * 2 + 0.4;
+                this.speedY = Math.random() * -1.2 - 0.4;
+                this.speedX = Math.random() * 0.8 - 0.4;
+                this.alpha = Math.random() * 0.7 + 0.3;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < 0) {
+                    this.y = canvas.height;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha})`;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = '#ffd700';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0; // Reset
+            }
+        }
+
+        for(let i = 0; i < 70; i++) particles.push(new GoldParticle());
+
+        function loopParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(loopParticles);
+        }
+        loopParticles();
+
+        /* 2. Web Audio API Synthesis Engine (Wind ambient loop and electronic dismiss feedback chime) */
+        let synthContext;
+        let windActive = false;
+
+        function activateAudioContext() {
+            if (!synthContext) {
+                synthContext = new (window.AudioContext || window.webkitAudioContext)();
+                if(!windActive) { triggerWindOscillation(); windActive = true; }
+            }
+        }
+
+        function triggerWindOscillation() {
+            const bufferDuration = synthContext.sampleRate * 4; 
+            const buffer = synthContext.createBuffer(1, bufferDuration, synthContext.sampleRate);
+            const dataChannel = buffer.getChannelData(0);
+            for (let i = 0; i < bufferDuration; i++) dataChannel[i] = Math.random() * 2 - 1;
+            
+            const noiseNode = synthContext.createBufferSource();
+            noiseNode.buffer = buffer;
+            
+            const lowpassFilter = synthContext.createBiquadFilter();
+            lowpassFilter.type = 'lowpass';
+            lowpassFilter.frequency.setValueAtTime(80, synthContext.currentTime);
+            lowpassFilter.frequency.exponentialRampToValueAtTime(1100, synthContext.currentTime + 1.8);
+            lowpassFilter.frequency.exponentialRampToValueAtTime(90, synthContext.currentTime + 3.8);
+            
+            const amplitudeGain = synthContext.createGain();
+            amplitudeGain.gain.setValueAtTime(0, synthContext.currentTime);
+            amplitudeGain.gain.linearRampToValueAtTime(1.8, synthContext.currentTime + 1.8);
+            amplitudeGain.gain.linearRampToValueAtTime(0, synthContext.currentTime + 3.8);
+            
+            noiseNode.connect(lowpassFilter);
+            lowpassFilter.connect(amplitudeGain);
+            amplitudeGain.connect(synthContext.destination);
+            noiseNode.start();
+        }
+
+        function triggerCloseChime() {
+            if (!synthContext) synthContext = new (window.AudioContext || window.webkitAudioContext)();
+            const generator = synthContext.createOscillator();
+            const volume = synthContext.createGain();
+            generator.type = 'sawtooth';
+            generator.frequency.setValueAtTime(900, synthContext.currentTime);
+            generator.frequency.exponentialRampToValueAtTime(30, synthContext.currentTime + 0.35);
+            volume.gain.setValueAtTime(0.8, synthContext.currentTime);
+            volume.gain.exponentialRampToValueAtTime(0.001, synthContext.currentTime + 0.35);
+            generator.connect(volume);
+            volume.connect(synthContext.destination);
+            generator.start();
+            generator.stop(synthContext.currentTime + 0.35);
+        }
+
+        /* 3. Retrieve Live Real-Time Security Intel Profile Array */
+        async function captureIntelProfile() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                document.getElementById('v-ip').textContent = data.ip;
+                document.getElementById('v-geo').innerHTML = `<img src="https://flagcdn.com/24x18/${data.country_code.toLowerCase()}.png" alt="Flag"> ${data.city || ''}, ${data.country_name}`;
+                document.getElementById('v-isp').textContent = data.org || "Secure & Protected Connection";
+            } catch (err) {
+                document.getElementById('v-ip').textContent = "Fully Secured Node";
+                document.getElementById('v-geo').textContent = "Encrypted Geolocation Data";
+                document.getElementById('v-isp').textContent = "Private Secured Gateway";
+            }
+
+            // Detect hardware architecture and workspace platform environment
+            const agent = navigator.userAgent;
+            let platformName = "Custom Smart Terminal";
+            if (/Windows/.test(agent)) platformName = "Windows PC";
+            else if (/Mac OS/.test(agent)) platformName = "macOS Workstation";
+            else if (/iPhone|iPad/.test(agent)) platformName = "iOS Terminal (Apple)";
+            else if (/Android/.test(agent)) platformName = "Android OS Device";
+            document.getElementById('v-os').textContent = platformName;
+
+            // Extract connection network link quality metrics
+            const netInfo = navigator.connection;
+            document.getElementById('v-net').textContent = (netInfo && netInfo.effectiveType) ? `Precise Cellular Band ${netInfo.effectiveType.toUpperCase()}` : "Ultra-High-Speed Wi-Fi Node";
+            
+            // Screen resolution viewport dimensions array computation
+            document.getElementById('v-res').textContent = `${window.screen.width} × ${window.screen.height} Precise Pixels`;
+        }
+
+        /* 4. Global runtime sequence timer handler and immediate safe termination interface */
+        let countdownTicks = 20;
+        const displayClock = document.getElementById('global-timer');
+        
+        const runtimeInterval = setInterval(() => {
+            countdownTicks--;
+            displayClock.textContent = countdownTicks;
+            if (countdownTicks <= 0) {
+                clearInterval(runtimeInterval);
+                activateAudioContext();
+                triggerWindOscillation();
+                setTimeout(() => { window.location.href = '#'; }, 600);
+            }
+        }, 1000);
+
+        function triggerImmediateExit() {
+            activateAudioContext();
+            triggerCloseChime();
+            clearInterval(runtimeInterval);
+            setTimeout(() => {
+                if (document.referrer) window.history.back();
+                else window.location.href = '#';
+            }, 350);
+        }
+
+        // Initialize immediate execution sequences upon DOM completion
+        window.addEventListener('DOMContentLoaded', () => {
+            captureIntelProfile();
+            setTimeout(activateAudioContext, 600);
+        });
+    </script>
+</body>
+</html>
