@@ -3,307 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AQX | بوابة العبور الملكية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;900&display=swap" rel="stylesheet">
+    <meta name="description" content="بوابة القرماني إكس AQX - إلى حيث الإبداع والتميز. سجل دخولك الآن لتستمتع بعالم مليء بالخدمات الحصرية.">
+    <meta name="keywords" content="القرماني اكس, AQX, خدمات, تسجيل دخول, تقنية, إبداع">
+    <meta name="author" content="AQX">
+    <title>القرماني إكس (AQX) | بوابة الدخول</title>
+    
+    <!-- خطوط جوجل الفاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ===== الإعدادات الأساسية ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        :root {
+            --primary-gold: #D4AF37;
+            --secondary-gold: #F3E5AB;
+            --royal-blue: #0A192F;
+            --white-glass: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        /* خلفية فخمة متحركة بألوان فاتحة وراقية */
         body {
-            background-color: #FDFBF7;
-            color: #2C302E;
-            overflow: hidden; /* لمنع التمرير وتثبيت الشاشة */
-            height: 100vh;
-            width: 100vw;
-            position: relative;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 50%, #e0c3fc 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            color: var(--royal-blue);
         }
 
-        /* ===== السائل اللؤلؤي وكسوف الضوء (الخلفية) ===== */
-        .liquid-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f0ede6 100%);
-            z-index: -2;
-        }
-        .eclipse-light {
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(from 0deg, transparent 0%, rgba(197, 160, 89, 0.08) 25%, transparent 50%);
-            animation: rotateEclipse 25s linear infinite;
-            z-index: -1;
-        }
-        @keyframes rotateEclipse { 100% { transform: rotate(360deg); } }
-
-        /* ===== نقطة النيون الأمنية ===== */
-        .neon-dot {
-            position: absolute;
-            top: 30px; right: 30px;
-            width: 12px; height: 12px;
-            background-color: #00ff9d;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #00ff9d, 0 0 30px #00ff9d;
-            animation: pulseNeon 1.5s infinite;
-            z-index: 100;
-        }
-        @keyframes pulseNeon {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.8); }
-        }
-
-        /* ===== شعار الحرباء (النص المركزي) ===== */
-        .center-stage {
-            position: absolute;
-            top: 40%; left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 100%;
-        }
-        .chameleon-logo {
-            font-size: clamp(5rem, 12vw, 9rem);
-            font-weight: 900;
-            letter-spacing: 15px;
-            background: linear-gradient(90deg, #C5A059, #E5E4E2, #B76E79, #C5A059);
-            background-size: 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: chameleonFlow 6s ease infinite;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        @keyframes chameleonFlow {
+        @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .status-text {
-            font-size: 1.5rem;
-            color: #666;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-        .timer-number {
-            display: block;
-            font-size: 4rem;
-            font-weight: 900;
-            color: #C5A059;
-            text-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
-            margin-top: 10px;
-        }
 
-        /* ===== الماسح الأمني البلاتيني ===== */
-        .platinum-scanner {
-            position: absolute;
-            bottom: 30px; right: 30px;
-            width: 320px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            overflow: hidden;
-            z-index: 50;
-        }
-        .laser-line {
-            position: absolute;
-            left: 0; top: 0;
-            width: 100%; height: 2px;
-            background: #00ff9d;
-            box-shadow: 0 0 15px #00ff9d;
-            animation: scanLaser 3s ease-in-out infinite;
-        }
-        @keyframes scanLaser {
-            0% { top: -10px; opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { top: 100%; opacity: 0; }
-        }
-        .sec-row {
+        /* الشريط العلوي - معلومات الزائر واللمبة */
+        .top-bar {
+            width: 100%;
+            padding: 10px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 8px 0;
-            color: #555;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
         }
-        .sec-row:last-child { border-bottom: none; }
-        .sec-value { font-weight: 900; color: #C5A059; text-align: left; direction: ltr; }
-        .sec-loading { text-align: center; font-weight: bold; color: #888; animation: pulseNeon 1.5s infinite; }
 
-        /* ===== ركن الميديا والإعلانات ===== */
-        .media-corner {
-            position: absolute;
-            bottom: 30px; left: 30px;
+        .visitor-info {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 15px;
-            z-index: 40;
-        }
-        .video-wrapper {
-            width: 300px;
-            height: 168px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
-            border: 1px solid rgba(197, 160, 89, 0.3);
-        }
-        .ad-box {
-            background: transparent;
-            border-radius: 8px;
-            overflow: hidden;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--royal-blue);
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--primary-gold);
         }
 
-        /* ===== التجاوب مع شاشات الموبايل ===== */
+        .visitor-info img {
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .neon-light {
+            width: 12px;
+            height: 12px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+            animation: blink 1.5s infinite alternate;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.3; box-shadow: 0 0 2px #00ff00; }
+            100% { opacity: 1; box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00; }
+        }
+
+        /* الإعلان العلوي */
+        .top-ad-container {
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* الحاوية الرئيسية - تصميم زجاجي فاخر */
+        .main-container {
+            background: var(--white-glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(212, 175, 55, 0.2);
+            position: relative;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* زر الإغلاق X */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border: 2px solid var(--primary-gold);
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--primary-gold);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .close-btn:hover {
+            background: var(--primary-gold);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        /* النصوص والتحفيز */
+        .brand-name {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-gold), #8B6508);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .motivation-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--royal-blue);
+        }
+
+        .highlight {
+            color: var(--primary-gold);
+            font-weight: bold;
+        }
+
+        /* قسم المحتوى (الفيديو + الإعلان الجانبي) */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+            align-items: center;
+        }
+
+        .video-wrapper {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid var(--primary-gold);
+            position: relative;
+            padding-bottom: 56.25%; /* نسبة 16:9 */
+            height: 0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ad-box {
+            background: rgba(255,255,255,0.5);
+            padding: 10px;
+            border-radius: 15px;
+            border: 1px dashed var(--primary-gold);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* العداد التنازلي والأزرار */
+        .timer-container {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        #timer {
+            font-size: 1.8rem;
+            color: #d32f2f;
+        }
+
+        .auth-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-gold), #8B6508);
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        /* التجاوب مع شاشات الموبايل */
         @media (max-width: 768px) {
-            body { overflow-y: auto; overflow-x: hidden; } /* تفعيل التمرير للموبايل فقط لضمان ظهور كل شيء */
-            .chameleon-logo { letter-spacing: 5px; }
-            .center-stage { top: 25%; }
-            .platinum-scanner {
-                position: relative;
-                bottom: auto; right: auto;
-                margin: 45vh auto 20px auto;
-                width: 90%;
+            .content-grid {
+                grid-template-columns: 1fr;
             }
-            .media-corner {
-                position: relative;
-                bottom: auto; left: auto;
-                width: 100%;
-                align-items: center;
-                padding-bottom: 50px;
-            }
+            .brand-name { font-size: 2.2rem; }
+            .motivation-text { font-size: 1.2rem; }
+            .top-bar { flex-direction: column; gap: 10px; justify-content: center; padding: 15px;}
+            .close-btn { top: 10px; left: 10px; width: 30px; height: 30px; font-size: 16px;}
+            .top-ad-container { margin-top: 120px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- السكريبت الإعلاني المنبثق (مخفي في الخلفية) -->
+    <!-- الشريط العلوي الاحترافي -->
+    <div class="top-bar">
+        <div class="visitor-info" id="visitor-info">
+            <span class="sound-hover">جاري فحص الاتصال الآمن...</span>
+        </div>
+        <div class="neon-light" title="اتصال آمن ونشط"></div>
+    </div>
+
+    <!-- الإعلان الأول (مستطيل علوي) -->
+    <div class="top-ad-container">
+        <script>
+            atOptions = {
+                'key' : '6084f429253cae00d1188bae06e361f1',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+    </div>
+
+    <!-- الحاوية الرئيسية (الفخامة البصرية) -->
+    <div class="main-container">
+        <!-- زر الإغلاق الاحترافي -->
+        <button class="close-btn sound-hover" onclick="goBack()" title="العودة للخلف">X</button>
+
+        <h1 class="brand-name sound-hover">القرماني إكس - AQX</h1>
+        
+        <p class="motivation-text">
+            إلى حيث يقيم <span class="highlight">الإبداع والتميز</span>... مرحباً بك في عالم مليء بالخدمات الاستثنائية والحلول الرقمية التي صُممت خصيصاً لترتقي بطموحاتك.<br>
+            لضمان تجربة آمنة ومتكاملة، يرجى التفضل بتسجيل الدخول أو الانضمام إلى عائلتنا أولاً.
+        </p>
+
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-primary sound-hover">تسجيل الدخول / الاشتراك</a>
+        </div>
+
+        <div class="content-grid">
+            <!-- فيديو ديلي موشن -->
+            <div class="video-wrapper">
+                <iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/xaclp86" allowfullscreen allow="autoplay"></iframe>
+            </div>
+
+            <!-- الإعلان الثاني (مربع جانبي) -->
+            <div class="ad-box">
+                <script>
+                    atOptions = {
+                        'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+            </div>
+        </div>
+
+        <!-- العداد التنازلي -->
+        <div class="timer-container">
+            سيتم توجيهك تلقائياً بعد <br>
+            <span id="timer">15</span> ثانية
+        </div>
+    </div>
+
+    <!-- الإعلان الثالث (مخفي/خلفية) -->
     <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
 
-    <!-- الخلفيات -->
-    <div class="liquid-bg"></div>
-    <div class="eclipse-light"></div>
-    <div class="neon-dot"></div>
-
-    <!-- المحتوى المركزي (الشعار والعداد) -->
-    <div class="center-stage">
-        <h1 class="chameleon-logo">AQX</h1>
-        <div class="status-text">
-            يتم تهيئة الفخامة للارتقاء بك...
-            <span class="timer-number" id="timer">15</span>
-        </div>
-    </div>
-
-    <!-- الماسح الأمني -->
-    <div class="platinum-scanner">
-        <div class="laser-line"></div>
-        <div id="security-data">
-            <div class="sec-loading">جارٍ إجراء المسح الأمني العميق...</div>
-        </div>
-    </div>
-
-    <!-- ركن الفيديو والإعلانات -->
-    <div class="media-corner">
-        <!-- فيديو ديلي موشن -->
-        <div class="video-wrapper">
-            <iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=1&mute=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
-        </div>
-
-        <!-- إعلان 1 (320x50) -->
-        <div class="ad-box">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '6084f429253cae00d1188bae06e361f1',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
-        </div>
-
-        <!-- إعلان 2 (300x250) -->
-        <div class="ad-box">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
-        </div>
-    </div>
-
-    <!-- البرمجة (بدون تايب سكريبت - Vanilla JS صافي وسريع) -->
+    <!-- البرمجة (الجافاسكريبت) -->
     <script>
-        // 1. جلب البيانات الأمنية للزائر وعرضها في الماسح
+        // 1. نظام جلب عنوان الـ IP والدولة والعلم باحترافية
         fetch('https://ipapi.co/json/')
             .then(response => response.json())
             .then(data => {
-                const secContainer = document.getElementById('security-data');
-                // الحصول على دقة الشاشة كنوع من الفحص الوهمي المتقدم
-                const screenRes = window.screen.width + 'x' + window.screen.height;
+                const infoDiv = document.getElementById('visitor-info');
+                const countryCode = data.country_code.toLowerCase();
+                const flagUrl = `https://flagcdn.com/24x18/${countryCode}.png`;
                 
-                secContainer.innerHTML = `
-                    <div class="sec-row">
-                        <span>هوية الشبكة (IP):</span>
-                        <span class="sec-value">${data.ip || 'محمي'}</span>
-                    </div>
-                    <div class="sec-row">
-                        <span>الموقع الجغرافي:</span>
-                        <span class="sec-value">${data.country_name || 'غير محدد'} - ${data.city || ''}</span>
-                    </div>
-                    <div class="sec-row">
-                        <span>مزود الخدمة:</span>
-                        <span class="sec-value">${data.org || 'Secure ISP'}</span>
-                    </div>
-                    <div class="sec-row">
-                        <span>بصمة الجهاز:</span>
-                        <span class="sec-value">${screenRes}</span>
-                    </div>
-                    <div class="sec-row" style="color:#00ff9d; justify-content:center; border:none; margin-top:5px;">
-                        <span>✓ مسار آمن وموثق</span>
-                    </div>
+                infoDiv.innerHTML = `
+                    <img src="${flagUrl}" alt="علم ${data.country_name}">
+                    <span>${data.country_name}</span>
+                    <span style="color: #666;">|</span>
+                    <span style="font-family: monospace;">IP: ${data.ip}</span>
+                    <span style="color: #666;">|</span>
+                    <span style="color: #28a745;">✓ اتصال مشفر</span>
                 `;
             })
-            .catch(() => {
-                document.getElementById('security-data').innerHTML = '<div class="sec-loading" style="color:#00ff9d;">✓ تم تأمين الاتصال بنجاح</div>';
+            .catch(error => {
+                document.getElementById('visitor-info').innerHTML = '<span>بوابة AQX الآمنة ✓</span>';
             });
 
-        // 2. نظام العداد وصوت الرياح الأثيري
+        // 2. نظام العداد التنازلي والتحويل التلقائي
         let timeLeft = 15;
         const timerElement = document.getElementById('timer');
         
-        // استخدام صوت رياح/انتقال فضائي (Ethereal Wind/Swoosh)
-        const windSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2573/2573-preview.mp3');
-        windSound.volume = 0.6;
-
         const countdown = setInterval(() => {
             timeLeft--;
             timerElement.textContent = timeLeft;
-
+            
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                
-                // تشغيل الصوت عند الانتهاء
-                windSound.play().catch(e => console.log("تحتاج لتفاعل لتشغيل الصوت"));
-                
-                // إخفاء الصفحة بنعومة قبل التحويل (اختياري للفخامة)
-                document.body.style.transition = "opacity 1s ease";
-                document.body.style.opacity = "0";
-
-                // التحويل بعد ثانية ونصف لسماع الصوت
-                setTimeout(() => {
-                    window.location.href = '#'; 
-                }, 1500);
+                // قم بتغيير علامة # بالرابط الذي تريده لاحقاً
+                window.location.href = '#'; 
             }
         }, 1000);
+
+        // 3. نظام زر الإغلاق (العودة من حيث أتى الزائر)
+        function goBack() {
+            if(document.referrer) {
+                window.history.back();
+            } else {
+                // إذا لم يكن هناك صفحة سابقة، يتم توجيهه للرئيسية
+                window.location.href = '/'; 
+            }
+        }
+
+        // 4. نظام التفاعل الصوتي الفاخر (Web Audio API)
+        // يتم إنشاء الصوت برمجياً بدون الحاجة لملفات خارجية لضمان السرعة والعمل على كل المتصفحات
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playHoverSound() {
+            if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            oscillator.type = 'sine'; // صوت ناعم وفاخر
+            oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
+            
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.2);
+        }
+
+        // تطبيق الصوت عند المرور على أي عنصر يحتوي على كلاس sound-hover
+        document.querySelectorAll('.sound-hover').forEach(element => {
+            element.addEventListener('mouseenter', playHoverSound);
+        });
     </script>
 </body>
 </html>
