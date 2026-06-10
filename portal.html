@@ -1,1 +1,574 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AQX | Portal Al-Qarmani X Premium</title>
+    <meta name="description" content="Portal Al-Qarmani X AQX - Por favor, inicie sesión o regístrese primero para continuar al mundo de la excelencia y la innovación.">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=700;900&family=Tajawal:wght=500;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --fondo-malva: linear-gradient(135deg, #2c1654 0%, #1a0b36 50%, #4a154b 100%);
+            --verde-neon: #00ff66;
+            --fondo-verde-boveda: rgba(0, 30, 15, 0.85);
+            --brillo-dorado: rgba(255, 215, 0, 0.4);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        /* Prevención total de desplazamiento para estabilidad absoluta de la pantalla */
+        body {
+            background: var(--fondo-malva);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+
+        /* Partículas flotantes de oro sobre el fondo malva */
+        #dorado-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Indicador de estado neón (Superior Izquierda) */
+        .estado-neon {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            color: var(--verde-neon);
+            text-shadow: 0 0 10px var(--verde-neon);
+            font-size: 1.1rem;
+            z-index: 100;
+        }
+
+        .lampara-neon {
+            width: 10px;
+            height: 10px;
+            background-color: var(--verde-neon);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--verde-neon), 0 0 25px var(--verde-neon);
+            animation: parpadeoNeon 0.8s infinite alternate;
+        }
+
+        @keyframes parpadeoNeon {
+            0% { opacity: 0.3; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* Botón de cierre elegante (Superior Derecha) */
+        .boton-cerrar-lux {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .boton-cerrar-lux:hover {
+            transform: rotate(180deg) scale(1.15);
+            background: #ff3366;
+            border-color: #ff3366;
+            box-shadow: 0 0 20px #ff3366;
+        }
+
+        /* Contenedor estructural fijo */
+        .contenedor-pantalla {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1300px;
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        /* Logotipo neón dinámico (6 colores en transición sutil) */
+        .logo-marca-neon {
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-top: 10px;
+            animation: flotacionLogo 3s ease-in-out infinite alternate, seisColoresNeon 12s infinite linear;
+        }
+
+        @keyframes flotacionLogo {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
+        }
+
+        @keyframes seisColoresNeon {
+            0%, 100% { color: #00ffcc; text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc; }
+            16% { color: #ff007f; text-shadow: 0 0 15px #ff007f, 0 0 30px #ff007f; }
+            33% { color: #ffff00; text-shadow: 0 0 15px #ffff00, 0 0 30px #ffff00; }
+            50% { color: #00ff66; text-shadow: 0 0 15px #00ff66, 0 0 30px #00ff66; }
+            66% { color: #00bfff; text-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff; }
+            83% { color: #cc00ff; text-shadow: 0 0 15px #cc00ff, 0 0 30px #cc00ff; }
+        }
+
+        /* Marco publicitario superior equilibrado */
+        .marco-anuncio-superior {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Distribución del panel dual */
+        .diseno-panel {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 25px;
+            width: 100%;
+            flex: 1;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Bóveda de seguridad verde con escáner láser avanzado */
+        .boveda-verde-seguridad {
+            background: var(--fondo-verde-boveda);
+            border: 2px solid var(--verde-neon);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(0, 255, 102, 0.15), inset 0 0 20px rgba(0, 255, 102, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+            justify-content: center;
+        }
+
+        /* Línea del escáner láser inteligente */
+        .escaner-rayo-laser {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--verde-neon);
+            box-shadow: 0 0 20px var(--verde-neon), 0 0 40px var(--verde-neon);
+            animation: escaneoLaser 3.5s linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes escaneoLaser {
+            0% { top: 0%; opacity: 0; }
+            5%, 95% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .fila-boveda {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 255, 102, 0.15);
+            padding-bottom: 10px;
+            position: relative;
+            z-index: 10;
+        }
+        .fila-boveda:last-child { border: none; padding: 0; }
+
+        .etiqueta-boveda {
+            color: rgba(0, 255, 102, 0.6);
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .datos-boveda {
+            color: #fff;
+            font-weight: 900;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.2);
+        }
+        .datos-boveda img { width: 24px; border-radius: 4px; display: inline-block; }
+
+        /* Centro editorial y mensajes informativos */
+        .centro-editorial {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .aviso-obligatorio {
+            color: #ffcc00;
+            font-size: clamp(1.1rem, 2vw, 1.45rem);
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+        }
+
+        .texto-motivacional-lux {
+            color: #e2d9f3;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            line-height: 1.6;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .texto-motivacional-lux strong {
+            color: #ffd700;
+            text-shadow: 0 0 10px var(--brillo-dorado);
+        }
+
+        /* Pantalla del temporizador digital integrado */
+        .pantalla-cuenta-regresiva {
+            font-family: 'Cairo', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #00ffff;
+            text-shadow: 0 0 25px #00ffff;
+            line-height: 1;
+            margin-top: 5px;
+        }
+
+        /* Pila de medios y gestión de anuncios */
+        .pila-multimedia {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .visor-dailymotion {
+            width: 100%;
+            padding-top: 56.25%;
+            position: relative;
+            background: #000;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+        .visor-dailymotion iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+
+        .caja-anuncio-mediano {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 10px;
+            min-height: 270px;
+        }
+
+        /* Adaptación responsiva precisa para dispositivos móviles */
+        @media (max-width: 900px) {
+            .diseno-panel {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            body { overflow-y: auto; height: auto; }
+            .contenedor-pantalla { height: auto; justify-content: flex-start; gap: 15px; }
+            .logo-marca-neon { margin-top: 60px; }
+            .caja-anuncio-mediano { min-height: auto; }
+            .boveda-verde-seguridad { padding: 20px; gap: 10px; }
+        }
+    </style>
+</head>
+<body onclick="activarContextoAudio()">
+
+    <canvas id="dorado-canvas"></canvas>
+
+    <div class="estado-neon">
+        <div class="lampara-neon"></div>
+        <span>Conectado</span>
+    </div>
+
+    <div class="boton-cerrar-lux" onclick="iniciarSalidaInmediata()">✕</div>
+
+    <div class="contenedor-pantalla">
+        
+        <h1 class="logo-marca-neon">Al-Qarmani X AQX</h1>
+
+        <div class="marco-anuncio-superior">
+            <script>
+                atOptions = {
+                    'key' : '6084f429253cae00d1188bae06e361f1',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+        </div>
+
+        <div class="diseno-panel">
+            
+            <div style="display: flex; flex-direction: column; gap: 20px; height: 100%; justify-content: center;">
+                <div class="boveda-verde-seguridad">
+                    <div class="escaner-rayo-laser"></div>
+                    <div class="fila-boveda">
+                        <span class="etiqueta-boveda">Dirección de Protocolo IP</span>
+                        <span class="datos-boveda" id="v-ip">Invocando protocolo de seguridad...</span>
+                    </div>
+                    <div class="fila-boveda">
+                        <span class="etiqueta-boveda">Ubicación y Región Geográfica</span>
+                        <span class="datos-boveda" id="v-geo">Rastreando coordenadas...</span>
+                    </div>
+                    <div class="fila-boveda">
+                        <span class="etiqueta-boveda">Proveedor de Internet (ISP)</span>
+                        <span class="datos-boveda" id="v-isp">Verificando nodo host...</span>
+                    </div>
+                    <div class="fila-boveda">
+                        <span class="etiqueta-boveda">Entorno del Sistema y Hardware</span>
+                        <span class="datos-boveda" id="v-os">Leyendo procesador...</span>
+                    </div>
+                    <div class="fila-boveda">
+                        <span class="etiqueta-boveda">Protocolo de Canal Activo</span>
+                        <span class="datos-boveda" id="v-net">Analizando señal...</span>
+                    </div>
+                    <div class="fila-boveda">
+                        <span class="etiqueta-boveda">Resolución de Pantalla Actual</span>
+                        <span class="datos-boveda" id="v-res">Calculando dimensiones exactas...</span>
+                    </div>
+                </div>
+
+                <div class="centro-editorial">
+                    <div class="aviso-obligatorio">Debe iniciar sesión o registrarse primero para continuar</div>
+                    <p class="texto-motivacional-lux">
+                        Le damos la bienvenida al espacio donde habitan la <strong>innovación y la excelencia absoluta</strong>... Un entorno desarrollado con servicios de vanguardia y soluciones digitales excepcionales, diseñadas minuciosamente para superar sus expectativas y asegurar su posicionamiento.
+                    </p>
+                    <div class="pantalla-cuenta-regresiva" id="temporizador-global">20</div>
+                </div>
+            </div>
+
+            <div class="pila-multimedia">
+                <div class="visor-dailymotion">
+                    <iframe src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=1&mute=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                </div>
+                
+                <div class="caja-anuncio-mediano">
+                    <script>
+                        atOptions = {
+                            'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
+
+    <script>
+        /* 1. Sistema de partículas doradas flotantes */
+        const canvas = document.getElementById('dorado-canvas');
+        const ctx = canvas.getContext('2d');
+        let particulas = [];
+        
+        function redimensionarCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', redimensionarCanvas);
+        redimensionarCanvas();
+
+        class ParticulaOro {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 50;
+                this.size = Math.random() * 2 + 0.4;
+                this.speedY = Math.random() * -1.2 - 0.4;
+                this.speedX = Math.random() * 0.8 - 0.4;
+                this.alpha = Math.random() * 0.7 + 0.3;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < 0) {
+                    this.y = canvas.height;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha})`;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = '#ffd700';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        for(let i = 0; i < 70; i++) particulas.push(new ParticulaOro());
+
+        function bucleParticulas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particulas.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(bucleParticulas);
+        }
+        bucleParticulas();
+
+        /* 2. Ingeniería de audio avanzada (Efecto sutil de oscilación y tono de cierre) */
+        let contextoSintetizador;
+        let vientoActivo = false;
+
+        function activarContextoAudio() {
+            if (!contextoSintetizador) {
+                contextoSintetizador = new (window.AudioContext || window.webkitAudioContext)();
+                if(!vientoActivo) { iniciarOscilacionViento(); vientoActivo = true; }
+            }
+        }
+
+        function iniciarOscilacionViento() {
+            const duracionBuffer = contextoSintetizador.sampleRate * 4; 
+            const buffer = contextoSintetizador.createBuffer(1, duracionBuffer, contextoSintetizador.sampleRate);
+            const canalDatos = buffer.getChannelData(0);
+            for (let i = 0; i < duracionBuffer; i++) canalDatos[i] = Math.random() * 2 - 1;
+            
+            const nodoRuido = contextoSintetizador.createBufferSource();
+            nodoRuido.buffer = buffer;
+            
+            const filtroPasoBajo = contextoSintetizador.createBiquadFilter();
+            filtroPasoBajo.type = 'lowpass';
+            filtroPasoBajo.frequency.setValueAtTime(80, contextoSintetizador.currentTime);
+            filtroPasoBajo.frequency.exponentialRampToValueAtTime(1100, contextoSintetizador.currentTime + 1.8);
+            filtroPasoBajo.frequency.exponentialRampToValueAtTime(90, contextoSintetizador.currentTime + 3.8);
+            
+            const gananciaAmplitud = contextoSintetizador.createGain();
+            gananciaAmplitud.gain.setValueAtTime(0, contextoSintetizador.currentTime);
+            gananciaAmplitud.gain.linearRampToValueAtTime(1.8, contextoSintetizador.currentTime + 1.8);
+            gananciaAmplitud.gain.linearRampToValueAtTime(0, contextoSintetizador.currentTime + 3.8);
+            
+            nodoRuido.connect(filtroPasoBajo);
+            filtroPasoBajo.connect(gananciaAmplitud);
+            gananciaAmplitud.connect(contextoSintetizador.destination);
+            nodoRuido.start();
+        }
+
+        function ejecutarTonoCierre() {
+            if (!contextoSintetizador) contextoSintetizador = new (window.AudioContext || window.webkitAudioContext)();
+            const generador = contextoSintetizador.createOscillator();
+            const volumen = contextoSintetizador.createGain();
+            generador.type = 'sawtooth';
+            generador.frequency.setValueAtTime(900, contextoSintetizador.currentTime);
+            generador.frequency.exponentialRampToValueAtTime(30, contextoSintetizador.currentTime + 0.35);
+            volumen.gain.setValueAtTime(0.8, contextoSintetizador.currentTime);
+            volumen.gain.exponentialRampToValueAtTime(0.001, contextoSintetizador.currentTime + 0.35);
+            generador.connect(volumen);
+            volumen.connect(contextoSintetizador.destination);
+            generador.start();
+            generador.stop(contextoSintetizador.currentTime + 0.35);
+        }
+
+        /* 3. Captura del perfil de seguridad en tiempo real */
+        async function capturarPerfilInteligencia() {
+            try {
+                const respuesta = await fetch('https://ipapi.co/json/');
+                const datos = await respuesta.json();
+                document.getElementById('v-ip').textContent = datos.ip;
+                document.getElementById('v-geo').innerHTML = `<img src="https://flagcdn.com/24x18/${datos.country_code.toLowerCase()}.png" alt="Bandera"> ${datos.city || ''}, ${datos.country_name}`;
+                document.getElementById('v-isp').textContent = datos.org || "Conexión segura y protegida";
+            } catch (err) {
+                document.getElementById('v-ip').textContent = "Totalmente protegido";
+                document.getElementById('v-geo').textContent = "Cifrado de seguridad";
+                document.getElementById('v-isp').textContent = "Pasarela privada";
+            }
+
+            // Análisis del sistema operativo y entorno de hardware
+            const agente = navigator.userAgent;
+            let nombrePlataforma = "Terminal inteligente dedicada";
+            if (/Windows/.test(agente)) nombrePlataforma = "Windows PC";
+            else if (/Mac OS/.test(agente)) nombrePlataforma = "macOS Workstation";
+            else if (/iPhone|iPad/.test(agente)) nombrePlataforma = "iOS (Apple)";
+            else if (/Android/.test(agente)) nombrePlataforma = "Android OS";
+            document.getElementById('v-os').textContent = nombrePlataforma;
+
+            // Análisis de calidad de red
+            const infoRed = navigator.connection;
+            document.getElementById('v-net').textContent = (infoRed && infoRed.effectiveType) ? `Red móvil de precisión ${infoRed.effectiveType.toUpperCase()}` : "Wi-Fi de alta velocidad";
+            
+            // Resolución exacta de la pantalla
+            document.getElementById('v-res').textContent = `${window.screen.width} × ${window.screen.height} píxeles de precisión`;
+        }
+
+        /* 4. Temporizador de ejecución, redirección y salida inmediata */
+        let ticsCuentaRegresiva = 20;
+        const relojPantalla = document.getElementById('temporizador-global');
+        
+        const intervaloEjecucion = setInterval(() => {
+            ticsCuentaRegresiva--;
+            relojPantalla.textContent = ticsCuentaRegresiva;
+            if (ticsCuentaRegresiva <= 0) {
+                clearInterval(intervaloEjecucion);
+                activarContextoAudio();
+                iniciarOscilacionViento();
+                setTimeout(() => { window.location.href = '#'; }, 600);
+            }
+        }, 1000);
+
+        function iniciarSalidaInmediata() {
+            activarContextoAudio();
+            ejecutarTonoCierre();
+            clearInterval(intervaloEjecucion);
+            setTimeout(() => {
+                if (document.referrer) window.history.back();
+                else window.location.href = '#';
+            }, 350);
+        }
+
+        // Inicialización inmediata al cargar el DOM
+        window.addEventListener('DOMContentLoaded', () => {
+            capturarPerfilInteligencia();
+            setTimeout(activarContextoAudio, 600);
+        });
+    </script>
+</body>
+</html>
