@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>أشعار منوعة | AQX</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+background:#0f172a;
+font-family:Tahoma,sans-serif;
+color:#fff;
+padding:20px;
+}
+
+h1{
+text-align:center;
+margin:20px 0 30px;
+font-size:32px;
+}
+
+#posts{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+gap:20px;
+}
+
+.card{
+background:#1e293b;
+border-radius:18px;
+overflow:hidden;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.content{
+padding:18px;
+}
+
+.content h2{
+font-size:20px;
+margin-bottom:10px;
+line-height:1.5;
+}
+
+.content p{
+font-size:14px;
+opacity:.8;
+line-height:1.8;
+}
+
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 18px;
+background:#f59e0b;
+color:#000;
+font-weight:bold;
+border-radius:10px;
+text-decoration:none;
+}
+</style>
+
+</head>
+<body>
+
+<h1>📜 أشعار منوعة</h1>
+
+<div id="posts"></div>
+
+<script>
+
+const feedUrl =
+'https://www.alqurmanix.com/feeds/posts/default/-/أشعار%20منوعة?alt=json&max-results=50';
+
+fetch(feedUrl)
+.then(r=>r.json())
+.then(data=>{
+
+let html='';
+
+data.feed.entry.forEach(post=>{
+
+let title=post.title.$t;
+
+let link=post.link.find(
+l=>l.rel==="alternate"
+).href;
+
+let img='https://picsum.photos/800/500';
+
+if(post.media$thumbnail){
+img=post.media$thumbnail.url.replace('/s72-c/','/s1200/');
+}
+
+let text='';
+
+if(post.summary){
+text=post.summary.$t;
+}else if(post.content){
+text=post.content.$t.replace(/<[^>]*>/g,'');
+}
+
+text=text.substring(0,150)+'...';
+
+html+=`
+<div class="card">
+
+<img src="${img}" alt="">
+
+<div class="content">
+
+<h2>${title}</h2>
+
+<p>${text}</p>
+
+<a class="btn" href="${link}" target="_blank">
+قراءة القصيدة
+</a>
+
+</div>
+
+</div>
+`;
+
+});
+
+document.getElementById('posts').innerHTML=html;
+
+})
+.catch(err=>{
+document.getElementById('posts').innerHTML=
+'<h2>لا توجد مقالات أو اسم القسم غير صحيح.</h2>';
+});
+
+</script>
+
+</body>
+</html>
