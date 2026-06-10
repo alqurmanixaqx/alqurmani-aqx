@@ -1,108 +1,309 @@
-const _0x1A: Document = document;
-const _0x2B: HTMLStyleElement = _0x1A.createElement('style');
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQX | بوابة العبور الملكية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== الإعدادات الأساسية ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body {
+            background-color: #FDFBF7;
+            color: #2C302E;
+            overflow: hidden; /* لمنع التمرير وتثبيت الشاشة */
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
 
-_0x2B.textContent = `
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;900&display=swap');
-body{margin:0;background:#FCFAF5;color:#2C302E;overflow:hidden;font-family:'Tajawal',sans-serif}
-._0x3C{position:fixed;top:0;left:0;width:100vw;height:100vh;background:radial-gradient(circle at 50% 50%,#ffffff,#f0ede6);z-index:-2}
-._0x4D{position:fixed;top:-50%;left:-50%;width:200vw;height:200vh;background:conic-gradient(from 0deg,transparent 0%,rgba(197,160,89,0.12) 25%,transparent 50%);animation:_0x5E 20s linear infinite;z-index:-1}
-@keyframes _0x5E{100%{transform:rotate(360deg)}}
-._0x6F{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);font-size:7rem;font-weight:900;letter-spacing:15px;background:linear-gradient(90deg,#C5A059,#E5E4E2,#B76E79,#C5A059);background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:_0x7A 6s ease infinite}
-@keyframes _0x7A{0%{background-position:0%}100%{background-position:100%}}
-._0x8B{position:fixed;bottom:30px;left:30px;width:320px;background:rgba(229,228,226,0.15);backdrop-filter:blur(25px);border:1px solid rgba(255,255,255,0.5);border-radius:12px;padding:25px;font-size:0.9rem;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.1);z-index:50}
-._0x9C{position:absolute;left:0;top:0;width:100%;height:2px;background:#00ff9d;box-shadow:0 0 15px #00ff9d;animation:_0xA1 3s infinite ease-in-out}
-@keyframes _0xA1{0%{top:0;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:100%;opacity:0}}
-._0xB2{display:flex;flex-direction:column;gap:12px}
-._0xC3{display:flex;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.05);padding-bottom:5px}
-._0xD4{font-weight:900;color:#C5A059}
-._0xE5{position:absolute;top:55%;left:50%;transform:translate(-50%,-50%);font-size:1.5rem;font-weight:300;text-align:center;color:#666}
-._0xE5 span{font-weight:900;color:#C5A059;font-size:4rem;display:block;margin-top:10px;text-shadow:0 10px 20px rgba(197,160,89,0.2)}
-._0xF6{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:15px;align-items:flex-end;z-index:99}
-._0xG7{position:fixed;top:25px;right:25px;width:12px;height:12px;background:#00ff9d;border-radius:50%;box-shadow:0 0 15px #00ff9d;animation:_0xH8 1.5s infinite;z-index:100}
-@keyframes _0xH8{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.8)}}
-@media (max-width:768px){._0x6F{font-size:4rem;letter-spacing:8px}._0x8B{bottom:auto;top:60px;left:50%;transform:translateX(-50%);width:85%}._0xF6{bottom:20px;right:50%;transform:translateX(50%);align-items:center}}
-`;
-_0x1A.head.appendChild(_0x2B);
+        /* ===== السائل اللؤلؤي وكسوف الضوء (الخلفية) ===== */
+        .liquid-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f0ede6 100%);
+            z-index: -2;
+        }
+        .eclipse-light {
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent 0%, rgba(197, 160, 89, 0.08) 25%, transparent 50%);
+            animation: rotateEclipse 25s linear infinite;
+            z-index: -1;
+        }
+        @keyframes rotateEclipse { 100% { transform: rotate(360deg); } }
 
-const _0x00: HTMLDivElement = _0x1A.createElement('div');
-_0x00.className = '_0xG7';
-_0x1A.body.appendChild(_0x00);
+        /* ===== نقطة النيون الأمنية ===== */
+        .neon-dot {
+            position: absolute;
+            top: 30px; right: 30px;
+            width: 12px; height: 12px;
+            background-color: #00ff9d;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00ff9d, 0 0 30px #00ff9d;
+            animation: pulseNeon 1.5s infinite;
+            z-index: 100;
+        }
+        @keyframes pulseNeon {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
 
-const _0x11: HTMLDivElement = _0x1A.createElement('div');
-_0x11.className = '_0x3C';
-_0x1A.body.appendChild(_0x11);
+        /* ===== شعار الحرباء (النص المركزي) ===== */
+        .center-stage {
+            position: absolute;
+            top: 40%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+        .chameleon-logo {
+            font-size: clamp(5rem, 12vw, 9rem);
+            font-weight: 900;
+            letter-spacing: 15px;
+            background: linear-gradient(90deg, #C5A059, #E5E4E2, #B76E79, #C5A059);
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: chameleonFlow 6s ease infinite;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        @keyframes chameleonFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .status-text {
+            font-size: 1.5rem;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .timer-number {
+            display: block;
+            font-size: 4rem;
+            font-weight: 900;
+            color: #C5A059;
+            text-shadow: 0 10px 20px rgba(197, 160, 89, 0.2);
+            margin-top: 10px;
+        }
 
-const _0x22: HTMLDivElement = _0x1A.createElement('div');
-_0x22.className = '_0x4D';
-_0x1A.body.appendChild(_0x22);
+        /* ===== الماسح الأمني البلاتيني ===== */
+        .platinum-scanner {
+            position: absolute;
+            bottom: 30px; right: 30px;
+            width: 320px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            overflow: hidden;
+            z-index: 50;
+        }
+        .laser-line {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; height: 2px;
+            background: #00ff9d;
+            box-shadow: 0 0 15px #00ff9d;
+            animation: scanLaser 3s ease-in-out infinite;
+        }
+        @keyframes scanLaser {
+            0% { top: -10px; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .sec-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 8px 0;
+            color: #555;
+        }
+        .sec-row:last-child { border-bottom: none; }
+        .sec-value { font-weight: 900; color: #C5A059; text-align: left; direction: ltr; }
+        .sec-loading { text-align: center; font-weight: bold; color: #888; animation: pulseNeon 1.5s infinite; }
 
-const _0x33: HTMLDivElement = _0x1A.createElement('div');
-_0x33.className = '_0x6F';
-_0x33.innerText = 'AQX';
-_0x1A.body.appendChild(_0x33);
+        /* ===== ركن الميديا والإعلانات ===== */
+        .media-corner {
+            position: absolute;
+            bottom: 30px; left: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+            z-index: 40;
+        }
+        .video-wrapper {
+            width: 300px;
+            height: 168px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+        }
+        .ad-box {
+            background: transparent;
+            border-radius: 8px;
+            overflow: hidden;
+        }
 
-const _0x44: HTMLDivElement = _0x1A.createElement('div');
-_0x44.className = '_0xE5';
-_0x44.innerHTML = `يتم تهيئة الفخامة...<span id="_0xTMR">15</span>`;
-_0x1A.body.appendChild(_0x44);
+        /* ===== التجاوب مع شاشات الموبايل ===== */
+        @media (max-width: 768px) {
+            body { overflow-y: auto; overflow-x: hidden; } /* تفعيل التمرير للموبايل فقط لضمان ظهور كل شيء */
+            .chameleon-logo { letter-spacing: 5px; }
+            .center-stage { top: 25%; }
+            .platinum-scanner {
+                position: relative;
+                bottom: auto; right: auto;
+                margin: 45vh auto 20px auto;
+                width: 90%;
+            }
+            .media-corner {
+                position: relative;
+                bottom: auto; left: auto;
+                width: 100%;
+                align-items: center;
+                padding-bottom: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
 
-const _0x55: HTMLDivElement = _0x1A.createElement('div');
-_0x55.className = '_0x8B';
-_0x55.innerHTML = `<div class="_0x9C"></div><div class="_0xB2" id="_0xSEC"><div style="text-align:center;color:#999;font-weight:bold;">جارٍ المسح الأمني العميق...</div></div>`;
-_0x1A.body.appendChild(_0x55);
+    <!-- السكريبت الإعلاني المنبثق (مخفي في الخلفية) -->
+    <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
 
-const _0x66: HTMLDivElement = _0x1A.createElement('div');
-_0x66.className = '_0xF6';
-_0x66.innerHTML = `
-<iframe frameborder="0" width="300" height="150" src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=1&mute=1" style="border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.1)"></iframe>
-<div id="_0xAD1"></div>
-<div id="_0xAD2"></div>
-`;
-_0x1A.body.appendChild(_0x66);
+    <!-- الخلفيات -->
+    <div class="liquid-bg"></div>
+    <div class="eclipse-light"></div>
+    <div class="neon-dot"></div>
 
-const _0x77: HTMLScriptElement = _0x1A.createElement('script');
-_0x77.innerHTML = `atOptions={'key':'6084f429253cae00d1188bae06e361f1','format':'iframe','height':50,'width':320,'params':{}};`;
-_0x1A.head.appendChild(_0x77);
+    <!-- المحتوى المركزي (الشعار والعداد) -->
+    <div class="center-stage">
+        <h1 class="chameleon-logo">AQX</h1>
+        <div class="status-text">
+            يتم تهيئة الفخامة للارتقاء بك...
+            <span class="timer-number" id="timer">15</span>
+        </div>
+    </div>
 
-const _0x88: HTMLScriptElement = _0x1A.createElement('script');
-_0x88.src = 'https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js';
-_0x1A.getElementById('_0xAD1')?.appendChild(_0x88);
+    <!-- الماسح الأمني -->
+    <div class="platinum-scanner">
+        <div class="laser-line"></div>
+        <div id="security-data">
+            <div class="sec-loading">جارٍ إجراء المسح الأمني العميق...</div>
+        </div>
+    </div>
 
-const _0x99: HTMLScriptElement = _0x1A.createElement('script');
-_0x99.innerHTML = `atOptions={'key':'82c46c1474bb89d2cb9fe0cc5b3519e3','format':'iframe','height':250,'width':300,'params':{}};`;
-_0x1A.head.appendChild(_0x99);
+    <!-- ركن الفيديو والإعلانات -->
+    <div class="media-corner">
+        <!-- فيديو ديلي موشن -->
+        <div class="video-wrapper">
+            <iframe frameborder="0" width="100%" height="100%" src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=1&mute=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
 
-const _0xAA: HTMLScriptElement = _0x1A.createElement('script');
-_0xAA.src = 'https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js';
-_0x1A.getElementById('_0xAD2')?.appendChild(_0xAA);
+        <!-- إعلان 1 (320x50) -->
+        <div class="ad-box">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '6084f429253cae00d1188bae06e361f1',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+        </div>
 
-const _0xBB: HTMLScriptElement = _0x1A.createElement('script');
-_0xBB.src = 'https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js';
-_0x1A.head.appendChild(_0xBB);
+        <!-- إعلان 2 (300x250) -->
+        <div class="ad-box">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+        </div>
+    </div>
 
-fetch('https://ipapi.co/json/').then(_0xCC => _0xCC.json()).then(_0xDD => {
-    const _0xEE: HTMLElement | null = _0x1A.getElementById('_0xSEC');
-    if (_0xEE) {
-        const _0xFF: string = (window.navigator as any).connection?.effectiveType || 'Secure Link';
-        _0xEE.innerHTML = \`
-        <div class="_0xC3"><span>Identity (IP):</span><span class="_0xD4">\${_0xDD.ip}</span></div>
-        <div class="_0xC3"><span>Geo-Location:</span><span class="_0xD4">\${_0xDD.country_name}</span></div>
-        <div class="_0xC3"><span>Provider (ISP):</span><span class="_0xD4">\${_0xDD.org}</span></div>
-        <div class="_0xC3"><span>System Metrics:</span><span class="_0xD4">\${_0xFF} / \${window.screen.width}x\${window.screen.height}</span></div>
-        \`;
-    }
-});
+    <!-- البرمجة (بدون تايب سكريبت - Vanilla JS صافي وسريع) -->
+    <script>
+        // 1. جلب البيانات الأمنية للزائر وعرضها في الماسح
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                const secContainer = document.getElementById('security-data');
+                // الحصول على دقة الشاشة كنوع من الفحص الوهمي المتقدم
+                const screenRes = window.screen.width + 'x' + window.screen.height;
+                
+                secContainer.innerHTML = `
+                    <div class="sec-row">
+                        <span>هوية الشبكة (IP):</span>
+                        <span class="sec-value">${data.ip || 'محمي'}</span>
+                    </div>
+                    <div class="sec-row">
+                        <span>الموقع الجغرافي:</span>
+                        <span class="sec-value">${data.country_name || 'غير محدد'} - ${data.city || ''}</span>
+                    </div>
+                    <div class="sec-row">
+                        <span>مزود الخدمة:</span>
+                        <span class="sec-value">${data.org || 'Secure ISP'}</span>
+                    </div>
+                    <div class="sec-row">
+                        <span>بصمة الجهاز:</span>
+                        <span class="sec-value">${screenRes}</span>
+                    </div>
+                    <div class="sec-row" style="color:#00ff9d; justify-content:center; border:none; margin-top:5px;">
+                        <span>✓ مسار آمن وموثق</span>
+                    </div>
+                `;
+            })
+            .catch(() => {
+                document.getElementById('security-data').innerHTML = '<div class="sec-loading" style="color:#00ff9d;">✓ تم تأمين الاتصال بنجاح</div>';
+            });
 
-let _0xTime: number = 15;
-const _0xSnd: HTMLAudioElement = new Audio('https://assets.mixkit.co/active_storage/sfx/2573/2573-preview.mp3');
+        // 2. نظام العداد وصوت الرياح الأثيري
+        let timeLeft = 15;
+        const timerElement = document.getElementById('timer');
+        
+        // استخدام صوت رياح/انتقال فضائي (Ethereal Wind/Swoosh)
+        const windSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2573/2573-preview.mp3');
+        windSound.volume = 0.6;
 
-const _0xInt: number = window.setInterval(() => {
-    _0xTime--;
-    const _0xEl: HTMLElement | null = _0x1A.getElementById('_0xTMR');
-    if (_0xEl) _0xEl.innerText = _0xTime.toString();
-    if (_0xTime <= 0) {
-        window.clearInterval(_0xInt);
-        _0xSnd.play().catch(() => {});
-        window.setTimeout(() => { window.location.href = '#' }, 1500);
-    }
-}, 1000);
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                
+                // تشغيل الصوت عند الانتهاء
+                windSound.play().catch(e => console.log("تحتاج لتفاعل لتشغيل الصوت"));
+                
+                // إخفاء الصفحة بنعومة قبل التحويل (اختياري للفخامة)
+                document.body.style.transition = "opacity 1s ease";
+                document.body.style.opacity = "0";
+
+                // التحويل بعد ثانية ونصف لسماع الصوت
+                setTimeout(() => {
+                    window.location.href = '#'; 
+                }, 1500);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
