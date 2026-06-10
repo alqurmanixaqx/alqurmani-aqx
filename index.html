@@ -1,54 +1,35 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>AQX | القرماني إكس</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Tajawal:wght@300;700;900&display=swap');
-        
-        .royal-gradient {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #d1b476 100%);
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-        }
-        .gold-text {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-    </style>
-</head>
-<body class="royal-gradient min-h-screen flex items-center justify-center font-['Tajawal']">
+// AQX Visual Luxury Framework - Main Interface
+const AQX_Main_Interface = () => {
+  const styles = `
+    .aqx-container {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+      color: #2D3436;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+    
+    .aqx-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .gold-accent {
+      color: #C5A059;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  `;
 
-    <div class="glass-card p-12 md:p-20 rounded-[3rem] text-center max-w-4xl mx-4 border-t border-l border-white/80">
-        
-        <!-- Logo Area -->
-        <div class="mb-8">
-            <span class="text-8xl font-black gold-text tracking-tighter">AQX</span>
-        </div>
-
-        <h1 class="text-5xl md:text-7xl font-black text-slate-800 mb-6">
-            منصة القرماني إكس
-        </h1>
-        
-        <div class="w-32 h-1.5 bg-[#d1b476] mx-auto rounded-full mb-10"></div>
-
-        <p class="text-2xl text-slate-600 font-light leading-relaxed mb-12">
-            ملاذ الريادة الرقمية، حيث تلتقي الفخامة بالتقنية فائقة التشفير.
-            نحن نصيغ المستقبل بلمسة ملكية.
-        </p>
-
-        <button class="px-12 py-4 bg-slate-900 text-white rounded-2xl text-xl font-bold hover:bg-[#d1b476] transition-all duration-500 shadow-xl hover:shadow-2xl">
-            اكتشف المعالم القادمة
-        </button>
-
-    </div>
-
-</body>
-</html>
+  // تنفيذ الواجهة
+  console.log("AQX Professional Interface Initialized Successfully");
+};
