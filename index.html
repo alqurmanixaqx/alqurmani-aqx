@@ -3,158 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الأدباء والشعراء - AQX</title>
+<title>إضافة قصيدتك - AQX</title>
 
 <style>
 body{
 margin:0;
 font-family: Arial, sans-serif;
-background:#0f1115;
-color:#fff;
+background:linear-gradient(135deg,#f5f7ff,#ffffff);
+color:#222;
 }
 
-/* Layout */
-.container{
-display:grid;
-grid-template-columns:260px 1fr 300px;
-gap:15px;
-padding:15px;
-}
-
-/* Header */
-.header{
-grid-column:1/-1;
-background:#151922;
-padding:15px;
-border-radius:12px;
+/* header */
+header{
+background:#ffffff;
+padding:20px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
 
-.header h2{
+header h1{
+font-size:20px;
+color:#6c5ce7;
 margin:0;
-color:#00ffd5;
 }
 
-.header input{
+/* container */
+.container{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+padding:20px;
+}
+
+/* form */
+.form-box{
+background:#fff;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.form-box h2{
+margin-bottom:15px;
+color:#6c5ce7;
+}
+
+input, textarea, select{
+width:100%;
 padding:10px;
-width:280px;
-border:none;
+margin-bottom:12px;
+border:1px solid #ddd;
 border-radius:8px;
+font-size:14px;
 outline:none;
 }
 
-/* Sidebar */
-.sidebar{
-background:#151922;
-padding:15px;
-border-radius:12px;
-height:fit-content;
+textarea{
+height:180px;
+resize:none;
 }
 
-.sidebar h3{
-color:#00ffd5;
-}
-
-.sidebar button{
+button{
 width:100%;
-margin:5px 0;
-padding:10px;
-background:#1f2430;
-border:none;
-color:#fff;
-border-radius:8px;
-cursor:pointer;
-}
-
-.sidebar button:hover{
-background:#00ffd5;
-color:#000;
-}
-
-/* Feed */
-.feed{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-.card{
-background:#151922;
-padding:15px;
-border-radius:12px;
-border:1px solid #222;
-}
-
-.card h2{
-color:#00ffd5;
-margin:0;
-}
-
-.meta{
-font-size:12px;
-color:#aaa;
-margin:5px 0;
-}
-
-.text{
-margin-top:10px;
-line-height:1.8;
-color:#ddd;
-}
-
-.actions{
-margin-top:10px;
-display:flex;
-gap:10px;
-}
-
-.actions button{
-flex:1;
-padding:8px;
+padding:12px;
 border:none;
 border-radius:8px;
-cursor:pointer;
-background:#222;
+background:#6c5ce7;
 color:#fff;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
 }
 
-.actions button:hover{
-background:#00ffd5;
-color:#000;
+button:hover{
+background:#4834d4;
 }
 
-/* Right */
-.right{
-background:#151922;
-padding:15px;
+/* preview */
+.preview{
+background:#fff;
+padding:20px;
 border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
-.author{
-display:flex;
-gap:10px;
-align-items:center;
-padding:10px;
-border-bottom:1px solid #222;
+.preview h3{
+color:#00b894;
 }
 
-.author img{
-width:40px;
-height:40px;
-border-radius:50%;
+.poem-box{
+padding:15px;
+border-right:4px solid #6c5ce7;
+background:#f9f9ff;
+white-space:pre-line;
+margin-top:10px;
 }
 
-.tag{
-background:#00ffd5;
-color:#000;
-padding:3px 8px;
-border-radius:6px;
-font-size:12px;
-}
-
-/* Responsive */
+/* responsive */
 @media(max-width:900px){
 .container{
 grid-template-columns:1fr;
@@ -166,91 +113,69 @@ grid-template-columns:1fr;
 
 <body>
 
+<header>
+<h1>✒️ أضف قصيدتك - AQX</h1>
+<span>منصة الأدب الاجتماعية</span>
+</header>
+
 <div class="container">
 
-<!-- HEADER -->
-<div class="header">
-<h2>✒️ الأدباء والشعراء - AQX</h2>
-<input type="text" placeholder="ابحث عن شاعر أو نص...">
+<!-- FORM -->
+<div class="form-box">
+<h2>📝 كتابة القصيدة</h2>
+
+<input type="text" id="title" placeholder="عنوان القصيدة">
+
+<input type="text" id="author" placeholder="اسم الشاعر">
+
+<select id="type">
+<option>قصيدة</option>
+<option>خواطر</option>
+<option>أبيات شعر</option>
+<option>نص أدبي</option>
+</select>
+
+<textarea id="content" placeholder="اكتب أبياتك هنا..."></textarea>
+
+<button onclick="publish()">🚀 نشر القصيدة</button>
 </div>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-<h3>📚 الأقسام</h3>
-<button>كل الأعمال</button>
-<button>شعر</button>
-<button>خواطر</button>
-<button>قصص</button>
-<button>روايات</button>
+<!-- PREVIEW -->
+<div class="preview">
+<h3>👁️ المعاينة المباشرة</h3>
 
-<h3>⚡ أدوات</h3>
-<button>إضافة نص</button>
-<button>رفع كتاب</button>
-<button>المفضلة</button>
-<button>المتابعة</button>
-</div>
+<h2 id="pTitle">عنوان القصيدة</h2>
+<p id="pAuthor">بواسطة: ---</p>
+<span id="pType">---</span>
 
-<!-- FEED -->
-<div class="feed">
-
-<div class="card">
-<h2>قصيدة: نبض الحروف</h2>
-<div class="meta">✍️ أحمد الشاعر • منذ قليل</div>
-<div class="text">
-هذا نص تجريبي لعرض شكل القصيدة داخل منصة AQX بشكل احترافي وجذاب للقراءة.
-</div>
-<div class="actions">
-<button>❤️ إعجاب</button>
-<button>💬 تعليق</button>
-<button>📌 حفظ</button>
-</div>
-</div>
-
-<div class="card">
-<h2>خواطر: حين يهدأ الليل</h2>
-<div class="meta">✍️ ليلى • منذ ساعة</div>
-<div class="text">
-نص أدبي يعبر عن مشاعر هادئة بأسلوب بسيط وجميل داخل المنصة.
-</div>
-<div class="actions">
-<button>❤️ إعجاب</button>
-<button>💬 تعليق</button>
-<button>📌 حفظ</button>
+<div class="poem-box" id="pContent">
+ابدأ بكتابة قصيدتك وسيظهر هنا المعاينة...
 </div>
 </div>
 
 </div>
 
-<!-- RIGHT -->
-<div class="right">
+<script>
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const type = document.getElementById("type");
+const content = document.getElementById("content");
 
-<h3>🔥 الأكثر نشاطًا</h3>
+title.oninput = () => document.getElementById("pTitle").innerText = title.value || "عنوان القصيدة";
+author.oninput = () => document.getElementById("pAuthor").innerText = "بواسطة: " + (author.value || "---");
+type.onchange = () => document.getElementById("pType").innerText = type.value;
 
-<div class="author">
-<img src="https://i.pravatar.cc/40?img=1">
-<div>أحمد الشاعر <div class="tag">شاعر</div></div>
-</div>
+content.oninput = () => document.getElementById("pContent").innerText = content.value || "ابدأ بكتابة قصيدتك وسيظهر هنا المعاينة...";
 
-<div class="author">
-<img src="https://i.pravatar.cc/40?img=2">
-<div>ليلى <div class="tag">كاتبة</div></div>
-</div>
+function publish(){
+if(title.value === "" || content.value === ""){
+alert("من فضلك اكتب العنوان والمحتوى");
+return;
+}
 
-<div class="author">
-<img src="https://i.pravatar.cc/40?img=3">
-<div>يوسف <div class="tag">روائي</div></div>
-</div>
-
-<hr style="border:1px solid #222; margin:15px 0;">
-
-<h3>📈 الترند</h3>
-<p>🔥 أكثر نص قراءة اليوم</p>
-<p>⭐ شاعر صاعد</p>
-<p>📚 محتوى جديد مميز</p>
-
-</div>
-
-</div>
+alert("🚀 تم نشر القصيدة بنجاح داخل AQX (نسخة تجريبية)");
+}
+</script>
 
 </body>
 </html>
