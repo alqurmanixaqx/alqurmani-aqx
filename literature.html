@@ -1,150 +1,791 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>أشعار منوعة | AQX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أشعار منوعة | القرماني إكس AQX</title>
+    <meta name="description" content="ديوان أشعار منوعة من القرماني إكس AQX - تجربة بصرية ملكية فريدة تجمع عمالقة القوافي وسحر الكلمات في قالب عصري فاخر.">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@500;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --turquoise-deep: #06282d;
+            --turquoise-mid: #0b4f58;
+            --turquoise-light: #137886;
+            --gold-1: #ffd700;
+            --gold-2: #cfac62;
+            --gold-3: #b38f4d;
+            --gold-4: #e5c158;
+            --gold-5: #ffe07d;
+            --gold-6: #9a7b32;
+            --gold-7: #f3e5ab;
+            --glass-bg: rgba(6, 40, 45, 0.65);
+            --glass-border: rgba(255, 215, 0, 0.2);
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
+        /* حواف الثعبان الذهبي المتحرك حول الشاشة بالكامل */
+        html::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 5px solid transparent;
+            border-image: linear-gradient(45deg, var(--gold-1), var(--gold-3), var(--gold-5), var(--gold-6), var(--gold-2), var(--gold-4), var(--gold-7)) 1;
+            z-index: 9999;
+            pointer-events: none;
+            animation: snakeBorder 6s infinite alternate linear;
+        }
 
-body{
-background:#0f172a;
-font-family:Tahoma,sans-serif;
-color:#fff;
-padding:20px;
-}
+        @keyframes snakeBorder {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            50% { filter: hue-rotate(180deg) brightness(1.3); }
+            100% { filter: hue-rotate(360deg) brightness(1); }
+        }
 
-h1{
-text-align:center;
-margin:20px 0 30px;
-font-size:32px;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            user-select: none;
+        }
 
-#posts{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-gap:20px;
-}
+        body {
+            background: linear-gradient(135deg, #031417 0%, var(--turquoise-deep) 50%, #020f12 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-.card{
-background:#1e293b;
-border-radius:18px;
-overflow:hidden;
-transition:.3s;
-}
+        /* جزيئات الذهب المتطايرة بعشوائية */
+        #gold-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-.card:hover{
-transform:translateY(-5px);
-}
+        /* المحتوى الرئيسي */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px 20px;
+        }
 
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-}
+        /* المساحة الفارغة المطلوبة أول الصفحة (بمقدار 5 أسطر) */
+        .top-spacer {
+            height: 130px;
+            width: 100%;
+        }
 
-.content{
-padding:18px;
-}
+        /* عنوان القسم النيون المتغير 6 ألوان والمتحرك بخفة */
+        .neon-section-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            animation: floatTitle 3s ease-in-out infinite alternate, sixColorsNeon 12s infinite linear;
+        }
 
-.content h2{
-font-size:20px;
-margin-bottom:10px;
-line-height:1.5;
-}
+        @keyframes floatTitle {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-8px) scale(1.02); }
+        }
 
-.content p{
-font-size:14px;
-opacity:.8;
-line-height:1.8;
-}
+        @keyframes sixColorsNeon {
+            0%, 100% { color: #00ffff; text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff; }
+            16% { color: #ff007f; text-shadow: 0 0 20px #ff007f, 0 0 40px #ff007f; }
+            33% { color: #ffff00; text-shadow: 0 0 20px #ffff00, 0 0 40px #ffff00; }
+            50% { color: #00ff66; text-shadow: 0 0 20px #00ff66, 0 0 40px #00ff66; }
+            66% { color: #00bfff; text-shadow: 0 0 20px #00bfff, 0 0 40px #00bfff; }
+            83% { color: #cc00ff; text-shadow: 0 0 20px #cc00ff, 0 0 40px #cc00ff; }
+        }
 
-.btn{
-display:inline-block;
-margin-top:15px;
-padding:10px 18px;
-background:#f59e0b;
-color:#000;
-font-weight:bold;
-border-radius:10px;
-text-decoration:none;
-}
-</style>
+        /* تنسيق الإعلانات الاحترافي */
+        .ad-banner-top {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 35px;
+            min-height: 50px;
+        }
 
+        /* مربع البحث الذكي الشيك مع الاقتراحات المتجاوبة */
+        .search-wrapper {
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+            position: relative;
+        }
+
+        .smart-search-input {
+            width: 100%;
+            padding: 16px 25px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--glass-border);
+            border-radius: 50px;
+            color: #fff;
+            outline: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .smart-search-input:focus {
+            border-color: var(--gold-1);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.3), inset 0 0 10px rgba(255,255,255,0.05);
+            background: rgba(6, 40, 45, 0.9);
+        }
+
+        .search-predictions {
+            position: absolute;
+            top: 100%; left: 0; right: 0;
+            background: rgba(5, 27, 31, 0.98);
+            border: 1px solid var(--gold-3);
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+            z-index: 500;
+            max-height: 280px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .prediction-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-weight: 800;
+            transition: all 0.2s;
+            text-align: right;
+        }
+        .prediction-item:hover {
+            background: var(--gold-6);
+            color: #000;
+        }
+
+        /* الوصف الاحترافي العالمي للقسم */
+        .section-editorial-desc {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            text-align: center;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #d1e5e7;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .section-editorial-desc strong {
+            color: var(--gold-1);
+            font-weight: 900;
+        }
+
+        /* التبويبات الفخمة جنب لجنب */
+        .tabs-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .lux-tab-trigger {
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            background: var(--glass-bg);
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            color: #bfa365;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .lux-tab-trigger.active-tab, .lux-tab-trigger:hover {
+            background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+            color: #000;
+            border-color: var(--gold-1);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* شبكة عرض المقالات والإعلانات المدمجة */
+        .articles-lux-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 5px;
+        }
+
+        /* كارت المقال الاستثنائي الباهر للعيون */
+        .poetry-lux-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .poetry-lux-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--gold-1);
+            box-shadow: 0 20px 45px rgba(255, 215, 0, 0.25);
+        }
+
+        .card-thumb-space {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            background: #031417;
+        }
+
+        .card-thumb-space img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .poetry-lux-card:hover .card-thumb-space img {
+            transform: scale(1.1) rotate(1deg);
+        }
+
+        .card-info-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .card-post-title {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.5;
+            text-align: right;
+            transition: color 0.3s;
+        }
+
+        .poetry-lux-card:hover .card-post-title {
+            color: var(--gold-1);
+        }
+
+        .read-now-lux-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            border-radius: 10px;
+            color: var(--gold-1);
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .read-now-lux-btn:hover {
+            background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+            color: #000;
+            border-color: var(--gold-1);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        /* كارت مخصص للإعلان المربع المدمج */
+        .inline-ad-card {
+            grid-column: span 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.2);
+            border: 1px dashed var(--glass-border);
+            border-radius: 20px;
+            min-height: 350px;
+            padding: 10px;
+        }
+
+        /* مساحة الفيديو المدمج الديلي موشن الفخم */
+        .dailymotion-media-row {
+            max-width: 800px;
+            width: 100%;
+            margin: 40px auto;
+            border: 2px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            background: #000;
+        }
+
+        .video-wrapper-ratio {
+            position: relative;
+            padding-top: 56.25%;
+            width: 100%;
+        }
+
+        .video-wrapper-ratio iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+
+        /* زر عرض المزيد اللانهائي الفاخر */
+        .load-more-center-box {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .infinity-load-btn {
+            padding: 15px 50px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #fff;
+            background: linear-gradient(135deg, var(--turquoise-mid), var(--turquoise-deep));
+            border: 2px solid var(--gold-3);
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .infinity-load-btn:hover {
+            border-color: var(--gold-1);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            transform: scale(1.05);
+            color: var(--gold-1);
+        }
+
+        /* الفوتر الاحترافي الملكي */
+        .luxury-footer-system {
+            width: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            font-weight: 800;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            color: #72969a;
+            position: relative;
+            z-index: 100;
+        }
+
+        .luxury-footer-system span {
+            color: var(--gold-1);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        /* السهم الذكي المتشقلب للصعود مع تفاعل صوتي */
+        .smart-scroll-top-trigger {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--gold-1), var(--gold-3));
+            border: none;
+            border-radius: 50%;
+            color: #000;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .smart-scroll-top-trigger.reveal {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .smart-scroll-top-trigger.flip-active {
+            animation: flipSpinSound 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes flipSpinSound {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        /* شاشات الاستجابة الدقيقة */
+        @media (max-width: 768px) {
+            .top-spacer { height: 90px; }
+            .tabs-row { flex-direction: column; align-items: stretch; gap: 10px; }
+            .smart-scroll-top-trigger { bottom: 20px; right: 20px; width: 48px; height: 48px; font-size: 20px; }
+        }
+    </style>
 </head>
-<body>
+<body onclick="bootstrapAudioPipeline()">
 
-<h1>📜 أشعار منوعة</h1>
+    <canvas id="gold-canvas"></canvas>
 
-<div id="posts"></div>
+    <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
 
-<script>
+    <button class="smart-scroll-top-trigger" id="scrollTopBtn" onclick="executeSmartAscent()">▲</button>
 
-const feedUrl =
-'https://www.alqurmanix.com/feeds/posts/default/-/أشعار%20منوعة?alt=json&max-results=50';
+    <div class="main-container">
 
-fetch(feedUrl)
-.then(r=>r.json())
-.then(data=>{
+        <div class="top-spacer"></div>
 
-let html='';
+        <h1 class="neon-section-title">أشعار منوعة</h1>
 
-data.feed.entry.forEach(post=>{
+        <div class="ad-banner-top">
+            <script>
+                atOptions = {
+                    'key' : '6084f429253cae00d1188bae06e361f1',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+        </div>
 
-let title=post.title.$t;
+        <div class="search-wrapper">
+            <input type="text" class="smart-search-input" id="sectionSearchInput" placeholder="ابحث بذكاء داخل واحة الأشعار المنوعة..." oninput="processLiveSearch(this.value)">
+            <div class="search-predictions" id="predictiveBox"></div>
+        </div>
 
-let link=post.link.find(
-l=>l.rel==="alternate"
-).href;
+        <p class="section-editorial-desc">
+            مرحباً بكم في المحراب الأدبي الفريد لقسم <strong>أشعار منوعة</strong> عبر منصة <strong>القرماني إكس AQX</strong>. هنا حيث تتلاقى عذوبة الأوزان وقوة القوافي الفصحى والنبطية في فضاء واحد، نأخذكم في رحلة وجدانية مصممة بأعلى معايير الفخامة الرقمية لتستمتعوا بأجمل روائع القصائد المنقوشة بماء الذهب عبر التاريخ والمعاصرة.
+        </p>
 
-let img='https://picsum.photos/800/500';
+        <div class="tabs-row">
+            <button class="lux-tab-trigger active-tab" id="tab-all" onclick="toggleActiveTab('all')">جميع مقالات القسم</button>
+            <button class="lux-tab-trigger" id="tab-popular" onclick="toggleActiveTab('popular')">الأكثر مشاهدة ورواجاً</button>
+        </div>
 
-if(post.media$thumbnail){
-img=post.media$thumbnail.url.replace('/s72-c/','/s1200/');
-}
+        <div class="articles-lux-grid" id="postsDynamicGrid">
+            </div>
 
-let text='';
+        <div class="dailymotion-media-row">
+            <div class="video-wrapper-ratio">
+                <iframe src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=0&mute=1" allow="fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
 
-if(post.summary){
-text=post.summary.$t;
-}else if(post.content){
-text=post.content.$t.replace(/<[^>]*>/g,'');
-}
+        <div class="load-more-center-box">
+            <button class="infinity-load-btn" id="loadMoreAction" onclick="loadPoetryNextChunk()">استكشف المزيد من الروائع الادبية</button>
+        </div>
 
-text=text.substring(0,150)+'...';
+    </div>
 
-html+=`
-<div class="card">
+    <footer class="luxury-footer-system">
+        جميع الحقوق محفوظة منصة <span>القرماني إكس AQX</span> © <span id="currentYear"></span>
+    </footer>
 
-<img src="${img}" alt="">
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-<div class="content">
+        /* 1. نظام محرك جزيئات الذهب الطائرة (Canvas) بدقة متناهية */
+        const canvas = document.getElementById('gold-canvas');
+        const ctx = canvas.getContext('2d');
+        let particleSystem = [];
+        
+        function calibrateCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', calibrateCanvasSize);
+        calibrateCanvasSize();
 
-<h2>${title}</h2>
+        class GoldFleck {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height;
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 40;
+                this.size = Math.random() * 2.2 + 0.6;
+                this.speedY = Math.random() * -1.4 - 0.4;
+                this.speedX = Math.random() * 0.8 - 0.4;
+                this.luminance = Math.random() * 0.6 + 0.4;
+            }
+            step() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.y < -10) this.reset();
+            }
+            render() {
+                ctx.fillStyle = `rgba(255, 215, 0, ${this.luminance})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
 
-<p>${text}</p>
+        for (let i = 0; i < 90; i++) particleSystem.push(new GoldFleck());
 
-<a class="btn" href="${link}" target="_blank">
-قراءة القصيدة
-</a>
+        function loopGoldAnimation() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particleSystem.forEach(fleck => { fleck.step(); fleck.render(); });
+            requestAnimationFrame(loopGoldAnimation);
+        }
+        loopGoldAnimation();
 
-</div>
+        /* 2. الأنابيب الصوتية التفاعلية الاحترافية وعالمية الأداء (Web Audio API) */
+        let audioNodeContext;
 
-</div>
-`;
+        function bootstrapAudioPipeline() {
+            if (!audioNodeContext) {
+                audioNodeContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
 
-});
+        function triggerBlipChime() {
+            bootstrapAudioPipeline();
+            if(!audioNodeContext) return;
+            const osc = audioNodeContext.createOscillator();
+            const volume = audioNodeContext.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(1200, audioNodeContext.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1600, audioNodeContext.currentTime + 0.08);
+            volume.gain.setValueAtTime(0.04, audioNodeContext.currentTime);
+            volume.gain.exponentialRampToValueAtTime(0.001, audioNodeContext.currentTime + 0.08);
+            osc.connect(volume);
+            volume.connect(audioNodeContext.destination);
+            osc.start();
+            osc.stop(audioContextUnit = audioNodeContext.currentTime + 0.08);
+        }
 
-document.getElementById('posts').innerHTML=html;
+        function triggerWhooshFlipSound() {
+            bootstrapAudioPipeline();
+            if(!audioNodeContext) return;
+            const osc = audioNodeContext.createOscillator();
+            const volume = audioNodeContext.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(200, audioNodeContext.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1800, audioNodeContext.currentTime + 0.45);
+            volume.gain.setValueAtTime(0.2, audioNodeContext.currentTime);
+            volume.gain.linearRampToValueAtTime(0.001, audioNodeContext.currentTime + 0.45);
+            osc.connect(volume);
+            volume.connect(audioNodeContext.destination);
+            osc.start();
+            osc.stop(audioNodeContext.currentTime + 0.45);
+        }
 
-})
-.catch(err=>{
-document.getElementById('posts').innerHTML=
-'<h2>لا توجد مقالات أو اسم القسم غير صحيح.</h2>';
-});
+        /* 3. الإدارة البرمجية المتكاملة والربط الديناميكي مع مدونة بلوجر alqurmanix.com */
+        const blogDomain = 'https://www.alqurmanix.com';
+        const targetedLabel = 'أشعار منوعة';
+        let allFetchedPosts = [];
+        let currentlyDisplayedCount = 0;
+        const postsPerPage = 6;
+        let activeTabMode = 'all'; 
 
-</script>
+        async function fetchBloggerPostsEngine() {
+            const encodedLabel = encodeURIComponent(targetedLabel);
+            const feedUrl = `${blogDomain}/feeds/posts/default/-/${encodedLabel}?alt=json&max-results=150`;
+            
+            try {
+                const response = await fetch(feedUrl);
+                const json = await response.json();
+                if (json.feed && json.feed.entry) {
+                    allFetchedPosts = json.feed.entry.map(entry => {
+                        let imageUrl = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwM2tZ7uGsc-lJtU5m04Q272eX1T9vKxR7a0k/s1600/default.jpg';
+                        if (entry.media$thumbnail) {
+                            imageUrl = entry.media$thumbnail.url.replace('/s72-c/', '/s1600/');
+                        } else if (entry.content && entry.content.$t) {
+                            const match = entry.content.$t.match(/<img[^>]+src="([^">]+)"/);
+                            if (match) imageUrl = match[1];
+                        }
+                        
+                        let postLink = '#';
+                        const alternateLink = entry.link.find(l => l.rel === 'alternate');
+                        if (alternateLink) postLink = alternateLink.href;
 
+                        return {
+                            title: entry.title.$t,
+                            link: postLink,
+                            image: imageUrl,
+                            published: new Date(entry.published.$t)
+                        };
+                    });
+                    renderSegmentedGrid(true);
+                } else {
+                    displayFallbackUi();
+                }
+            } catch (error) {
+                console.error("Blogger Feed Connection Failed:", error);
+                displayFallbackUi();
+            }
+        }
+
+        function renderSegmentedGrid(isInitialLoad = false) {
+            const gridContainer = document.getElementById('postsDynamicGrid');
+            if (isInitialLoad) {
+                gridContainer.innerHTML = '';
+                currentlyDisplayedCount = 0;
+            }
+
+            let operationalList = [...allFetchedPosts];
+            
+            if (activeTabMode === 'popular') {
+                // محاكاة فرز الذكاء الاصطناعي للأكثر رواجاً بالاعتماد على مصفوفة النشر المتقدمة
+                operationalList.sort((a, b) => b.title.length - a.title.length);
+            } else {
+                operationalList.sort((a, b) => b.published - a.published);
+            }
+
+            const limit = Math.min(currentlyDisplayedCount + postsPerPage, operationalList.length);
+            
+            if (operationalList.length === 0) {
+                gridContainer.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:40px; font-weight:800; color:var(--gold-2);">لا توجد مقالات متوفرة حالياً في هذا القسم.</div>`;
+                document.getElementById('loadMoreAction').style.display = 'none';
+                return;
+            }
+
+            for (let i = currentlyDisplayedCount; i < limit; i++) {
+                const post = operationalList[i];
+                
+                // توليد كروت المقالات بالتصميم الملكي
+                const cardHtml = `
+                    <article class="poetry-lux-card">
+                        <div class="card-thumb-space">
+                            <img src="${post.image}" alt="${post.title}" loading="lazy">
+                        </div>
+                        <div class="card-info-body">
+                            <h3 class="card-post-title">${post.title}</h3>
+                            <a href="${post.link}" class="read-now-lux-btn" target="_blank" onclick="triggerBlipChime()">اقرأ الآن</a>
+                        </div>
+                    </article>
+                `;
+                gridContainer.insertAdjacentHTML('beforeend', cardHtml);
+
+                // إدراج الإعلان الثاني المربع (300x250) باحترافية وتوازن تلقائي بعد الكارت الثالث
+                if (i === currentlyDisplayedCount + 2 && i < limit - 1) {
+                    const adCardHtml = `
+                        <div class="inline-ad-card">
+                            <script>
+                                atOptions = {
+                                    'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+                                    'format' : 'iframe',
+                                    'height' : 250,
+                                    'width' : 300,
+                                    'params' : {}
+                                };
+                            <\/script>
+                            <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"><\/script>
+                        </div>
+                    `;
+                    gridContainer.insertAdjacentHTML('beforeend', adCardHtml);
+                }
+            }
+
+            currentlyDisplayedCount = limit;
+            
+            if (currentlyDisplayedCount >= operationalList.length) {
+                document.getElementById('loadMoreAction').style.display = 'none';
+            } else {
+                document.getElementById('loadMoreAction').style.display = 'block';
+            }
+        }
+
+        function loadPoetryNextChunk() {
+            triggerBlipChime();
+            renderSegmentedGrid(false);
+        }
+
+        function toggleActiveTab(mode) {
+            if (activeTabMode === mode) return;
+            triggerBlipChime();
+            activeTabMode = mode;
+            
+            document.getElementById('tab-all').classList.toggle('active-tab', mode === 'all');
+            document.getElementById('tab-popular').classList.toggle('active-tab', mode === 'popular');
+            
+            renderSegmentedGrid(true);
+        }
+
+        /* 4. معالجة البحث التنبئي الذكي للمقالات ضمن هذا القسم فقط */
+        function processLiveSearch(query) {
+            const predictiveBox = document.getElementById('predictiveBox');
+            if (!query.trim()) {
+                predictiveBox.style.display = 'none';
+                return;
+            }
+
+            const filtered = allFetchedPosts.filter(p => p.title.toLowerCase().includes(query.toLowerCase())).slice(0, 6);
+            
+            if (filtered.length === 0) {
+                predictiveBox.innerHTML = `<div class="prediction-item" style="color:#888; cursor:default;">لا توجد نتائج مطابقة...</div>`;
+            } else {
+                predictiveBox.innerHTML = filtered.map(p => `<div class="prediction-item" onclick="executePredictionRouting('${p.link}')">${p.title}</div>`).join('');
+            }
+            predictiveBox.style.display = 'block';
+        }
+
+        function executePredictionRouting(url) {
+            triggerBlipChime();
+            document.getElementById('predictiveBox').style.display = 'none';
+            document.getElementById('sectionSearchInput').value = '';
+            window.open(url, '_blank');
+        }
+
+        // إغلاق صندوق المقترحات عند النقر في الخارج
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-wrapper')) {
+                document.getElementById('predictiveBox').style.display = 'none';
+            }
+        });
+
+        function displayFallbackUi() {
+            const gridContainer = document.getElementById('postsDynamicGrid');
+            gridContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; font-weight:800; color:var(--gold-1);">بوابة القرماني إكس نشطة. بانتظار اتصال خادم النشر المباشر.</div>`;
+        }
+
+        /* 5. معالج سهم الصعود الذكي المتشقلب مع المؤثر الصوتي الارتدادي */
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('reveal');
+            } else {
+                scrollTopBtn.classList.remove('reveal');
+            }
+        });
+
+        function executeSmartAscent() {
+            if (scrollTopBtn.classList.contains('flip-active')) return;
+            
+            triggerWhooshFlipSound();
+            scrollTopBtn.classList.add('flip-active');
+            
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+            setTimeout(() => {
+                scrollTopBtn.classList.remove('flip-active');
+            }, 600);
+        }
+
+        // إطلاق المحرك بمجرد جهوزية البنية الهيكلية للموقع
+        window.addEventListener('DOMContentLoaded', fetchBloggerPostsEngine);
+    </script>
 </body>
 </html>
