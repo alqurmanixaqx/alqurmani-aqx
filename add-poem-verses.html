@@ -1,1 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القرمانى اكس AQX | قريباً</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;900&display=swap');
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: 'Cairo', sans-serif;
+            perspective: 1000px;
+        }
+
+        .snake-border-wrapper {
+            position: relative;
+            width: 97vw;
+            height: 95vh;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+        }
+
+        .snake-border-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, #ff4500, #ff8c00, #ffd700, #00ffcc, #ff00ff, #ff4500);
+            animation: rotateSnake 4s linear infinite;
+        }
+
+        @keyframes rotateSnake {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .main-container {
+            position: absolute;
+            inset: 4px;
+            background: radial-gradient(circle at center, #e65c00 0%, #b34700 35%, #4d1a00 70%, #0d0400 100%);
+            border-radius: 17px;
+            z-index: 1;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .content-card {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: #ffffff;
+            padding: 3.5rem;
+            background: rgba(0, 0, 0, 0.55);
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 215, 0, 0.25);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(230, 92, 0, 0.2);
+            max-width: 850px;
+            width: 90%;
+            transform: translateZ(30px);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff 0%, #ffd700 50%, #ff8c00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 15px rgba(255, 140, 0, 0.6));
+        }
+
+        .text-box {
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+            line-height: 1.8;
+            font-weight: 600;
+            color: #fff8f0;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.8);
+            min-height: 150px;
+            word-wrap: break-word;
+        }
+
+        .writer-pen {
+            display: inline-block;
+            font-size: 2.2rem;
+            margin-right: 8px;
+            vertical-align: middle;
+            transform-origin: bottom right;
+            animation: writeMotion 0.28s infinite alternate ease-in-out;
+        }
+
+        @keyframes writeMotion {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-4px, -6px) rotate(-15deg); }
+        }
+
+        .blink-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 30px;
+            background-color: #ffd700;
+            margin-right: 5px;
+            vertical-align: middle;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="snake-border-wrapper">
+        <div class="main-container">
+            <canvas id="goldParticles"></canvas>
+            
+            <div class="content-card">
+                <h1>القرمانى اكس AQX</h1>
+                <div class="text-box" id="typingTarget"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('goldParticles');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        class GoldParticle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 3 + 0.8;
+                this.speedX = (Math.random() - 0.5) * 1.5;
+                this.speedY = (Math.random() - 0.5) * 1.5;
+                this.opacity = Math.random() * 0.6 + 0.4;
+                this.fade = Math.random() * 0.01 + 0.005;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.opacity -= this.fade;
+
+                if (this.x < 0 || this.x > width || this.y < 0 || this.y > height || this.opacity <= 0) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 215, 0, ${this.opacity})`;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#ffd700';
+                ctx.fill();
+                ctx.shadowBlur = 0; 
+            }
+        }
+
+        const particles = [];
+        for (let i = 0; i < 120; i++) {
+            particles.push(new GoldParticle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        const message = "أهلاً بك يا صانع الإبداع العظيم وفارس الحرف الفخم.. هنا حيث تلتقي الكلمة الساحرة بالرقي المطلق. ضع لمساتك الأخيرة وجهّز قصائدك وأبياتك الملحمية، فالمسرح يتهيأ، وقريباً جداً ستشرق حروفك وتتألق لتخطف العقول وتذهل العيون في سماء القرمانى اكس AQX.. انتظرنا!";
+        const target = document.getElementById('typingTarget');
+        let index = 0;
+
+        function typeEffect() {
+            if (index < message.length) {
+                target.innerHTML = message.substring(0, index + 1) + '<span class="writer-pen">✍️</span>';
+                index++;
+                setTimeout(typeEffect, 60);
+            } else {
+                target.innerHTML = message + '<span class="blink-cursor">|</span>';
+            }
+        }
+
+        setTimeout(typeEffect, 1000);
+    </script>
+</body>
+</html>
