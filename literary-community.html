@@ -1,1 +1,986 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجتمع AQX — المجتمع الثقافي الأدبي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fuchsia-light: #fce4f0;
+    --fuchsia-mid: #f472b6;
+    --fuchsia-deep: #db2777;
+    --fuchsia-dark: #9d174d;
+    --gold: #d4a017;
+    --gold-light: #f5d76e;
+    --gold-glow: #ffe066;
+    --cream: #fff5fa;
+    --page-bg: #fdf0f7;
+    --text-dark: #1a0a10;
+    --text-mid: #6b2142;
+    --card-bg: rgba(255,255,255,0.85);
+    --neon1: #ff6edb;
+    --neon2: #c084fc;
+    --neon3: #38bdf8;
+    --neon4: #f59e0b;
+    --neon5: #4ade80;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    background: var(--page-bg);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* ─── SNAKE BORDER ─── */
+  #snake-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ─── GOLD PARTICLES ─── */
+  #particles-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── WELCOME MODAL ─── */
+  #welcome-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(120, 0, 60, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    animation: modalBgFadeIn 0.8s ease;
+  }
+  @keyframes modalBgFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .modal-inner {
+    background: linear-gradient(135deg, #fff0fa 0%, #fce4f0 40%, #fff8e1 100%);
+    border: 2.5px solid transparent;
+    border-radius: 28px;
+    padding: 56px 52px 44px;
+    max-width: 540px;
+    width: 92%;
+    text-align: center;
+    position: relative;
+    box-shadow:
+      0 0 60px rgba(212,160,23,0.35),
+      0 0 120px rgba(219,39,119,0.22),
+      0 30px 80px rgba(0,0,0,0.18);
+    background-clip: padding-box;
+    animation: modalSlideIn 0.7s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(-60px) scale(0.88); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .modal-inner::before {
+    content: '';
+    position: absolute;
+    inset: -2.5px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #d4a017, #f472b6, #c084fc, #38bdf8, #d4a017);
+    z-index: -1;
+    background-size: 300% 300%;
+    animation: borderRotate 3s linear infinite;
+  }
+  @keyframes borderRotate {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .modal-emblem {
+    font-size: 3.8rem;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+  .modal-title {
+    font-family: 'Amiri', serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #9d174d, #d4a017, #db2777);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .modal-subtitle {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    color: #7c2d5a;
+    margin-bottom: 24px;
+    line-height: 1.9;
+  }
+  .modal-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4a017, #f472b6, transparent);
+    margin: 18px auto;
+    width: 80%;
+    border-radius: 2px;
+  }
+  .modal-welcome {
+    font-size: 0.92rem;
+    color: #9d174d;
+    margin-bottom: 28px;
+    font-weight: 500;
+    line-height: 1.8;
+  }
+  .modal-btn {
+    display: inline-block;
+    padding: 14px 52px;
+    background: linear-gradient(135deg, #d4a017, #db2777, #9d174d);
+    background-size: 200% 200%;
+    color: #fff;
+    font-size: 1.08rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+    box-shadow: 0 6px 32px rgba(219,39,119,0.35), 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    animation: btnPulse 2.5s ease-in-out infinite;
+  }
+  .modal-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 12px 40px rgba(219,39,119,0.5);
+  }
+  @keyframes btnPulse {
+    0%,100% { box-shadow: 0 6px 32px rgba(219,39,119,0.35); }
+    50%      { box-shadow: 0 6px 48px rgba(212,160,23,0.6), 0 0 24px rgba(219,39,119,0.4); }
+  }
+
+  /* ─── MAIN CONTENT ─── */
+  .main-wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── TOP SPACER (4 stripes) ─── */
+  .hero-stripes {
+    width: 100%;
+    height: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+  }
+  .stripe {
+    flex: 1;
+    animation: stripeShimmer 4s ease-in-out infinite;
+  }
+  .stripe:nth-child(1) { background: linear-gradient(90deg, #fce4f0, #f9a8d4, #fce4f0); animation-delay: 0s; }
+  .stripe:nth-child(2) { background: linear-gradient(90deg, #fef3c7, #fde68a, #fef3c7); animation-delay: 0.3s; }
+  .stripe:nth-child(3) { background: linear-gradient(90deg, #e0e7ff, #c7d2fe, #e0e7ff); animation-delay: 0.6s; }
+  .stripe:nth-child(4) { background: linear-gradient(90deg, #fce4f0, #fbcfe8, #fce4f0); animation-delay: 0.9s; }
+  @keyframes stripeShimmer {
+    0%,100% { opacity: 0.7; }
+    50%      { opacity: 1; }
+  }
+
+  /* ─── HERO SECTION ─── */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 30px;
+    position: relative;
+  }
+  .hero-logo {
+    font-family: 'Amiri', serif;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: 4px;
+    animation: neonCycle 3s linear infinite;
+    text-shadow:
+      0 0 20px currentColor,
+      0 0 40px currentColor,
+      0 0 80px currentColor;
+    display: inline-block;
+    position: relative;
+  }
+  @keyframes neonCycle {
+    0%   { color: #ff6edb; text-shadow: 0 0 20px #ff6edb, 0 0 60px #ff6edb88; }
+    17%  { color: #c084fc; text-shadow: 0 0 20px #c084fc, 0 0 60px #c084fc88; }
+    33%  { color: #38bdf8; text-shadow: 0 0 20px #38bdf8, 0 0 60px #38bdf888; }
+    50%  { color: #d4a017; text-shadow: 0 0 20px #d4a017, 0 0 60px #d4a01788; }
+    67%  { color: #4ade80; text-shadow: 0 0 20px #4ade80, 0 0 60px #4ade8088; }
+    83%  { color: #fb923c; text-shadow: 0 0 20px #fb923c, 0 0 60px #fb923c88; }
+    100% { color: #ff6edb; text-shadow: 0 0 20px #ff6edb, 0 0 60px #ff6edb88; }
+  }
+
+  .hero-tagline {
+    font-family: 'Tajawal', sans-serif;
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    color: #9d174d;
+    margin-top: 12px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 0.85;
+  }
+
+  .hero-divider {
+    width: 220px;
+    height: 3px;
+    margin: 22px auto;
+    background: linear-gradient(90deg, transparent, #d4a017, #f472b6, #c084fc, transparent);
+    border-radius: 3px;
+    animation: dividerPulse 2s ease-in-out infinite;
+  }
+  @keyframes dividerPulse {
+    0%,100% { opacity: 0.7; width: 220px; }
+    50%      { opacity: 1; width: 300px; }
+  }
+
+  /* ─── SEARCH ─── */
+  .search-wrap {
+    max-width: 620px;
+    margin: 0 auto 48px;
+    padding: 0 20px;
+    position: relative;
+  }
+  .search-box {
+    width: 100%;
+    background: rgba(255,255,255,0.92);
+    border: 2px solid transparent;
+    border-radius: 50px;
+    padding: 16px 56px 16px 24px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    color: #1a0a10;
+    outline: none;
+    transition: all 0.35s ease;
+    box-shadow:
+      0 4px 24px rgba(219,39,119,0.12),
+      inset 0 2px 8px rgba(0,0,0,0.03);
+    background-clip: padding-box;
+    position: relative;
+    z-index: 1;
+  }
+  .search-container {
+    position: relative;
+  }
+  .search-container::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 52px;
+    background: linear-gradient(135deg, #d4a017, #f472b6, #c084fc, #38bdf8);
+    background-size: 300% 300%;
+    animation: borderRotate 3s linear infinite;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .search-container:focus-within::before { opacity: 1; }
+  .search-box:focus {
+    box-shadow: 0 8px 40px rgba(219,39,119,0.25), inset 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0; left: 0;
+    background: rgba(255,255,255,0.97);
+    border-radius: 20px;
+    box-shadow: 0 16px 60px rgba(219,39,119,0.2), 0 4px 16px rgba(0,0,0,0.08);
+    overflow: hidden;
+    max-height: 340px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    border: 1.5px solid rgba(212,160,23,0.25);
+  }
+  .search-results.open { display: block; animation: dropIn 0.25s ease; }
+  @keyframes dropIn {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .search-result-item {
+    padding: 13px 20px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #4a1030;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.2s;
+    border-bottom: 1px solid rgba(212,160,23,0.1);
+  }
+  .search-result-item:hover {
+    background: linear-gradient(90deg, #fce4f0, #fff8e1);
+    color: #9d174d;
+  }
+  .search-result-item .ri { font-size: 1.3rem; }
+  .search-no-result {
+    padding: 20px;
+    color: #9d174d;
+    font-size: 0.92rem;
+    text-align: center;
+  }
+
+  /* ─── CARDS GRID ─── */
+  .cards-section {
+    padding: 0 clamp(16px, 4vw, 60px) 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .section-title {
+    text-align: center;
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    color: #9d174d;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #d4a017, #f472b6);
+    margin: 10px auto 0;
+    border-radius: 3px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.88);
+    border-radius: 24px;
+    padding: 36px 28px 30px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+    box-shadow:
+      0 4px 24px rgba(219,39,119,0.08),
+      0 1px 4px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255,255,255,0.6);
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: linear-gradient(135deg, var(--c1, #fce4f0), var(--c2, #fff8e1));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+  }
+  .card:hover::before { opacity: 1; }
+  .card:hover {
+    transform: translateY(-10px) scale(1.025);
+    box-shadow:
+      0 20px 60px rgba(219,39,119,0.22),
+      0 8px 24px rgba(212,160,23,0.15),
+      0 0 0 2px rgba(212,160,23,0.3);
+  }
+  .card-glow {
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow, rgba(212,160,23,0.4)) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    display: block;
+    animation: iconFloat 3s ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+  @keyframes iconFloat {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-6px) rotate(3deg); }
+  }
+  .card-name {
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1a0a10;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .card-desc {
+    font-size: 0.84rem;
+    color: #7c2d5a;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+    font-weight: 400;
+  }
+  .card-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: linear-gradient(135deg, #d4a017, #f59e0b);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    z-index: 2;
+    letter-spacing: 1px;
+    font-family: 'Tajawal', sans-serif;
+  }
+  .card-arrow {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: rgba(157,23,77,0.4);
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+  .card:hover .card-arrow {
+    color: #db2777;
+    transform: translateX(-50%) translateY(-3px);
+  }
+
+  /* ─── SCROLL TO TOP ─── */
+  #scrollTop {
+    position: fixed;
+    bottom: 36px;
+    left: 36px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    z-index: 9990;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    background: linear-gradient(135deg, #d4a017, #db2777, #c084fc);
+    background-size: 200% 200%;
+    color: #fff;
+    box-shadow: 0 6px 28px rgba(219,39,119,0.4);
+    animation: scrollBtnColors 4s linear infinite;
+  }
+  @keyframes scrollBtnColors {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  #scrollTop.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+  #scrollTop:hover {
+    transform: scale(1.15) rotate(360deg);
+    box-shadow: 0 12px 40px rgba(219,39,119,0.6);
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    text-align: center;
+    padding: 28px;
+    font-size: 0.82rem;
+    color: #b45a80;
+    border-top: 1px solid rgba(212,160,23,0.2);
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(8px);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── CARD highlight on search ─── */
+  .card.search-highlight {
+    box-shadow:
+      0 0 0 3px #d4a017,
+      0 20px 60px rgba(212,160,23,0.4);
+    transform: scale(1.04);
+  }
+
+  /* responsive */
+  @media (max-width: 600px) {
+    .modal-inner { padding: 36px 24px 30px; }
+    .modal-title { font-size: 1.6rem; }
+    .cards-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+    .card { padding: 24px 16px 22px; }
+    .card-icon { font-size: 2.2rem; }
+    #scrollTop { bottom: 20px; left: 20px; width: 46px; height: 46px; }
+  }
+
+  /* highlight animation */
+  @keyframes highlightCard {
+    0%   { box-shadow: 0 0 0 3px #d4a017, 0 20px 60px rgba(212,160,23,0.4); }
+    50%  { box-shadow: 0 0 0 5px #f472b6, 0 20px 80px rgba(244,114,182,0.5); }
+    100% { box-shadow: 0 0 0 3px #d4a017, 0 20px 60px rgba(212,160,23,0.4); }
+  }
+  .card.search-highlight {
+    animation: highlightCard 1.2s ease-in-out infinite;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ CANVASES ═══ -->
+<canvas id="particles-canvas"></canvas>
+<canvas id="snake-canvas"></canvas>
+
+<!-- ═══ WELCOME MODAL ═══ -->
+<div id="welcome-modal">
+  <div class="modal-inner">
+    <div class="modal-emblem">🌹</div>
+    <div class="modal-title">أهلاً بك في مجتمع AQX</div>
+    <div class="modal-divider"></div>
+    <div class="modal-subtitle">
+      المجتمع الثقافي الأدبي الراقي<br>
+      حيث تلتقي الأقلام، وتُصنع الذائقة، ويُحتفى بالإبداع
+    </div>
+    <div class="modal-welcome">
+      🌟 نرحب بك أيها المبدع في هذا الفضاء الفريد<br>
+      الذي جمع نخبة من الكتّاب والأدباء والمفكرين<br>
+      في بيت واحد لا يشبهه بيت
+    </div>
+    <button class="modal-btn" onclick="closeModal()">ادخل إلى عالم AQX ✨</button>
+  </div>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<div class="main-wrap" id="main-wrap" style="display:none;">
+
+  <div class="hero-stripes">
+    <div class="stripe"></div>
+    <div class="stripe"></div>
+    <div class="stripe"></div>
+    <div class="stripe"></div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-logo">مجتمع AQX</div>
+    <div class="hero-tagline">المجتمع الثقافي الأدبي الأرقى والأشمل</div>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <div class="search-container">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        class="search-box"
+        id="searchInput"
+        placeholder="ابحث عن تخصص أو مجال..."
+        autocomplete="off"
+        oninput="handleSearch(this.value)"
+        onblur="setTimeout(()=>closeSearch(),200)"
+        onfocus="handleSearch(this.value)"
+      />
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards-section">
+    <div class="section-title">أقسام المجتمع</div>
+    <div class="cards-grid" id="cardsGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+
+  <footer class="footer">
+    جميع الحقوق محفوظة &copy; 2025 — مجتمع AQX الثقافي الأدبي
+  </footer>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" title="العودة للأعلى" onclick="scrollToTop()">⬆</button>
+
+<script>
+// ════════════════════════════════════════
+//  SOUND ENGINE
+// ════════════════════════════════════════
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let ctx;
+function getCtx() { if (!ctx) ctx = new AudioCtx(); return ctx; }
+
+function playTone(type='sine', freq=440, dur=0.18, vol=0.18, delay=0) {
+  try {
+    const ac = getCtx();
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    osc.connect(gain); gain.connect(ac.destination);
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, ac.currentTime + delay);
+    gain.gain.setValueAtTime(0, ac.currentTime + delay);
+    gain.gain.linearRampToValueAtTime(vol, ac.currentTime + delay + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + delay + dur);
+    osc.start(ac.currentTime + delay);
+    osc.stop(ac.currentTime + delay + dur + 0.05);
+  } catch(e){}
+}
+
+function playClick() {
+  playTone('sine', 660, 0.12, 0.15);
+  playTone('sine', 880, 0.08, 0.08, 0.04);
+}
+function playHover() {
+  playTone('sine', 520, 0.1, 0.08);
+}
+function playModal() {
+  [440,550,660,770].forEach((f,i) => playTone('sine', f, 0.3, 0.12, i*0.1));
+}
+function playScrollTop() {
+  [660,770,880].forEach((f,i) => playTone('triangle', f, 0.15, 0.12, i*0.07));
+}
+function playSearch() {
+  playTone('sine', 600, 0.08, 0.06);
+}
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('#welcome-modal') &&
+      !e.target.closest('#scrollTop') &&
+      !e.target.closest('.card')) {
+    playClick();
+  }
+}, true);
+
+// ════════════════════════════════════════
+//  CARDS DATA
+// ════════════════════════════════════════
+const cards = [
+  { name:'أدباء',         file:'udaba.html',      icon:'📖', desc:'أصحاب القلم الرفيع الذين يُشكّلون وجدان الأمة بالكلمة والفكر.', c1:'#fce4f0', c2:'#fff0f5', glow:'rgba(219,39,119,0.35)', badge:'إبداع' },
+  { name:'شعراء',         file:'shuara.html',     icon:'🪶', desc:'نبض الروح وصوت المشاعر، ينسجون الأحلام من خيوط اللغة.', c1:'#f0e4fc', c2:'#faf0ff', glow:'rgba(192,132,252,0.4)', badge:'شعر' },
+  { name:'محررون',        file:'muharrirun.html', icon:'✒️', desc:'حُرّاس الكلمة وصُنّاع المحتوى المصقول بأعلى معايير اللغة.', c1:'#e4f0fc', c2:'#f0f7ff', glow:'rgba(56,189,248,0.4)', badge:'تحرير' },
+  { name:'روائيون',       file:'ruwaiiyyun.html', icon:'📚', desc:'بُناة العوالم الخيالية، يصنعون الحياة من الحبر والخيال.', c1:'#fce4e4', c2:'#fff0f0', glow:'rgba(248,113,113,0.4)', badge:'رواية' },
+  { name:'نقاد أدبيون',  file:'nuqqad.html',     icon:'🔎', desc:'أعين البصيرة التي تُشرّح النصوص وتُضيء كنوزها الخفية.', c1:'#e4fce4', c2:'#f0fff0', glow:'rgba(74,222,128,0.4)', badge:'نقد' },
+  { name:'مترجمون',       file:'mutarjimun.html', icon:'🌐', desc:'جسور الثقافات ونقلة المعرفة بين لغات العالم.', c1:'#fef9e4', c2:'#fffdf0', glow:'rgba(245,158,11,0.4)', badge:'ترجمة' },
+  { name:'مدققون لغويون',file:'mudaqqiqun.html', icon:'🖊️', desc:'حُرّاس سلامة اللغة، يُنقّون النصوص من الأخطاء ويُصقلونها.', c1:'#e4fcf9', c2:'#f0fffd', glow:'rgba(45,212,191,0.4)', badge:'تدقيق' },
+  { name:'صحفيون',        file:'sahafiyyun.html', icon:'📰', desc:'صنّاع الرأي وحُمّاة الحقيقة في ميادين المعلومة.', c1:'#fce4f0', c2:'#fff5fa', glow:'rgba(219,39,119,0.35)', badge:'صحافة' },
+  { name:'مذيعون',        file:'mudhiun.html',    icon:'🎙️', desc:'أصحاب الصوت والحضور، يحملون الرسالة إلى ملايين المستمعين.', c1:'#e8e4fc', c2:'#f5f0ff', glow:'rgba(139,92,246,0.4)', badge:'إذاعة' },
+  { name:'باحثون',        file:'bahithun.html',   icon:'🔬', desc:'رُوّاد المعرفة الذين يغوصون في أعماق العلم بحثاً عن الحقيقة.', c1:'#e4f0e4', c2:'#f0f7f0', glow:'rgba(34,197,94,0.4)', badge:'بحث' },
+  { name:'مؤلفو خواطر',  file:'khawatir.html',   icon:'💭', desc:'لاقطو اللحظات العابرة، يُحوّلون الإحساس إلى كلمات تلامس القلوب.', c1:'#fce9e4', c2:'#fff5f0', glow:'rgba(249,115,22,0.4)', badge:'خواطر' },
+  { name:'كتاب مقالات',  file:'maqalat.html',    icon:'📝', desc:'أقلام الرأي الحرة التي تُشكّل الوعي وتُثري النقاش العام.', c1:'#fce4e8', c2:'#fff0f2', glow:'rgba(244,63,94,0.4)', badge:'مقالات' },
+  { name:'كتاب قصص قصيرة', file:'qisas.html',   icon:'📜', desc:'ساحرو المشاعر في مساحات صغيرة، يرسمون الحياة بخطوط موجزة.', c1:'#f0fce4', c2:'#f8fff0', glow:'rgba(132,204,22,0.4)', badge:'قصص' },
+  { name:'صناع محتوى ثقافي', file:'thaqafi.html',icon:'🎨', desc:'منتجو الثقافة الرقمية الذين يُعيدون تشكيل الهوية الإبداعية.', c1:'#fce4fc', c2:'#fff0ff', glow:'rgba(217,70,239,0.4)', badge:'محتوى' },
+  { name:'مدونو تقنية',  file:'taqniyya.html',   icon:'💻', desc:'ملتقى المبرمجين والمطوّرين الذين يكتبون لغة المستقبل.', c1:'#e4e8fc', c2:'#f0f3ff', glow:'rgba(99,102,241,0.4)', badge:'تقنية' },
+  { name:'مدونو التعليم', file:'talim.html',      icon:'🎓', desc:'رسالة نبيلة في نشر المعرفة وإضاءة طريق المتعلمين.', c1:'#fef5e4', c2:'#fffbf0', glow:'rgba(234,179,8,0.4)', badge:'تعليم' },
+  { name:'ناشرو كتب إلكترونية', file:'ebooks.html', icon:'📱', desc:'قناطر الكتاب الرقمي الذين يُوصلون المعرفة لكل بيت.', c1:'#e4fcf5', c2:'#f0fff8', glow:'rgba(16,185,129,0.4)', badge:'نشر' },
+  { name:'مدونون',        file:'mudawwinun.html', icon:'🌸', desc:'أصحاب المنصات الشخصية الذين يشاركون العالم أفكارهم وتجاربهم.', c1:'#fce4f2', c2:'#fff0f8', glow:'rgba(236,72,153,0.4)', badge:'تدوين' },
+  { name:'مصورو فوتوغرافيا', file:'taswiir.html',icon:'📷', desc:'أعين الحقيقة، يُجمّدون لحظات الجمال في إطارات لا تُنسى.', c1:'#e4eafc', c2:'#f0f4ff', glow:'rgba(79,70,229,0.4)', badge:'تصوير' },
+  { name:'مبرمجون',       file:'mubarmijun.html', icon:'⌨️', desc:'معماريو الرقمي يبنون المستقبل سطراً سطراً من الكود.', c1:'#e4fce8', c2:'#f0fff2', glow:'rgba(22,163,74,0.4)', badge:'برمجة' },
+  { name:'خطاطون',        file:'khatatun.html',   icon:'🖌️', desc:'فنانو الحرف العربي، يُجسّدون جمال اللغة في لوحات بصرية خالدة.', c1:'#fdf0e4', c2:'#fff8f0', glow:'rgba(194,120,3,0.4)', badge:'خط' },
+  { name:'قراء',          file:'qurra.html',      icon:'👁️', desc:'الغذاء الحقيقي للأدب، حاملو الكتاب وصُنّاع القراءة والذائقة.', c1:'#f5e4fc', c2:'#fdf0ff', glow:'rgba(168,85,247,0.4)', badge:'قراءة' },
+  { name:'رسامون ومصممو أغلفة', file:'rusam.html', icon:'🎭', desc:'أصحاب الريشة والخيال، يُلبسون الكتب أجمل الوجوه وأبهى الأثواب.', c1:'#fce4ea', c2:'#fff0f3', glow:'rgba(225,29,72,0.4)', badge:'فن' },
+];
+
+// ════════════════════════════════════════
+//  RENDER CARDS
+// ════════════════════════════════════════
+function renderCards(list) {
+  const grid = document.getElementById('cardsGrid');
+  grid.innerHTML = '';
+  list.forEach((c, i) => {
+    const a = document.createElement('a');
+    a.href = c.file;
+    a.className = 'card';
+    a.dataset.name = c.name;
+    a.style.setProperty('--c1', c.c1);
+    a.style.setProperty('--c2', c.c2);
+    a.style.setProperty('--glow', c.glow);
+    a.style.setProperty('--delay', `${(i % 6) * 0.4}s`);
+    a.innerHTML = `
+      <div class="card-glow"></div>
+      <span class="card-badge">${c.badge}</span>
+      <span class="card-icon">${c.icon}</span>
+      <div class="card-name">${c.name}</div>
+      <div class="card-desc">${c.desc}</div>
+      <div class="card-arrow">← اضغط للدخول</div>
+    `;
+    a.addEventListener('mouseenter', () => playHover());
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      playClick();
+      setTimeout(() => { window.location.href = c.file; }, 350);
+    });
+    grid.appendChild(a);
+  });
+}
+renderCards(cards);
+
+// ════════════════════════════════════════
+//  SEARCH
+// ════════════════════════════════════════
+function handleSearch(val) {
+  const res = document.getElementById('searchResults');
+  const q = val.trim();
+  if (!q) { res.classList.remove('open'); res.innerHTML = ''; return; }
+  playSearch();
+  const matches = cards.filter(c => c.name.includes(q) || c.desc.includes(q));
+  res.innerHTML = '';
+  if (matches.length === 0) {
+    res.innerHTML = `<div class="search-no-result">لا توجد نتائج لـ "${q}"</div>`;
+  } else {
+    matches.forEach(c => {
+      const d = document.createElement('div');
+      d.className = 'search-result-item';
+      d.innerHTML = `<span>${c.icon}</span><span>${c.name}</span>`;
+      d.onclick = () => {
+        document.getElementById('searchInput').value = c.name;
+        res.classList.remove('open');
+        // highlight card
+        document.querySelectorAll('.card').forEach(el => el.classList.remove('search-highlight'));
+        const target = document.querySelector(`.card[data-name="${c.name}"]`);
+        if (target) {
+          target.classList.add('search-highlight');
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => target.classList.remove('search-highlight'), 3000);
+        }
+        playClick();
+      };
+      res.appendChild(d);
+    });
+  }
+  res.classList.add('open');
+}
+function closeSearch() {
+  document.getElementById('searchResults').classList.remove('open');
+}
+
+// ════════════════════════════════════════
+//  MODAL
+// ════════════════════════════════════════
+function closeModal() {
+  playModal();
+  const m = document.getElementById('welcome-modal');
+  m.style.transition = 'opacity 0.6s ease';
+  m.style.opacity = '0';
+  setTimeout(() => {
+    m.style.display = 'none';
+    document.getElementById('main-wrap').style.display = 'block';
+  }, 600);
+}
+setTimeout(() => { try { playModal(); } catch(e){} }, 500);
+
+// ════════════════════════════════════════
+//  SCROLL TO TOP
+// ════════════════════════════════════════
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) scrollBtn.classList.add('show');
+  else scrollBtn.classList.remove('show');
+});
+function scrollToTop() {
+  playScrollTop();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ════════════════════════════════════════
+//  GOLD PARTICLES
+// ════════════════════════════════════════
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  const ctx2 = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = ['#d4a017','#f5d76e','#ffe066','#f472b6','#c084fc','#38bdf8','#fb923c'];
+  for (let i = 0; i < 70; i++) {
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 3 + 1,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: -Math.random() * 0.8 - 0.2,
+      alpha: Math.random() * 0.7 + 0.2,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      life: Math.random() * 200 + 100,
+      maxLife: 300,
+    });
+  }
+
+  function addParticle() {
+    return {
+      x: Math.random() * W,
+      y: H + 10,
+      r: Math.random() * 3 + 1,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: -Math.random() * 0.8 - 0.2,
+      alpha: Math.random() * 0.7 + 0.2,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      life: Math.random() * 200 + 100,
+      maxLife: Math.random() * 200 + 100,
+    };
+  }
+
+  function drawParticles() {
+    ctx2.clearRect(0, 0, W, H);
+    particles.forEach((p, i) => {
+      ctx2.save();
+      ctx2.globalAlpha = p.alpha * (p.life / p.maxLife);
+      ctx2.fillStyle = p.color;
+      ctx2.shadowBlur = 8;
+      ctx2.shadowColor = p.color;
+      ctx2.beginPath();
+      // star shape
+      const s = p.r;
+      ctx2.moveTo(p.x, p.y - s);
+      for (let j = 0; j < 5; j++) {
+        const angle = (j * 4 * Math.PI / 5) - Math.PI / 2;
+        const innerAngle = ((j * 4 + 2) * Math.PI / 5) - Math.PI / 2;
+        ctx2.lineTo(p.x + s * Math.cos(angle), p.y + s * Math.sin(angle));
+        ctx2.lineTo(p.x + s * 0.4 * Math.cos(innerAngle), p.y + s * 0.4 * Math.sin(innerAngle));
+      }
+      ctx2.closePath();
+      ctx2.fill();
+      ctx2.restore();
+
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life--;
+      if (p.life <= 0 || p.y < -20) {
+        particles[i] = addParticle();
+        particles[i].y = H + 10;
+      }
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+})();
+
+// ════════════════════════════════════════
+//  SNAKE BORDER
+// ════════════════════════════════════════
+(function() {
+  const canvas = document.getElementById('snake-canvas');
+  const ctx3 = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const SNAKE_COLORS = ['#d4a017','#f472b6','#c084fc','#38bdf8','#4ade80','#fb923c','#ff6edb'];
+  const SNAKE_LEN = 120;
+  const THICKNESS = 5;
+  const SPEED = 1.8;
+
+  // Build perimeter path
+  const BORDER_OFFSET = 8;
+  let perimeterLen = 0;
+  function getPerimeter() { return 2*((W - 2*BORDER_OFFSET) + (H - 2*BORDER_OFFSET)); }
+
+  let t = 0;
+
+  function posOnPerimeter(d) {
+    const P = getPerimeter();
+    d = ((d % P) + P) % P;
+    const top    = W - 2*BORDER_OFFSET;
+    const right  = H - 2*BORDER_OFFSET;
+    const bottom = W - 2*BORDER_OFFSET;
+    const left   = H - 2*BORDER_OFFSET;
+    if (d < top)    return { x: BORDER_OFFSET + d, y: BORDER_OFFSET };
+    d -= top;
+    if (d < right)  return { x: W - BORDER_OFFSET, y: BORDER_OFFSET + d };
+    d -= right;
+    if (d < bottom) return { x: W - BORDER_OFFSET - d, y: H - BORDER_OFFSET };
+    d -= bottom;
+    return { x: BORDER_OFFSET, y: H - BORDER_OFFSET - d };
+  }
+
+  let colorIdx = 0;
+  let colorTimer = 0;
+
+  function drawSnake() {
+    ctx3.clearRect(0, 0, W, H);
+    colorTimer += 0.01;
+    const baseColor = SNAKE_COLORS[Math.floor(colorTimer) % SNAKE_COLORS.length];
+    const nextColor = SNAKE_COLORS[(Math.floor(colorTimer) + 1) % SNAKE_COLORS.length];
+    const frac = colorTimer - Math.floor(colorTimer);
+
+    for (let i = 0; i < SNAKE_LEN; i++) {
+      const seg = posOnPerimeter(t - i * 2.2);
+      const alpha = 1 - (i / SNAKE_LEN);
+      const size = THICKNESS * (1 - i / SNAKE_LEN * 0.7);
+      ctx3.save();
+      ctx3.globalAlpha = alpha * 0.92;
+      ctx3.shadowBlur = 14;
+      ctx3.shadowColor = baseColor;
+      ctx3.fillStyle = baseColor;
+      ctx3.beginPath();
+      ctx3.arc(seg.x, seg.y, size, 0, Math.PI * 2);
+      ctx3.fill();
+      ctx3.restore();
+    }
+    // head eyes
+    const head = posOnPerimeter(t);
+    ctx3.save();
+    ctx3.fillStyle = '#fff';
+    ctx3.shadowBlur = 8;
+    ctx3.shadowColor = '#fff';
+    ctx3.beginPath();
+    ctx3.arc(head.x + 3, head.y - 2, 2.5, 0, Math.PI * 2);
+    ctx3.arc(head.x - 3, head.y - 2, 2.5, 0, Math.PI * 2);
+    ctx3.fill();
+    ctx3.restore();
+
+    t += SPEED;
+    requestAnimationFrame(drawSnake);
+  }
+  drawSnake();
+})();
+</script>
+</body>
+</html>
