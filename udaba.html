@@ -1,1 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البوابة الحصرية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
+        body {
+            background: linear-gradient(135deg, #f4f7f6 0%, #e2eafc 50%, #fefae0 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: hidden;
+            color: #2b2d42;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .ad-top-container {
+            width: 100%;
+            max-width: 320px;
+            height: 50px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 950px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 35px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.3;
+            background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            color: #4a5568;
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 45px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ffb703 0%, #fb8500 100%);
+            border-radius: 50px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(251, 133, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(251, 133, 0, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px);
+        }
+
+        .content-layout {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .video-box {
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            background: #ffffff;
+            aspect-ratio: 16/9;
+            position: relative;
+        }
+
+        .video-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ad-side-container {
+            width: 300px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        @media (max-width: 900px) {
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+            .ad-side-container {
+                margin: 0 auto;
+            }
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+            .main-wrapper {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ad-top-container">
+        <script>
+          atOptions = {
+            'key' : '6084f429253cae00d1188bae06e361f1',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+          };
+        </script>
+        <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="hero-section">
+            <h1>أنت لا تتابع النجاح المعتاد.. أنت من يؤسسه الآن!</h1>
+            <p>المقاعد الأولى لا تُمنح إلا لمن يمتلكون الرؤية والشغف. لم ينضم أحد بعد إلى هذه المساحة الاستثنائية، مما يمنحك الفرصة الذهبية لتكون أول من يضع بصمته ويقود الصدارة. اكتشف العرض الحصري وانطلق معنا فوراً.</p>
+        </div>
+
+        <div id="actionTrigger" class="cta-button">انضم الآن إلى النخبة واكتشف المزيد</div>
+
+        <div class="content-layout">
+            <div class="video-box">
+                <iframe src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=0&mute=0" allowfullscreen allow="autoplay"></iframe>
+            </div>
+
+            <div class="ad-side-container">
+                <script>
+                  atOptions = {
+                    'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
+
+    <script>
+        (function(_0x1a2b3c,_0x4d5e6f){var _0x55aa11=function(_0x33bb22){while(--_0x33bb22){_0x1a2b3c['push'](_0x1a2b3c['shift']());}};_0x55aa11(++_0x4d5e6f);}(_0x2c3b,0x1b3));function _0x4f2a(_0x11aa22,_0x22bb33){var _0x2c3b44=_0x2c3b[_0x11aa22-0x0];return _0x2c3b44;}var _0x3b1c=['href','location','addEventListener','click','actionTrigger','getElementById','auth.html'];document[_0x4f2a('0x5')](_0x4f2a('0x4'))[_0x4f2a('0x2')](_0x4f2a('0x3'),function(){window[_0x4f2a('0x1')][_0x4f2a('0x0')]=_0x4f2a('0x6');});function _0x2c3b(){var _0x77bb44=['auth.html','href','location','addEventListener','click','actionTrigger','getElementById'];_0x2c3b=function(){return _0x77bb44;};return _0x2c3b();}
+    </script>
+</body>
+</html>
