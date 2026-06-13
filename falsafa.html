@@ -1,1 +1,966 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أقوال الفلاسفة — مجتمع AQX الثقافي</title>
+<meta name="description" content="أعمق الحكم وأرقى الأقوال من عقول الفلاسفة عبر العصور — مجتمع AQX الثقافي الأدبي">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose:    #db2777;
+  --rose-d:  #9d174d;
+  --rose-l:  #fce7f3;
+  --gold:    #d4a017;
+  --gold-l:  #fef9c3;
+  --violet:  #7c3aed;
+  --sky:     #0ea5e9;
+  --mint:    #10b981;
+  --page:    #fdf4f9;
+  --white:   #ffffff;
+  --text:    #1a0a10;
+  --sub:     #6b2142;
+  --card-bg: rgba(255,255,255,0.88);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Cairo','Tajawal',sans-serif;
+  background:var(--page);
+  color:var(--text);
+  overflow-x:hidden;
+  min-height:100vh;
+}
 
+/* ─── CANVAS ─── */
+#stars-canvas{
+  position:fixed;inset:0;
+  pointer-events:none;z-index:0;
+}
+
+/* ─── AD STRIP TOP ─── */
+.ad-top{
+  width:100%;
+  background:linear-gradient(90deg,#fce7f3,#fef9c3,#fce7f3);
+  display:flex;justify-content:center;align-items:center;
+  padding:8px 0;
+  border-bottom:1.5px solid rgba(212,160,23,.2);
+  position:relative;z-index:10;
+  min-height:66px;
+}
+
+/* ─── HERO STRIPES ─── */
+.hero-stripes{
+  width:100%;height:80px;
+  display:flex;flex-direction:column;
+  overflow:hidden;position:relative;z-index:1;
+}
+.hs{flex:1;animation:hsAnim 4s ease-in-out infinite;}
+.hs:nth-child(1){background:linear-gradient(90deg,#fce4f0,#f9a8d4,#fce4f0);animation-delay:0s}
+.hs:nth-child(2){background:linear-gradient(90deg,#fef3c7,#fde68a,#fef3c7);animation-delay:.25s}
+.hs:nth-child(3){background:linear-gradient(90deg,#e0e7ff,#c7d2fe,#e0e7ff);animation-delay:.5s}
+.hs:nth-child(4){background:linear-gradient(90deg,#fce4f0,#fbcfe8,#fce4f0);animation-delay:.75s}
+@keyframes hsAnim{0%,100%{opacity:.6}50%{opacity:1}}
+
+/* ─── HEADER SECTION ─── */
+.page-header{
+  position:relative;z-index:1;
+  text-align:center;
+  padding:60px 24px 40px;
+}
+.site-brand{
+  display:inline-block;
+  font-family:'Cairo',sans-serif;
+  font-size:.8rem;letter-spacing:3px;
+  font-weight:700;color:#b45a80;
+  text-transform:uppercase;
+  margin-bottom:18px;
+  background:rgba(255,255,255,.7);
+  padding:5px 18px;border-radius:20px;
+  border:1px solid rgba(212,160,23,.25);
+}
+.section-name{
+  font-family:'Amiri',serif;
+  font-size:clamp(2.2rem,8vw,5rem);
+  font-weight:900;
+  letter-spacing:3px;
+  display:inline-block;
+  animation:neonCycle 3.5s linear infinite;
+  text-shadow:0 0 24px currentColor,0 0 50px currentColor;
+  margin-bottom:14px;
+}
+@keyframes neonCycle{
+  0%  {color:#ff6edb;text-shadow:0 0 24px #ff6edb,0 0 60px #ff6edb55}
+  16% {color:#c084fc;text-shadow:0 0 24px #c084fc,0 0 60px #c084fc55}
+  33% {color:#38bdf8;text-shadow:0 0 24px #38bdf8,0 0 60px #38bdf855}
+  50% {color:#d4a017;text-shadow:0 0 24px #d4a017,0 0 60px #d4a01755}
+  66% {color:#4ade80;text-shadow:0 0 24px #4ade80,0 0 60px #4ade8055}
+  83% {color:#fb923c;text-shadow:0 0 24px #fb923c,0 0 60px #fb923c55}
+  100%{color:#ff6edb;text-shadow:0 0 24px #ff6edb,0 0 60px #ff6edb55}
+}
+.section-desc{
+  max-width:680px;margin:0 auto 10px;
+  font-size:clamp(.92rem,2.2vw,1.1rem);
+  color:var(--sub);line-height:2;font-weight:400;
+  font-family:'Tajawal',sans-serif;
+}
+.gold-divider{
+  width:180px;height:3px;
+  background:linear-gradient(90deg,transparent,#d4a017,#f472b6,transparent);
+  margin:20px auto 28px;border-radius:3px;
+  animation:gdiv 3s ease-in-out infinite;
+}
+@keyframes gdiv{0%,100%{width:180px}50%{width:300px}}
+
+/* COUNT BADGE */
+.count-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(252,231,243,.9));
+  border:1.5px solid rgba(212,160,23,.3);
+  border-radius:30px;padding:8px 22px;
+  font-size:.88rem;font-weight:700;color:#9d174d;
+  box-shadow:0 4px 18px rgba(219,39,119,.1);
+  margin-bottom:28px;
+}
+.count-num{
+  font-family:'Amiri',serif;
+  font-size:1.3rem;font-weight:900;
+  background:linear-gradient(135deg,#d4a017,#db2777);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ─── SEARCH ─── */
+.search-section{
+  max-width:660px;margin:0 auto 44px;
+  padding:0 20px;position:relative;z-index:2;
+}
+.search-outer{
+  position:relative;
+}
+.search-outer::before{
+  content:'';position:absolute;inset:-2px;
+  border-radius:54px;
+  background:linear-gradient(135deg,#d4a017,#f472b6,#c084fc,#38bdf8);
+  background-size:300% 300%;
+  animation:borderRotate 3s linear infinite;
+  z-index:0;opacity:0;transition:opacity .3s;
+}
+.search-outer:focus-within::before{opacity:1}
+@keyframes borderRotate{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.search-input{
+  width:100%;
+  background:rgba(255,255,255,.94);
+  border:2px solid rgba(212,160,23,.2);
+  border-radius:50px;
+  padding:16px 56px 16px 24px;
+  font-family:'Cairo',sans-serif;
+  font-size:.98rem;color:#1a0a10;
+  outline:none;position:relative;z-index:1;
+  transition:all .3s ease;
+  box-shadow:0 4px 24px rgba(219,39,119,.1);
+}
+.search-input:focus{
+  border-color:transparent;
+  box-shadow:0 8px 36px rgba(219,39,119,.2);
+}
+.search-icon{
+  position:absolute;left:20px;top:50%;
+  transform:translateY(-50%);
+  font-size:1.2rem;z-index:2;pointer-events:none;
+}
+.search-spinner{
+  position:absolute;left:20px;top:50%;
+  transform:translateY(-50%);
+  width:20px;height:20px;
+  border:2.5px solid #f472b655;
+  border-top-color:#db2777;
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  display:none;z-index:2;
+}
+@keyframes spin{to{transform:translateY(-50%) rotate(360deg)}}
+.search-dropdown{
+  position:absolute;top:calc(100% + 8px);
+  right:0;left:0;
+  background:rgba(255,255,255,.98);
+  border-radius:20px;
+  box-shadow:0 16px 60px rgba(219,39,119,.18),0 4px 16px rgba(0,0,0,.07);
+  overflow:hidden;max-height:360px;overflow-y:auto;
+  z-index:1000;display:none;
+  border:1.5px solid rgba(212,160,23,.2);
+}
+.search-dropdown.open{display:block;animation:dropIn .22s ease}
+@keyframes dropIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.sd-item{
+  padding:13px 20px;cursor:pointer;
+  display:flex;align-items:flex-start;gap:12px;
+  transition:background .2s;
+  border-bottom:1px solid rgba(212,160,23,.08);
+}
+.sd-item:hover{background:linear-gradient(90deg,#fce4f0,#fff8e1)}
+.sd-thumb{
+  width:50px;height:50px;border-radius:10px;
+  object-fit:cover;flex-shrink:0;
+  background:#fce4f0;
+}
+.sd-info .sd-title{font-size:.88rem;font-weight:700;color:#1a0a10;margin-bottom:3px}
+.sd-info .sd-snippet{font-size:.75rem;color:#9d174d;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sd-no{padding:20px;text-align:center;color:#9d174d;font-size:.88rem}
+
+/* ─── STATS ROW ─── */
+.stats-row{
+  display:flex;justify-content:center;gap:16px;
+  flex-wrap:wrap;margin-bottom:50px;
+  position:relative;z-index:1;
+  padding:0 20px;
+}
+.stat-chip{
+  background:rgba(255,255,255,.85);
+  border:1.5px solid rgba(212,160,23,.2);
+  border-radius:50px;padding:10px 22px;
+  display:flex;align-items:center;gap:8px;
+  font-size:.82rem;color:#7c2d5a;font-weight:600;
+  box-shadow:0 4px 16px rgba(219,39,119,.07);
+  transition:transform .3s ease;
+}
+.stat-chip:hover{transform:translateY(-3px)}
+.stat-chip span:first-child{font-size:1.1rem}
+
+/* ─── CARDS GRID ─── */
+.cards-zone{
+  max-width:1300px;margin:0 auto;
+  padding:0 clamp(14px,3vw,50px) 80px;
+  position:relative;z-index:1;
+}
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:26px;
+}
+
+/* POST CARD */
+.post-card{
+  background:var(--card-bg);
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  cursor:pointer;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s ease;
+  box-shadow:0 4px 24px rgba(219,39,119,.07),0 1px 4px rgba(0,0,0,.04);
+  border:1.5px solid rgba(255,255,255,.7);
+  backdrop-filter:blur(8px);
+  display:flex;flex-direction:column;
+  text-decoration:none;color:inherit;
+}
+.post-card:hover{
+  transform:translateY(-10px) scale(1.022);
+  box-shadow:
+    0 22px 60px rgba(219,39,119,.2),
+    0 8px 24px rgba(212,160,23,.14),
+    0 0 0 2px rgba(212,160,23,.3);
+}
+.post-card-img{
+  width:100%;height:200px;
+  object-fit:cover;
+  background:linear-gradient(135deg,#fce4f0,#fef9c3);
+  position:relative;overflow:hidden;
+  flex-shrink:0;
+}
+.post-card-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s ease;
+}
+.post-card:hover .post-card-img img{transform:scale(1.07)}
+.post-card-img .img-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,rgba(157,23,77,.35));
+}
+.img-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--c1,#fce4f0),var(--c2,#fef9c3));
+  font-size:3.5rem;
+}
+
+/* card category tag */
+.card-cat{
+  position:absolute;top:12px;right:12px;
+  background:linear-gradient(135deg,#d4a017,#f59e0b);
+  color:#fff;font-size:.65rem;font-weight:700;
+  padding:4px 12px;border-radius:20px;
+  letter-spacing:1px;z-index:2;
+}
+/* share btn */
+.share-btn{
+  position:absolute;top:12px;left:12px;
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.9);
+  border:1.5px solid rgba(212,160,23,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;cursor:pointer;z-index:2;
+  transition:all .3s ease;
+  box-shadow:0 3px 12px rgba(0,0,0,.1);
+}
+.share-btn:hover{
+  background:linear-gradient(135deg,#d4a017,#db2777);
+  transform:scale(1.15) rotate(15deg);
+}
+
+.post-card-body{padding:22px 20px 16px}
+.post-date{
+  font-size:.7rem;color:#b45a80;font-weight:500;
+  margin-bottom:8px;display:flex;align-items:center;gap:5px;
+}
+.post-title{
+  font-family:'Amiri',serif;
+  font-size:1.12rem;font-weight:700;
+  color:#1a0a10;line-height:1.5;
+  margin-bottom:10px;
+  display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;
+}
+.post-snippet{
+  font-size:.82rem;color:#7c2d5a;
+  line-height:1.85;
+  display:-webkit-box;-webkit-line-clamp:3;
+  -webkit-box-orient:vertical;overflow:hidden;
+  margin-bottom:14px;
+}
+.post-card-foot{
+  margin-top:auto;
+  padding:12px 20px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid rgba(212,160,23,.12);
+}
+.read-more{
+  font-size:.78rem;font-weight:700;
+  color:#db2777;
+  display:flex;align-items:center;gap:4px;
+  text-decoration:none;
+  transition:gap .3s ease;
+}
+.post-card:hover .read-more{gap:8px}
+.post-likes{
+  font-size:.75rem;color:#b45a80;
+  display:flex;align-items:center;gap:4px;
+}
+
+/* ─── SKELETON LOADER ─── */
+.skeleton{
+  background:linear-gradient(90deg,#fce4f0 25%,#fff0f8 50%,#fce4f0 75%);
+  background-size:200% 100%;
+  animation:shimmer 1.4s ease-in-out infinite;
+  border-radius:8px;
+}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-card{
+  background:rgba(255,255,255,.8);
+  border-radius:22px;overflow:hidden;
+  border:1.5px solid rgba(255,255,255,.6);
+}
+.skel-img{height:200px}
+.skel-body{padding:22px 20px}
+.skel-line{height:12px;margin-bottom:10px;border-radius:6px}
+.skel-line.short{width:40%}
+.skel-line.med{width:70%}
+.skel-line.long{width:100%}
+
+/* ─── LOAD MORE ─── */
+.load-more-wrap{
+  text-align:center;margin:44px 0 60px;
+  position:relative;z-index:1;
+}
+.load-more-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 48px;
+  background:linear-gradient(135deg,#d4a017,#db2777,#9d174d);
+  background-size:200% 200%;
+  color:#fff;font-size:1rem;font-weight:700;
+  font-family:'Cairo',sans-serif;
+  border:none;border-radius:50px;cursor:pointer;
+  box-shadow:0 8px 36px rgba(219,39,119,.35);
+  transition:all .35s cubic-bezier(.34,1.56,.64,1);
+  animation:btnPulse 2.5s ease-in-out infinite;
+  position:relative;overflow:hidden;
+}
+.load-more-btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  transform:translateX(-100%);transition:transform .5s ease;
+}
+.load-more-btn:hover::before{transform:translateX(100%)}
+.load-more-btn:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 16px 50px rgba(219,39,119,.5)}
+.load-more-btn:disabled{opacity:.5;pointer-events:none}
+@keyframes btnPulse{0%,100%{box-shadow:0 8px 36px rgba(219,39,119,.35)}50%{box-shadow:0 8px 50px rgba(212,160,23,.55)}}
+
+/* ─── AD MID ─── */
+.ad-mid{
+  display:flex;justify-content:center;
+  padding:20px 0 36px;
+  position:relative;z-index:1;
+}
+.ad-box{
+  background:rgba(255,255,255,.8);
+  border-radius:18px;padding:12px;
+  border:1.5px solid rgba(212,160,23,.18);
+  box-shadow:0 6px 24px rgba(219,39,119,.07);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.ad-label{font-size:.6rem;color:#b45a80;letter-spacing:2px;text-transform:uppercase;font-weight:600}
+
+/* ─── VIDEO SECTION ─── */
+.video-section{
+  max-width:820px;margin:0 auto 60px;
+  padding:0 20px;position:relative;z-index:1;
+}
+.video-title{
+  text-align:center;
+  font-family:'Amiri',serif;
+  font-size:1.3rem;color:#9d174d;
+  margin-bottom:16px;font-weight:700;
+}
+.video-title span{color:#d4a017}
+.video-outer{
+  border-radius:22px;overflow:hidden;
+  box-shadow:0 0 0 3px rgba(212,160,23,.4),0 24px 80px rgba(219,39,119,.2);
+  animation:vglow 3s ease-in-out infinite;
+}
+@keyframes vglow{
+  0%,100%{box-shadow:0 0 0 3px rgba(212,160,23,.4),0 24px 80px rgba(219,39,119,.2)}
+  50%{box-shadow:0 0 0 4px rgba(212,160,23,.7),0 24px 100px rgba(219,39,119,.35)}
+}
+.video-outer iframe{width:100%;aspect-ratio:16/9;display:block;border:none}
+
+/* ─── TICKER ─── */
+.ticker{
+  overflow:hidden;padding:14px 0;
+  background:linear-gradient(90deg,rgba(252,231,243,.6),rgba(254,249,195,.6),rgba(252,231,243,.6));
+  border-top:1px solid rgba(212,160,23,.15);
+  border-bottom:1px solid rgba(212,160,23,.15);
+  margin-bottom:50px;position:relative;z-index:1;
+}
+.ticker-track{
+  display:flex;gap:50px;width:max-content;
+  animation:tick 26s linear infinite;align-items:center;
+}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tick-item{
+  white-space:nowrap;font-size:.85rem;
+  color:#7c2d5a;font-weight:600;
+  display:flex;align-items:center;gap:8px;
+}
+.tick-dot{
+  width:7px;height:7px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#d4a017,#f472b6);
+}
+
+/* ─── SCROLL TOP ─── */
+#scrollTop{
+  position:fixed;bottom:30px;left:30px;
+  width:50px;height:50px;border-radius:50%;border:none;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;z-index:9990;
+  opacity:0;pointer-events:none;
+  transition:all .4s cubic-bezier(.34,1.56,.64,1);
+  background:linear-gradient(135deg,#d4a017,#db2777,#7c3aed);
+  color:#fff;box-shadow:0 6px 28px rgba(219,39,119,.4);
+}
+#scrollTop.show{opacity:1;pointer-events:all}
+#scrollTop:hover{transform:scale(1.15) rotate(360deg)}
+
+/* ─── FOOTER ─── */
+footer{
+  text-align:center;padding:24px;
+  font-size:.78rem;color:#b45a80;
+  border-top:1px solid rgba(212,160,23,.15);
+  background:rgba(255,255,255,.45);
+  backdrop-filter:blur(6px);
+  position:relative;z-index:1;
+}
+
+/* ─── QUOTE CARD SPECIAL ─── */
+.quote-glow{
+  position:absolute;top:-20px;right:-20px;
+  width:80px;height:80px;border-radius:50%;
+  background:radial-gradient(circle,var(--glow,rgba(212,160,23,.35)) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* ─── ERROR STATE ─── */
+.error-state{
+  text-align:center;padding:60px 20px;
+  position:relative;z-index:1;
+}
+.error-state .err-icon{font-size:4rem;margin-bottom:16px}
+.error-state h3{font-family:'Amiri',serif;color:#9d174d;font-size:1.5rem;margin-bottom:10px}
+.error-state p{color:#7c2d5a;font-size:.9rem;line-height:1.8}
+
+@media(max-width:640px){
+  .cards-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .post-card-body{padding:14px 13px 10px}
+  .post-title{font-size:.98rem}
+}
+@media(max-width:420px){
+  .cards-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars-canvas"></canvas>
+
+<!-- ══ AD TOP ══ -->
+<div class="ad-top">
+  <script>atOptions={'key':'6084f429253cae00d1188bae06e361f1','format':'iframe','height':50,'width':320,'params':{}};</script>
+  <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+</div>
+
+<!-- ══ STRIPES ══ -->
+<div class="hero-stripes">
+  <div class="hs"></div><div class="hs"></div>
+  <div class="hs"></div><div class="hs"></div>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header class="page-header">
+  <div class="site-brand">✦ مجتمع AQX الثقافي الأدبي ✦</div>
+  <h1 class="section-name">أقوال الفلاسفة</h1>
+  <p class="section-desc">
+    هنا تتنفس الحكمة وتحيا الكلمة. نخبة من أعمق أقوال الفلاسفة عبر العصور —<br>
+    من سقراط إلى ابن رشد، من نيتشه إلى الغزالي — كل مقتبَس بوابة إلى عالم آخر.
+  </p>
+  <div class="gold-divider"></div>
+  <div class="count-badge">
+    <span>📚</span>
+    <span>إجمالي المقالات:</span>
+    <span class="count-num" id="totalCount">—</span>
+    <span>مقال</span>
+  </div>
+</header>
+
+<!-- ══ SEARCH ══ -->
+<div class="search-section">
+  <div class="search-outer">
+    <span class="search-icon" id="searchIcon">🔍</span>
+    <div class="search-spinner" id="searchSpinner"></div>
+    <input
+      type="text" id="searchInput" class="search-input"
+      placeholder="ابحث في أقوال الفلاسفة..."
+      autocomplete="off"
+      oninput="handleSearch(this.value)"
+      onblur="setTimeout(closeSearch,200)"
+      onfocus="if(this.value) handleSearch(this.value)"
+    />
+    <div class="search-dropdown" id="searchDropdown"></div>
+  </div>
+</div>
+
+<!-- ══ STATS ══ -->
+<div class="stats-row">
+  <div class="stat-chip"><span>📖</span><span id="sc-loaded">جاري التحميل...</span></div>
+  <div class="stat-chip"><span>✍️</span><span>محتوى ثقافي راقٍ</span></div>
+  <div class="stat-chip"><span>🌟</span><span>تحديث مستمر</span></div>
+  <div class="stat-chip"><span>🔖</span><span>قسم الفلاسفة</span></div>
+</div>
+
+<!-- ══ CARDS ══ -->
+<div class="cards-zone">
+  <div class="cards-grid" id="cardsGrid">
+    <!-- skeletons -->
+    <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skel-line short skeleton"></div><div class="skel-line med skeleton"></div><div class="skel-line long skeleton"></div><div class="skel-line long skeleton"></div></div></div>
+    <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skel-line short skeleton"></div><div class="skel-line med skeleton"></div><div class="skel-line long skeleton"></div><div class="skel-line long skeleton"></div></div></div>
+    <div class="skel-card"><div class="skel-img skeleton"></div><div class="skel-body"><div class="skel-line short skeleton"></div><div class="skel-line med skeleton"></div><div class="skel-line long skeleton"></div><div class="skel-line long skeleton"></div></div></div>
+  </div>
+</div>
+
+<!-- ══ LOAD MORE ══ -->
+<div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+  <button class="load-more-btn" id="loadMoreBtn" onclick="loadMore()">
+    <span>✨</span> عرض المزيد من الأقوال <span>↓</span>
+  </button>
+</div>
+
+<!-- ══ AD MID ══ -->
+<div class="ad-mid">
+  <div class="ad-box">
+    <span class="ad-label">إعلان</span>
+    <script>atOptions={'key':'82c46c1474bb89d2cb9fe0cc5b3519e3','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+  </div>
+</div>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="tick-item"><span class="tick-dot"></span>الفلسفة ليست ترفاً — إنها ضرورة الإنسان الحر</span>
+    <span class="tick-item"><span class="tick-dot"></span>مجتمع AQX: حيث تلتقي العقول الاستثنائية</span>
+    <span class="tick-item"><span class="tick-dot"></span>كل مقولة فيلسوف هي نافذة على عقله الخالد</span>
+    <span class="tick-item"><span class="tick-dot"></span>الحكمة لا تُحجب بالزمن — إنها تتجدد</span>
+    <span class="tick-item"><span class="tick-dot"></span>اقرأ، فكّر، تأمّل — هذا هو مفتاح القسم</span>
+    <span class="tick-item"><span class="tick-dot"></span>الفلسفة ليست ترفاً — إنها ضرورة الإنسان الحر</span>
+    <span class="tick-item"><span class="tick-dot"></span>مجتمع AQX: حيث تلتقي العقول الاستثنائية</span>
+    <span class="tick-item"><span class="tick-dot"></span>كل مقولة فيلسوف هي نافذة على عقله الخالد</span>
+    <span class="tick-item"><span class="tick-dot"></span>الحكمة لا تُحجب بالزمن — إنها تتجدد</span>
+    <span class="tick-item"><span class="tick-dot"></span>اقرأ، فكّر، تأمّل — هذا هو مفتاح القسم</span>
+  </div>
+</div>
+
+<!-- ══ VIDEO ══ -->
+<div class="video-section">
+  <div class="video-title">🎬 من <span>روح مجتمع AQX</span></div>
+  <div class="video-outer">
+    <iframe
+      src="https://www.dailymotion.com/embed/video/xaclp86?autoplay=0&ui-logo=0&ui-start-screen-info=0"
+      allowfullscreen allow="autoplay"
+      title="مجتمع AQX"></iframe>
+  </div>
+</div>
+
+<!-- ══ AD BOTTOM ══ -->
+<div class="ad-mid">
+  <div class="ad-box">
+    <span class="ad-label">إعلان مدعوم</span>
+    <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
+  </div>
+</div>
+
+<footer>جميع الحقوق محفوظة &copy; 2025 — مجتمع AQX الثقافي الأدبي</footer>
+<button id="scrollTop" onclick="scrollToTop()" title="للأعلى">⬆</button>
+
+<script>
+// ════════════════════════════════════════════
+//  CONFIG — غيّر هذا فقط
+// ════════════════════════════════════════════
+const BLOG_ID   = 'YOUR_BLOG_ID';          // ← ضع ID مدونتك هنا
+const LABEL     = 'أقوال الفلاسفة';        // ← اسم التصنيف في بلوجر
+const API_KEY   = 'YOUR_BLOGGER_API_KEY';  // ← مفتاح API من Google Console
+const PER_PAGE  = 9;
+
+// ════════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════════
+let allPosts   = [];
+let displayed  = 0;
+let nextToken  = null;
+let loading    = false;
+let totalFetched = 0;
+
+// gradient sets for placeholder images
+const GRAD_SETS = [
+  {c1:'#fce4f0',c2:'#fef9c3',glow:'rgba(219,39,119,.3)',emoji:'🦉'},
+  {c1:'#e4f0fc',c2:'#fce4f0',glow:'rgba(56,189,248,.3)',emoji:'📜'},
+  {c1:'#f0e4fc',c2:'#fce4f0',glow:'rgba(192,132,252,.3)',emoji:'🪶'},
+  {c1:'#fce4e4',c2:'#fef9c3',glow:'rgba(248,113,113,.3)',emoji:'🧠'},
+  {c1:'#e4fce4',c2:'#fef9c3',glow:'rgba(74,222,128,.3)',emoji:'💡'},
+  {c1:'#fdf0e4',c2:'#fce4f0',glow:'rgba(251,146,60,.3)',emoji:'🌿'},
+];
+
+// ════════════════════════════════════════════
+//  SOUND ENGINE
+// ════════════════════════════════════════════
+let audioCtx;
+function getAC(){ if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); return audioCtx; }
+function tone(freq=440,dur=.15,vol=.12,type='sine',delay=0){
+  try{
+    const ac=getAC(), o=ac.createOscillator(), g=ac.createGain();
+    o.connect(g); g.connect(ac.destination);
+    o.type=type; o.frequency.value=freq;
+    g.gain.setValueAtTime(0,ac.currentTime+delay);
+    g.gain.linearRampToValueAtTime(vol,ac.currentTime+delay+.02);
+    g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+delay+dur);
+    o.start(ac.currentTime+delay);
+    o.stop(ac.currentTime+delay+dur+.05);
+  }catch(e){}
+}
+const sndHover  = ()=>tone(520,.09,.07);
+const sndClick  = ()=>{ tone(660,.12,.13); tone(880,.08,.08,.sine,.06); };
+const sndLoad   = ()=>{ [440,550,660].forEach((f,i)=>tone(f,.25,.1,'sine',i*.08)); };
+const sndSearch = ()=>tone(580,.07,.06);
+const sndShare  = ()=>{ tone(880,.1,.12); tone(1100,.08,.09,.sine,.07); };
+
+document.addEventListener('click', e=>{
+  if(!e.target.closest('.load-more-btn') && !e.target.closest('.share-btn') && !e.target.closest('.cta-btn'))
+    sndClick();
+},true);
+
+// ════════════════════════════════════════════
+//  BLOGGER API FETCH
+// ════════════════════════════════════════════
+async function fetchPosts(pageToken=''){
+  if(loading) return;
+  loading = true;
+
+  const url = new URL(`https://www.googleapis.com/blogger/v3/blogs/${BLOG_ID}/posts`);
+  url.searchParams.set('key', API_KEY);
+  url.searchParams.set('labels', LABEL);
+  url.searchParams.set('maxResults', 50);
+  url.searchParams.set('fields', 'items(id,title,published,url,labels,content,images),nextPageToken,items');
+  if(pageToken) url.searchParams.set('pageToken', pageToken);
+
+  try {
+    const res  = await fetch(url);
+    const data = await res.json();
+
+    if(data.error){ showError(data.error.message); loading=false; return; }
+
+    const items = data.items || [];
+    allPosts = [...allPosts, ...items];
+    nextToken = data.nextPageToken || null;
+    totalFetched = allPosts.length;
+
+    document.getElementById('totalCount').textContent = totalFetched + (nextToken ? '+' : '');
+    document.getElementById('sc-loaded').textContent  = `${totalFetched} مقال محمّل`;
+
+    renderCards();
+    sndLoad();
+    loading = false;
+
+    // fetch more pages automatically
+    if(nextToken && allPosts.length < 200) {
+      setTimeout(()=>fetchPosts(nextToken), 800);
+    }
+  } catch(err){
+    showError('تعذّر الاتصال بالمدونة. يرجى التحقق من الإعدادات.');
+    loading = false;
+  }
+}
+
+// ════════════════════════════════════════════
+//  RENDER
+// ════════════════════════════════════════════
+function renderCards(append=false){
+  const grid  = document.getElementById('cardsGrid');
+  const batch = allPosts.slice(displayed, displayed + PER_PAGE);
+  if(!append) grid.innerHTML = '';
+
+  if(allPosts.length === 0){
+    grid.innerHTML = `
+      <div class="error-state" style="grid-column:1/-1">
+        <div class="err-icon">🦉</div>
+        <h3>لا توجد مقالات بعد</h3>
+        <p>لم يتم العثور على مقالات في قسم "${LABEL}".<br>تأكد من اسم التصنيف وإعدادات API.</p>
+      </div>`;
+    return;
+  }
+
+  batch.forEach((post, idx)=>{
+    const card = buildCard(post, displayed + idx);
+    card.style.animationDelay = `${idx * 0.07}s`;
+    card.style.animation = 'cardIn .5s ease both';
+    grid.appendChild(card);
+  });
+
+  displayed += batch.length;
+
+  const wrap = document.getElementById('loadMoreWrap');
+  if(displayed < allPosts.length || nextToken){
+    wrap.style.display = 'block';
+    document.getElementById('loadMoreBtn').disabled = false;
+  } else {
+    wrap.style.display = 'none';
+  }
+}
+
+function buildCard(post, idx){
+  const g    = GRAD_SETS[idx % GRAD_SETS.length];
+  const date = new Date(post.published).toLocaleDateString('ar-EG',{year:'numeric',month:'long',day:'numeric'});
+  const snippet = stripHtml(post.content).slice(0, 140) + '...';
+  const imgUrl  = getImage(post);
+
+  const a = document.createElement('a');
+  a.href    = post.url;
+  a.target  = '_blank';
+  a.rel     = 'noopener';
+  a.className = 'post-card';
+  a.style.setProperty('--glow', g.glow);
+
+  const imgHtml = imgUrl
+    ? `<img src="${imgUrl}" alt="${escHtml(post.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=img-placeholder style=--c1:${encodeURIComponent(g.c1)};--c2:${encodeURIComponent(g.c2)}>${g.emoji}</div>'">`
+    : `<div class="img-placeholder" style="--c1:${g.c1};--c2:${g.c2}">${g.emoji}</div>`;
+
+  a.innerHTML = `
+    <div class="post-card-img">
+      ${imgHtml}
+      <div class="img-overlay"></div>
+      <div class="card-cat">فلسفة</div>
+      <button class="share-btn" onclick="sharePost(event,'${escHtml(post.url)}','${escHtml(post.title)}')" title="مشاركة">🔗</button>
+    </div>
+    <div class="quote-glow"></div>
+    <div class="post-card-body">
+      <div class="post-date">📅 ${date}</div>
+      <div class="post-title">${escHtml(post.title)}</div>
+      <div class="post-snippet">${escHtml(snippet)}</div>
+    </div>
+    <div class="post-card-foot">
+      <span class="read-more">اقرأ المزيد ←</span>
+      <span class="post-likes">🤍 تأمّل</span>
+    </div>
+  `;
+
+  a.addEventListener('mouseenter', sndHover);
+  return a;
+}
+
+function loadMore(){
+  sndClick();
+  const btn = document.getElementById('loadMoreBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="search-spinner" style="display:inline-block;position:static;transform:none;border-color:#fff4;border-top-color:#fff"></span> جاري التحميل...';
+  if(displayed < allPosts.length){
+    setTimeout(()=>{
+      renderCards(true);
+      btn.innerHTML = '<span>✨</span> عرض المزيد من الأقوال <span>↓</span>';
+      sndLoad();
+    }, 400);
+  } else if(nextToken){
+    fetchPosts(nextToken).then(()=>{
+      btn.innerHTML = '<span>✨</span> عرض المزيد من الأقوال <span>↓</span>';
+    });
+  }
+}
+
+// ════════════════════════════════════════════
+//  SEARCH
+// ════════════════════════════════════════════
+function handleSearch(val){
+  const dd = document.getElementById('searchDropdown');
+  sndSearch();
+  if(!val.trim()){ dd.classList.remove('open'); return; }
+
+  const q = val.trim().toLowerCase();
+  const matches = allPosts.filter(p=>
+    p.title.toLowerCase().includes(q) ||
+    stripHtml(p.content).toLowerCase().includes(q)
+  ).slice(0,8);
+
+  dd.innerHTML = '';
+  if(!matches.length){
+    dd.innerHTML = `<div class="sd-no">لا نتائج لـ "${val}"</div>`;
+  } else {
+    matches.forEach(p=>{
+      const imgUrl = getImage(p);
+      const snippet = stripHtml(p.content).slice(0,80)+'...';
+      const item = document.createElement('div');
+      item.className = 'sd-item';
+      item.innerHTML = `
+        ${imgUrl ? `<img class="sd-thumb" src="${imgUrl}" alt="">` : `<div class="sd-thumb" style="display:flex;align-items:center;justify-content:center;background:#fce4f0;font-size:1.4rem">🦉</div>`}
+        <div class="sd-info">
+          <div class="sd-title">${escHtml(p.title)}</div>
+          <div class="sd-snippet">${escHtml(snippet)}</div>
+        </div>`;
+      item.onclick = ()=>{ sndClick(); window.open(p.url,'_blank'); };
+      dd.appendChild(item);
+    });
+  }
+  dd.classList.add('open');
+}
+function closeSearch(){ document.getElementById('searchDropdown').classList.remove('open'); }
+
+// ════════════════════════════════════════════
+//  SHARE
+// ════════════════════════════════════════════
+function sharePost(e, url, title){
+  e.preventDefault(); e.stopPropagation(); sndShare();
+  if(navigator.share){
+    navigator.share({ title, text: title, url })
+      .catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(url).then(()=>{
+      const btn = e.currentTarget;
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✅';
+      setTimeout(()=>btn.innerHTML = orig, 1500);
+    });
+  }
+}
+
+// ════════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════════
+function stripHtml(html){
+  const d = document.createElement('div');
+  d.innerHTML = html;
+  return d.textContent || d.innerText || '';
+}
+function escHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function getImage(post){
+  if(post.images && post.images[0]) return post.images[0].url;
+  const m = (post.content||'').match(/<img[^>]+src="([^"]+)"/i);
+  return m ? m[1] : null;
+}
+function showError(msg){
+  document.getElementById('cardsGrid').innerHTML = `
+    <div class="error-state" style="grid-column:1/-1">
+      <div class="err-icon">⚠️</div>
+      <h3>تعذّر التحميل</h3>
+      <p>${escHtml(msg)}</p>
+      <p style="margin-top:10px;font-size:.8rem;color:#b45a80">
+        تأكد من تعيين BLOG_ID و API_KEY الصحيحين في الكود
+      </p>
+    </div>`;
+}
+
+// ════════════════════════════════════════════
+//  GOLD PARTICLES
+// ════════════════════════════════════════════
+(function(){
+  const c = document.getElementById('stars-canvas');
+  const ctx = c.getContext('2d');
+  let W, H, pts = [];
+  const COLS = ['#d4a017','#f5d76e','#f472b6','#c084fc','#38bdf8','#fb923c','#4ade80'];
+  function resize(){ W=c.width=window.innerWidth; H=c.height=window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  function mk(){ return {x:Math.random()*W, y:H+8, r:Math.random()*2.8+.7,
+    vx:(Math.random()-.5)*.45, vy:-Math.random()*.75-.15,
+    a:Math.random()*.65+.2, c:COLS[~~(Math.random()*COLS.length)],
+    life:Math.random()*260+80, max:300}; }
+  for(let i=0;i<65;i++) pts.push({...mk(), y:Math.random()*H});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach((p,i)=>{
+      ctx.save();
+      ctx.globalAlpha = p.a*(p.life/p.max);
+      ctx.shadowBlur=8; ctx.shadowColor=p.c; ctx.fillStyle=p.c;
+      ctx.beginPath();
+      // 6-pointed star-ish diamond
+      const s=p.r;
+      ctx.moveTo(p.x, p.y-s*2.2); ctx.lineTo(p.x+s*.6, p.y-s*.6);
+      ctx.lineTo(p.x+s*2.2, p.y); ctx.lineTo(p.x+s*.6, p.y+s*.6);
+      ctx.lineTo(p.x, p.y+s*2.2); ctx.lineTo(p.x-s*.6, p.y+s*.6);
+      ctx.lineTo(p.x-s*2.2, p.y); ctx.lineTo(p.x-s*.6, p.y-s*.6);
+      ctx.closePath(); ctx.fill();
+      ctx.restore();
+      p.x+=p.vx; p.y+=p.vy; p.life--;
+      if(p.life<=0||p.y<-20) pts[i]=mk();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ════════════════════════════════════════════
+//  SCROLL TOP
+// ════════════════════════════════════════════
+const stBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll',()=>stBtn.classList.toggle('show',window.scrollY>300));
+function scrollToTop(){ tone(660,.15,.13); tone(880,.1,.1,'sine',.1); window.scrollTo({top:0,behavior:'smooth'}); }
+
+// ════════════════════════════════════════════
+//  CARD ANIMATION
+// ════════════════════════════════════════════
+const style = document.createElement('style');
+style.textContent = '@keyframes cardIn{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}';
+document.head.appendChild(style);
+
+// ════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════
+fetchPosts();
+</script>
+</body>
+</html>
