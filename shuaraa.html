@@ -1,1 +1,498 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الشعراء — القُرماني AQX</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --purple:#9b59b6;
+  --purple2:#b07dd4;
+  --purple3:#d0a8f0;
+  --gold:#c9a84c;
+  --gold2:#e8c96a;
+  --gold3:#ffe08a;
+  --deep:#1a0a2e;
+  --deep2:#22103a;
+  --mid:#2d1550;
+  --text:#f0e6ff;
+  --muted:#c4a0e0;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Tajawal',sans-serif;
+  background:var(--deep);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  direction:rtl;
+}
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+#snakeCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;}
 
+.top-space-card{position:relative;z-index:10;margin:0 auto;max-width:900px;padding:18px 28px 10px;}
+.top-line{height:2px;border-radius:2px;margin-bottom:10px;background:linear-gradient(90deg,transparent,rgba(176,125,212,0.5),transparent);}
+.top-line:nth-child(2){opacity:0.7;}
+.top-line:nth-child(3){opacity:0.5;}
+.top-line:nth-child(4){opacity:0.3;}
+.top-line:nth-child(5){opacity:0.15;}
+
+header{position:relative;z-index:10;text-align:center;padding:30px 20px 20px;}
+.site-eyebrow{font-size:11px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:0.7;}
+.site-title{font-size:clamp(2.2rem,7vw,5rem);font-weight:900;line-height:1;display:inline-block;animation:neonTitle 5s ease-in-out infinite,floatY 3.5s ease-in-out infinite;padding-bottom:4px;}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes neonTitle{
+  0%  {color:#e8c96a;text-shadow:0 0 20px #c9a84c,0 0 50px #c9a84c}
+  13% {color:#d0a8f0;text-shadow:0 0 20px #9b59b6,0 0 50px #9b59b6}
+  26% {color:#a78bfa;text-shadow:0 0 20px #7c3aed,0 0 50px #7c3aed}
+  39% {color:#f9a8d4;text-shadow:0 0 20px #db2777,0 0 50px #db2777}
+  52% {color:#c4b5fd;text-shadow:0 0 20px #7c3aed,0 0 50px #6d28d9}
+  65% {color:#f0abfc;text-shadow:0 0 20px #a21caf,0 0 50px #a21caf}
+  78% {color:#fde68a;text-shadow:0 0 20px #d97706,0 0 50px #d97706}
+  91% {color:#e879f9;text-shadow:0 0 20px #c026d3,0 0 50px #c026d3}
+  100%{color:#e8c96a;text-shadow:0 0 20px #c9a84c,0 0 50px #c9a84c}
+}
+.site-subtitle{font-size:clamp(0.85rem,2vw,1.1rem);color:var(--muted);margin-top:12px;font-weight:300;letter-spacing:2px;}
+.divider-gold{width:100px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:16px auto;}
+
+.ad-strip{position:relative;z-index:10;display:flex;align-items:center;justify-content:center;min-height:58px;padding:6px 0;background:rgba(26,10,46,0.85);border-bottom:1px solid rgba(176,125,212,0.08);}
+.ad-label{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:9px;color:rgba(176,125,212,0.25);letter-spacing:2px;}
+
+.video-wrap{position:relative;z-index:10;max-width:720px;margin:24px auto;padding:0 20px;}
+.video-frame{border-radius:16px;overflow:hidden;border:1px solid rgba(176,125,212,0.25);box-shadow:0 0 60px rgba(155,89,182,0.15);}
+.video-frame iframe{width:100%;aspect-ratio:16/9;display:block;border:none}
+.video-tag{position:absolute;top:12px;right:32px;background:rgba(26,10,46,0.85);border:1px solid rgba(176,125,212,0.3);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--purple3);letter-spacing:2px;}
+
+.grid-section{position:relative;z-index:10;max-width:1200px;margin:40px auto;padding:0 20px 40px;}
+.section-label{text-align:center;font-size:clamp(1rem,2.5vw,1.3rem);color:var(--muted);letter-spacing:4px;font-weight:300;margin-bottom:44px;}
+.section-label::after{content:'';display:block;width:50px;height:1px;background:var(--gold);margin:12px auto 0;opacity:0.45;}
+
+.countries-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+
+.country-card{position:relative;border-radius:18px;overflow:hidden;cursor:pointer;text-decoration:none;display:block;background:rgba(45,21,80,0.35);border:1px solid rgba(176,125,212,0.15);backdrop-filter:blur(12px);transition:transform 0.35s ease,box-shadow 0.35s ease,border-color 0.35s ease;padding:28px 20px 22px;text-align:center;}
+.country-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 40px rgba(155,89,182,0.25);border-color:rgba(176,125,212,0.5);}
+.country-card:active{transform:scale(0.97)}
+
+.card-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(155,89,182,0.1) 0%,transparent 70%);opacity:0;transition:opacity 0.3s;}
+.country-card:hover .card-glow{opacity:1}
+
+.flag-wrap{font-size:48px;margin-bottom:12px;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4));transition:transform 0.3s ease;line-height:1.2;}
+.country-card:hover .flag-wrap{transform:scale(1.12) rotate(-3deg)}
+
+.country-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:0.5px;}
+.country-sub{font-size:0.78rem;color:var(--muted);letter-spacing:1.5px;font-weight:300;}
+
+.enter-btn{display:inline-block;margin-top:14px;padding:7px 22px;border-radius:30px;border:1px solid rgba(176,125,212,0.3);background:rgba(155,89,182,0.07);color:var(--purple3);font-size:0.78rem;letter-spacing:2px;font-family:'Tajawal',sans-serif;transition:all 0.25s;}
+.country-card:hover .enter-btn{background:rgba(155,89,182,0.2);border-color:rgba(176,125,212,0.6);}
+
+.ad-mid{position:relative;z-index:10;display:flex;justify-content:center;align-items:center;padding:20px;}
+
+footer{position:relative;z-index:10;text-align:center;padding:36px 20px;border-top:1px solid rgba(176,125,212,0.08);}
+.footer-logo{font-size:1.4rem;font-weight:900;color:var(--gold);margin-bottom:8px;display:block;}
+.footer-copy{font-size:11px;color:rgba(176,125,212,0.3);letter-spacing:2px}
+
+.dots{position:relative;z-index:10;display:flex;justify-content:center;gap:8px;margin:16px 0;}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0.4;animation:dpulse 2s ease-in-out infinite;}
+.dot:nth-child(2){animation-delay:.3s}.dot:nth-child(3){animation-delay:.6s}
+@keyframes dpulse{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:.9;transform:scale(1.6)}}
+
+@media(max-width:600px){.countries-grid{grid-template-columns:repeat(2,1fr);gap:12px}.country-card{padding:20px 12px 16px}.flag-wrap{font-size:36px}}
+@media(max-width:360px){.countries-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+<canvas id="snakeCanvas"></canvas>
+
+<div class="top-space-card">
+  <div class="top-line"></div>
+  <div class="top-line"></div>
+  <div class="top-line"></div>
+  <div class="top-line"></div>
+  <div class="top-line"></div>
+</div>
+
+<header>
+  <p class="site-eyebrow">✦ القُرماني AQX ✦</p>
+  <h1 class="site-title">الشعراء</h1>
+  <p class="site-subtitle">موسوعة الشعراء العالميين — ملفات شخصية من جميع الدول</p>
+  <div class="divider-gold"></div>
+</header>
+
+<div class="ad-strip">
+  <span class="ad-label">إعلان</span>
+  <script>atOptions={'key':'6084f429253cae00d1188bae06e361f1','format':'iframe','height':50,'width':320,'params':{}};</script>
+  <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+</div>
+
+<div class="video-wrap">
+  <div class="video-frame">
+    <iframe src="https://www.dailymotion.com/embed/video/xaclp86" allowfullscreen allow="autoplay;fullscreen" title="القرماني AQX — الشعراء"></iframe>
+  </div>
+  <span class="video-tag">✦ القرماني AQX</span>
+</div>
+
+<div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+
+<div class="ad-mid">
+  <script>atOptions={'key':'82c46c1474bb89d2cb9fe0cc5b3519e3','format':'iframe','height':250,'width':300,'params':{}};</script>
+  <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+</div>
+
+<section class="grid-section">
+  <p class="section-label">اختر دولة لاستعراض شعرائها</p>
+  <div class="countries-grid">
+
+    <a href="shuara-masr.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇪🇬</span>
+      <p class="country-name">الشعراء المصريون</p>
+      <p class="country-sub">EGYPT</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-sudan.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇸🇩</span>
+      <p class="country-name">الشعراء السودانيون</p>
+      <p class="country-sub">SUDAN</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-libya.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇱🇾</span>
+      <p class="country-name">الشعراء الليبيون</p>
+      <p class="country-sub">LIBYA</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-algeria.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇩🇿</span>
+      <p class="country-name">الشعراء الجزائريون</p>
+      <p class="country-sub">ALGERIA</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-morocco.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇲🇦</span>
+      <p class="country-name">الشعراء المغاربة</p>
+      <p class="country-sub">MOROCCO</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-tunisia.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇹🇳</span>
+      <p class="country-name">الشعراء التونسيون</p>
+      <p class="country-sub">TUNISIA</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-palestine.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇵🇸</span>
+      <p class="country-name">الشعراء الفلسطينيون</p>
+      <p class="country-sub">PALESTINE</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-lebanon.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇱🇧</span>
+      <p class="country-name">الشعراء اللبنانيون</p>
+      <p class="country-sub">LEBANON</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-syria.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇸🇾</span>
+      <p class="country-name">الشعراء السوريون</p>
+      <p class="country-sub">SYRIA</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-iraq.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇮🇶</span>
+      <p class="country-name">الشعراء العراقيون</p>
+      <p class="country-sub">IRAQ</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-jordan.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇯🇴</span>
+      <p class="country-name">الشعراء الأردنيون</p>
+      <p class="country-sub">JORDAN</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-yemen.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇾🇪</span>
+      <p class="country-name">الشعراء اليمنيون</p>
+      <p class="country-sub">YEMEN</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-saudi.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇸🇦</span>
+      <p class="country-name">الشعراء السعوديون</p>
+      <p class="country-sub">SAUDI ARABIA</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-kuwait.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇰🇼</span>
+      <p class="country-name">الشعراء الكويتيون</p>
+      <p class="country-sub">KUWAIT</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-uae.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇦🇪</span>
+      <p class="country-name">الشعراء الإماراتيون</p>
+      <p class="country-sub">UAE</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-qatar.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇶🇦</span>
+      <p class="country-name">الشعراء القطريون</p>
+      <p class="country-sub">QATAR</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-bahrain.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇧🇭</span>
+      <p class="country-name">الشعراء البحرينيون</p>
+      <p class="country-sub">BAHRAIN</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-turkey.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇹🇷</span>
+      <p class="country-name">الشعراء الأتراك</p>
+      <p class="country-sub">TURKEY</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-france.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇫🇷</span>
+      <p class="country-name">الشعراء الفرنسيون</p>
+      <p class="country-sub">FRANCE</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-uk.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇬🇧</span>
+      <p class="country-name">الشعراء البريطانيون</p>
+      <p class="country-sub">UNITED KINGDOM</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-italy.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇮🇹</span>
+      <p class="country-name">الشعراء الإيطاليون</p>
+      <p class="country-sub">ITALY</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-comoros.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇰🇲</span>
+      <p class="country-name">شعراء جزر القمر</p>
+      <p class="country-sub">COMOROS</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+    <a href="shuara-djibouti.html" class="country-card">
+      <div class="card-glow"></div>
+      <span class="flag-wrap">🇩🇯</span>
+      <p class="country-name">شعراء جيبوتي</p>
+      <p class="country-sub">DJIBOUTI</p>
+      <span class="enter-btn">استعراض ✦</span>
+    </a>
+
+  </div>
+</section>
+
+<div class="ad-mid">
+  <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
+</div>
+
+<div class="ad-strip" style="margin-bottom:30px">
+  <span class="ad-label">إعلان</span>
+  <script>atOptions={'key':'6084f429253cae00d1188bae06e361f1','format':'iframe','height':50,'width':320,'params':{}};</script>
+  <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+</div>
+
+<footer>
+  <span class="footer-logo">القُرماني AQX</span>
+  <p class="footer-copy">© 2024 — موسوعة الأدباء والشعراء العالمية</p>
+</footer>
+
+<script>
+// ===== PURPLE BG + GOLD PARTICLES =====
+(function(){
+  const c=document.getElementById('bgCanvas');
+  const ctx=c.getContext('2d');
+  let W,H,particles=[],stars=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  window.addEventListener('resize',resize);resize();
+  const goldColors=['#c9a84c','#e8c96a','#ffe08a','#d4a853','#f5d76e','#b8960a','#fceabb'];
+  for(let i=0;i<70;i++){
+    particles.push({
+      x:Math.random()*1920,y:Math.random()*1080,
+      r:Math.random()*3+0.8,
+      vx:(Math.random()-.5)*.55,vy:(Math.random()-.5)*.55-.1,
+      a:Math.random()*.65+.15,
+      color:goldColors[Math.floor(Math.random()*goldColors.length)],
+      pulse:Math.random()*Math.PI*2,ps:Math.random()*.025+.008,
+      shape:Math.random()>.55?'star':'dot',rot:Math.random()*Math.PI*2
+    });
+  }
+  for(let i=0;i<140;i++){stars.push({x:Math.random()*1920,y:Math.random()*1080,r:Math.random()*1.2+.2,phase:Math.random()*Math.PI*2,sp:Math.random()*.004+.001});}
+  function drawStar(cx,cy,r,rot){
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(rot);
+    ctx.beginPath();
+    for(let i=0;i<8;i++){const a=(Math.PI/4)*i,rd=i%2===0?r:r*.4;ctx.lineTo(Math.cos(a)*rd,Math.sin(a)*rd);}
+    ctx.closePath();ctx.restore();
+  }
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    const bg=ctx.createRadialGradient(W/2,H*.4,0,W/2,H*.4,Math.max(W,H)*.9);
+    bg.addColorStop(0,'#4a2070');
+    bg.addColorStop(.4,'#35155a');
+    bg.addColorStop(.75,'#220d3e');
+    bg.addColorStop(1,'#120828');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    for(const s of stars){
+      s.phase+=s.sp;
+      const al=(Math.sin(s.phase)+1)/2*.7+.05;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(230,210,255,${al})`;ctx.fill();
+    }
+    for(const p of particles){
+      p.x+=p.vx;p.y+=p.vy;p.pulse+=p.ps;p.rot+=.01;
+      if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;
+      if(p.y<-20)p.y=H+20;if(p.y>H+20)p.y=-20;
+      const pa=p.a*(0.55+0.45*Math.sin(p.pulse));
+      ctx.globalAlpha=pa;ctx.fillStyle=p.color;
+      if(p.shape==='star'){drawStar(p.x,p.y,p.r*2,p.rot);ctx.fill();}
+      else{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}
+      ctx.globalAlpha=1;
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+// ===== GOLDEN SNAKE =====
+(function(){
+  const c=document.getElementById('snakeCanvas');
+  const ctx=c.getContext('2d');
+  let W,H;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  window.addEventListener('resize',resize);resize();
+  const goldShades=['#c9a84c','#d4a853','#e8c96a','#ffe08a','#f5d76e','#b8960a','#fceabb'];
+  const SEG=60,THICK=7;
+  const snake={segs:[],t:0};
+  for(let i=0;i<SEG;i++){snake.segs.push({x:W/2,y:H/2});}
+  let mx=W/2,my=H/2;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  let bTarget={x:W*.1,y:H*.05};
+  const borderPath=[[.05,.05],[.95,.05],[.95,.95],[.05,.95]];
+  let bPt=0,bSpeed=2.2;
+  function getBorderTarget(){const pts=borderPath.map(p=>({x:p[0]*W,y:p[1]*H}));return pts[bPt%pts.length];}
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    snake.t++;
+    const bt=getBorderTarget();
+    const dx=bt.x-bTarget.x,dy=bt.y-bTarget.y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<8){bPt++;}else{bTarget.x+=dx/d*bSpeed;bTarget.y+=dy/d*bSpeed;}
+    const tx=(mx*.3+bTarget.x*.7);
+    const ty=(my*.3+bTarget.y*.7);
+    for(let i=SEG-1;i>0;i--){snake.segs[i].x=snake.segs[i-1].x;snake.segs[i].y=snake.segs[i-1].y;}
+    const hd=snake.segs[0];
+    hd.x+=(tx-hd.x)*.09;hd.y+=(ty-hd.y)*.09;
+    for(let i=SEG-1;i>0;i--){
+      const p=snake.segs[i],n=snake.segs[i-1];
+      const prog=i/SEG;
+      const colorI=Math.floor((snake.t*.03+prog*6)%goldShades.length);
+      const thick=THICK*(1-prog*.6);
+      const alpha=(1-prog*.8)*.85;
+      ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(n.x,n.y);
+      ctx.strokeStyle=goldShades[colorI];ctx.lineWidth=thick;ctx.globalAlpha=alpha;
+      ctx.lineCap='round';ctx.stroke();
+    }
+    const h=snake.segs[0];
+    const ci=Math.floor(snake.t*.05%goldShades.length);
+    ctx.beginPath();ctx.arc(h.x,h.y,THICK*.8,0,Math.PI*2);
+    ctx.fillStyle=goldShades[ci];ctx.globalAlpha=1;ctx.fill();
+    const ang=Math.atan2(h.y-snake.segs[1].y,h.x-snake.segs[1].x);
+    for(const s of[-1,1]){
+      const ex=h.x+Math.cos(ang+s*1.1)*4.5,ey=h.y+Math.sin(ang+s*1.1)*4.5;
+      ctx.beginPath();ctx.arc(ex,ey,1.8,0,Math.PI*2);
+      ctx.fillStyle='#1a0a2e';ctx.globalAlpha=1;ctx.fill();
+      ctx.beginPath();ctx.arc(ex+.4,ey-.4,0.7,0,Math.PI*2);
+      ctx.fillStyle='#ffffff';ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+// ===== SOUND =====
+(function(){
+  const AudioCtx=window.AudioContext||window.webkitAudioContext;
+  if(!AudioCtx)return;
+  let ac=null;
+  function getAC(){if(!ac)ac=new AudioCtx();return ac;}
+  function playTone(freq,type,dur,vol){
+    const a=getAC();
+    const osc=a.createOscillator(),gain=a.createGain();
+    osc.connect(gain);gain.connect(a.destination);
+    osc.type=type||'sine';osc.frequency.value=freq;
+    gain.gain.setValueAtTime(0,a.currentTime);
+    gain.gain.linearRampToValueAtTime(vol||.08,a.currentTime+.01);
+    gain.gain.exponentialRampToValueAtTime(.001,a.currentTime+(dur||.18));
+    osc.start(a.currentTime);osc.stop(a.currentTime+(dur||.18)+.05);
+  }
+  function playHover(){playTone(760,'sine',.12,.07);setTimeout(()=>playTone(980,'sine',.09,.05),60);}
+  function playClick(){
+    playTone(550,'triangle',.08,.1);
+    setTimeout(()=>playTone(850,'sine',.12,.08),50);
+    setTimeout(()=>playTone(1100,'sine',.1,.06),120);
+  }
+  document.querySelectorAll('.country-card').forEach(card=>{
+    card.addEventListener('mouseenter',playHover);
+    card.addEventListener('click',e=>{
+      e.preventDefault();
+      playClick();
+      const href=card.getAttribute('href');
+      setTimeout(()=>{if(href)window.location.href=href;},220);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
