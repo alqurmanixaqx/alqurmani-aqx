@@ -1,1 +1,652 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>القُرماني AQX — موسوعة الأدباء والشعراء</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --deep: #0d0a1e;
+    --deep2: #120f2b;
+    --mid: #1a1535;
+    --accent: #8b5cf6;
+    --accent2: #a78bfa;
+    --text: #f0e8d0;
+    --muted: #a09070;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--deep);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    direction: rtl;
+  }
+
+  /* ========== CANVAS STARS ========== */
+  #starsCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ========== AD STRIP (4 STRIPS TOP) ========== */
+  .ad-top-strip {
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(90deg, rgba(13,10,30,0.95) 0%, rgba(26,21,53,0.95) 50%, rgba(13,10,30,0.95) 100%);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 4px 0;
+  }
+  .ad-top-strip:first-child { border-top: none; }
+  .ad-banner-label {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 9px;
+    color: rgba(201,168,76,0.3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ========== HEADER ========== */
+  header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+
+  .site-tagline {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.8;
+  }
+
+  .site-title {
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 30%, #fff9e6 50%, #e8c96a 70%, #c9a84c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: neonCycle 4s ease-in-out infinite, floatTitle 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(201,168,76,0.5));
+    display: inline-block;
+    padding-bottom: 4px;
+  }
+
+  .site-subtitle {
+    font-size: clamp(0.95rem, 2.5vw, 1.3rem);
+    color: var(--muted);
+    margin-top: 16px;
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+
+  @keyframes floatTitle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes neonCycle {
+    0%   { filter: drop-shadow(0 0 20px #c9a84c) drop-shadow(0 0 40px #c9a84c); }
+    12%  { filter: drop-shadow(0 0 20px #8b5cf6) drop-shadow(0 0 40px #8b5cf6); }
+    25%  { filter: drop-shadow(0 0 20px #06b6d4) drop-shadow(0 0 40px #06b6d4); }
+    37%  { filter: drop-shadow(0 0 20px #10b981) drop-shadow(0 0 40px #10b981); }
+    50%  { filter: drop-shadow(0 0 20px #f59e0b) drop-shadow(0 0 40px #f59e0b); }
+    62%  { filter: drop-shadow(0 0 20px #ef4444) drop-shadow(0 0 40px #ef4444); }
+    75%  { filter: drop-shadow(0 0 20px #ec4899) drop-shadow(0 0 40px #ec4899); }
+    87%  { filter: drop-shadow(0 0 20px #a855f7) drop-shadow(0 0 40px #a855f7); }
+    100% { filter: drop-shadow(0 0 20px #c9a84c) drop-shadow(0 0 40px #c9a84c); }
+  }
+
+  .divider-gold {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 20px auto;
+  }
+
+  /* ========== VIDEO SECTION ========== */
+  .video-section {
+    position: relative;
+    z-index: 10;
+    max-width: 780px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+  }
+
+  .video-wrapper {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.3);
+    box-shadow: 0 0 60px rgba(139,92,246,0.2), 0 0 30px rgba(201,168,76,0.1);
+    background: #000;
+  }
+
+  .video-wrapper iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: none;
+  }
+
+  .video-label {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(13,10,30,0.85);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  /* ========== AD MIDDLE ========== */
+  .ad-middle {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 20px;
+    margin: 10px 0;
+  }
+
+  /* ========== MAIN CARDS ========== */
+  .main-section {
+    position: relative;
+    z-index: 10;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px 20px;
+  }
+
+  .section-heading {
+    text-align: center;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--muted);
+    letter-spacing: 4px;
+    font-weight: 300;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .section-heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 14px auto 0;
+    opacity: 0.5;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin-bottom: 50px;
+  }
+
+  .portal-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
+  }
+
+  .portal-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px var(--card-glow);
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .card-adab {
+    --card-glow: rgba(201,168,76,0.3);
+  }
+  .card-shuara {
+    --card-glow: rgba(139,92,246,0.3);
+  }
+
+  .card-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    transition: opacity 0.4s;
+  }
+  .card-adab .card-bg {
+    background: radial-gradient(ellipse at 30% 50%, #c9a84c 0%, transparent 70%);
+  }
+  .card-shuara .card-bg {
+    background: radial-gradient(ellipse at 70% 50%, #8b5cf6 0%, transparent 70%);
+  }
+  .portal-card:hover .card-bg { opacity: 0.15; }
+
+  .card-inner {
+    position: relative;
+    z-index: 2;
+    padding: 50px 36px 44px;
+    text-align: center;
+  }
+
+  .card-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    display: block;
+    animation: iconFloat 4s ease-in-out infinite;
+    line-height: 1;
+  }
+  .card-shuara .card-icon { animation-delay: 1s; }
+
+  @keyframes iconFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(3deg); }
+  }
+
+  .card-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #e8c96a, #c9a84c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .card-shuara .card-title {
+    background: linear-gradient(135deg, #c4b5fd, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
+
+  .card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .card-adab .card-btn {
+    background: linear-gradient(135deg, #c9a84c, #e8c96a);
+    color: #0d0a1e;
+    box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  }
+  .card-adab .card-btn:hover {
+    box-shadow: 0 12px 40px rgba(201,168,76,0.5);
+    transform: scale(1.05);
+  }
+
+  .card-shuara .card-btn {
+    background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(139,92,246,0.3);
+  }
+  .card-shuara .card-btn:hover {
+    box-shadow: 0 12px 40px rgba(139,92,246,0.5);
+    transform: scale(1.05);
+  }
+
+  .card-meta {
+    margin-top: 24px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(160,144,112,0.5);
+    text-transform: uppercase;
+  }
+
+  /* ========== AD BOTTOM ========== */
+  .ad-bottom-row {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 24px 20px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    margin: 0 0 40px;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .footer-logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #c9a84c, #e8c96a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(160,144,112,0.4);
+    letter-spacing: 2px;
+  }
+
+  /* ========== PULSE DOTS DECORATION ========== */
+  .deco-dots {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  .deco-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.4;
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  .deco-dot:nth-child(2) { animation-delay: 0.3s; }
+  .deco-dot:nth-child(3) { animation-delay: 0.6s; }
+  @keyframes dotPulse {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.5); }
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 600px) {
+    .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+    .card-inner { padding: 36px 24px 32px; }
+    header { padding: 40px 16px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="starsCanvas"></canvas>
+
+<!-- ===== 4 AD STRIPS AT TOP ===== -->
+<div class="ad-top-strip">
+  <span class="ad-banner-label">إعلان</span>
+  <script>
+    atOptions = {
+      'key' : '6084f429253cae00d1188bae06e361f1',
+      'format' : 'iframe',
+      'height' : 50,
+      'width' : 320,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+</div>
+
+<div class="ad-top-strip" style="min-height:54px"></div>
+<div class="ad-top-strip" style="min-height:54px"></div>
+<div class="ad-top-strip" style="min-height:54px">
+  <span class="ad-banner-label">إعلان</span>
+  <script src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <p class="site-tagline">✦ الموسوعة الذهبية العالمية ✦</p>
+  <h1 class="site-title">القُرماني&nbsp;AQX</h1>
+  <p class="site-subtitle">موسوعة الأدباء والشعراء عبر التاريخ والأمصار</p>
+  <div class="divider-gold"></div>
+</header>
+
+<!-- ===== VIDEO ===== -->
+<section class="video-section">
+  <div class="video-wrapper">
+    <span class="video-label">✦ مقدمة المشروع</span>
+    <iframe
+      src="https://www.dailymotion.com/embed/video/xaclp86"
+      allowfullscreen
+      allow="autoplay; fullscreen"
+      title="مقدمة موسوعة القرماني AQX"
+    ></iframe>
+  </div>
+</section>
+
+<div class="deco-dots">
+  <span class="deco-dot"></span>
+  <span class="deco-dot"></span>
+  <span class="deco-dot"></span>
+</div>
+
+<!-- ===== AD MIDDLE 300x250 ===== -->
+<div class="ad-middle">
+  <script>
+    atOptions = {
+      'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+</div>
+
+<!-- ===== MAIN PORTAL CARDS ===== -->
+<main class="main-section">
+  <p class="section-heading">اختر بوابتك إلى عالم الكلمة</p>
+
+  <div class="cards-grid">
+
+    <!-- CARD 1: الأدباء -->
+    <a href="adab.html" class="portal-card card-adab">
+      <div class="card-bg"></div>
+      <div class="card-inner">
+        <span class="card-icon">📖</span>
+        <h2 class="card-title">الأدباء</h2>
+        <p class="card-desc">
+          رحلة عبر عقول الكُتّاب والمفكرين والأدباء في جميع أنحاء العالم — ملفات شخصية موثّقة تكشف حياتهم وإبداعاتهم وأثرهم الخالد في تاريخ الأدب الإنساني.
+        </p>
+        <span class="card-btn">ادخل عالم الأدب ✦</span>
+        <p class="card-meta">ملفات شخصية · من جميع الدول · عبر التاريخ</p>
+      </div>
+    </a>
+
+    <!-- CARD 2: الشعراء -->
+    <a href="shuara.html" class="portal-card card-shuara">
+      <div class="card-bg"></div>
+      <div class="card-inner">
+        <span class="card-icon">🪶</span>
+        <h2 class="card-title">الشعراء</h2>
+        <p class="card-desc">
+          دواوين الأرواح وأسرار القوافي — ملفات شخصية حصرية للشعراء من مختلف الحضارات والعصور، تضيء مسيرتهم وأعمالهم وإرثهم الشعري العميق.
+        </p>
+        <span class="card-btn">ادخل عالم الشعر ✦</span>
+        <p class="card-meta">ملفات شخصية · من جميع الدول · عبر التاريخ</p>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<!-- ===== AD BOTTOM ROW ===== -->
+<div class="ad-bottom-row">
+  <script>
+    atOptions = {
+      'key' : '6084f429253cae00d1188bae06e361f1',
+      'format' : 'iframe',
+      'height' : 50,
+      'width' : 320,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <span class="footer-logo">القُرماني AQX</span>
+  <p class="footer-copy">© 2024 — موسوعة الأدباء والشعراء العالمية</p>
+</footer>
+
+<!-- ===== STARS + PARTICLES CANVAS ===== -->
+<script>
+(function(){
+  const canvas = document.getElementById('starsCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], stars = [];
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // create stars
+  for(let i=0; i<180; i++){
+    stars.push({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      r: Math.random()*1.4+0.2,
+      a: Math.random(),
+      speed: Math.random()*0.003+0.001,
+      phase: Math.random()*Math.PI*2
+    });
+  }
+
+  // create floating gold dots
+  const colors = ['#c9a84c','#e8c96a','#ffe08a','#d4a853','#f0d060'];
+  for(let i=0; i<55; i++){
+    particles.push({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      r: Math.random()*3+1,
+      vx: (Math.random()-0.5)*0.6,
+      vy: (Math.random()-0.5)*0.6 - 0.15,
+      a: Math.random()*0.7+0.15,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      pulse: Math.random()*Math.PI*2,
+      pulseSpeed: Math.random()*0.02+0.01,
+      shape: Math.random() > 0.5 ? 'star' : 'dot'
+    });
+  }
+
+  function drawStar(cx,cy,r,pts,a){
+    ctx.save();
+    ctx.translate(cx,cy);
+    ctx.rotate(a);
+    ctx.beginPath();
+    for(let i=0;i<pts*2;i++){
+      const ang = (Math.PI/pts)*i;
+      const rad = i%2===0 ? r : r*0.45;
+      ctx.lineTo(Math.cos(ang)*rad, Math.sin(ang)*rad);
+    }
+    ctx.closePath();
+    ctx.restore();
+  }
+
+  let t=0;
+  function animate(){
+    ctx.clearRect(0,0,W,H);
+
+    // Background gradient — deep blue-purple, not black
+    const bg = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W,H)*0.8);
+    bg.addColorStop(0,'#12103a');
+    bg.addColorStop(0.5,'#0d0a2e');
+    bg.addColorStop(1,'#080618');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,W,H);
+
+    // draw stars
+    for(const s of stars){
+      s.phase += s.speed;
+      const alpha = (Math.sin(s.phase)+1)/2 * s.a * 0.9 + 0.05;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(255,248,220,${alpha})`;
+      ctx.fill();
+    }
+
+    // draw particles
+    for(const p of particles){
+      p.x += p.vx;
+      p.y += p.vy;
+      p.pulse += p.pulseSpeed;
+      const pa = p.a * (0.6 + 0.4*Math.sin(p.pulse));
+      if(p.x < -10) p.x = W+10;
+      if(p.x > W+10) p.x = -10;
+      if(p.y < -10) p.y = H+10;
+      if(p.y > H+10) p.y = H+10;
+      if(p.y > H+10){ p.y = H+10; p.vy = -(Math.abs(p.vy)||0.15); }
+
+      ctx.globalAlpha = pa;
+      ctx.fillStyle = p.color;
+      if(p.shape === 'star'){
+        const rot = t * 0.002 + p.pulse;
+        drawStar(p.x, p.y, p.r*1.8, 4, rot);
+        ctx.fill();
+      } else {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    t++;
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+
+</body>
+</html>
