@@ -1,1 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رؤيتنا | AQX القرمانى اكس</title>
+<meta name="description" content="الرؤية المستقبلية الطموحة لجميع منصات ومواقع AQX القرمانى اكس">
 
+<!-- استدعاء الخطوط الفاخرة للعنوان والنصوص -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  /* تصفير الهوامش لضمان انسيابية بصرية كاملة وبدون أي براويز أو إطارات مقيدة */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+  }
+
+  :root {
+    /* تدرج الشامبين اللؤلؤي الناعم والفخم جداً (بديل الغوامق) */
+    --bg-silk-start: #FAFAF7;
+    --bg-silk-mid: #F2ECE2;
+    --bg-silk-end: #E6DCCE;
+    
+    /* ألوان الذهب الغني المتناسق مع الخلفية الحريرية الفاتحة */
+    --gold-rich: #BD922B;
+    --gold-accent: #A1791B;
+    --gold-glow: #D9B352;
+    
+    /* ألوان النصوص الفاخرة المتباينة بروعة مع الشامبين */
+    --text-primary: #2B1E13; /* بني داكن جداً بلون القهوة الفاخرة */
+    --text-secondary: #4E3E31;
+    --text-muted: #7A6959;
+  }
+
+  body {
+    background: linear-gradient(135deg, var(--bg-silk-start) 0%, var(--bg-silk-mid) 50%, var(--bg-silk-end) 100%);
+    background-attachment: fixed;
+    color: var(--text-secondary);
+    font-family: 'Cairo', sans-serif;
+    line-height: 2.4;
+    overflow-x: hidden;
+  }
+
+  /* لوحة الجزيئات الذهبية المتطايرة بعشوائية في الخلفية */
+  #gold-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* الحاوية الرئيسية للمحتوى - منسدلة بحرية تامة على الخلفية وبدون أي إطارات */
+  .vision-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1020px;
+    margin: 0 auto;
+    /* مساحة علوية بحجم 4 خطوط كاملة تفصل المحتوى عن الحافة العلوية */
+    padding: 7.5rem 2rem 6rem 2rem;
+  }
+
+  /* تنسيق العناوين الرئيسية */
+  .main-title {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .sub-title {
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--gold-rich);
+    letter-spacing: 2px;
+    margin-bottom: 5.5rem;
+    font-weight: 700;
+  }
+
+  /* العناوين الفرعية الفاخرة */
+  .section-title {
+    font-family: 'Amiri', serif;
+    font-size: 2.25rem;
+    color: var(--text-primary);
+    margin-top: 4.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* خط ذهبي ناعم ينسحب تحت العنوان انسيابياً وبدون حدود حادة */
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    width: 65%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-rich), transparent);
+  }
+
+  /* نصوص المحتوى المطولة والعميقة */
+  .vision-paragraph {
+    font-size: 1.22rem;
+    text-align: justify;
+    color: var(--text-secondary);
+    margin-bottom: 2.2rem;
+    font-weight: 400;
+  }
+
+  .vision-paragraph strong {
+    color: var(--gold-accent);
+    font-weight: 700;
+  }
+
+  /* الروابط الأنيقة والمتناسقة مع المظهر العام */
+  .luxury-link {
+    color: var(--gold-rich);
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 1px dashed var(--gold-glow);
+    padding-bottom: 2px;
+  }
+
+  .luxury-link:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+  }
+
+  /* تذييل الصفحة الراقي */
+  .vision-footer {
+    margin-top: 7.5rem;
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* التوافق التام مع الشاشات المختلفة للهواتف والأجهزة اللوحية */
+  @media (max-width: 768px) {
+    .vision-wrapper {
+      padding: 6rem 1.5rem 4rem 1.5rem;
+    }
+    .vision-paragraph {
+      text-align: right;
+      font-size: 1.12rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- تأثير الجزيئات الذهبية المتطايرة بهدوء وعشوائية -->
+<canvas id="gold-canvas"></canvas>
+
+<!-- محتوى رؤيتنا الحر الطليق بدون أي براويز -->
+<div class="vision-wrapper">
+  
+  <h1 class="main-title">أبعاد الرؤية المستقبلية<br>AQX القرمانى اكس</h1>
+  <div class="sub-title">إستراتيجية الغد ومسار الريادة الرقمية عبر كافة منصاتنا</div>
+
+  <h2 class="section-title">١. الأفق الافتراضي الجديد</h2>
+  <p class="vision-paragraph">
+    إن رؤيتنا في <strong>"AQX القرمانى اكس"</strong> لا تتوقف عند محاكاة الحاضر أو مجاراة التطور المتسارع، بل تكمن في استشراف المستقبل وصياغة معالمه الرقمية والمهنية بكل ثقة واقتدار. نحن نتطلع إلى بناء بيئة رقمية متكاملة ومترابطة عبر جميع مواقعنا ومنصاتنا، لتكون الوجهة الأولى والنموذج الأنقى للابتكار والجودة الفائقة. نتحرك بخطوات ثابتة وراسخة ومدروسة، مستندين إلى جذورنا الأصيلة في مصر وأسوان، لنمضي نحو آفاق عالمية أرحب نضع من خلالها معايير جديدة للتميز البرمجي والخدمي الذي يبهر العقول ويلبي أرقى التطلعات.
+  </p>
+
+  <h2 class="section-title">٢. الابتكار التقني المستدام</h2>
+  <p class="vision-paragraph">
+    نحن نؤمن بأن التكنولوجيا الحقيقية هي تلك التي تجمع بين القوة البرمجية والجمال البصري والانسيابية المطلقة. لذلك، ترتكز رؤيتنا على تبني أحدث التقنيات الذكية وتطوير أدواتنا ومواقعنا بصفة مستمرة، لضمان تقديم حلول حصرية فائقة الأمان والفعالية. نهدف إلى جعل كافة منصات <strong>"AQX القرمانى اكس"</strong> أنظمة حيوية متطورة تسهم بفعالية في تيسير حياة المستخدمين وإثراء تجاربهم الرقمية، مع الحفاظ على بصمتنا الخاصة التي تتسم بالرقي والشياكة والاحترافية الكاملة في كل تفصيل نقوم بتصميمه أو بنائه.
+  </p>
+
+  <h2 class="section-title">٣. قيادة التغيير والتميز المعرفي</h2>
+  <p class="vision-paragraph">
+    تسعى منظومتنا إلى إحداث تغيير جذري وإيجابي في المشهد الرقمي، من خلال تقديم محتوى وخدمات تحمل قيمة مضافة حقيقية. إن رؤيتنا تتمحور حول ترسيخ ثقافة الإتقان والنزاهة، وأن نصبح المرجع الأساسي والموثوق في مجالاتنا التنافسية. نحن لا ننظر إلى النجاح كإنجاز لحظي، بل كعملية بناء مستمرة وممتدة تتطلب منا الإبداع الدائم والتطوير الشامل لكافة كوادرنا وأدواتنا، لنظل دائماً في الصدارة الفكرية والمهنية، مدفوعين بالتزامنا التام تجاه كل من يضع ثقته في كياننا.
+  </p>
+
+  <h2 class="section-title">٤. صياغة تجربة إنسانية راقية</h2>
+  <p class="vision-paragraph">
+    في قلب رؤيتنا المستقبلية، يظل الإنسان والمستخدم هو المحور والغاية الأساسية. إننا لا نهدف فقط إلى تقديم منصات صلبة تقنياً، بل نسعى لصياغة تجارب رقمية تفيض بالرفاهية البصرية والنقاء التشغيلي، تماماً كما هو الحال في وثيقتنا الفاخرة هذه. نريد لكل زائر ومتصفح لمنصاتنا أن يشعر بالتميز والتقدير، وأن يجد بيئة آمنة تحترم خصوصيته وتلبي رغباته بدقة تامة. لمزيد من التفاصيل حول خططنا التوسعية، يمكنك دائماً <a href="#" class="luxury-link">التواصل معنا</a> عبر قنواتنا الرسمية المتاحة.
+  </p>
+
+  <h2 class="section-title">٥. الالتزام المستقبلي المطلق</h2>
+  <p class="vision-paragraph">
+    تتعهد إدارة <strong>"AQX القرمانى اكس"</strong> باستثمار كافة الموارد والجهود والإمكانات المتاحة لتحويل هذه الرؤية الطموحة إلى واقع ملموس ومعاش يوماً بعد يوم. إننا نسير بخطى واثقة نحو المستقبل، ونفتح ذراعينا لكل فكرة مبتكرة وشراكة إستراتيجية تتقاطع مع قيمنا الراسخة لتعزيز حضورنا الشامل والارتقاء بخدماتنا إلى مستويات غير مسبوقة من التميز والنبل المهني.
+  </p>
+
+  <div class="vision-footer">
+    صيغت هذه الرؤية لتنير درب الغد لـ AQX القرمانى اكس. جميع الحقوق الفكرية والقانونية محفوظة ©.
+  </div>
+
+</div>
+
+<script>
+  /* ============================================================
+     سكربت الجسيمات الذهبية الطائرة (متوافقة بروعة فائقة مع الخلفية الفاتحة)
+     ============================================================ */
+  const canvas = document.getElementById('gold-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  let particleList = [];
+  const totalParticles = 75; 
+
+  function setSize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  window.addEventListener('resize', () => {
+    setSize();
+    createParticles();
+  });
+
+  class GoldenSparkle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.radius = Math.random() * 2.3 + 0.5; // أحجام دقيقة ورقيقة للغاية
+      this.vx = (Math.random() - 0.5) * 0.35; // حركة أفقية انسيابية ناعمة
+      this.vy = (Math.random() - 0.5) * 0.35 - 0.12; // ميل للصعود البطيء الفخم
+      this.alpha = Math.random() * 0.55 + 0.35; // شفافية محسنة لتناسب الخلفية الشامبين الفاتحة
+      this.pulseSpeed = Math.random() * 0.012 + 0.003;
+    }
+    
+    move() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      // تأثير النبض المتلألئ الفخم ليعطي إيحاء بحبات رمل ذهبية ناعمة
+      this.alpha += this.pulseSpeed;
+      if (this.alpha > 0.85 || this.alpha < 0.25) {
+        this.pulseSpeed = -this.pulseSpeed;
+      }
+
+      // إعادة تدوير الجزيئات عند الخروج من أبعاد الشاشة
+      if (this.x > canvas.width) this.x = 0;
+      else if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      else if (this.y < 0) this.y = canvas.height;
+    }
+    
+    render() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      // استخدام ذهبي دافئ غني يظهر بجاذبية بالغة على الخلفية الحريرية
+      ctx.fillStyle = `rgba(189, 146, 43, ${this.alpha})`;
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = "rgba(217, 179, 82, 0.5)";
+      ctx.fill();
+    }
+  }
+
+  function createParticles() {
+    particleList = [];
+    for (let i = 0; i < totalParticles; i++) {
+      particleList.push(new GoldenSparkle());
+    }
+  }
+
+  function runAnimation() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particleList.length; i++) {
+      particleList[i].move();
+      particleList[i].render();
+    }
+    requestAnimationFrame(runAnimation);
+  }
+
+  // إطلاق المحرك التشغيلي للبهاء البصري
+  setSize();
+  createParticles();
+  runAnimation();
+</script>
+
+</body>
+  </html>
