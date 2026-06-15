@@ -1,1 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>من نحن | AQX القرمانى اكس</title>
+<meta name="description" content="التعريف الرسمي بكيان AQX القرمانى اكس، جذورنا ورؤيتنا المستقبلية من مصر، أسوان">
 
+<!-- استدعاء الخطوط الفاخرة للعنوان والنصوص -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  /* تصفير الهوامش لضمان انسيابية بصرية كاملة وبدون أي براويز */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+  }
+
+  :root {
+    /* التدرج الفاتح الفخم (بديل الغوامق) مستوحى من عاج ورمال أسوان */
+    --bg-light-start: #FAF6F0;
+    --bg-light-mid: #F3ECE1;
+    --bg-light-end: #EAE1D4;
+    
+    /* ألوان الذهب المتناسقة مع الخلفية الفاتحة */
+    --gold-deep: #C59B27;
+    --gold-bright: #AA8214;
+    --gold-soft: #D9B44A;
+    
+    /* ألوان النصوص الشيك وعالية الوضوح */
+    --text-main: #2C1E11; /* بني إسبريسو دافئ وعميق جداً */
+    --text-body: #4A3B2C;
+    --text-muted: #705F4F;
+  }
+
+  body {
+    background: linear-gradient(135deg, var(--bg-light-start) 0%, var(--bg-light-mid) 50%, var(--bg-light-end) 100%);
+    background-attachment: fixed;
+    color: var(--text-body);
+    font-family: 'Cairo', sans-serif;
+    line-height: 2.3;
+    overflow-x: hidden;
+  }
+
+  /* لوحة الجزيئات الذهبية المتطايرة */
+  #gold-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* الحاوية الرئيسية - منسدلة بحرية تامة على الخلفية وبدون أي إطارات */
+  .about-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* مساحة علوية تعادل 4 خطوط كاملة للحفاظ على الاتساع والفخامة */
+    padding: 7rem 2rem 6rem 2rem;
+  }
+
+  /* تنسيق العناوين الفاخرة */
+  .main-title {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .sub-title {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--gold-deep);
+    letter-spacing: 2px;
+    margin-bottom: 5rem;
+    font-weight: 700;
+  }
+
+  /* العناوين الفرعية */
+  .section-title {
+    font-family: 'Amiri', serif;
+    font-size: 2.2rem;
+    color: var(--text-main);
+    margin-top: 4.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* خط ذهبي ناعم وراقٍ يمتد تحت العنوان بحرية */
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-deep), transparent);
+  }
+
+  /* نصوص المحتوى */
+  .about-paragraph {
+    font-size: 1.2rem;
+    text-align: justify;
+    color: var(--text-body);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .about-paragraph strong {
+    color: var(--gold-bright);
+    font-weight: 700;
+  }
+
+  /* الروابط الأنيقة */
+  .luxury-link {
+    color: var(--gold-deep);
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease-in-out;
+    border-bottom: 1px dashed var(--gold-soft);
+    padding-bottom: 2px;
+  }
+
+  .luxury-link:hover {
+    color: var(--text-main);
+    border-bottom-color: var(--text-main);
+  }
+
+  /* التذييل الهادئ */
+  .about-footer {
+    margin-top: 7rem;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* توافق الشاشات المتنقلة */
+  @media (max-width: 768px) {
+    .about-wrapper {
+      padding: 5.5rem 1.5rem 4rem 1.5rem;
+    }
+    .about-paragraph {
+      text-align: right;
+      font-size: 1.1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- تأثير الجزيئات الذهبية المتطايرة -->
+<canvas id="gold-canvas"></canvas>
+
+<!-- محتوى الصفحة الفخم بدون براويز -->
+<div class="about-wrapper">
+  
+  <h1 class="main-title">جذورنا وهويتنا<br>AQX القرمانى اكس</h1>
+  <div class="sub-title">من أصالة أسوان إلى آفاق التميز العالمي</div>
+
+  <h2 class="section-title">من نحن؟</h2>
+  <p class="about-paragraph">
+    نحن منظومة <strong>"AQX القرمانى اكس"</strong>، كيان رقمي ومهني رائد ولد برؤية طموحة من قلب <strong>جمهورية مصر العربية</strong>، وتحديداً من مدينة <strong>أسوان</strong> العريقة، ملتقى الحضارات ومنبع الإلهام. لقد انطلقنا مدفوعين بالشغف نحو صياغة مفاهيم جديدة للابتكار، والخدمات الفائقة الجودة، والحلول الذكية التي تلبي تطلعات عملائنا في مختلف أنحاء العالم. نحن لا نقدم مجرد خدمات، بل نبني جسوراً وثيقة من الثقة المتبادلة، مستندين إلى إرثنا الثقافي الغني وقيمنا المهنية الصارمة.
+  </p>
+
+  <h2 class="section-title">رسالتنا العميقة</h2>
+  <p class="about-paragraph">
+    تتمثل رسالتنا في تمكين الأفراد والمؤسسات من خلال تقديم منظومة متكاملة من الخدمات والمنصات الرقمية المبتكرة. إننا نعمل بجهد دؤوب لتطوير بنيتنا التحتية لضمان تقديم تجارب مستخدم تتسم بالانسيابية، والأمان المطلق، والرقي البصري والتقني. نلتزم دائماً بأن نكون الشريك التقني والمهني الأول الذي يعتمد عليه الجميع لتحقيق النجاح والاستدامة، انطلاقاً من التزامنا الصادق بوضع معايير جديدة ومتميزة في السوق العالمي.
+  </p>
+
+  <h2 class="section-title">رؤيتنا للمستقبل</h2>
+  <p class="about-paragraph">
+    نتطلع في <strong>"AQX القرمانى اكس"</strong> إلى قيادة المشهد الرقمي والمهني، وأن نكون النموذج الأبرز للابتكار القائم على الجودة والنزاهة. نهدف إلى توسيع نطاق منصاتنا ومواقعنا لتصل إلى كل بقعة، مع الحفاظ على روح الأصالة والتميز التي استمديناها من موطننا الأول في أسوان. إن المستقبل بالنسبة لنا ليس مجرد زمن ننتظره، بل هو واقع نصنعه بأيدينا وعقولنا المبدعة كل يوم.
+  </p>
+
+  <h2 class="section-title">قيمنا الراسخة</h2>
+  <p class="about-paragraph">
+    تتأسس هويتنا على ركائز صلبة لا تقبل المساومة:
+    <br><br>
+    <strong>النزاهة المطلقة:</strong> الشفافية الكاملة والوضوح القانوني والمهني في كافة تعاملاتنا.
+    <br>
+    <strong>الجودة الفائقة:</strong> السعي المستمر نحو الكمال والاتقان البصري والبرمجي في كافة تفاصيل أعمالنا.
+    <br>
+    <strong>الارتباط بالجذور:</strong> نعتز دائماً بانطلاقنا من أرض مصر الطيبة، ونحمل قيم الضيافة والإتقان الأسواني في جوهر خدماتنا.
+    <br>
+    إذا كنت ترغب في التعرف أكثر على فلسفتنا التشغيلية، ندعوك دوماً لـ <a href="#" class="luxury-link">التواصل معنا</a> مباشرة.
+  </p>
+
+  <h2 class="section-title">لماذا AQX القرمانى اكس؟</h2>
+  <p class="about-paragraph">
+    لأننا نجمع بين أصالة الفكرة وعصرية التنفيذ. إن التزامنا تجاه عملائنا يتجاوز مجرد بنود تعاقدية؛ بل هو عهد مهني نقطعه على أنفسنا لتقديم الأفضل دائماً. إن كافة مواقعنا ومنصاتنا مصممة لتعكس هذا المزيج الفريد من القوة والجمال، ولتوفير بيئة رقمية آمنة وموثوقة تليق بتطلعاتكم العالية.
+  </p>
+
+  <div class="about-footer">
+    AQX القرمانى اكس — تأسست بشغف، وتدار باحترافية من قلب أسوان، مصر. جميع الحقوق محفوظة ©.
+  </div>
+
+</div>
+
+<script>
+  /* ============================================================
+     سكربت الجسيمات الذهبية الطائرة (متوافقة بروعة مع الخلفية الفاتحة)
+     ============================================================ */
+  const canvas = document.getElementById('gold-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  let particleList = [];
+  const totalParticles = 70; 
+
+  function setSize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  window.addEventListener('resize', () => {
+    setSize();
+    createParticles();
+  });
+
+  class GoldenSparkle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.radius = Math.random() * 2.5 + 0.6; // أحجام واضحة وجميلة
+      this.vx = (Math.random() - 0.5) * 0.35; // حركة أفقية ناعمة
+      this.vy = (Math.random() - 0.5) * 0.35 - 0.1; // صعود خفيف
+      this.alpha = Math.random() * 0.6 + 0.3; // شفافية محسنة لتناسب الخلفية الفاتحة
+      this.pulseSpeed = Math.random() * 0.015 + 0.004;
+    }
+    
+    move() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      // تأثير النبض المتلألئ
+      this.alpha += this.pulseSpeed;
+      if (this.alpha > 0.8 || this.alpha < 0.2) {
+        this.pulseSpeed = -this.pulseSpeed;
+      }
+
+      // إعادة تدوير الجزيئات عند الخروج من الحواف
+      if (this.x > canvas.width) this.x = 0;
+      else if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      else if (this.y < 0) this.y = canvas.height;
+    }
+    
+    render() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      // استخدام لون ذهبي دافئ وغني ليظهر بجاذبية على الخلفية الفاتحة
+      ctx.fillStyle = `rgba(197, 155, 39, ${this.alpha})`;
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = "rgba(217, 180, 74, 0.5)";
+      ctx.fill();
+    }
+  }
+
+  function createParticles() {
+    particleList = [];
+    for (let i = 0; i < totalParticles; i++) {
+      particleList.push(new GoldenSparkle());
+    }
+  }
+
+  function runAnimation() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particleList.length; i++) {
+      particleList[i].move();
+      particleList[i].render();
+    }
+    requestAnimationFrame(runAnimation);
+  }
+
+  // إطلاق المحرك البصري
+  setSize();
+  createParticles();
+  runAnimation();
+</script>
+
+</body>
+  </html>
