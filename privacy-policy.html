@@ -1,1 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سياسة الخصوصية | AQX القرمانى اكس</title>
+<meta name="description" content="سياسة الخصوصية الشاملة والقانونية لجميع منصات ومواقع AQX القرمانى اكس">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+  /* إعدادات أساسية لضمان عدم وجود براويز أو هوامش افتراضية */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+  }
+
+  :root {
+    /* تدرجات اللون الكاكاوي الفخم */
+    --cocoa-dark: #2B1408;
+    --cocoa-mid: #4A2E1B;
+    --cocoa-light: #5C3A21;
+    /* الألوان الذهبية */
+    --gold: #D4AF37;
+    --gold-bright: #FFDF73;
+    --gold-muted: #B89125;
+    /* ألوان النصوص */
+    --text-title: #F3E5AB;
+    --text-body: #E8D3C3;
+    --text-dim: #CBAA96;
+  }
+
+  body {
+    background: linear-gradient(135deg, var(--cocoa-dark) 0%, var(--cocoa-mid) 50%, var(--cocoa-dark) 100%);
+    background-attachment: fixed;
+    color: var(--text-body);
+    font-family: 'Cairo', sans-serif;
+    line-height: 2.2;
+    overflow-x: hidden;
+  }
+
+  /* الجسيمات الذهبية في الخلفية */
+  #gold-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* حاوية المحتوى الأساسية بدون أي براويز أو خلفيات مقيدة */
+  .legal-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    /* مسافة تعادل 4 خطوط علوية (حوالي 6rem) مع هوامش جانبية وسفلية */
+    padding: 6rem 2rem 5rem 2rem;
+  }
+
+  /* تنسيق العناوين الفخمة */
+  .main-title {
+    font-family: 'Amiri', serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--gold-bright);
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    line-height: 1.3;
+  }
+
+  .sub-title {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 4rem;
+    font-weight: 800;
+  }
+
+  .section-heading {
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    color: var(--text-title);
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  /* خط ذهبي خفيف وأنيق تحت العناوين الفرعية ينسحب بنعومة */
+  .section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .legal-text {
+    font-size: 1.15rem;
+    text-align: justify;
+    color: var(--text-dim);
+    margin-bottom: 1.8rem;
+    font-weight: 400;
+  }
+
+  .legal-text strong {
+    color: var(--gold-bright);
+    font-weight: 800;
+  }
+
+  /* تنسيق الروابط */
+  .gold-link {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 800;
+    transition: all 0.4s ease;
+    border-bottom: 1px dashed var(--gold-muted);
+    padding-bottom: 2px;
+  }
+
+  .gold-link:hover {
+    color: var(--gold-bright);
+    border-bottom-color: var(--gold-bright);
+    text-shadow: 0 0 15px rgba(255, 223, 115, 0.5);
+  }
+
+  .footer-note {
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--gold-muted);
+    font-weight: 600;
+  }
+
+  /* استجابة الشاشات الصغيرة */
+  @media (max-width: 768px) {
+    .legal-container {
+      padding: 5rem 1.5rem 3rem 1.5rem;
+    }
+    .legal-text {
+      text-align: right;
+      font-size: 1.05rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="gold-particles"></canvas>
+
+<div class="legal-container">
+  
+  <h1 class="main-title">وثيقة الخصوصية الشاملة<br>AQX القرمانى اكس</h1>
+  <div class="sub-title">الإطار القانوني الموحد لجميع المنصات والمواقع</div>
+
+  <h2 class="section-heading">١. ديباجة قانونية ملزمة</h2>
+  <p class="legal-text">
+    يمثل هذا المستند القانوني سياسة الخصوصية الصارمة والملزمة لجميع شبكات، مواقع، تطبيقات، والمنصات الرقمية التابعة لكيان <strong>"AQX القرمانى اكس"</strong>. نحن ندرك تماماً قيمة البيانات الشخصية في العصر الرقمي، وعليه، تم صياغة هذه الوثيقة وفق أعلى المعايير القانونية العالمية وأكثرها حزماً لضمان الشفافية المطلقة. باستخدامك لأي من خدماتنا أو تصفحك لمنصاتنا، فإنك تقر وتقبل إقراراً قانونياً كاملاً غير قابل للنقض بجميع البنود والشروط المذكورة هنا. إذا كنت لا توافق على أي بند من هذه البنود، يجب عليك التوقف فوراً عن استخدام كافة خدماتنا.
+  </p>
+
+  <h2 class="section-heading">٢. النطاق والتطبيق الشامل</h2>
+  <p class="legal-text">
+    تسري هذه السياسة بصفة حصرية وشاملة على كافة زوار ومستخدمي وعملاء <strong>"AQX القرمانى اكس"</strong> في جميع أنحاء العالم. تشمل هذه السياسة كافة أشكال التفاعل الرقمي وغير الرقمي، سواء كان ذلك عبر المواقع الإلكترونية، التطبيقات الذكية، المراسلات البريدية، أو أي وسيلة اتصال أخرى تندرج تحت إدارة وإشراف المنظومة. لا يُستثنى أي نظام أو خدمة فرعية من الخضوع الكامل لهذه الأحكام.
+  </p>
+
+  <h2 class="section-heading">٣. آلية ونطاق جمع البيانات</h2>
+  <p class="legal-text">
+    نحن نقوم بجمع البيانات بآليات دقيقة ومحكمة لضمان تقديم تجربة استثنائية وآمنة. تشمل البيانات التي نجمعها، على سبيل المثال لا الحصر:
+    <br><br>
+    <strong>البيانات المقدمة طواعية:</strong> وتشمل الاسم الكامل، عناوين البريد الإلكتروني، أرقام الهواتف، العناوين الجغرافية، وأي معلومات أخرى تُقدم عبر نماذج التسجيل أو عند <a href="#" class="gold-link">التواصل معنا</a>.
+    <br>
+    <strong>البيانات المجمعة تلقائياً:</strong> من خلال بروتوكولاتنا التقنية المتقدمة، نجمع بيانات مثل عناوين بروتوكول الإنترنت (IP)، نوع المتصفح، نظام التشغيل، مزود خدمة الإنترنت، مسار التنقل داخل مواقعنا، طوابع الوقت والتاريخ، وسجلات النقرات.
+    <br>
+    <strong>بيانات الأطراف الثالثة:</strong> قد نتلقى معلومات إضافية عنك من شركائنا المعتمدين والموثوقين لتعزيز دقة خدماتنا ومطابقتها للمعايير الصارمة.
+  </p>
+
+  <h2 class="section-heading">٤. الأغراض القانونية لاستخدام البيانات</h2>
+  <p class="legal-text">
+    تُستخدم البيانات التي يتم جمعها تحت إشراف <strong>"AQX القرمانى اكس"</strong> لأغراض محددة وشرعية تماماً، ولا يتم استغلالها بأي شكل يخالف القوانين المنظمة. نستخدم بياناتك من أجل:
+    تخصيص وتحسين تجربتك الرقمية لتكون فائقة الدقة والاحترافية. تلبية طلباتك والرد على استفساراتك بكفاءة عالية. إرسال الإشعارات التقنية، التحديثات الأمنية، والرسائل الإدارية الضرورية. رصد ومكافحة أي أنشطة احتيالية أو محاولات اختراق أو سلوكيات غير مصرح بها. إجراء التحليلات الإحصائية المتقدمة لتطوير البنية التحتية لمنصاتنا.
+  </p>
+
+  <h2 class="section-heading">٥. سياسة المشاركة الصارمة</h2>
+  <p class="legal-text">
+    قاعدة الخصوصية لدينا راسخة؛ نحن لا نقوم ببيع، أو تأجير، أو المتاجرة ببياناتك الشخصية مع أي كيان خارجي بأي ثمن. يقتصر الإفصاح عن البيانات على الحالات القانونية والتشغيلية الصارمة التالية:
+    <br><br>
+    <strong>الامتثال القانوني:</strong> يحق لنا الكشف عن معلوماتك استجابة لأوامر المحاكم، أو الإجراءات القانونية الملزمة، أو لحماية الحقوق الحصرية والقانونية لـ "AQX القرمانى اكس".
+    <br>
+    <strong>مزودي الخدمات:</strong> قد نشارك بيانات محدودة جداً ومشفّرة مع أطراف ثالثة موثوقة تعمل بالنيابة عنا (مثل خوادم الاستضافة الآمنة، بوابات الدفع)، وتكون هذه الأطراف ملزمة قانونياً بعقود عدم إفشاء صارمة للغاية.
+  </p>
+
+  <h2 class="section-heading">٦. بروتوكولات الأمان والحماية المتقدمة</h2>
+  <p class="legal-text">
+    تعتمد شبكة <strong>"AQX القرمانى اكس"</strong> على بنية تحتية أمنية معقدة ومتقدمة لحماية بياناتك. نطبق تدابير تقنية وإدارية ومادية شديدة الصرامة، تشمل التشفير المتقدم (End-to-End Encryption)، الجدران النارية (Firewalls) متعددة الطبقات، وبروتوكولات المصادقة المعقدة. ورغم التزامنا المطلق بتطبيق هذه المعايير الفائقة، فإنه لا يوجد نظام إلكتروني منيع بنسبة 100%، وعليه فإنك تقر بأن نقل البيانات عبر الإنترنت يتم على مسؤوليتك الخاصة.
+  </p>
+
+  <h2 class="section-heading">٧. ملفات الارتباط (Cookies) وتقنيات التتبع</h2>
+  <p class="legal-text">
+    تستخدم منصاتنا ملفات الارتباط وتقنيات التتبع الدقيقة (Beacons & Pixels) لضمان الأداء الفعال. تُستخدم هذه التقنيات لحفظ تفضيلاتك، تحليل حركة المرور، وفهم تفاعلاتك مع منصاتنا لتقديم محتوى يتناسب مع تطلعاتك. يحق لك قانونياً تعديل إعدادات المتصفح الخاص بك لرفض ملفات الارتباط، ولكن هذا قد يؤدي إلى حجب بعض الوظائف الحيوية في شبكتنا.
+  </p>
+
+  <h2 class="section-heading">٨. صلاحيات وحقوق المستخدمين</h2>
+  <p class="legal-text">
+    بصفتك مستخدماً لمنصاتنا، فإننا نكفل لك حقوقاً واضحة بشأن بياناتك. يحق لك طلب الوصول إلى البيانات التي نحتفظ بها عنك، أو طلب تصحيحها في حال عدم دقتها، أو طلب مسحها نهائياً من سجلاتنا (في الحدود التي لا تتعارض مع التزاماتنا القانونية والتشريعية). لممارسة هذه الحقوق، يُرجى توجيه طلب رسمي وواضح عبر الرابط المخصص <a href="#" class="gold-link">لإدارة الخصوصية</a>.
+  </p>
+
+  <h2 class="section-heading">٩. التحديثات والتعديلات القانونية الملزمة</h2>
+  <p class="legal-text">
+    تحتفظ إدارة <strong>"AQX القرمانى اكس"</strong> بالحق المطلق والحصري في مراجعة وتحديث وتعديل بنود سياسة الخصوصية هذه في أي وقت، وبدون إشعار مسبق. تُصبح التعديلات سارية المفعول فور نشرها على هذه الصفحة. يُعتبر استمرارك في استخدام أي من منصاتنا بعد نشر التعديلات بمثابة موافقة قانونية تامة وقبول غير مشروط للسياسة المحدثة. نوصي بمراجعة هذه الصفحة بشكل دوري لتكون على دراية تامة بأي تغييرات.
+  </p>
+
+  <h2 class="section-heading">١٠. قنوات التواصل القانوني</h2>
+  <p class="legal-text">
+    إذا كانت لديك أية استفسارات ذات طبيعة قانونية أو تقنية تتعلق بسياسة الخصوصية، أو آلية تعاملنا مع بياناتك، فإننا نرحب بتواصلك معنا عبر القنوات الرسمية المعتمدة. يمكنك توجيه مراسلاتك مباشرة بالضغط على <a href="#" class="gold-link">تواصل معنا</a>، وسيقوم فريقنا المختص بالرد عليك وفق الأطر الزمنية القانونية المحددة.
+  </p>
+
+  <div class="footer-note">
+    صُدرت هذه الوثيقة من إدارة AQX القرمانى اكس. جميع الحقوق القانونية والفكرية محفوظة بالكامل ©.
+  </div>
+
+</div>
+
+<script>
+  /* =========================================
+     سكربت الجسيمات الذهبية العشوائية (فخامة بصرية)
+     ========================================= */
+  const canvas = document.getElementById('gold-particles');
+  const ctx = canvas.getContext('2d');
+  
+  let particlesArray = [];
+  const numberOfParticles = 80;
+
+  // ضبط أبعاد اللوحة بناءً على حجم الشاشة
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    initParticles();
+  });
+
+  // فئة الجسيمات
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2.5 + 0.5; // أحجام دقيقة
+      this.speedX = (Math.random() - 0.5) * 0.5; // حركة بطيئة وفخمة
+      this.speedY = (Math.random() - 0.5) * 0.5 - 0.2; // يميل للصعود قليلاً
+      this.opacity = Math.random() * 0.6 + 0.2;
+    }
+    
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // إعادة الجسيم عند خروجه من الشاشة
+      if (this.x > canvas.width) this.x = 0;
+      else if (this.x < 0) this.x = canvas.width;
+      if (this.y > canvas.height) this.y = 0;
+      else if (this.y < 0) this.y = canvas.height;
+    }
+    
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`; // لون ذهبي
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "rgba(255, 223, 115, 0.8)";
+      ctx.fill();
+    }
+  }
+
+  // تهيئة المصفوفة
+  function initParticles() {
+    particlesArray = [];
+    for (let i = 0; i < numberOfParticles; i++) {
+      particlesArray.push(new Particle());
+    }
+  }
+
+  // حلقة التحريك
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particlesArray.length; i++) {
+      particlesArray[i].update();
+      particlesArray[i].draw();
+    }
+    requestAnimationFrame(animateParticles);
+  }
+
+  // التشغيل
+  resizeCanvas();
+  initParticles();
+  animateParticles();
+</script>
+
+</body>
+</html>
