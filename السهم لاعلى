@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scroll To Top - AQX</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 
 /* ===== SCROLL TO TOP BUTTON ===== */
@@ -177,40 +178,30 @@
 }
 #scroll-top-btn.visible:hover::after { opacity: 1; }
 
-/* ===== DEMO PAGE (احذفها في مشروعك الحقيقي) ===== */
-body {
-  font-family: 'Cairo', sans-serif;
-  background: #fff;
-  direction: rtl;
+/* ملائمة الأجهزة والشاشات الصغيرة (Responsive) */
+@media (max-width: 768px) {
+  #scroll-top-btn {
+    bottom: 25px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+  }
+  #scroll-progress-ring {
+    bottom: 19px;
+    left: 19px;
+    width: 62px;
+    height: 62px;
+  }
 }
-.demo-content {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 40px 20px 200px;
-  color: #333;
-  font-size: 16px;
-  line-height: 2;
-}
-.demo-content h2 {
-  color: #00B4C8;
-  margin: 30px 0 10px;
-  font-size: 20px;
-}
-
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-
-
-<!-- ===== SCROLL PROGRESS RING ===== -->
 <svg id="scroll-progress-ring" viewBox="0 0 72 72">
   <circle cx="36" cy="36" r="34"/>
   <circle class="progress-arc" cx="36" cy="36" r="34"/>
 </svg>
 
-<!-- ===== SCROLL TO TOP BUTTON ===== -->
 <button id="scroll-top-btn" onclick="scrollToTopAction()" title="للأعلى">
   <span class="pulse-ring"></span>
   <span class="pulse-ring"></span>
@@ -225,15 +216,12 @@ body {
           <stop offset="100%" stop-color="#FFF176"/>
         </linearGradient>
       </defs>
-      <!-- السهم: خط رأسي + رأس السهم -->
       <line x1="12" y1="20" x2="12" y2="5" stroke="url(#arrowGrad)" stroke-width="2.5" stroke-linecap="round"/>
       <polyline points="6,11 12,4 18,11" stroke="url(#arrowGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <!-- نجمة صغيرة زخرفية -->
       <circle cx="12" cy="20" r="1.5" fill="#FFD700" opacity="0.7"/>
     </svg>
   </div>
 </button>
-
 
 <script>
 // ===== AUDIO =====
@@ -330,7 +318,7 @@ progressArc.style.strokeDashoffset = circumference;
 
 window.addEventListener('scroll', () => {
   const btn   = document.getElementById('scroll-top-btn');
-  const ring  = document.getElementById('scroll-progress-ring');
+  const ring   = document.getElementById('scroll-progress-ring');
   const scrolled = window.scrollY;
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
   const pct = maxScroll > 0 ? scrolled / maxScroll : 0;
