@@ -1,3 +1,7 @@
+<!-- ==========================================
+     أكواد السيو (SEO) المحدثة لـ AQX على النطاق الفرعي
+=========================================== -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,13 +13,13 @@
 
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
-<link rel="canonical" href="https://www.alqurmanix.com/">
+<link rel="canonical" href="https://aqx.alqurmanix.com/">
 
 <meta property="og:locale" content="ar_AR">
 <meta property="og:type" content="website">
 <meta property="og:title" content="القرمانى إكس | Alqurmani X - AQX">
 <meta property="og:description" content="منصة القرمانى إكس (Alqurmani X - AQX) هي الوجهة الرائدة للخدمات الرقمية المتكاملة، الأدوات الذكية، والحلول المبتكرة.">
-<meta property="og:url" content="https://www.alqurmanix.com/">
+<meta property="og:url" content="https://aqx.alqurmanix.com/">
 <meta property="og:site_name" content="Alqurmani X">
 <meta property="og:image" content="https://www.alqurmanix.com/logo.png">
 
@@ -36,7 +40,7 @@
     "alqurmani x",
     "alqurmanix"
   ],
-  "url": "https://www.alqurmanix.com",
+  "url": "https://aqx.alqurmanix.com",
   "logo": "https://www.alqurmanix.com/logo.png",
   "description": "منصة شاملة للخدمات الرقمية، الأدوات، والمجتمع التفاعلي.",
   "sameAs": [
@@ -52,10 +56,10 @@
   "@type": "WebSite",
   "name": "Alqurmani X",
   "alternateName": "AQX",
-  "url": "https://www.alqurmanix.com",
+  "url": "https://aqx.alqurmanix.com",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://www.alqurmanix.com/aqx-search.html?q={search_term_string}",
+    "target": "https://aqx.alqurmanix.com/aqx-search.html?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
