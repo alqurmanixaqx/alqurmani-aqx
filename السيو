@@ -1,0 +1,62 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>القرمانى إكس | Alqurmani X - AQX</title>
+
+<meta name="description" content="منصة القرمانى إكس (Alqurmani X - AQX) هي الوجهة الرائدة للخدمات الرقمية المتكاملة، الأدوات الذكية، والحلول المبتكرة. انضم إلى مجتمع AQX واكتشف المزيد.">
+
+<meta name="keywords" content="القرمانى, القرمانى اكس, alqurmani x, alqurmanix, AQX, موقع القرماني, خدمات AQX">
+
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+<link rel="canonical" href="https://www.alqurmanix.com/">
+
+<meta property="og:locale" content="ar_AR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="القرمانى إكس | Alqurmani X - AQX">
+<meta property="og:description" content="منصة القرمانى إكس (Alqurmani X - AQX) هي الوجهة الرائدة للخدمات الرقمية المتكاملة، الأدوات الذكية، والحلول المبتكرة.">
+<meta property="og:url" content="https://www.alqurmanix.com/">
+<meta property="og:site_name" content="Alqurmani X">
+<meta property="og:image" content="https://www.alqurmanix.com/logo.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="القرمانى إكس | Alqurmani X - AQX">
+<meta name="twitter:description" content="الوجهة الرائدة للخدمات الرقمية المتكاملة. اكتشف عالم AQX الآن.">
+<meta name="twitter:image" content="https://www.alqurmanix.com/logo.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Alqurmani X",
+  "alternateName": [
+    "القرمانى اكس",
+    "القرمانى",
+    "AQX",
+    "alqurmani x",
+    "alqurmanix"
+  ],
+  "url": "https://www.alqurmanix.com",
+  "logo": "https://www.alqurmanix.com/logo.png",
+  "description": "منصة شاملة للخدمات الرقمية، الأدوات، والمجتمع التفاعلي.",
+  "sameAs": [
+    "https://www.facebook.com/alqurmanix",
+    "https://twitter.com/alqurmanix"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Alqurmani X",
+  "alternateName": "AQX",
+  "url": "https://www.alqurmanix.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.alqurmanix.com/aqx-search.html?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
