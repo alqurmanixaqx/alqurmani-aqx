@@ -1,181 +1,30 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" style="display: none !important; background: #ffffff !important;">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>إضافة قصيدتك - AQX</title>
-
-<style>
-body{
-margin:0;
-font-family: Arial, sans-serif;
-background:linear-gradient(135deg,#f5f7ff,#ffffff);
-color:#222;
-}
-
-/* header */
-header{
-background:#ffffff;
-padding:20px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-header h1{
-font-size:20px;
-color:#6c5ce7;
-margin:0;
-}
-
-/* container */
-.container{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-padding:20px;
-}
-
-/* form */
-.form-box{
-background:#fff;
-padding:20px;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-}
-
-.form-box h2{
-margin-bottom:15px;
-color:#6c5ce7;
-}
-
-input, textarea, select{
-width:100%;
-padding:10px;
-margin-bottom:12px;
-border:1px solid #ddd;
-border-radius:8px;
-font-size:14px;
-outline:none;
-}
-
-textarea{
-height:180px;
-resize:none;
-}
-
-button{
-width:100%;
-padding:12px;
-border:none;
-border-radius:8px;
-background:#6c5ce7;
-color:#fff;
-font-size:15px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#4834d4;
-}
-
-/* preview */
-.preview{
-background:#fff;
-padding:20px;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
-}
-
-.preview h3{
-color:#00b894;
-}
-
-.poem-box{
-padding:15px;
-border-right:4px solid #6c5ce7;
-background:#f9f9ff;
-white-space:pre-line;
-margin-top:10px;
-}
-
-/* responsive */
-@media(max-width:900px){
-.container{
-grid-template-columns:1fr;
-}
-}
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQX</title>
+    
+    <meta http-equiv="refresh" content="0;url=https://www.alqurmanix.com">
+    
+    <script>
+        // ثاني خط دفاع والأسرع على الإطلاق: تحويل فوري مستخدمين خاصية الاستبدال لمنع التعليق
+        window.location.replace("https://www.alqurmanix.com");
+    </script>
+    
+    <style>
+        /* إخفاء قسري وتام 100% لكل عناصر الصفحة بأعلى درجات الأهمية لضمان عدم ظهور أي ومضة */
+        html, body {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            background: #ffffff !important;
+            width: 0px !important;
+            height: 0px !important;
+            overflow: hidden !important;
+        }
+    </style>
 </head>
-
-<body>
-
-<header>
-<h1>✒️ أضف قصيدتك - AQX</h1>
-<span>منصة الأدب الاجتماعية</span>
-</header>
-
-<div class="container">
-
-<!-- FORM -->
-<div class="form-box">
-<h2>📝 كتابة القصيدة</h2>
-
-<input type="text" id="title" placeholder="عنوان القصيدة">
-
-<input type="text" id="author" placeholder="اسم الشاعر">
-
-<select id="type">
-<option>قصيدة</option>
-<option>خواطر</option>
-<option>أبيات شعر</option>
-<option>نص أدبي</option>
-</select>
-
-<textarea id="content" placeholder="اكتب أبياتك هنا..."></textarea>
-
-<button onclick="publish()">🚀 نشر القصيدة</button>
-</div>
-
-<!-- PREVIEW -->
-<div class="preview">
-<h3>👁️ المعاينة المباشرة</h3>
-
-<h2 id="pTitle">عنوان القصيدة</h2>
-<p id="pAuthor">بواسطة: ---</p>
-<span id="pType">---</span>
-
-<div class="poem-box" id="pContent">
-ابدأ بكتابة قصيدتك وسيظهر هنا المعاينة...
-</div>
-</div>
-
-</div>
-
-<script>
-const title = document.getElementById("title");
-const author = document.getElementById("author");
-const type = document.getElementById("type");
-const content = document.getElementById("content");
-
-title.oninput = () => document.getElementById("pTitle").innerText = title.value || "عنوان القصيدة";
-author.oninput = () => document.getElementById("pAuthor").innerText = "بواسطة: " + (author.value || "---");
-type.onchange = () => document.getElementById("pType").innerText = type.value;
-
-content.oninput = () => document.getElementById("pContent").innerText = content.value || "ابدأ بكتابة قصيدتك وسيظهر هنا المعاينة...";
-
-function publish(){
-if(title.value === "" || content.value === ""){
-alert("من فضلك اكتب العنوان والمحتوى");
-return;
-}
-
-alert("🚀 تم نشر القصيدة بنجاح داخل AQX (نسخة تجريبية)");
-}
-</script>
-
+<body style="display: none !important;">
 </body>
 </html>
