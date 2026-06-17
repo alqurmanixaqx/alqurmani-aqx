@@ -3,141 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سياسة الخصوصية - القرمانى اكس AQX</title>
+    <title>سياسة خصوصية القرمانى اكس AQX</title>
     <style>
-        /* إعدادات الصفحة العامة */
+        :root {
+            --bg-color: #fdfcf0; /* لون خلفية فخم (شامبين) */
+            --gold: #d4af37;     /* اللون الذهبي */
+            --text-color: #2c3e50;
+        }
+
         body {
-            background-color: #fcfcfc; /* لون خلفية فاخر فاتح */
-            color: #2d3436;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
             margin: 0;
             padding: 0;
-            text-align: right;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* مساحة القائمة العلوية */
-        .header-placeholder {
-            height: 120px; /* مساحة للقائمة الجانبية الخاصة بك */
+        /* مساحة القائمة الجانبية */
+        .sidebar-spacer {
+            height: 100px; /* قم بتعديل هذا الارتفاع ليناسب قائمتك */
             width: 100%;
-            background: transparent;
         }
 
-        /* حاوية المحتوى */
-        .container {
-            max-width: 900px;
+        /* حاوية النقاط الذهبية */
+        #particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.5); }
+            100% { transform: translateY(-10vh) scale(1); }
+        }
+
+        /* تصميم المحتوى */
+        .main-content {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
         }
 
-        /* العناوين */
-        h1 {
-            color: #1a2a6c;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+        /* عنوان النيون المتحرك */
+        .neon-title {
             text-align: center;
-        }
-
-        h2 {
-            color: #2c3e50;
-            font-size: 1.8rem;
-            margin-top: 40px;
-            border-bottom: 2px solid #e1e1e1;
-            padding-bottom: 10px;
-        }
-
-        /* الفقرات */
-        p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: #4a4a4a;
-        }
-
-        /* القوائم */
-        ul {
-            list-style: square;
-            margin-right: 20px;
-            margin-bottom: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        /* الروابط */
-        a {
-            color: #1a2a6c;
-            text-decoration: none;
+            font-size: 3rem;
             font-weight: bold;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* رسالة التحديث */
-        .update-date {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+            animation: neon-pulse 2s infinite alternate;
             margin-bottom: 50px;
         }
 
-        /* تحسينات للعرض على الجوال */
+        @keyframes neon-pulse {
+            0% { text-shadow: 0 0 10px #d4af37, 0 0 20px #d4af37; }
+            100% { text-shadow: 0 0 20px #ffcc00, 0 0 40px #ffcc00; }
+        }
+
+        h2 {
+            color: var(--gold);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 10px;
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: #b8860b;
+        }
+
         @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .container { padding: 20px; }
+            .neon-title { font-size: 1.8rem; }
+            .main-content { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="header-placeholder">
-        </div>
+    <div class="sidebar-spacer"></div>
 
-    <div class="container">
-        <h1>سياسة الخصوصية لـ القرمانى اكس AQX</h1>
-        <p class="update-date">آخر تحديث: يونيو 2026</p>
+    <div id="particle-container"></div>
 
-        <p>مرحباً بك في <strong>القرمانى اكس AQX</strong>. نحن نقدر ثقتك بنا ونلتزم بحماية بياناتك الشخصية وخصوصيتك. توضح هذه السياسة كيف نقوم بجمع، استخدام، وحماية المعلومات التي تقدمها عند استخدامك لأدواتنا الرقمية (المجانية والمدفوعة).</p>
+    <main class="main-content">
+        <h1 class="neon-title">سياسة خصوصية AQX</h1>
 
-        <h2>1. المعلومات التي نجمعها</h2>
-        <p>عند زيارتك لموقعنا أو استخدامك للأدوات المتاحة، قد نقوم بجمع أنواع معينة من المعلومات لتحسين تجربتك، وتشمل:</p>
-        <ul>
-            <li><strong>المعلومات الشخصية:</strong> مثل الاسم والبريد الإلكتروني عند التسجيل في الموقع أو الاشتراك في الخدمات المدفوعة.</li>
-            <li><strong>بيانات الاستخدام:</strong> معلومات حول كيفية تفاعلك مع أدواتنا، الأجهزة المستخدمة، وعناوين IP.</li>
-            <li><strong>بيانات الدفع:</strong> نحن لا نخزن بيانات بطاقات الائتمان الخاصة بك بشكل مباشر؛ حيث تتم عمليات الدفع عبر بوابات دفع آمنة ومعتمدة.</li>
-        </ul>
+        <p>مرحباً بك في <strong>القرمانى اكس AQX</strong>. نحن لا نقدم مجرد أدوات، بل نقدم تجربة رقمية فاخرة وآمنة. خصوصيتك هي جزء لا يتجزأ من هذه التجربة.</p>
 
-        <h2>2. كيفية استخدام المعلومات</h2>
-        <p>نستخدم البيانات التي نجمعها للأغراض التالية:</p>
-        <ul>
-            <li>تشغيل وإدارة الأدوات الرقمية التي نقدمها.</li>
-            <li>تحسين الأداء وتطوير ميزات جديدة تلبي احتياجاتك.</li>
-            <li>التواصل معك بخصوص التحديثات، العروض، أو الدعم الفني.</li>
-            <li>معالجة طلبات الاشتراك والخدمات المدفوعة.</li>
-        </ul>
+        <h2>1. جمع البيانات في نظامنا</h2>
+        <p>لضمان كفاءة الأدوات المجانية والمدفوعة، نقوم بجمع بيانات تقنية أساسية فقط. لا نقوم ببيع معلوماتك أو مشاركتها مع أطراف ثالثة. بياناتك مشفرة داخل قواعد بياناتنا المحمية.</p>
 
-        <h2>3. ملفات تعريف الارتباط (Cookies)</h2>
-        <p>يستخدم موقع القرمانى اكس AQX ملفات تعريف الارتباط لتحسين تجربة التصفح وتخصيص المحتوى. يمكنك تعطيل ملفات تعريف الارتباط من إعدادات متصفحك، ولكن قد يؤدي ذلك إلى عدم عمل بعض الأدوات بشكل صحيح. يمكنك مراجعة <a href="#">سياسة الكوكيز</a> لمزيد من التفاصيل.</p>
+        <h2>2. خدماتنا المدفوعة (Premium)</h2>
+        <p>عند اشتراكك في أدواتنا المدفوعة، يتم تأمين بيانات الدفع عبر بوابات دفع عالمية مشفرة. نحن لا نحتفظ ببيانات بطاقتك الائتمانية بشكل مباشر، مما يضمن أمانك المالي الكامل.</p>
 
-        <h2>4. الخدمات المدفوعة والأمان</h2>
-        <p>نحن نولي أهمية قصوى لأمان المعاملات المالية. جميع الخدمات المدفوعة على موقعنا محمية بتقنيات تشفير عالية. لا يتم بيع أو مشاركة بياناتك الشخصية مع أطراف ثالثة لأغراض تسويقية دون موافقتك الصريحة.</p>
+        <h2>3. ملفات الارتباط (Cookies)</h2>
+        <p>تُستخدم ملفات الارتباط فقط لتحسين الأداء وتذكر تفضيلاتك في الأدوات. يمكنك إدارتها في أي وقت من إعدادات متصفحك.</p>
 
-        <h2>5. روابط خارجية</h2>
-        <p>قد يحتوي موقعنا على روابط لمواقع أو أدوات خارجية. يرجى العلم بأننا غير مسؤولين عن ممارسات الخصوصية الخاصة بتلك المواقع. ندعوك لقراءة سياسات الخصوصية الخاصة بهم عند زيارتهم عبر الرابط <a href="#">هنا</a>.</p>
+        <h2>4. حماية المحتوى والخصوصية</h2>
+        <p>جميع الأدوات التي تستخدمها في <strong>القرمانى اكس AQX</strong> تتم معالجتها بخصوصية تامة. نحن نضمن عدم استخدام ملفاتك أو مخرجاتك لأي غرض آخر غير تنفيذ الأداة المطلوبة.</p>
 
-        <h2>6. حقوقك كمستخدم</h2>
-        <p>لديك الحق في الوصول إلى بياناتك الشخصية، طلب تصحيحها، أو طلب حذفها نهائياً من قواعد بياناتنا. إذا كنت ترغب في ممارسة أي من هذه الحقوق، يرجى التواصل معنا عبر نموذج <a href="#">اتصل بنا</a>.</p>
-
-        <h2>7. التعديلات على السياسة</h2>
-        <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر لمواكبة التطورات التقنية أو القوانين الجديدة. سيتم نشر التحديثات على هذه الصفحة، وننصحك بمراجعتها بشكل دوري.</p>
-
-        <h2>8. التواصل معنا</h2>
-        <p>إذا كانت لديك أي استفسارات بخصوص هذه السياسة أو واجهت أي مشكلة تقنية، لا تتردد في مراسلتنا مباشرة من خلال <a href="#">نموذج الدعم الفني</a>.</p>
+        <h2>5. اتصل بنا</h2>
+        <p>لأي استفسار بخصوص سياسة الخصوصية، يمكنك التواصل معنا عبر <a href="#">نموذج الدعم التقني</a> أو مراسلتنا مباشرة.</p>
         
-        <p style="text-align: center; margin-top: 50px; font-weight: bold;">شكراً لكونك جزءاً من مجتمع القرمانى اكس AQX.</p>
-    </div>
+        <p style="text-align: center; margin-top: 40px; color: #777;">&copy; 2026 القرمانى اكس AQX - فخامة الأداء الرقمي</p>
+    </main>
 
+    <script>
+        // كود النقاط الذهبية
+        const container = document.getElementById('particle-container');
+        function createParticle() {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 5 + 2;
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDuration = Math.random() * 5 + 5 + 's';
+            container.appendChild(p);
+            setTimeout(() => p.remove(), 10000);
+        }
+        setInterval(createParticle, 500);
+    </script>
 </body>
-  </html>
+</html>
