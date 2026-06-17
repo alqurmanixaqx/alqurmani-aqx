@@ -3,146 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سياسة خصوصية القرمانى اكس AQX</title>
+    <title>سياسة الخصوصية | القرماني اكس AQX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #fdfcf0; /* لون خلفية فخم (شامبين) */
-            --gold: #d4af37;     /* اللون الذهبي */
-            --text-color: #2c3e50;
+            /* درجات التركواز الفاخر المختار بعناية فائقة ليعطي عمقاً بصرياً مذهلاً */
+            --bg-gradient-start: #02343a;
+            --bg-gradient-center: #05464e;
+            --bg-gradient-end: #0b5e68;
+            --text-color: #e2f5f7;
+            --gold-primary: #ffd700;
+            --glass-bg: rgba(4, 52, 58, 0.55);
+            --neon-glow-radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* منع التمرير الأفقي وضبط التمرير الرأسي الانسيابي */
+        html, body {
+            overflow-x: hidden;
+            overflow-y: auto;
+            min-height: 100vh;
+            background-color: var(--bg-gradient-start);
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text-color);
+            scroll-behavior: smooth;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-center) 50%, var(--bg-gradient-end) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
         }
 
-        /* مساحة القائمة الجانبية */
-        .sidebar-spacer {
-            height: 100px; /* قم بتعديل هذا الارتفاع ليناسب قائمتك */
-            width: 100%;
-        }
-
-        /* حاوية النقاط الذهبية */
-        #particle-container {
+        /* لوحة جزيئات الذهب المتطايرة بعشوائية في الخلفية بشكل ثابت وثري */
+        #gold-particles-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
             pointer-events: none;
         }
 
-        .particle {
-            position: absolute;
-            background: var(--gold);
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: float linear infinite;
+        /* مساحة علوية مخصصة ومحسوبة بدقة لتناسب شرايط وأزرار القائمة الجانبية أو العلوية */
+        .top-navigation-vacuum {
+            height: clamp(90px, 15vh, 140px);
+            width: 100%;
+            position: relative;
+            z-index: 2;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0.5); }
-            100% { transform: translateY(-10vh) scale(1); }
+        /* الحاوية المركزية الفاخرة للمحتوى */
+        .privacy-core-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 24px 80px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
         }
 
-        /* تصميم المحتوى */
-        .main-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-        }
-
-        /* عنوان النيون المتحرك */
-        .neon-title {
+        /* العنوان الجذاب النيون المتقلب بـ 7 ألوان سحرية متحركة */
+        .neon-dynamic-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            font-weight: 900;
             text-align: center;
-            font-size: 3rem;
-            font-weight: bold;
-            color: #fff;
-            text-transform: uppercase;
-            animation: neon-pulse 2s infinite alternate;
-            margin-bottom: 50px;
+            line-height: 1.4;
+            animation: shiftSevenNeon 14s infinite linear, gentleFloat 4s ease-in-out infinite alternate;
         }
 
-        @keyframes neon-pulse {
-            0% { text-shadow: 0 0 10px #d4af37, 0 0 20px #d4af37; }
-            100% { text-shadow: 0 0 20px #ffcc00, 0 0 40px #ffcc00; }
+        @keyframes gentleFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
         }
 
-        h2 {
-            color: var(--gold);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding-bottom: 10px;
+        @keyframes shiftSevenNeon {
+            0%, 100% { color: #00ffff; text-shadow: 0 0 var(--neon-glow-radius) #00ffff, 0 0 40px #00ffff; }
+            14% { color: #00ff66; text-shadow: 0 0 var(--neon-glow-radius) #00ff66, 0 0 40px #00ff66; }
+            28% { color: #ffff00; text-shadow: 0 0 var(--neon-glow-radius) #ffff00, 0 0 40px #ffff00; }
+            42% { color: #ff007f; text-shadow: 0 0 var(--neon-glow-radius) #ff007f, 0 0 40px #ff007f; }
+            56% { color: #ff3300; text-shadow: 0 0 var(--neon-glow-radius) #ff3300, 0 0 40px #ff3300; }
+            70% { color: #cc00ff; text-shadow: 0 0 var(--neon-glow-radius) #cc00ff, 0 0 40px #cc00ff; }
+            84% { color: #00bfff; text-shadow: 0 0 var(--neon-glow-radius) #00bfff, 0 0 40px #00bfff; }
         }
 
-        a {
-            color: var(--gold);
-            text-decoration: none;
-            transition: 0.3s;
+        /* الوثيقة القانونية الزجاجية الفخمة الخالية تماماً من البراويز التقليدية */
+        .legal-document-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 50px 40px;
+            border-radius: 32px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            width: 100%;
+            border: none; /* بدون أي براويز بناءً على طلبك */
         }
 
-        a:hover {
-            color: #b8860b;
+        /* تنسيق النصوص والفقرات القانونية الطويلة المطولة */
+        .legal-section {
+            margin-bottom: 40px;
         }
 
-        @media (max-width: 600px) {
-            .neon-title { font-size: 1.8rem; }
-            .main-content { padding: 20px; }
+        .legal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .legal-heading {
+            font-family: 'Cairo', sans-serif;
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .legal-heading::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background: linear-gradient(to bottom, var(--gold-primary), #bfa100);
+            border-radius: 3px;
+            box-shadow: 0 0 8px var(--gold-primary);
+        }
+
+        .legal-paragraph {
+            font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+            line-height: 2;
+            color: #cce8ec;
+            text-align: justify;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .legal-list {
+            list-style: none;
+            padding-right: 15px;
+            margin-bottom: 15px;
+        }
+
+        .legal-list li {
+            font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+            line-height: 2;
+            color: #b3dee4;
+            margin-bottom: 10px;
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .legal-list li::before {
+            content: '✦';
+            position: absolute;
+            right: 0;
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            text-shadow: 0 0 5px var(--gold-primary);
+        }
+
+        /* ذيل الصفحة الفاخر للهوية */
+        .legal-footer-signature {
+            text-align: center;
+            font-size: 0.95rem;
+            color: rgba(212, 175, 55, 0.8);
+            letter-spacing: 0.5px;
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        /* توافق الأجهزة والشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .legal-document-card {
+                padding: 35px 20px;
+                border-radius: 24px;
+            }
+            .top-navigation-vacuum {
+                height: 100px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="sidebar-spacer"></div>
+    <canvas id="gold-particles-canvas"></canvas>
 
-    <div id="particle-container"></div>
+    <div class="top-navigation-vacuum"></div>
 
-    <main class="main-content">
-        <h1 class="neon-title">سياسة خصوصية AQX</h1>
-
-        <p>مرحباً بك في <strong>القرمانى اكس AQX</strong>. نحن لا نقدم مجرد أدوات، بل نقدم تجربة رقمية فاخرة وآمنة. خصوصيتك هي جزء لا يتجزأ من هذه التجربة.</p>
-
-        <h2>1. جمع البيانات في نظامنا</h2>
-        <p>لضمان كفاءة الأدوات المجانية والمدفوعة، نقوم بجمع بيانات تقنية أساسية فقط. لا نقوم ببيع معلوماتك أو مشاركتها مع أطراف ثالثة. بياناتك مشفرة داخل قواعد بياناتنا المحمية.</p>
-
-        <h2>2. خدماتنا المدفوعة (Premium)</h2>
-        <p>عند اشتراكك في أدواتنا المدفوعة، يتم تأمين بيانات الدفع عبر بوابات دفع عالمية مشفرة. نحن لا نحتفظ ببيانات بطاقتك الائتمانية بشكل مباشر، مما يضمن أمانك المالي الكامل.</p>
-
-        <h2>3. ملفات الارتباط (Cookies)</h2>
-        <p>تُستخدم ملفات الارتباط فقط لتحسين الأداء وتذكر تفضيلاتك في الأدوات. يمكنك إدارتها في أي وقت من إعدادات متصفحك.</p>
-
-        <h2>4. حماية المحتوى والخصوصية</h2>
-        <p>جميع الأدوات التي تستخدمها في <strong>القرمانى اكس AQX</strong> تتم معالجتها بخصوصية تامة. نحن نضمن عدم استخدام ملفاتك أو مخرجاتك لأي غرض آخر غير تنفيذ الأداة المطلوبة.</p>
-
-        <h2>5. اتصل بنا</h2>
-        <p>لأي استفسار بخصوص سياسة الخصوصية، يمكنك التواصل معنا عبر <a href="#">نموذج الدعم التقني</a> أو مراسلتنا مباشرة.</p>
+    <div class="privacy-core-container">
         
-        <p style="text-align: center; margin-top: 40px; color: #777;">&copy; 2026 القرمانى اكس AQX - فخامة الأداء الرقمي</p>
-    </main>
+        <h1 class="neon-dynamic-title">🛡️ سياسة الخصوصية الشاملة لشبكة AQX</h1>
+
+        <div class="legal-document-card">
+            
+            <div class="legal-section">
+                <h2 class="legal-heading">1. تمهيد وإقرار الاستخدام لشبكة القرماني اكس</h2>
+                <p class="legal-paragraph">
+                    مرحباً بكم في منصة **أدوات رقمية مجانية ومدفوعة القرماني اكس AQX**. تُشكل وثيقة سياسة الخصوصية هذه اتفاقاً قانونياً وتنظيمياً ملزماً يحكم طبيعة التعامل مع البيانات والمعلومات الرقمية التي يتم جمعها أو معالجتها أثناء تفاعلكم مع الأدوات والخدمات البرمجية المتاحة عبر فضاء موقعنا. نلتزم بأعلى معايير حماية البيانات الرقمية المعتمدة عالمياً لضمان سلامة وسرية هوياتكم الرقمية.
+                </p>
+                <p class="legal-paragraph">
+                    بمجرد تصفحكم للموقع، أو استخدام أي من الأدوات الرقمية المجانية، أو الاشتراك في الباقات المدفوعة، فإنكم تقرون بموافقتكم الصريحة وغير المشروطة على كافة البنود والممارسات القانونية المفصلة في هذه السياسة.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2 class="legal-heading">2. ماهية البيانات والمعلومات التي نقوم بجمعها</h2>
+                <p class="legal-paragraph">
+                    تنقسم البيانات التي تقوم منصة القرماني اكس AQX بجمعها إلى فئتين أساسيتين لضمان الكفاءة التشغيلية للأدوات الرقمية:
+                </p>
+                <ul class="legal-list">
+                    <li>**بيانات الهوية الشخصية المباشرة:** تشمل الاسم الكامل، وعنوان البريد الإلكتروني، ومعلومات الحساب الشخصي التي تقوم بإنشائها للاستفادة من الباقات المدفوعة أو الاحتفاظ بسجلات استخدام الأدوات.</li>
+                    <li>**البيانات التشغيلية والتقنية:** تشمل عنوان بروتوكول الإنترنت (IP Address)، ونوع نظام التشغيل والمتصفح المستخدم، وتاريخ ووقت العمليات، وإحصائيات تفاعلك مع الأدوات الرقمية المجانية والمدفوعة.</li>
+                    <li>**بيانات المدفوعات والمعاملات المالية:** عند شرائكم لأي أداة رقمية مدفوعة، يتم معالجة بيانات بطاقات الائتمان والحسابات البنكية عبر بوابات دفع وسيطة مشفرة بالكامل ومعتمدة دولياً، ولا يتم تخزين أي بيانات مالية حساسة على الخوادم الخاصة بنا مطلقاً.</li>
+                </ul>
+            </div>
+
+            <div class="legal-section">
+                <h2 class="legal-heading">3. آليات معالجة واستخدام البيانات الرقمية</h2>
+                <p class="legal-paragraph">
+                    يتم استغلال وتوظيف البيانات التي نجمعها عبر موقع القرماني اكس AQX في أغراض محددة ومقننة تخدم مصلحة التجربة البرمجية للمستخدم، وتتلخص في الآتي:
+                </p>
+                <ul class="legal-list">
+                    <li>تقديم وتطوير وصيانة الأدوات الرقمية المجانية والمدفوعة لضمان خلوها من الأخطاء البرمجية.</li>
+                    <li>إدارة الحسابات المشتركة، وتفعيل الاشتراكات المدفوعة، وتقديم الدعم الفني والتقني الفوري للمشتركين.</li>
+                    <li>تحليل أنماط الحركة والتصفح داخل الموقع لتحسين الهندسة البرمجية والواجهات البصرية للمنصة.</li>
+                    <li>إرسال التحديثات الدورية، الفواتير المالية، والإشعارات المتعلقة بظهور أدوات رقمية جديدة أو تعديلات في أنظمة الاشتراكات.</li>
+                </ul>
+            </div>
+
+            <div class="legal-section">
+                <h2 class="legal-heading">4. ملفات تعريف الارتباط (Cookies) والشبكات الإعلانية</h2>
+                <p class="legal-paragraph">
+                    تستخدم منصة القرماني اكس AQX ملفات تعريف الارتباط والتقنيات التتبعية الحديثة لتهيئة تجربة تصفح مخصصة لكل مستخدم. تساعدنا هذه الملفات في حفظ تفضيلاتك البرمجية والتعرف على هويتك الرقمية عند تكرار الزيارة دون الحاجة لإعادة إدخال البيانات.
+                </p>
+                <p class="legal-paragraph">
+                    علاوة على ذلك، نتعاون مع أطراف ثالثة وشبكات إعلانية موثوقة (مثل خدمات الإعلانات البرمجية والذكية المعروضة بالموقع)؛ حيث تقوم هذه الشبكات باستخدام ملفات تعريف ارتباط خاصة بها لغرض تقديم محتوى إعلاني مخصص يتناسب مع اهتماماتك الرقمية وسلوكك التصفحي. يمكنك في أي وقت تعطيل ملفات تعريف الارتباط عبر إعدادات متصفحك الخاص، إلا أن ذلك قد يؤثر نسبياً على كفاءة بعض الأدوات الرقمية المتاحة.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2 class="legal-heading">5. أمن وحماية البيانات وحقوق الابتكار الفكري</h2>
+                <p class="legal-paragraph">
+                    نطبق في موقع القرماني اكس AQX بروتوكولات أمان صارمة تشمل أنظمة تشفير متطورة لمنع الوصول غير المصرح به إلى بياناتك، أو تعديلها، أو إتلافها. إننا نتخذ التدابير الإدارية والتقنية اللازمة لحماية خوادمنا ضد الهجمات السيبرانية.
+                </p>
+                <p class="legal-paragraph">
+                    كما نؤكد أن جميع الأدوات البرمجية، الأكواد، التصاميم، والشعارات المتاحة عبر المنصة هي حقوق فكرية حصرية ومحمية بموجب قوانين حماية حقوق الابتكار والنشر الدولية، ولا يحق لأي جهة إعادة إنتاجها أو استخدامها تجارياً دون إذن خطي مسبق منا.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2 class="legal-heading">6. مشاركة البيانات مع أطراف ثالثة والامتثال الدولي</h2>
+                <p class="legal-paragraph">
+                    نحن لا نقوم ببيع، أو المتاجرة، أو تأجير بيانات الهوية الشخصية الخاصة بمستخدمينا إلى أي جهات تسويقية خارجية. قد يتم مشاركة بعض البيانات الإحصائية العامة غير المرتبطة بهوية محددة مع شركائنا ومقدمي الخدمات السحابية ومحللي البيانات لأغراض تحسين الأداء العام للموقع.
+                </p>
+                <p class="legal-paragraph">
+                    كما تلتزم المنصة بالامتثال لسلطة القانون، وقد نضطر للإفصاح عن البيانات في حالات خاصة ومحدودة جداً إذا استدعى ذلك أمر قضائي، أو لتطبيق الشروط والأحكام الخاصة بنا، أو لحماية حقوق وسلامة منصة القرماني اكس AQX ومستخدميها.
+                </p>
+            </div>
+
+            <div class="legal-section">
+                <h2 class="legal-heading">7. تعديلات وإضافات على سياسة الخصوصية</h2>
+                <p class="legal-paragraph">
+                    تمتلك إدارة موقع القرماني اكس AQX الحق الكامل والمطلق في إجراء أي تعديلات، تنقيحات، أو إضافات على بنود سياسة الخصوصية هذه في أي وقت تراه مناسباً لتواكب التطورات البرمجية أو التغيرات التشريعية العالمية. عند حدوث أي تعديل جوهري، سنقوم بتحديث تاريخ المراجعة في أسفل هذه الصفحة. ننصح مستخدمينا بزيارة هذه الوثيقة بانتظام للاطلاع على الآليات الحديثة التي نتبعها لحماية بياناتهم الرقمية.
+                </p>
+            </div>
+
+            <div class="legal-footer-signature">
+                حقوق الطبع والنشر والابتكار الفكري © 2026 محفوظة بالكامل لمنصة القرماني اكس AQX
+            </div>
+
+        </div>
+    </div>
 
     <script>
-        // كود النقاط الذهبية
-        const container = document.getElementById('particle-container');
-        function createParticle() {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            const size = Math.random() * 5 + 2;
-            p.style.width = size + 'px';
-            p.style.height = size + 'px';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDuration = Math.random() * 5 + 5 + 's';
-            container.appendChild(p);
-            setTimeout(() => p.remove(), 10000);
+        /* نظام توليد جزيئات الذهب المتطايرة بعشوائية وبطء مريح للعين */
+        const canvas = document.getElementById('gold-particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
-        setInterval(createParticle, 500);
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+
+        class GoldParticle {
+            constructor() {
+                this.reset();
+                this.y = Math.random() * canvas.height; /* توزيع جزيئات أولي عشوائي */
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = canvas.height + Math.random() * 20;
+                this.size = Math.random() * 1.5 + 0.3;
+                this.speedY = Math.random() * -0.6 - 0.1; /* صعود وتطاير بطيء جداً وناعم */
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.alpha = Math.random() * 0.7 + 0.3;
+                this.fade = Math.random() * 0.01 - 0.005;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.alpha += this.fade;
+
+                if (this.alpha <= 0.1 || this.alpha >= 1) {
+                    this.fade = -this.fade;
+                }
+                if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = '#ffd700';
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = '#ffd700';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        /* إنشاء 75 جزيء ذهبي عشوائي للتطاير */
+        for (let i = 0; i < 75; i++) {
+            particles.push(new GoldParticle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
     </script>
 </body>
 </html>
