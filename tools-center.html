@@ -1,1 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز أدوات القرمانى إكس | AQX Tools</title>
+    
+    <!-- خطوط عربية فاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           الإعدادات الأساسية والخلفية الفاخرة
+        ========================================== */
+        :root {
+            --primary-light: #ffffff;
+            --secondary-light: #eaf8fb;
+            --aqx-cyan: #00CDD9;
+            --aqx-gold: #FFD700;
+            --aqx-dark: #0d2c4a;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(0, 205, 217, 0.3);
+        }
 
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary-light), #fdfbfb);
+            background-size: 300% 300%;
+            animation: bgDrift 15s ease infinite;
+            color: var(--aqx-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        @keyframes bgDrift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* حاوية الشرر الذهبي (تطير في الخلفية) */
+        #gold-sparks {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* شرارة ذهبية */
+        .sparkle {
+            position: absolute;
+            bottom: -10px;
+            width: 4px; height: 4px;
+            background-color: var(--aqx-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.6);
+            opacity: 0;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+        }
+
+        /* ==========================================
+           حاوية المحتوى الرئيسية (فوق الخلفية)
+        ========================================== */
+        .aqx-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ترك مساحة فارغة (4 أشرطة) من الأعلى */
+        .top-spacer {
+            height: 18vh; /* يعادل مساحة فارغة مريحة للعين */
+            width: 100%;
+        }
+
+        /* ==========================================
+           العنوان النيون المتحرك (ألوان راقية)
+        ========================================== */
+        .neon-title {
+            text-align: center;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            margin-bottom: 20px;
+            color: var(--aqx-dark);
+            animation: neonShift 5s infinite alternate;
+        }
+
+        @keyframes neonShift {
+            0% { text-shadow: 0 0 10px rgba(0,205,217,0.5), 0 0 20px rgba(0,205,217,0.3); }
+            50% { text-shadow: 0 0 15px rgba(255,215,0,0.6), 0 0 30px rgba(255,215,0,0.4); }
+            100% { text-shadow: 0 0 10px rgba(255,107,107,0.5), 0 0 25px rgba(255,107,107,0.3); }
+        }
+
+        /* ==========================================
+           المقدمة التشويقية
+        ========================================== */
+        .intro-text {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            color: #334e68;
+            font-weight: 600;
+            padding: 20px;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        /* ==========================================
+           حاويات الإعلانات (فخامة في العرض)
+        ========================================== */
+        .ad-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px auto;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            border: 1px dashed rgba(0, 205, 217, 0.2);
+            backdrop-filter: blur(5px);
+            overflow: hidden;
+        }
+
+        /* ==========================================
+           شبكة الأدوات والأقسام (Cards)
+        ========================================== */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .tool-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            transition: 0.5s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 45px rgba(0, 205, 217, 0.15);
+            border-color: var(--aqx-gold);
+        }
+
+        .tool-card:hover::before {
+            left: 150%;
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--aqx-cyan), var(--aqx-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--aqx-dark);
+        }
+
+        .tool-card p {
+            color: #556b82;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        /* ==========================================
+           قسم الفيديو (شاشة سينمائية راقية)
+        ========================================== */
+        .video-section {
+            margin: 60px 0;
+            background: var(--glass-bg);
+            padding: 30px;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+        }
+
+        .video-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--aqx-dark);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* أبعاد 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* ==========================================
+           أقسام المدونة المدمجة
+        ========================================== */
+        .blog-sections {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+        }
+
+        .blog-badge {
+            background: linear-gradient(135deg, var(--aqx-dark), #1a426b);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 5px 15px rgba(13, 44, 74, 0.2);
+        }
+
+        .blog-badge:hover {
+            background: linear-gradient(135deg, var(--aqx-cyan), #009aa3);
+            transform: scale(1.05);
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- خلفية الشرر الذهبي المتطاير -->
+    <div id="gold-sparks"></div>
+
+    <div class="aqx-container">
+        
+        <!-- مساحة الأشرطة العلوية الفارغة -->
+        <div class="top-spacer"></div>
+
+        <!-- العنوان الرئيسي المذهل -->
+        <h1 class="neon-title">بوابة AQX السحرية</h1>
+
+        <!-- المقدمة التشويقية -->
+        <div class="intro-text">
+            مرحباً بك في البُعد الجديد للتقنية. هنا، في مركز أدوات القرمانى إكس، لا نكتفي بتقديم الحلول، بل نصنع لك المستقبل. 
+            اكتشف ترسانة متكاملة من الأدوات الرقمية المصممة بعناية فائقة لتختصر عليك الوقت والجهد، وترتقي بأعمالك إلى آفاق غير مسبوقة من الاحترافية والإبداع. استعد لتجربة تأسر العقول.
+        </div>
+
+        <!-- الإعلان الأول (320x50) مدمج بأناقة تحت المقدمة -->
+        <div class="ad-wrapper">
+            <script>
+                atOptions = {
+                    'key' : '6084f429253cae00d1188bae06e361f1',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
+        </div>
+
+        <!-- شبكة الأدوات الرئيسية -->
+        <div class="tools-grid">
+            <!-- كارت الأدوات المجانية -->
+            <a href="free-tools.html" class="tool-card">
+                <div class="tool-icon">✦</div>
+                <h2>الأدوات المجانية</h2>
+                <p>مجموعة من الأدوات الذكية المفتوحة للجميع. ابدأ رحلة الابتكار بدون أي قيود واجعل مهامك اليومية أسرع وأكثر دقة.</p>
+            </a>
+
+            <!-- كارت الأدوات المدفوعة -->
+            <a href="premium-tools.html" class="tool-card">
+                <div class="tool-icon">♛</div>
+                <h2>الأدوات المدفوعة</h2>
+                <p>الترسانة الحصرية للمحترفين. أدوات متقدمة وحلول جذرية مصممة خصيصاً لمن يبحثون عن القمة والتميز المطلق.</p>
+            </a>
+        </div>
+
+        <!-- الإعلان الثاني (300x250) مدمج بين الأقسام بلمسة احترافية -->
+        <div class="ad-wrapper">
+            <script>
+                atOptions = {
+                    'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
+        </div>
+
+        <!-- قسم الفيديو السينمائي -->
+        <div class="video-section">
+            <h2 class="video-title">نظرة عن قرب: سحر التكنولوجيا</h2>
+            <div class="video-container">
+                <iframe src="https://www.dailymotion.com/embed/video/xaclp86" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- استدعاء أقسام المدونة المتخصصة (مدمجة كأزرار تصفح سريعة) -->
+        <div class="blog-sections">
+            <a href="https://tech.alqurmanix.com" class="blog-badge">قسم التكنولوجيا</a>
+            <a href="https://health.alqurmanix.com" class="blog-badge">قسم الصحة والرشاقة</a>
+            <a href="https://www.alqurmanix.com" class="blog-badge">الرئيسية الشاملة</a>
+            <a href="#" class="blog-badge">المزيد قريباً...</a>
+        </div>
+
+    </div>
+
+    <!-- سكريبت إنشاء الشرر الذهبي العشوائي بلمسة ناعمة وخفيفة على المتصفح -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.getElementById("gold-sparks");
+            const sparkCount = 35; // عدد النقاط (تم اختياره ليكون خفيفاً وسريعاً)
+
+            for (let i = 0; i < sparkCount; i++) {
+                let spark = document.createElement("div");
+                spark.classList.add("sparkle");
+                
+                // توزيع عشوائي أفقي
+                spark.style.left = Math.random() * 100 + "vw";
+                
+                // تأخير عشوائي للحركة لتظهر بشكل طبيعي
+                spark.style.animationDelay = Math.random() * 5 + "s";
+                
+                // مدة حركة عشوائية لكل نقطة (بين 6 و 12 ثانية)
+                spark.style.animationDuration = 6 + Math.random() * 6 + "s";
+                
+                container.appendChild(spark);
+            }
+        });
+    </script>
+
+    <!-- الإعلان الثالث (Pop-under / Script) تم وضعه هنا في النهاية كما طلبنا سابقاً لضمان السرعة الصاروخية -->
+    <script async src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
+
+</body>
+</html>
