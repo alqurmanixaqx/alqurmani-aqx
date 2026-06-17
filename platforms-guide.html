@@ -1,1 +1,1307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل المنصات — القرماني AQX</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:       #C9952A;
+  --gold-light: #E8B84B;
+  --gold-pale:  #F5DFA0;
+  --teal:       #0A7EA4;
+  --teal-light: #13A5D4;
+  --teal-pale:  #D6EEF8;
+  --page-bg:    #F7F8FC;
+  --card-bg:    #FFFFFF;
+  --card-border:#EAE6DC;
+  --text-main:  #1A1A2E;
+  --text-mid:   #4A4A6A;
+  --text-light: #8888AA;
+  --shadow-sm:  0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md:  0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg:  0 20px 60px rgba(0,0,0,0.13);
+  --radius:     18px;
+}
 
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cairo','Tajawal',sans-serif;
+  background: var(--page-bg);
+  color: var(--text-main);
+  direction: rtl;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ==============================
+   PARTICLES CANVAS
+============================== */
+#particles-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==============================
+   HERO HEADER
+============================== */
+.hero {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F4FF 40%, #E8F5FF 70%, #FDF8EE 100%);
+  border-bottom: 1px solid var(--card-border);
+  padding: 56px 24px 48px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* خط ذهبي علوي */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), var(--gold-light), var(--gold), var(--teal-light), var(--gold-light));
+  background-size: 300% 100%;
+  animation: heroLine 4s linear infinite;
+}
+@keyframes heroLine {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 300% 0%; }
+}
+
+/* دوائر زخرفية */
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.07;
+  pointer-events: none;
+}
+.hc1 { width:400px; height:400px; background: var(--gold); top:-180px; left:-120px; }
+.hc2 { width:300px; height:300px; background: var(--teal); bottom:-130px; right:-80px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(201,149,42,0.12), rgba(10,126,164,0.10));
+  border: 1px solid rgba(201,149,42,0.35);
+  border-radius: 50px;
+  padding: 6px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-badge::before { content:'✦'; font-size:10px; }
+.hero-badge::after  { content:'✦'; font-size:10px; }
+
+.hero-title {
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+.hero-title span {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 13px;
+  color: var(--text-light);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.hero-desc {
+  max-width: 520px;
+  margin: 0 auto 28px;
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat .num {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+.hero-stat .lbl {
+  font-size: 10.5px;
+  color: var(--text-light);
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+/* ==============================
+   TABS
+============================== */
+.tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(247,248,252,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 0 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 10px 0;
+}
+
+.tab-btn {
+  padding: 9px 22px;
+  border-radius: 50px;
+  border: 1.5px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Cairo',sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.tab-btn:hover {
+  color: var(--text-main);
+  background: rgba(201,149,42,0.08);
+  border-color: rgba(201,149,42,0.25);
+}
+.tab-btn.active {
+  color: var(--gold);
+  background: linear-gradient(135deg, rgba(201,149,42,0.12), rgba(232,184,75,0.08));
+  border-color: var(--gold-light);
+  box-shadow: 0 2px 12px rgba(201,149,42,0.15);
+}
+
+/* ==============================
+   MAIN CONTENT
+============================== */
+.main-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* Panel */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* Section title */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.section-label .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--card-border), transparent);
+}
+.section-label .line.rev {
+  background: linear-gradient(90deg, transparent, var(--card-border));
+}
+.section-label h2 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ==============================
+   PLATFORM GRID
+============================== */
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ==============================
+   PLATFORM CARD
+============================== */
+.p-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  animation: cardIn 0.5s ease both;
+}
+
+@keyframes cardIn {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.p-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold-light);
+}
+
+/* الشريط الملون العلوي */
+.p-card-strip {
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), var(--gold-light));
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease;
+}
+.p-card:hover .p-card-strip {
+  background-position: 100% 0%;
+}
+
+.p-card-inner {
+  padding: 20px 20px 18px;
+}
+
+/* رقم المنصة */
+.p-num {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold-pale);
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.5;
+}
+
+/* الأيقونة */
+.p-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.p-card:hover .p-icon-wrap { transform: scale(1.1) rotate(-5deg); }
+
+/* اسم المنصة */
+.p-name-en {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 3px;
+}
+.p-name-ar {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.p-desc {
+  font-size: 12.5px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+/* تصنيف */
+.p-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* زر الدخول */
+.p-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 0;
+  border-radius: 10px;
+  font-family: 'Cairo',sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1.5px solid var(--card-border);
+  color: var(--text-mid);
+  background: rgba(247,248,252,0.8);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.p-card:hover .p-btn {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(201,149,42,0.35);
+}
+
+/* ripple effect */
+.p-card .ripple-el {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(201,149,42,0.18);
+  transform: scale(0);
+  animation: rippleCard 0.7s linear;
+  pointer-events: none;
+}
+@keyframes rippleCard {
+  to { transform: scale(5); opacity: 0; }
+}
+
+/* ==============================
+   FEATURED CARD (منصة AQX الرئيسية)
+============================== */
+.p-card.featured {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #FFFDF5 0%, #FFF8E8 50%, #F0F9FF 100%);
+  border-color: rgba(201,149,42,0.35);
+  box-shadow: 0 8px 40px rgba(201,149,42,0.12);
+}
+@media (max-width: 640px) {
+  .p-card.featured { grid-column: span 1; }
+}
+.p-card.featured .p-name-ar { font-size: 22px; }
+.p-card.featured .p-card-strip {
+  height: 6px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--teal), var(--gold-light));
+}
+
+/* ==============================
+   SEARCH BAR
+============================== */
+.search-wrap {
+  margin-bottom: 36px;
+  position: relative;
+  max-width: 500px;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 14px 50px 14px 18px;
+  border-radius: 14px;
+  border: 1.5px solid var(--card-border);
+  background: var(--card-bg);
+  font-family: 'Cairo',sans-serif;
+  font-size: 14px;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  direction: rtl;
+}
+.search-wrap input:focus {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 0 4px rgba(201,149,42,0.08);
+}
+.search-wrap::before {
+  content: '🔍';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+}
+.search-count {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 8px;
+  padding-right: 4px;
+}
+
+/* ==============================
+   TOAST NOTIFICATION
+============================== */
+#toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(135deg, #1A1A2E, #2D2D50);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  border: 1px solid rgba(201,149,42,0.4);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  white-space: nowrap;
+}
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 600px) {
+  .platforms-grid { grid-template-columns: 1fr; }
+  .hero { padding: 40px 16px 36px; }
+  .main-wrap { padding: 32px 16px 60px; }
+  .tabs { overflow-x: auto; padding-bottom: 2px; }
+  .tab-btn { padding: 8px 16px; font-size: 12px; }
+  .hero-stats { gap: 20px; }
+}
+
+/* ==============================
+   NO RESULTS
+============================== */
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-light);
+  font-size: 15px;
+  display: none;
+}
+.no-results.show { display: block; }
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- PARTICLES -->
+<canvas id="particles-bg"></canvas>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- ============================
+     HERO
+============================ -->
+<header class="hero">
+  <div class="hero-circle hc1"></div>
+  <div class="hero-circle hc2"></div>
+
+  <div class="hero-badge">دليل المنصات الرسمي</div>
+
+  <h1 class="hero-title">
+    منصات <span>القرماني AQX</span>
+  </h1>
+  <p class="hero-sub">alqurmani · AQX Ecosystem</p>
+  <p class="hero-desc">
+    منظومة متكاملة من المنصات الرقمية المتخصصة — صُممت لتلبية كل احتياج، وتمكين كل طموح، في بيئة واحدة متصلة.
+  </p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num">47</span>
+      <span class="lbl">منصة نشطة</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">∞</span>
+      <span class="lbl">إمكانيات</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">1</span>
+      <span class="lbl">منظومة موحدة</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============================
+     TABS
+============================ -->
+<nav class="tabs-wrap" role="tablist">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('all',this)" role="tab">🌐 جميع المنصات</button>
+    <button class="tab-btn" onclick="switchTab('core',this)" role="tab">⭐ المنصات الأساسية</button>
+    <button class="tab-btn" onclick="switchTab('services',this)" role="tab">⚙️ الخدمات</button>
+    <button class="tab-btn" onclick="switchTab('commerce',this)" role="tab">🛒 التجارة</button>
+    <button class="tab-btn" onclick="switchTab('media',this)" role="tab">📡 الإعلام والمحتوى</button>
+    <button class="tab-btn" onclick="switchTab('tech',this)" role="tab">💻 التقنية</button>
+    <button class="tab-btn" onclick="switchTab('life',this)" role="tab">🌿 الحياة</button>
+  </div>
+</nav>
+
+<!-- ============================
+     MAIN
+============================ -->
+<main class="main-wrap">
+
+  <!-- SEARCH -->
+  <div class="search-wrap reveal">
+    <input type="text" id="search-input" placeholder="ابحث عن منصة..." oninput="filterPlatforms(this.value)">
+    <div class="search-count" id="search-count"></div>
+  </div>
+
+  <!-- GRID -->
+  <div class="platforms-grid" id="platforms-grid"></div>
+  <div class="no-results" id="no-results">لا توجد نتائج للبحث — جرب كلمة أخرى</div>
+
+</main>
+
+<script>
+// ============================================================
+// بيانات المنصات الكاملة
+// ============================================================
+const PLATFORMS = [
+  // CORE
+  {
+    id:'aqx-main', tab:['all','core'],
+    en:'AQX Platform', ar:'منصة AQX الرئيسية',
+    icon:'🌐', color:'#0A7EA4', colorLight:'#D6EEF8',
+    tagIcon:'⭐', tagLabel:'الرئيسية', tagColor:'rgba(10,126,164,0.12)', tagText:'#0A7EA4',
+    desc:'البوابة الأم لمنظومة القرماني — مركز التحكم الكامل بجميع الخدمات والمنصات في مكان واحد.',
+    url:'#', featured: true,
+    speech:'أهلاً وسهلاً بك في منصة AQX الرئيسية — بوابتك لعالم القرماني الرقمي'
+  },
+  {
+    id:'alqurmani-x', tab:['all','core'],
+    en:'Alqurmani X', ar:'القرماني إكس',
+    icon:'✕', color:'#1A1A2E', colorLight:'#EEEEF5',
+    tagIcon:'🔥', tagLabel:'نجمي', tagColor:'rgba(26,26,46,0.10)', tagText:'#1A1A2E',
+    desc:'المنصة الاجتماعية المتكاملة للنشر والتفاعل والمحتوى الرقمي بأسلوب القرماني.',
+    url:'#',
+    speech:'أهلاً بك في القرماني إكس — منصة التواصل والمحتوى'
+  },
+  {
+    id:'aqx-digital', tab:['all','core'],
+    en:'Alqurmani Digital', ar:'القرماني ديجيتال',
+    icon:'💠', color:'#6C47FF', colorLight:'#EDE9FF',
+    tagIcon:'🚀', tagLabel:'رقمي', tagColor:'rgba(108,71,255,0.10)', tagText:'#6C47FF',
+    desc:'منصة الحلول الرقمية الشاملة — تصميم، تطوير، وتحول رقمي احترافي.',
+    url:'#',
+    speech:'أهلاً بك في القرماني ديجيتال — عالم الحلول الرقمية'
+  },
+  {
+    id:'riwaq', tab:['all','core','media'],
+    en:'Riwaq Alqurmani', ar:'رواق القرماني',
+    icon:'📚', color:'#C9952A', colorLight:'#FDF4E0',
+    tagIcon:'📖', tagLabel:'ثقافي', tagColor:'rgba(201,149,42,0.12)', tagText:'#C9952A',
+    desc:'الفضاء الثقافي والمعرفي — مقالات، كتب، وتحقيقات فكرية من عمق القرماني.',
+    url:'#',
+    speech:'أهلاً بك في رواق القرماني — منارة الثقافة والمعرفة'
+  },
+  {
+    id:'aqx-hub', tab:['all','core'],
+    en:'Alqurmani Hub', ar:'القرماني هاب',
+    icon:'🔗', color:'#0A7EA4', colorLight:'#D6EEF8',
+    tagIcon:'🌐', tagLabel:'ربط', tagColor:'rgba(10,126,164,0.12)', tagText:'#0A7EA4',
+    desc:'المركز التجميعي الذكي — يربط جميع منصات القرماني في شبكة متكاملة واحدة.',
+    url:'#',
+    speech:'أهلاً بك في القرماني هاب — مركز الربط والتكامل'
+  },
+
+  // COMMERCE
+  {
+    id:'qfood', tab:['all','commerce','life'],
+    en:'Q-Food', ar:'كيو فود',
+    icon:'🍽️', color:'#E8523A', colorLight:'#FDECEA',
+    tagIcon:'🛒', tagLabel:'طعام', tagColor:'rgba(232,82,58,0.10)', tagText:'#E8523A',
+    desc:'منصة الطعام والمطاعم الذكية — اطلب، تتبع، واستمتع بأفضل تجربة طعام رقمية.',
+    url:'#',
+    speech:'أهلاً بك في كيو فود — منصة الطعام الذكية'
+  },
+  {
+    id:'aqx-cash', tab:['all','commerce','services'],
+    en:'Alqurmani Cash', ar:'القرماني كاش',
+    icon:'💰', color:'#2E7D32', colorLight:'#E8F5E9',
+    tagIcon:'💳', tagLabel:'مالي', tagColor:'rgba(46,125,50,0.12)', tagText:'#2E7D32',
+    desc:'نظام المحفظة والمدفوعات الرقمية الآمن — حوّل، ادفع، واستلم بسهولة تامة.',
+    url:'#',
+    speech:'أهلاً بك في القرماني كاش — منصة المدفوعات الآمنة'
+  },
+  {
+    id:'aqx-shop', tab:['all','commerce'],
+    en:'Alqurmani Shop', ar:'القرماني شوب',
+    icon:'🛍️', color:'#FF7043', colorLight:'#FBE9E7',
+    tagIcon:'🏪', tagLabel:'تسوق', tagColor:'rgba(255,112,67,0.10)', tagText:'#FF7043',
+    desc:'سوق إلكتروني متكامل — تسوق لآلاف المنتجات بتجربة راقية وتوصيل موثوق.',
+    url:'#',
+    speech:'أهلاً بك في القرماني شوب — وجهتك للتسوق الذكي'
+  },
+  {
+    id:'aqx-ship', tab:['all','commerce','services'],
+    en:'Alqurmani Ship', ar:'القرماني شيب',
+    icon:'📦', color:'#37474F', colorLight:'#ECEFF1',
+    tagIcon:'🚚', tagLabel:'شحن', tagColor:'rgba(55,71,79,0.10)', tagText:'#37474F',
+    desc:'خدمات الشحن والتوصيل اللوجستي — سريع، موثوق، وبتتبع لحظي دقيق.',
+    url:'#',
+    speech:'أهلاً بك في القرماني شيب — منصة الشحن والتوصيل'
+  },
+  {
+    id:'aqx-drop', tab:['all','commerce'],
+    en:'Alqurmani Drop', ar:'القرماني دروب',
+    icon:'🎁', color:'#AD1457', colorLight:'#FCE4EC',
+    tagIcon:'💧', tagLabel:'درب شيبينج', tagColor:'rgba(173,20,87,0.10)', tagText:'#AD1457',
+    desc:'منصة الدروب شيبينج المتكاملة — ابدأ مشروعك التجاري بدون مخزون.',
+    url:'#',
+    speech:'أهلاً بك في القرماني دروب — ابدأ تجارتك بلا حدود'
+  },
+  {
+    id:'aqx-market', tab:['all','commerce'],
+    en:'Alqurmani Pay', ar:'القرماني باي',
+    icon:'💳', color:'#1565C0', colorLight:'#E3F2FD',
+    tagIcon:'💵', tagLabel:'دفع', tagColor:'rgba(21,101,192,0.10)', tagText:'#1565C0',
+    desc:'بوابة الدفع الإلكتروني الموحدة — ربط تجاري آمن مع جميع وسائل الدفع.',
+    url:'#',
+    speech:'أهلاً بك في القرماني باي — بوابة الدفع الذكية'
+  },
+  {
+    id:'aqx-farm', tab:['all','commerce','life'],
+    en:'Alqurmani Farm', ar:'القرماني فارم',
+    icon:'🌾', color:'#558B2F', colorLight:'#F1F8E9',
+    tagIcon:'🌱', tagLabel:'زراعي', tagColor:'rgba(85,139,47,0.10)', tagText:'#558B2F',
+    desc:'منصة المنتجات الزراعية والغذائية الطازجة — مباشرة من المزرعة إلى يدك.',
+    url:'#',
+    speech:'أهلاً بك في القرماني فارم — طعام طازج من الطبيعة'
+  },
+  {
+    id:'aqx-craft', tab:['all','commerce'],
+    en:'Alqurmani Craft', ar:'القرماني كرافت',
+    icon:'🎨', color:'#6A1B9A', colorLight:'#F3E5F5',
+    tagIcon:'🖌️', tagLabel:'يدوي', tagColor:'rgba(106,27,154,0.10)', tagText:'#6A1B9A',
+    desc:'سوق المنتجات اليدوية والحرف التقليدية — صُنع باتقان وعشق.',
+    url:'#',
+    speech:'أهلاً بك في القرماني كرافت — عالم الصناعة اليدوية'
+  },
+  {
+    id:'aqx-mix', tab:['all','commerce'],
+    en:'Alqurmani Mix', ar:'القرماني ميكس',
+    icon:'🔀', color:'#00838F', colorLight:'#E0F7FA',
+    tagIcon:'🎯', tagLabel:'متعدد', tagColor:'rgba(0,131,143,0.12)', tagText:'#00838F',
+    desc:'منصة البيع المختلط والعروض التجميعية — أفضل الصفقات في مكان واحد.',
+    url:'#',
+    speech:'أهلاً بك في القرماني ميكس — أفضل العروض مجمّعة'
+  },
+
+  // SERVICES
+  {
+    id:'aqx-logic', tab:['all','services','tech'],
+    en:'Alqurmani Logic', ar:'القرماني لوجيك',
+    icon:'🧠', color:'#283593', colorLight:'#E8EAF6',
+    tagIcon:'⚡', tagLabel:'ذكاء', tagColor:'rgba(40,53,147,0.10)', tagText:'#283593',
+    desc:'منصة الذكاء الاصطناعي وتحليل البيانات — قرارات أذكى بأدوات تقنية متقدمة.',
+    url:'#',
+    speech:'أهلاً بك في القرماني لوجيك — عالم الذكاء الاصطناعي'
+  },
+  {
+    id:'aqx-lab', tab:['all','services','tech'],
+    en:'Alqurmani Lab', ar:'القرماني لاب',
+    icon:'⚗️', color:'#00695C', colorLight:'#E0F2F1',
+    tagIcon:'🔬', tagLabel:'أبحاث', tagColor:'rgba(0,105,92,0.12)', tagText:'#00695C',
+    desc:'مختبر الأفكار والابتكار الرقمي — حيث تتحول الأفكار الجريئة إلى حلول حقيقية.',
+    url:'#',
+    speech:'أهلاً بك في القرماني لاب — مختبر الابتكار والإبداع'
+  },
+  {
+    id:'aqx-tool', tab:['all','services','tech'],
+    en:'Alqurmani Tool', ar:'القرماني تول',
+    icon:'🛠️', color:'#4527A0', colorLight:'#EDE7F6',
+    tagIcon:'🔧', tagLabel:'أدوات', tagColor:'rgba(69,39,160,0.10)', tagText:'#4527A0',
+    desc:'مجموعة الأدوات الرقمية المتخصصة — أدوات احترافية لكل مهمة رقمية.',
+    url:'#',
+    speech:'أهلاً بك في القرماني تول — أدواتك الرقمية الاحترافية'
+  },
+  {
+    id:'aqx-mine', tab:['all','services'],
+    en:'Alqurmani Mine', ar:'القرماني ماين',
+    icon:'⛏️', color:'#BF360C', colorLight:'#FBE9E7',
+    tagIcon:'💎', tagLabel:'استخراج', tagColor:'rgba(191,54,12,0.10)', tagText:'#BF360C',
+    desc:'منصة استخراج الفرص والإيرادات الرقمية — حوّل وقتك وجهدك إلى عائد حقيقي.',
+    url:'#',
+    speech:'أهلاً بك في القرماني ماين — استخرج فرصك الرقمية'
+  },
+  {
+    id:'aqx-flash', tab:['all','services'],
+    en:'Alqurmani Flash', ar:'القرماني فلاش',
+    icon:'⚡', color:'#F9A825', colorLight:'#FFFDE7',
+    tagIcon:'🚀', tagLabel:'سريع', tagColor:'rgba(249,168,37,0.12)', tagText:'#F9A825',
+    desc:'خدمات التنفيذ الفوري والسريع — طلبك يُنفَّذ في ومضة.',
+    url:'#',
+    speech:'أهلاً بك في القرماني فلاش — السرعة هي معيارنا'
+  },
+  {
+    id:'aqx-serve', tab:['all','services'],
+    en:'Alqurmani Serve', ar:'القرماني سيرف',
+    icon:'🤝', color:'#0277BD', colorLight:'#E1F5FE',
+    tagIcon:'💼', tagLabel:'خدمات', tagColor:'rgba(2,119,189,0.10)', tagText:'#0277BD',
+    desc:'منصة تقديم الخدمات الاحترافية — اعرض خدمتك أو اطلب ما تحتاجه باحترافية.',
+    url:'#',
+    speech:'أهلاً بك في القرماني سيرف — منصة الخدمات الاحترافية'
+  },
+  {
+    id:'aqx-job', tab:['all','services','life'],
+    en:'Alqurmani Job', ar:'القرماني جوب',
+    icon:'💼', color:'#1B5E20', colorLight:'#E8F5E9',
+    tagIcon:'👔', tagLabel:'توظيف', tagColor:'rgba(27,94,32,0.10)', tagText:'#1B5E20',
+    desc:'منصة التوظيف والفرص الوظيفية — ربط المواهب بأفضل الفرص المهنية.',
+    url:'#',
+    speech:'أهلاً بك في القرماني جوب — ابحث عن فرصتك المهنية'
+  },
+  {
+    id:'aqx-help', tab:['all','services'],
+    en:'Alqurmani Help', ar:'القرماني هلب',
+    icon:'🆘', color:'#C62828', colorLight:'#FFEBEE',
+    tagIcon:'🛡️', tagLabel:'دعم', tagColor:'rgba(198,40,40,0.10)', tagText:'#C62828',
+    desc:'مركز الدعم والمساعدة الفنية — فريق متخصص لحل كل مشكلة في أسرع وقت.',
+    url:'#',
+    speech:'أهلاً بك في القرماني هلب — نحن هنا لمساعدتك'
+  },
+  {
+    id:'aqx-ticket', tab:['all','services'],
+    en:'Alqurmani Ticket', ar:'القرماني تيكت',
+    icon:'🎫', color:'#6A1B9A', colorLight:'#F3E5F5',
+    tagIcon:'📋', tagLabel:'طلبات', tagColor:'rgba(106,27,154,0.10)', tagText:'#6A1B9A',
+    desc:'نظام إدارة التذاكر والطلبات — تتبع كل طلب بدقة وشفافية كاملة.',
+    url:'#',
+    speech:'أهلاً بك في القرماني تيكت — إدارة طلباتك بدقة'
+  },
+  {
+    id:'aqx-care', tab:['all','services','life'],
+    en:'Alqurmani Care', ar:'القرماني كير',
+    icon:'❤️', color:'#E91E63', colorLight:'#FCE4EC',
+    tagIcon:'🌸', tagLabel:'رعاية', tagColor:'rgba(233,30,99,0.10)', tagText:'#E91E63',
+    desc:'خدمات الرعاية والصحة والرفاه — لأن صحتك وسعادتك هي أولويتنا.',
+    url:'#',
+    speech:'أهلاً بك في القرماني كير — صحتك ورفاهك أولاً'
+  },
+
+  // TECH
+  {
+    id:'aqx-cloud', tab:['all','tech'],
+    en:'Alqurmani Cloud', ar:'القرماني كلاود',
+    icon:'☁️', color:'#0288D1', colorLight:'#E1F5FE',
+    tagIcon:'🗄️', tagLabel:'سحابي', tagColor:'rgba(2,136,209,0.10)', tagText:'#0288D1',
+    desc:'البنية التحتية السحابية — تخزين، معالجة، وحماية بيانات بمعايير عالمية.',
+    url:'#',
+    speech:'أهلاً بك في القرماني كلاود — سحابتك الرقمية الآمنة'
+  },
+  {
+    id:'aqx-code', tab:['all','tech'],
+    en:'Alqurmani Code', ar:'القرماني كود',
+    icon:'</>', color:'#1A237E', colorLight:'#E8EAF6',
+    tagIcon:'💻', tagLabel:'برمجة', tagColor:'rgba(26,35,126,0.10)', tagText:'#1A237E',
+    desc:'منصة التطوير والبرمجة التعاونية — اكتب، شارك، وطور كودك مع المجتمع.',
+    url:'#',
+    speech:'أهلاً بك في القرماني كود — منصة المبرمجين المحترفين'
+  },
+  {
+    id:'aqx-mind', tab:['all','tech'],
+    en:'Alqurmani Mind', ar:'القرماني مايند',
+    icon:'🔮', color:'#4A148C', colorLight:'#F3E5F5',
+    tagIcon:'🧩', tagLabel:'ذكاء', tagColor:'rgba(74,20,140,0.10)', tagText:'#4A148C',
+    desc:'منصة تحليل البيانات والذكاء الاصطناعي التوليدي — استكشف أنماطاً لا ترى.',
+    url:'#',
+    speech:'أهلاً بك في القرماني مايند — استكشف قوة عقلك الرقمي'
+  },
+  {
+    id:'aqx-scope', tab:['all','tech'],
+    en:'Alqurmani Scope', ar:'القرماني سكوب',
+    icon:'🔭', color:'#006064', colorLight:'#E0F7FA',
+    tagIcon:'📊', tagLabel:'تحليل', tagColor:'rgba(0,96,100,0.12)', tagText:'#006064',
+    desc:'أداة التحليل والمراقبة الرقمية — رؤية شاملة لأداء منصاتك وبياناتك.',
+    url:'#',
+    speech:'أهلاً بك في القرماني سكوب — حلل وراقب بدقة'
+  },
+  {
+    id:'aqx-board', tab:['all','tech'],
+    en:'Alqurmani Board', ar:'القرماني بورد',
+    icon:'📋', color:'#37474F', colorLight:'#ECEFF1',
+    tagIcon:'📌', tagLabel:'لوحة', tagColor:'rgba(55,71,79,0.10)', tagText:'#37474F',
+    desc:'لوحة إدارة المشاريع والمهام — نظّم فريقك وحقق أهدافك بكفاءة عالية.',
+    url:'#',
+    speech:'أهلاً بك في القرماني بورد — نظّم عملك باحترافية'
+  },
+  {
+    id:'aqx-scan', tab:['all','tech','services'],
+    en:'Alqurmani Scan', ar:'القرماني سكان',
+    icon:'📷', color:'#00796B', colorLight:'#E0F2F1',
+    tagIcon:'🔍', tagLabel:'مسح', tagColor:'rgba(0,121,107,0.12)', tagText:'#00796B',
+    desc:'خدمة المسح الضوئي الذكي ورمز QR — حوّل الورق إلى بيانات رقمية قابلة للبحث.',
+    url:'#',
+    speech:'أهلاً بك في القرماني سكان — امسح وحوّل بذكاء'
+  },
+
+  // MEDIA
+  {
+    id:'aqx-tv', tab:['all','media'],
+    en:'Alqurmani TV', ar:'القرماني TV',
+    icon:'📺', color:'#B71C1C', colorLight:'#FFEBEE',
+    tagIcon:'🎬', tagLabel:'بث مباشر', tagColor:'rgba(183,28,28,0.10)', tagText:'#B71C1C',
+    desc:'منصة البث المباشر والمحتوى المرئي — شاهد، بث، وشارك لحظاتك مع العالم.',
+    url:'#',
+    speech:'أهلاً بك في القرماني TV — شاشتك الرقمية الفريدة'
+  },
+  {
+    id:'aqx-read', tab:['all','media'],
+    en:'Alqurmani Read', ar:'القرماني ريد',
+    icon:'📖', color:'#4E342E', colorLight:'#EFEBE9',
+    tagIcon:'✍️', tagLabel:'قراءة', tagColor:'rgba(78,52,46,0.10)', tagText:'#4E342E',
+    desc:'مكتبة رقمية ضخمة — اقرأ المقالات والكتب والأبحاث من أرشيف القرماني الغني.',
+    url:'#',
+    speech:'أهلاً بك في القرماني ريد — اقرأ واستمتع بالمعرفة'
+  },
+  {
+    id:'matn', tab:['all','media'],
+    en:'Matn Alqurmani', ar:'متن القرماني',
+    icon:'📝', color:'#795548', colorLight:'#EFEBE9',
+    tagIcon:'🖊️', tagLabel:'كتابة', tagColor:'rgba(121,85,72,0.10)', tagText:'#795548',
+    desc:'منصة الكتابة الإبداعية والتأليف — اكتب قصتك وانشر إبداعك للعالم.',
+    url:'#',
+    speech:'أهلاً بك في متن القرماني — منصة الكلمة والإبداع'
+  },
+  {
+    id:'aqx-right', tab:['all','media'],
+    en:'Alqurmani Right', ar:'القرماني رايت',
+    icon:'✒️', color:'#212121', colorLight:'#F5F5F5',
+    tagIcon:'📄', tagLabel:'محتوى', tagColor:'rgba(33,33,33,0.10)', tagText:'#212121',
+    desc:'منصة إنتاج المحتوى الاحترافي — نصوص، سيناريوهات، ومقالات بجودة تحريرية عالية.',
+    url:'#',
+    speech:'أهلاً بك في القرماني رايت — الكلمة الصحيحة في المكان الصحيح'
+  },
+  {
+    id:'aqx-life', tab:['all','media','life'],
+    en:'Alqurmani Life', ar:'القرماني لايف',
+    icon:'🌟', color:'#F57F17', colorLight:'#FFFDE7',
+    tagIcon:'✨', tagLabel:'أسلوب حياة', tagColor:'rgba(245,127,23,0.12)', tagText:'#F57F17',
+    desc:'منصة أسلوب الحياة والمحتوى الإلهامي — وحي يومي لحياة أفضل وأجمل.',
+    url:'#',
+    speech:'أهلاً بك في القرماني لايف — الإلهام اليومي لحياتك'
+  },
+  {
+    id:'aqx-mood', tab:['all','media','life'],
+    en:'Alqurmani Mood', ar:'القرماني مود',
+    icon:'🎭', color:'#880E4F', colorLight:'#FCE4EC',
+    tagIcon:'💫', tagLabel:'ترفيه', tagColor:'rgba(136,14,79,0.10)', tagText:'#880E4F',
+    desc:'منصة الترفيه والمحتوى العاطفي — موسيقى، صور، وتجارب تلمس الروح.',
+    url:'#',
+    speech:'أهلاً بك في القرماني مود — استمتع بكل لحظة'
+  },
+  {
+    id:'aqx-taj', tab:['all','media'],
+    en:'Alqurmani Taj', ar:'القرماني تاج',
+    icon:'👑', color:'#C9952A', colorLight:'#FDF4E0',
+    tagIcon:'💎', tagLabel:'مميز', tagColor:'rgba(201,149,42,0.12)', tagText:'#C9952A',
+    desc:'المنصة الذهبية للمحتوى المميز والحصري — تجربة استثنائية لنخبة المستخدمين.',
+    url:'#',
+    speech:'أهلاً بك في القرماني تاج — المحتوى الذهبي الحصري'
+  },
+
+  // LIFE
+  {
+    id:'aqx-sky', tab:['all','life','services'],
+    en:'Alqurmani Sky', ar:'القرماني سكاي',
+    icon:'✈️', color:'#0277BD', colorLight:'#E1F5FE',
+    tagIcon:'🌍', tagLabel:'سفر', tagColor:'rgba(2,119,189,0.10)', tagText:'#0277BD',
+    desc:'منصة السفر والسياحة — احجز، استكشف، وعش تجارب سفر لا تُنسى.',
+    url:'#',
+    speech:'أهلاً بك في القرماني سكاي — عالم السفر والمغامرة'
+  },
+  {
+    id:'aqx-kids', tab:['all','life'],
+    en:'Alqurmani Kids', ar:'القرماني كيدز',
+    icon:'🧒', color:'#F48FB1', colorLight:'#FCE4EC',
+    tagIcon:'🌈', tagLabel:'أطفال', tagColor:'rgba(244,143,177,0.15)', tagText:'#C2185B',
+    desc:'عالم الأطفال الرقمي الآمن — ألعاب، تعلم، ومحتوى ممتع بإشراف كامل.',
+    url:'#',
+    speech:'أهلاً بك في القرماني كيدز — عالم الأطفال الآمن والممتع'
+  },
+  {
+    id:'aqx-zad', tab:['all','life'],
+    en:'Alqurmani Zad', ar:'القرماني زاد',
+    icon:'🌿', color:'#33691E', colorLight:'#F1F8E9',
+    tagIcon:'🍃', tagLabel:'صحة', tagColor:'rgba(51,105,30,0.10)', tagText:'#33691E',
+    desc:'منصة الصحة والتغذية والعافية — زادك اليومي نحو حياة صحية ومتوازنة.',
+    url:'#',
+    speech:'أهلاً بك في القرماني زاد — زادك للصحة والعافية'
+  },
+  {
+    id:'aqx-time', tab:['all','life','services'],
+    en:'Alqurmani Time', ar:'القرماني تايم',
+    icon:'⏰', color:'#0D47A1', colorLight:'#E3F2FD',
+    tagIcon:'📅', tagLabel:'وقت', tagColor:'rgba(13,71,161,0.10)', tagText:'#0D47A1',
+    desc:'منصة إدارة الوقت والإنتاجية الذكية — حقق أكثر في وقت أقل.',
+    url:'#',
+    speech:'أهلاً بك في القرماني تايم — أدِر وقتك كالمحترفين'
+  },
+  {
+    id:'aqx-hob', tab:['all','life'],
+    en:'Alqurmani Hob', ar:'القرماني هوب',
+    icon:'💝', color:'#C62828', colorLight:'#FFEBEE',
+    tagIcon:'🌹', tagLabel:'علاقات', tagColor:'rgba(198,40,40,0.10)', tagText:'#C62828',
+    desc:'منصة العلاقات الإنسانية الراقية — تواصل، تعارف، وأبنِ علاقات حقيقية.',
+    url:'#',
+    speech:'أهلاً بك في القرماني هوب — ابنِ علاقات حقيقية'
+  },
+  {
+    id:'aqx-jod', tab:['all','life','services'],
+    en:'Alqurmani Jod', ar:'القرماني جود',
+    icon:'🕊️', color:'#00695C', colorLight:'#E0F2F1',
+    tagIcon:'❤️', tagLabel:'إنساني', tagColor:'rgba(0,105,92,0.12)', tagText:'#00695C',
+    desc:'منصة العطاء والعمل الإنساني — ساهم، تبرع، وكن جزءاً من التغيير الإيجابي.',
+    url:'#',
+    speech:'أهلاً بك في القرماني جود — العطاء بلا حدود'
+  },
+  {
+    id:'aqx-view', tab:['all','media','life'],
+    en:'Alqurmani View', ar:'القرماني فيو',
+    icon:'👁️', color:'#37474F', colorLight:'#ECEFF1',
+    tagIcon:'🎥', tagLabel:'مرئي', tagColor:'rgba(55,71,79,0.10)', tagText:'#37474F',
+    desc:'منصة المحتوى المرئي الإبداعي — صور، فيديوهات، وتجارب بصرية مذهلة.',
+    url:'#',
+    speech:'أهلاً بك في القرماني فيو — عالم المحتوى البصري'
+  },
+  // LINK SHORTENER
+  {
+    id:'aqx-shorturl', tab:['all','tech','services'],
+    en:'Alqurmani Link', ar:'اختصار الروابط',
+    icon:'🔗', color:'#0A7EA4', colorLight:'#D6EEF8',
+    tagIcon:'✂️', tagLabel:'روابط', tagColor:'rgba(10,126,164,0.12)', tagText:'#0A7EA4',
+    desc:'خدمة اختصار الروابط الذكية — قصّر، تتبع، وحلل أداء روابطك بدقة.',
+    url:'#',
+    speech:'أهلاً بك في خدمة اختصار الروابط من القرماني'
+  },
+];
+
+// ============================================================
+// RENDER
+// ============================================================
+let currentTab = 'all';
+let currentSearch = '';
+
+function renderPlatforms() {
+  const grid = document.getElementById('platforms-grid');
+  const noRes = document.getElementById('no-results');
+  const countEl = document.getElementById('search-count');
+
+  const filtered = PLATFORMS.filter(p => {
+    const inTab    = p.tab.includes(currentTab);
+    const inSearch = currentSearch === '' ||
+      p.ar.includes(currentSearch) ||
+      p.en.toLowerCase().includes(currentSearch.toLowerCase()) ||
+      p.desc.includes(currentSearch);
+    return inTab && inSearch;
+  });
+
+  grid.innerHTML = '';
+
+  if (filtered.length === 0) {
+    noRes.classList.add('show');
+    countEl.textContent = '';
+    return;
+  }
+  noRes.classList.remove('show');
+  if (currentSearch) {
+    countEl.textContent = `وجدنا ${filtered.length} منصة`;
+  } else {
+    countEl.textContent = '';
+  }
+
+  filtered.forEach((p, idx) => {
+    const card = document.createElement('a');
+    card.href = p.url;
+    card.className = 'p-card' + (p.featured ? ' featured' : '');
+    card.setAttribute('data-id', p.id);
+    card.style.animationDelay = (idx * 0.04) + 's';
+    card.onclick = (e) => { e.preventDefault(); handleCardClick(p, card); };
+
+    card.innerHTML = `
+      <div class="p-card-strip"></div>
+      <div class="p-card-inner">
+        <span class="p-num">${String(idx+1).padStart(2,'0')}</span>
+        <div class="p-icon-wrap" style="background:${p.colorLight};">
+          <span style="line-height:1;">${p.icon}</span>
+        </div>
+        <div class="p-name-en">${p.en}</div>
+        <div class="p-name-ar">${p.ar}</div>
+        <div class="p-desc">${p.desc}</div>
+        <span class="p-tag" style="background:${p.tagColor}; color:${p.tagText};">
+          ${p.tagIcon} ${p.tagLabel}
+        </span>
+        <div class="p-btn">
+          <span>زيارة المنصة</span>
+          <span>←</span>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // scroll reveal
+  observeCards();
+}
+
+function handleCardClick(p, card) {
+  // ripple
+  const rip = document.createElement('span');
+  rip.className = 'ripple-el';
+  rip.style.cssText = 'width:80px;height:80px;left:calc(50% - 40px);top:calc(50% - 40px);';
+  card.appendChild(rip);
+  setTimeout(() => rip.remove(), 800);
+
+  // صوت
+  playCardSound(p);
+
+  // toast
+  showToast(`🚀 جاري الانتقال إلى ${p.ar}`);
+
+  // navigate after short delay
+  setTimeout(() => { window.location.href = p.url; }, 900);
+}
+
+// ============================================================
+// TABS
+// ============================================================
+function switchTab(tab, btn) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPlatforms();
+}
+
+// ============================================================
+// SEARCH
+// ============================================================
+function filterPlatforms(val) {
+  currentSearch = val.trim();
+  currentTab = 'all';
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', i===0);
+  });
+  renderPlatforms();
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ============================================================
+// AUDIO — صوت البنت + موسيقى
+// ============================================================
+let _ac = null;
+function getAC() {
+  if (!_ac) _ac = new (window.AudioContext || window.webkitAudioContext)();
+  return _ac;
+}
+
+function playCardSound(p) {
+  // نغمة ترحيب موسيقية راقية
+  const ctx = getAC();
+  const notes = [523.25, 659.25, 783.99, 1046.50];
+  notes.forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const g   = ctx.createGain();
+    const t   = ctx.currentTime + i * 0.09;
+    osc.type  = 'sine';
+    osc.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(0.14, t + 0.04);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.38);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(t); osc.stop(t + 0.4);
+  });
+
+  // صوت بنت TTS (Web Speech API)
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    const utt = new SpeechSynthesisUtterance(p.speech);
+    utt.lang = 'ar-SA';
+    utt.rate = 0.95;
+    utt.pitch = 1.25;
+    utt.volume = 0.85;
+
+    // اختيار صوت أنثى إن وجد
+    function speak() {
+      const voices = window.speechSynthesis.getVoices();
+      const femaleVoice = voices.find(v =>
+        v.lang.startsWith('ar') && (v.name.toLowerCase().includes('female') ||
+        v.name.includes('Hala') || v.name.includes('Laila') ||
+        v.name.includes('Maged') === false)
+      ) || voices.find(v => v.lang.startsWith('ar'));
+      if (femaleVoice) utt.voice = femaleVoice;
+      window.speechSynthesis.speak(utt);
+    }
+
+    if (window.speechSynthesis.getVoices().length > 0) { speak(); }
+    else { window.speechSynthesis.onvoiceschanged = speak; }
+  }
+}
+
+// ============================================================
+// PARTICLES — ذهبية في الخلفية
+// ============================================================
+(function() {
+  const canvas = document.getElementById('particles-bg');
+  const ctx    = canvas.getContext('2d');
+  let W, H;
+  let particles = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function mkParticle() {
+    const gold = Math.random() > 0.3;
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 3 + 0.8,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5 - 0.15,
+      alpha: Math.random() * 0.5 + 0.15,
+      color: gold
+        ? `rgba(${201 + Math.random()*30|0}, ${149 + Math.random()*40|0}, ${Math.random()*30|0},`
+        : `rgba(10, ${126 + Math.random()*30|0}, ${164 + Math.random()*30|0},`,
+      life: Math.random() * 300 + 100,
+      age: Math.random() * 200
+    };
+  }
+
+  for (let i = 0; i < 70; i++) particles.push(mkParticle());
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach((p, i) => {
+      p.x  += p.vx;
+      p.y  += p.vy;
+      p.age++;
+      const ratio = p.age / p.life;
+      const a = p.alpha * Math.sin(Math.PI * ratio);
+
+      ctx.beginPath();
+      // بعضها نجوم صغيرة
+      if (p.r > 2) {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.age * 0.02);
+        drawStar(ctx, 0, 0, 4, p.r * 1.2, p.r * 0.5);
+        ctx.fillStyle = p.color + a + ')';
+        ctx.fill();
+        ctx.restore();
+      } else {
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + a + ')';
+        ctx.fill();
+      }
+
+      if (p.age >= p.life || p.y < -20) {
+        particles[i] = mkParticle();
+        particles[i].y = H + 10;
+        particles[i].age = 0;
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+
+  function drawStar(ctx, cx, cy, spikes, outerR, innerR) {
+    let rot = (Math.PI / 2) * 3, step = Math.PI / spikes;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - outerR);
+    for (let i = 0; i < spikes; i++) {
+      ctx.lineTo(cx + Math.cos(rot) * outerR, cy + Math.sin(rot) * outerR);
+      rot += step;
+      ctx.lineTo(cx + Math.cos(rot) * innerR, cy + Math.sin(rot) * innerR);
+      rot += step;
+    }
+    ctx.lineTo(cx, cy - outerR);
+    ctx.closePath();
+  }
+
+  draw();
+})();
+
+// ============================================================
+// SCROLL REVEAL
+// ============================================================
+function observeCards() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal, .p-card').forEach(el => io.observe(el));
+}
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  renderPlatforms();
+  observeCards();
+});
+</script>
+</body>
+</html>
