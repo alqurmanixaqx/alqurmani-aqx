@@ -3,329 +3,440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز أدوات القرمانى إكس | AQX Tools</title>
+    <title>مركز أدوات القرمانى إكس | AQX Global Tools</title>
     
-    <!-- خطوط عربية عصرية وراقية جداً -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- خطوط جوجل فائقة الدقة للمنصات العالمية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ==========================================
-           المتغيرات (الألوان العالمية الحديثة)
-        ========================================== */
+        /* ==========================================================================
+           1. المتغيرات والأساسيات (نظام ألوان فاخر وفاتح يدمج اللؤلؤي مع الذهبي والتركواز)
+           ========================================================================== */
         :root {
-            --bg-color: #f4f7f8;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --aqx-cyan: #00CDD9;
-            --aqx-cyan-hover: #00aeb8;
-            --aqx-gold: #fbbf24;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
-            --shadow-cyan: 0 10px 25px -5px rgba(0, 205, 217, 0.3);
-            --shadow-gold: 0 10px 25px -5px rgba(251, 191, 36, 0.3);
+            --aqx-cyan: #00d2ff;
+            --aqx-cyan-deep: #0077ff;
+            --aqx-gold-light: #ffe259;
+            --aqx-gold-deep: #ffa751;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+            --glass-blur: blur(20px);
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: 'Readex Pro', 'Cairo', sans-serif;
+            color: var(--text-dark);
             overflow-x: hidden;
-            /* خلفية شبكية خفيفة جداً تعطي طابع مواقع الأدوات التقنية */
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-color: #f8fafc;
+            line-height: 1.7;
         }
 
-        /* ==========================================
-           مساحة القائمة المستقبلية العلوية
-        ========================================== */
-        .header-spacer {
-            height: 70px; /* مساحة مخصصة لشريط القوائم الخاص بك */
+        /* ==========================================================================
+           2. الخلفية السائلة المتحركة (Holographic Fluid Blobs) - فخامة بصرية لا توصف
+           ========================================================================== */
+        .background-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(120deg, #f0f4f8 0%, #ffffff 100%);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .orb-1 {
+            width: 600px; height: 600px;
+            background: linear-gradient(135deg, var(--aqx-cyan), #e0f2fe);
+            top: -10%; right: -10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px; height: 500px;
+            background: linear-gradient(135deg, var(--aqx-gold-light), #fef08a);
+            bottom: -20%; left: -10%;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 400px; height: 400px;
+            background: linear-gradient(135deg, #c084fc, #f3e8ff);
+            top: 40%; left: 40%;
+            animation-duration: 25s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(-50px, 50px) scale(1.1) rotate(180deg); }
+            100% { transform: translate(50px, -50px) scale(0.9) rotate(360deg); }
+        }
+
+        /* ==========================================================================
+           3. التخطيط الرئيسي وحجز مساحة القائمة العلوية
+           ========================================================================== */
+        .sidebar-spacer {
+            height: 80px; /* مساحة مخصصة للقائمة الخاصة بك */
             width: 100%;
         }
 
-        .container {
-            max-width: 1280px;
+        .master-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px 60px;
-        }
-
-        /* ==========================================
-           قسم الترحيب (Hero Section)
-        ========================================== */
-        .hero {
-            text-align: center;
-            margin: 40px 0 50px;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 900;
-            letter-spacing: -1px;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #1e293b, var(--aqx-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* ==========================================
-           تنسيق الإعلانات (مدمجة باحترافية)
-        ========================================== */
-        .ad-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 15px;
-            margin: 30px auto;
-            box-shadow: var(--shadow-sm);
+            padding: 0 40px 100px;
             position: relative;
-            overflow: hidden;
-        }
-        
-        .ad-container::before {
-            content: "مساحة إعلانية مدعومة";
-            font-size: 0.7rem;
-            color: #cbd5e1;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* ==========================================
-           البوابات الرئيسية (مجاني / مدفوع)
-        ========================================== */
-        .gateways-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .gateway-card {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 40px;
-            text-decoration: none;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            transition: all 0.4s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
             z-index: 1;
         }
 
-        .gateway-card::after {
+        /* ==========================================================================
+           4. قسم الهيرو (العنوان الفاخر)
+           ========================================================================== */
+        .premium-hero {
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .premium-hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to left, var(--aqx-cyan-deep), var(--aqx-cyan), var(--aqx-gold-deep), var(--aqx-gold-light));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .premium-hero p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ==========================================================================
+           5. حاويات الإعلانات (مصممة لتبدو كأجزاء احترافية من النظام)
+           ========================================================================== */
+        .ad-showcase {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 20px;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .ad-showcase::before {
+            content: "إعلان ممول - Sponsored";
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .ad-showcase:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ==========================================================================
+           6. بوابات الأدوات (3D Interactive Cards - مستوى عالمي)
+           ========================================================================== */
+        .gateways-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+            perspective: 1000px; /* لتمكين الـ 3D */
+        }
+
+        .gateway-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid rgba(255,255,255,0.9);
+            border-radius: 32px;
+            padding: 50px 40px;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: var(--glass-shadow);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* تأثيرات الإضاءة الداخلية للكروت */
+        .gateway-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: radial-gradient(circle at top right, rgba(255,255,255,0.8), transparent 60%);
+            z-index: 0;
         }
 
-        /* تصميم كارت الأدوات المجانية */
-        .gateway-free {
-            border-top: 4px solid var(--aqx-cyan);
+        .gateway-card > * {
+            position: relative;
+            z-index: 1;
+            transform: translateZ(30px); /* رفع المحتوى عن الكارت 3D */
         }
+
         .gateway-free:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-cyan);
-            border-color: var(--aqx-cyan);
-        }
-        .gateway-free:hover::after {
-            background: linear-gradient(180deg, rgba(0, 205, 217, 0.03) 0%, transparent 100%);
-            opacity: 1;
+            box-shadow: 0 40px 80px rgba(0, 210, 255, 0.15);
+            border-color: rgba(0, 210, 255, 0.3);
         }
 
-        /* تصميم كارت الأدوات المدفوعة */
-        .gateway-premium {
-            border-top: 4px solid var(--aqx-gold);
-        }
         .gateway-premium:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-gold);
-            border-color: var(--aqx-gold);
-        }
-        .gateway-premium:hover::after {
-            background: linear-gradient(180deg, rgba(251, 191, 36, 0.05) 0%, transparent 100%);
-            opacity: 1;
+            box-shadow: 0 40px 80px rgba(255, 167, 81, 0.15);
+            border-color: rgba(255, 167, 81, 0.3);
         }
 
-        .icon-box {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
+        .icon-hexagon {
+            width: 80px; height: 80px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 25px;
+            border-radius: 24px;
+            font-size: 2.5rem;
+            background: #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .gateway-free .icon-box {
-            background: rgba(0, 205, 217, 0.1);
-            color: var(--aqx-cyan);
-        }
-
-        .gateway-premium .icon-box {
-            background: rgba(251, 191, 36, 0.15);
-            color: #d97706;
-        }
+        .gateway-free .icon-hexagon { color: var(--aqx-cyan-deep); }
+        .gateway-premium .icon-hexagon { color: var(--aqx-gold-deep); }
 
         .gateway-card h2 {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .gateway-card p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            flex-grow: 1;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            border-radius: 100px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: #fff;
+            color: var(--text-dark);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            width: max-content;
+        }
+
+        .gateway-card:hover .action-btn {
+            padding-right: 40px;
+            padding-left: 20px;
+        }
+
+        .gateway-free .action-btn { border: 2px solid var(--aqx-cyan); }
+        .gateway-premium .action-btn { border: 2px solid var(--aqx-gold-deep); }
+
+        /* ==========================================================================
+           7. شبكة الأدوات التفصيلية (روابط ملفات حقيقية)
+           ========================================================================== */
+        .section-header {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-dark);
+        }
+        
+        .section-header::after {
+            content: '';
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(to left, var(--glass-border), transparent);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .tool-item {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 24px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .tool-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--aqx-cyan);
+        }
+
+        .tool-item h3 {
+            font-size: 1.4rem;
             font-weight: 800;
             margin-bottom: 10px;
         }
 
-        .gateway-card p {
-            color: var(--text-muted);
+        .tool-item p {
+            color: var(--text-gray);
             font-size: 1rem;
-            margin-bottom: 25px;
-            flex-grow: 1;
         }
 
-        .btn-arrow {
-            display: inline-flex;
-            align-items: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            gap: 8px;
-            transition: 0.3s;
+        /* ==========================================================================
+           8. قسم إعلان الفيديو السينمائي
+           ========================================================================== */
+        .video-ad-section {
+            background: #0f172a; /* خلفية داكنة لإبراز الفيديو كإعلان سينمائي */
+            border-radius: 40px;
+            padding: 40px;
+            margin-bottom: 80px;
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .gateway-free .btn-arrow { color: var(--aqx-cyan); }
-        .gateway-premium .btn-arrow { color: #d97706; }
-
-        .gateway-card:hover .btn-arrow {
-            gap: 15px; /* حركة السهم عند التأشير */
-        }
-
-        /* ==========================================
-           قسم "أدوات مميزة" (لإعطاء إحساس الموقع الفعلي)
-        ========================================== */
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .section-title::before {
+        .video-ad-section::before {
             content: '';
-            width: 8px;
-            height: 24px;
-            background: var(--aqx-cyan);
-            border-radius: 4px;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(to right, var(--aqx-cyan), var(--aqx-gold-deep));
         }
 
-        .tools-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
+        .video-ad-header {
+            color: #fff;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .mini-tool-card {
-            background: var(--card-bg);
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            transition: 0.3s;
-            cursor: pointer;
+        .video-ad-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
         }
 
-        .mini-tool-card:hover {
-            box-shadow: var(--shadow-xl);
-            border-color: var(--aqx-cyan);
+        .ad-badge {
+            background: rgba(255,255,255,0.1);
+            color: var(--aqx-gold-light);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 226, 89, 0.3);
         }
 
-        .mini-tool-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-
-        .mini-tool-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ==========================================
-           قسم الفيديو
-        ========================================== */
-        .video-wrapper {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 24px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 50px;
-        }
-
-        .video-frame {
+        .video-frame-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
-            border-radius: 16px;
+            border-radius: 24px;
             overflow: hidden;
             background: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        .video-frame iframe {
+        .video-frame-container iframe {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
             border: none;
         }
 
-        /* تجاوب الشاشات */
+        /* ==========================================================================
+           التجاوب مع الشاشات
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .gateways-wrapper { grid-template-columns: 1fr; }
+            .gateway-card { transform: none !important; } /* إلغاء 3D في الموبايل */
+        }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .header-spacer { height: 60px; }
-            .gateway-card { padding: 30px 20px; }
+            .premium-hero h1 { font-size: 2.5rem; }
+            .master-container { padding: 0 20px 50px; }
+            .video-ad-section { padding: 20px; border-radius: 24px; }
+            .video-ad-header { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- مساحة القائمة العلوية / الجانبية -->
-    <div class="header-spacer"></div>
+    <!-- الخلفية السائلة الفاخرة المذهلة للعيون -->
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
-    <div class="container">
-        
-        <!-- الهيدر الاحترافي -->
-        <header class="hero">
-            <h1>مركز أدوات AQX</h1>
-            <p>المنصة الأقوى للحلول الرقمية. اختر باقتك وابدأ في إنجاز مهامك بسرعة، دقة، واحترافية لا مثيل لها.</p>
-        </header>
+    <!-- مساحة القائمة العلوية/الجانبية كما طلبت -->
+    <div class="sidebar-spacer"></div>
 
-        <!-- الإعلان الأول: البانر الصغير (تحت الهيدر مباشرة) -->
-        <div class="ad-container" style="max-width: 350px;">
+    <div class="master-container">
+
+        <!-- العنوان الفاخر -->
+        <div class="premium-hero">
+            <h1>القرمانى إكس | البنية التحتية للأدوات</h1>
+            <p>أهلاً بك في المستوى الأعظم من التقنية. لا مزيد من الحلول التقليدية، هنا تجد أقوى الأدوات المبرمجة عالمياً لضمان تفوقك الرقمي المطلق.</p>
+        </div>
+
+        <!-- الإعلان الأول (مدمج كقطعة زجاجية راقية) -->
+        <div class="ad-showcase" style="max-width: 380px;">
             <script>
                 atOptions = {
                     'key' : '6084f429253cae00d1188bae06e361f1',
@@ -338,58 +449,45 @@
             <script src="https://www.highperformanceformat.com/6084f429253cae00d1188bae06e361f1/invoke.js"></script>
         </div>
 
-        <!-- البوابات الرئيسية (المجانية والمدفوعة) -->
-        <div class="gateways-grid">
+        <!-- بوابات الدخول (تأثير 3D خرافي عند تحريك الماوس) -->
+        <div class="gateways-wrapper">
             
-            <!-- بوابة الأدوات المجانية -->
-            <a href="free-tools.html" class="gateway-card gateway-free">
-                <div class="icon-box">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                </div>
-                <h2>الأدوات المجانية</h2>
-                <p>مكتبة متكاملة من الأدوات الأساسية المصممة لتسريع سير عملك اليومي. مفتوحة، سريعة، وبدون تعقيدات.</p>
-                <div class="btn-arrow">
-                    تصفح الأدوات المجانية <span>&larr;</span>
+            <!-- بوابة المجاني (مربوطة بملف حقيقي) -->
+            <a href="free-tools-dashboard.html" class="gateway-card gateway-free" id="card-free">
+                <div class="icon-hexagon">✦</div>
+                <h2>الترسانة المجانية</h2>
+                <p>مجموعة قوية ومفتوحة من الأدوات الذكية لتسريع أعمالك اليومية، تم برمجتها بعناية لتعطيك نتائج فورية دون أي رسوم.</p>
+                <div class="action-btn">
+                    تشغيل الأدوات <span>&larr;</span>
                 </div>
             </a>
 
-            <!-- بوابة الأدوات المدفوعة -->
-            <a href="premium-tools.html" class="gateway-card gateway-premium">
-                <div class="icon-box">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                </div>
-                <h2>الأدوات المدفوعة</h2>
-                <p>ترسانة المحترفين الخالصة. خوارزميات متقدمة، دقة متناهية، ومميزات حصرية تضعك في صدارة المنافسين.</p>
-                <div class="btn-arrow">
-                    دخول قسم المحترفين <span>&larr;</span>
+            <!-- بوابة المدفوع (مربوطة بملف حقيقي) -->
+            <a href="premium-tools-portal.html" class="gateway-card gateway-premium" id="card-premium">
+                <div class="icon-hexagon">♛</div>
+                <h2>الترسانة المدفوعة</h2>
+                <p>صُممت للنخبة. أدوات ذات خوارزميات معقدة، ذكاء اصطناعي متقدم، وحلول احترافية تضمن لك الصدارة واكتساح المنافسين.</p>
+                <div class="action-btn">
+                    تسجيل الدخول للمحترفين <span>&larr;</span>
                 </div>
             </a>
 
         </div>
 
-        <!-- قسم عرض الأدوات (لإعطاء إحساس الموقع الفعلي) -->
-        <div class="section-title">نظرة على بعض أدواتنا</div>
-        <div class="tools-showcase">
-            <div class="mini-tool-card" onclick="location.href='#'">
-                <h3>تحليل السيو (SEO)</h3>
-                <p>افحص موقعك وتصدر نتائج البحث.</p>
+        <!-- إعلان الفيديو الممول (معروض كإعلان صريح وفخم) -->
+        <div class="video-ad-section">
+            <div class="video-ad-header">
+                <h2>مساحة إعلانية مميزة</h2>
+                <span class="ad-badge">ADVERTISEMENT</span>
             </div>
-            <div class="mini-tool-card" onclick="location.href='#'">
-                <h3>ضغط وتصغير الصور</h3>
-                <p>أدوات لتقليل الحجم دون فقدان الجودة.</p>
-            </div>
-            <div class="mini-tool-card" onclick="location.href='#'">
-                <h3>توليد النصوص بالذكاء</h3>
-                <p>اكتب مقالات حصرية بضغطة زر.</p>
-            </div>
-            <div class="mini-tool-card" onclick="location.href='#'">
-                <h3>فحص الأكواد الخبيثة</h3>
-                <p>تأكد من سلامة ملفاتك وروابطك.</p>
+            <div class="video-frame-container">
+                <!-- رابط الديلي موشن الخاص بك -->
+                <iframe src="https://www.dailymotion.com/embed/video/xaclp86" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
-        <!-- الإعلان الثاني: البانر المربع (مدمج في منتصف الصفحة) -->
-        <div class="ad-container" style="max-width: 330px;">
+        <!-- الإعلان الثاني (مدمج بأناقة تامة) -->
+        <div class="ad-showcase" style="max-width: 360px;">
             <script>
                 atOptions = {
                     'key' : '82c46c1474bb89d2cb9fe0cc5b3519e3',
@@ -402,17 +500,64 @@
             <script src="https://www.highperformanceformat.com/82c46c1474bb89d2cb9fe0cc5b3519e3/invoke.js"></script>
         </div>
 
-        <!-- قسم الفيديو (شرح أو استعراض) -->
-        <div class="video-wrapper">
-            <div class="section-title" style="margin-bottom: 20px;">الدليل المرئي للخدمات</div>
-            <div class="video-frame">
-                <iframe src="https://www.dailymotion.com/embed/video/xaclp86" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
+        <!-- شبكة أدوات النظام (روابط بأسماء ملفات حقيقية) -->
+        <h2 class="section-header">نظرة عامة على محرك الأدوات</h2>
+        <div class="tools-grid">
+            <a href="seo-analyzer-pro.html" class="tool-item">
+                <h3>تحليل السيو العميق</h3>
+                <p>افحص هيكلة موقعك، سرعته، والكلمات المفتاحية بتقارير شاملة.</p>
+            </a>
+            <a href="image-compressor-engine.html" class="tool-item">
+                <h3>محرك ضغط الصور</h3>
+                <p>تقليص حجم الصور بنسبة 80% مع الحفاظ على دقة الـ 4K.</p>
+            </a>
+            <a href="ai-content-generator.html" class="tool-item">
+                <h3>توليد المحتوى بالذكاء</h3>
+                <p>صناعة مقالات حصرية متوافقة مع خوارزميات جوجل الجديدة.</p>
+            </a>
+            <a href="malware-scanner.html" class="tool-item">
+                <h3>فحص الأكواد الخبيثة</h3>
+                <p>رادار أمني لفحص الملفات والروابط واكتشاف الثغرات لحظياً.</p>
+            </a>
+            <a href="code-minifier.html" class="tool-item">
+                <h3>تصغير الأكواد (Minify)</h3>
+                <p>ضغط ملفات CSS و JS لزيادة سرعة مواقعك لأقصى درجة.</p>
+            </a>
+            <a href="backlink-checker.html" class="tool-item">
+                <h3>مراقب الباك لينك</h3>
+                <p>تتبع الروابط الخلفية لموقعك ومعرفة مدى قوتها وتأثيرها.</p>
+            </a>
         </div>
 
     </div>
 
-    <!-- الإعلان الثالث: سكربت الـ Pop-under أو التتبع (مخفي ولا يؤثر على الشكل، وموضوع في نهاية الـ body لسرعة التحميل) -->
+    <!-- سكريبت التأثير الـ 3D التفاعلي الخرافي للكروت -->
+    <script>
+        // هذا السكربت يضيف تأثير إمالة 3D بناءً على حركة الماوس، ليعطي إحساس المنصات العالمية
+        const cards = document.querySelectorAll('.gateway-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10; // قوة الميلان الأفقي
+                const rotateY = ((x - centerX) / centerX) * 10;  // قوة الميلان الرأسي
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+    </script>
+
+    <!-- الإعلان الثالث (Pop-under) - وضعته هنا في نهاية الكود لضمان السرعة المطلقة للموقع -->
     <script async src="https://pl29700944.effectivecpmnetwork.com/f9/8c/c8/f98cc868dd2b9fe222c3ca364d94b64f.js"></script>
 
 </body>
