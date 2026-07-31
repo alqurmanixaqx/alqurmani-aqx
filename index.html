@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>القرماني ديكور | حوّل بيتك إلى تحفة فنية</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap');
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
   :root{
     --navy:#132242;
     --navy-deep:#0c1830;
@@ -23,15 +25,23 @@
     --shadow: 0 20px 45px -20px rgba(19,34,66,.35);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
+  html{
+    scroll-behavior:smooth;
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
   body{
     font-family:'Tajawal','Cairo',sans-serif;
     color:var(--ink);
     background:var(--cream);
     width:100%;
+    max-width:100%;
     overflow-x:hidden;
+    position:relative;
     -webkit-font-smoothing:antialiased;
   }
+  section,.container,header,footer{max-width:100%;}
   img{max-width:100%;display:block;}
   a{text-decoration:none;color:inherit;}
   ul{list-style:none;}
@@ -129,9 +139,13 @@
     position:relative;
     min-height:640px;
     display:flex;align-items:center;
-    background:
+    background-color:var(--navy-deep);
+    background-image:
       linear-gradient(100deg, rgba(12,24,48,.86) 0%, rgba(12,24,48,.55) 42%, rgba(12,24,48,.25) 65%, rgba(12,24,48,.55) 100%),
-      url('https://images.unsplash.com/photo-1618219944342-824e40a13285?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      url('https://images.unsplash.com/photo-1618219944342-824e40a13285?q=80&w=1600&auto=format&fit=crop');
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
     padding:90px 0 40px;
   }
   .hero-inner{
@@ -178,7 +192,7 @@
 
   /* ---------- Help section ---------- */
   .help{padding:90px 0;background:var(--white);}
-  .help-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .help-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;}
   .help-card{
     position:relative;border-radius:22px;overflow:hidden;min-height:340px;
     display:flex;align-items:flex-end;padding:40px;
@@ -186,12 +200,16 @@
   }
   .help-card::before{content:'';position:absolute;inset:0;background-size:cover;background-position:center;}
   .help-card.dark::before{
+    background-color:var(--navy-deep);
     background-image:linear-gradient(160deg, rgba(12,20,42,.9), rgba(19,34,66,.75)),
       url('https://images.unsplash.com/photo-1567016432779-094069958ea5?q=80&w=1200&auto=format&fit=crop');
+    background-size:cover;background-position:center;
   }
   .help-card.gold::before{
+    background-color:var(--gold-dark);
     background-image:linear-gradient(160deg, rgba(169,128,63,.75), rgba(201,161,92,.55)),
       url('https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=1200&auto=format&fit=crop');
+    background-size:cover;background-position:center;
   }
   .help-card-body{position:relative;z-index:2;color:#fff;}
   .help-icon{
@@ -207,7 +225,7 @@
   /* ---------- Services ---------- */
   .services{padding:90px 0;background:var(--cream);}
   .services-grid{
-    display:grid;grid-template-columns:repeat(7,1fr);gap:18px;margin-bottom:46px;
+    display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:18px;margin-bottom:46px;
   }
   .service-card{
     background:#fff;border:1px solid var(--line);border-radius:18px;
@@ -228,7 +246,7 @@
   /* ---------- Portfolio ---------- */
   .portfolio{padding:90px 0;background:var(--white);}
   .portfolio-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:46px;
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-bottom:46px;
   }
   .pf-card{
     position:relative;border-radius:18px;overflow:hidden;height:260px;
@@ -259,7 +277,7 @@
   /* ---------- Why us ---------- */
   .why{padding:90px 0 40px;background:var(--cream);}
   .why-grid{
-    display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-bottom:60px;
+    display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;margin-bottom:60px;
   }
   .why-card{
     background:#fff;border:1px solid var(--line);border-radius:16px;
@@ -277,10 +295,10 @@
   .about{
     background:linear-gradient(120deg,var(--navy-deep),var(--navy));
     border-radius:26px;padding:52px 50px;
-    display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center;
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:40px;align-items:center;
     margin-bottom:0;
   }
-  .about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .about-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;}
   .stat{color:#fff;text-align:center;}
   .stat .ic{
     width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);
@@ -295,9 +313,11 @@
   .cta{
     margin:90px 0 0;position:relative;min-height:340px;
     display:flex;align-items:center;justify-content:center;text-align:center;
-    background:
+    background-color:var(--navy-deep);
+    background-image:
       linear-gradient(0deg, rgba(12,24,48,.82), rgba(12,24,48,.6)),
-      url('https://images.unsplash.com/photo-1616627981902-6dd54e63a09c?q=80&w=1600&auto=format&fit=crop') center/cover;
+      url('https://images.unsplash.com/photo-1616627981902-6dd54e63a09c?q=80&w=1600&auto=format&fit=crop');
+    background-position:center;background-size:cover;background-repeat:no-repeat;
   }
   .cta h2{color:#fff;font-size:34px;margin-bottom:14px;}
   .cta p{color:#e7e9f0;font-size:16px;margin-bottom:30px;}
@@ -305,7 +325,7 @@
   /* ---------- Footer ---------- */
   footer{background:var(--navy-deep);color:#cfd6e6;padding:70px 0 0;}
   .footer-grid{
-    display:grid;grid-template-columns:1fr 1fr 1fr 1.4fr;gap:30px;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.4fr);gap:30px;
     padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1);
   }
   .footer-grid h4{color:#fff;font-size:16px;margin-bottom:20px;}
@@ -328,11 +348,11 @@
 
   /* ================= RESPONSIVE ================= */
   @media (max-width:1100px){
-    .services-grid{grid-template-columns:repeat(4,1fr);}
-    .why-grid{grid-template-columns:repeat(3,1fr);}
-    .portfolio-grid{grid-template-columns:repeat(2,1fr);}
+    .services-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
+    .why-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     .about{grid-template-columns:1fr;}
-    .about-stats{grid-template-columns:repeat(4,1fr);}
+    .about-stats{grid-template-columns:repeat(4,minmax(0,1fr));}
   }
   @media (max-width:900px){
     .container{padding:0 22px;}
@@ -342,6 +362,7 @@
       background:#fff;flex-direction:column;justify-content:flex-start;align-items:flex-start;
       padding:100px 30px;gap:22px;transform:translateX(100%);
       transition:transform .3s ease;z-index:999;box-shadow:-10px 0 30px rgba(0,0,0,.15);
+      overflow-y:auto;
     }
     .nav.open{transform:translateX(0);}
     .burger{display:block;}
@@ -349,18 +370,18 @@
     .hero h1{font-size:36px;}
     .hero{min-height:auto;padding:70px 0 40px;}
     .help-grid{grid-template-columns:1fr;}
-    .services-grid{grid-template-columns:repeat(3,1fr);}
-    .footer-grid{grid-template-columns:repeat(2,1fr);}
+    .services-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   }
   @media (max-width:640px){
     .hero h1{font-size:30px;}
     .hero p{font-size:15px;}
     .sec-head h2{font-size:26px;}
-    .services-grid{grid-template-columns:repeat(2,1fr);}
-    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .why-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
     .portfolio-grid{grid-template-columns:1fr;}
     .about{padding:34px 22px;}
-    .about-stats{grid-template-columns:repeat(2,1fr);gap:24px;}
+    .about-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
     .footer-grid{grid-template-columns:1fr;}
     .hero-actions{flex-direction:column;align-items:stretch;}
     .btn{width:100%;}
@@ -480,8 +501,8 @@
 
       <div class="pf-card">
         <div class="pf-split">
-          <div class="half right"><img src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=800&auto=format&fit=crop" alt="بعد"></div>
-          <div class="half left"><img src="https://images.unsplash.com/photo-1560184611-ff3e53f00e8f?q=80&w=800&auto=format&fit=crop" alt="قبل"></div>
+          <div class="half right"><img src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1c3160/e0c088?text=%D8%A7%D9%84%D9%82%D8%B1%D9%85%D8%A7%D9%86%D9%8A+%D8%AF%D9%8A%D9%83%D9%88%D8%B1';" alt="بعد"></div>
+          <div class="half left"><img src="https://images.unsplash.com/photo-1560184611-ff3e53f00e8f?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1c3160/e0c088?text=%D8%A7%D9%84%D9%82%D8%B1%D9%85%D8%A7%D9%86%D9%8A+%D8%AF%D9%8A%D9%83%D9%88%D8%B1';" alt="قبل"></div>
         </div>
         <span class="pf-tag before">قبل</span>
         <span class="pf-tag after">بعد</span>
@@ -491,8 +512,8 @@
 
       <div class="pf-card">
         <div class="pf-split">
-          <div class="half right"><img src="https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=800&auto=format&fit=crop" alt="بعد"></div>
-          <div class="half left"><img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=800&auto=format&fit=crop" alt="قبل"></div>
+          <div class="half right"><img src="https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1c3160/e0c088?text=%D8%A7%D9%84%D9%82%D8%B1%D9%85%D8%A7%D9%86%D9%8A+%D8%AF%D9%8A%D9%83%D9%88%D8%B1';" alt="بعد"></div>
+          <div class="half left"><img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1c3160/e0c088?text=%D8%A7%D9%84%D9%82%D8%B1%D9%85%D8%A7%D9%86%D9%8A+%D8%AF%D9%8A%D9%83%D9%88%D8%B1';" alt="قبل"></div>
         </div>
         <span class="pf-tag before">قبل</span>
         <span class="pf-tag after">بعد</span>
@@ -502,8 +523,8 @@
 
       <div class="pf-card">
         <div class="pf-split">
-          <div class="half right"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop" alt="بعد"></div>
-          <div class="half left"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=800&auto=format&fit=crop" alt="قبل"></div>
+          <div class="half right"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1c3160/e0c088?text=%D8%A7%D9%84%D9%82%D8%B1%D9%85%D8%A7%D9%86%D9%8A+%D8%AF%D9%8A%D9%83%D9%88%D8%B1';" alt="بعد"></div>
+          <div class="half left"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1c3160/e0c088?text=%D8%A7%D9%84%D9%82%D8%B1%D9%85%D8%A7%D9%86%D9%8A+%D8%AF%D9%8A%D9%83%D9%88%D8%B1';" alt="قبل"></div>
         </div>
         <span class="pf-tag before">قبل</span>
         <span class="pf-tag after">بعد</span>
@@ -513,8 +534,8 @@
 
       <div class="pf-card">
         <div class="pf-split">
-          <div class="half right"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="بعد"></div>
-          <div class="half left"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop" alt="قبل"></div>
+          <div class="half right"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1c3160/e0c088?text=%D8%A7%D9%84%D9%82%D8%B1%D9%85%D8%A7%D9%86%D9%8A+%D8%AF%D9%8A%D9%83%D9%88%D8%B1';" alt="بعد"></div>
+          <div class="half left"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/800x600/1c3160/e0c088?text=%D8%A7%D9%84%D9%82%D8%B1%D9%85%D8%A7%D9%86%D9%8A+%D8%AF%D9%8A%D9%83%D9%88%D8%B1';" alt="قبل"></div>
         </div>
         <span class="pf-tag before">قبل</span>
         <span class="pf-tag after">بعد</span>
